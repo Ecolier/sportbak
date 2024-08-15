@@ -1,0 +1,5 @@
+<textarea
+  [class]="'manager-textarea ' + class"
+  [class.invalid]="value.toString().trim().length < 1"
+  (ngModelChange)="onInputChanged($event)"
+  [(ngModel)]="value"></textarea><br>

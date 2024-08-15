@@ -1,0 +1,5 @@
+<img *ngIf="!hasCtn" class="spinning-loader" [class.medium]="isMedium" src="./assets/img/loader.png" />
+
+<div *ngIf="hasCtn" class="loader-ctn">
+  <img class="spinning-loader" [class.medium]="isMedium" src="./assets/img/loader.png" />
+</div>

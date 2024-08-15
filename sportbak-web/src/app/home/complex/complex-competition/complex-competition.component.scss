@@ -1,0 +1,105 @@
+@import 'src/app/shared/const/variables.scss';
+@import "src/app/shared/const/variables";
+
+$mobile-max-screen-width: $break-md;
+
+.complex-competition{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  .competition-picker-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    @media (max-width:$mobile-max-screen-width) {
+      margin-top: 20px;
+      width: 95%;
+    }
+    .competition-picker-ctn {
+      display: flex;
+      flex-direction: column;
+      width: 95%;
+      .complex-info {
+        display: flex;
+        align-items: flex-start;
+        .complex-name {
+          font-family: 'BigNoodleTitling';
+          font-size: 45px;
+        }
+        @media (max-width:$mobile-max-screen-width) {
+          .complex-name {
+            font-size: 25px;
+          }
+        }
+        img {
+          height: 50px;
+          margin-left: 20px;
+        }
+      }
+      @media (max-width:$mobile-max-screen-width) {
+        .complex-info {
+          align-items: flex-end;
+          justify-content: center;
+        }
+      }
+      .competition-ctn {
+        transition-duration: 0.2s;
+        background-color: #2d3436;
+        height: 65px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        .competition-name {
+          color: white;
+          margin: 0px;
+          font-family: 'BigNoodleTitling';
+          font-size: 25px;
+          padding-left: 20px;
+        }
+        @media (max-width:$mobile-max-screen-width) {
+          .competition-name {
+            font-size: 20px;
+          }
+        }
+      }
+      @media (max-width:$mobile-max-screen-width) {
+        .competition-ctn {
+          height: 45px;
+          margin-bottom: 10px;
+        }
+      }
+      .competition-ctn:hover {
+        transition-duration: 0.2s;
+        box-shadow: -1px 11px 56px -10px rgba(0, 0, 0, 0.75);
+        transform: translateY(-10px);
+        cursor: pointer;
+      }
+      .competitions-msg {
+        text-align: center;
+        font-size: 23px;
+        color: white;
+        font-family: $main-font;
+        @media (max-width: $break-sm) {
+          font-size: 14px;
+        }
+      }
+      .animated-msg {
+        animation: animMsg 0.7s linear infinite;
+      }
+      @keyframes animMsg {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(70px)
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+    }
+  }
+}
+

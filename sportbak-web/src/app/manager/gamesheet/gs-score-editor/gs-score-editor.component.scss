@@ -1,0 +1,362 @@
+@import "src/app/shared/const/variables";
+
+gs-score-editor {
+
+  // This is to remove the arrows in the number input
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  position: relative;
+  .score-ctn {
+    border-radius: 12px;
+    border: 1px solid $orange;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    &.sets{
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    @media (max-width: $break-sm) {
+      margin-top: 0px;
+    }
+
+    @media (max-height: 800px) {
+      margin-top: 0px;
+    }
+
+    .score-section {
+      width: 30%;
+      text-align: center;
+      font-family: $secondary-font;
+      color: $white;
+      box-sizing: border-box;
+      margin: 5px;
+      font-size: 110px;
+      display: flex;
+      @media (max-width:$break-sm) {
+        font-size: 40px ;
+        width: 60%;
+      }
+
+      @media (max-width: $break-sm) {
+        font-size: 65px;
+      }
+
+      @media (max-height: $break-md) {
+        font-size: 50px;
+        margin-top: 0px;
+      }
+
+      @media (max-height: $very-small-height) {
+        font-size: 35px;
+      }
+
+
+      .score-input {
+        min-width: 60px;
+        width: 100%;
+        background-color: $light-black;
+        color: $orange;
+        text-align: center;
+        font-size: 60px !important;
+        border: none;
+        @media (max-width:$break-sm) {
+          font-size: 40px !important;
+        }
+      &::placeholder{
+        color: $orange;
+      }
+      }
+      &.sets{
+        border: none;
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+    }
+  }
+  .set-score{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px;
+    margin-bottom: 10px;
+    .team-set-score{
+      color: $white;
+      text-align: center;
+      font-size: 24px;
+      margin: 0;
+      @media (max-width:$break-sm) {
+      font-size: 20px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      }
+    }
+    .set-ctn{
+      color: $white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      padding: 10px;
+      cursor: initial;
+      @media (max-width:$break-sm) {
+        padding: 0;
+      }
+      .set-games{
+        position: relative;
+        .set-game-score {
+          font-size: 14px;
+          font-weight: 600;
+          background-color: $dark-black;
+          color: $white;
+          width: 50px;
+          text-align: center;
+          outline: none;
+          border:none;
+          background-image:none;
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          box-shadow: none;
+          @media (max-width:$break-sm) {
+            width: 40px;
+            font-weight: 500;
+          }
+        }
+        .la-minus-square{
+          color: $red;
+          margin-left: 10px;
+          position: absolute;
+          cursor: pointer;
+          top: 50%;
+          right: 0;
+          transform: translate(130%,-50%);
+        }
+        .hyphen{
+          font-size: 20px;
+          padding-left: 20px;
+          padding-right: 20px;
+          font-weight: 900;
+        }
+      }
+    }
+  }
+  .score-editor-section {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+
+    .content {
+      cursor: pointer;
+      width: 100%;
+      color: $white;
+      font-size: 40px;
+      font-family: $main-font;
+      border: none;
+      border-bottom: 8px solid $dark-green;
+      text-align: center;
+      border-radius: 5px;
+
+      &.orange {
+        background-color: $orange;
+        border-bottom: 8px solid $dark-orange;
+      }
+      &.red {
+        background-color: $red;
+        border-bottom: 8px solid $dark-red;
+      }
+      &.grey {
+        background-color: $medium-grey;
+        border-bottom: 8px solid $medium-dark-grey;
+      }
+
+      @media (max-height: $very-small-height) {
+        font-size: 25px;
+      }
+    }
+
+    &.timer {
+      width: 30%;
+
+      .content {
+        cursor: default;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &.paused {
+          color: #95a5a6;
+        }
+      }
+
+      @media (max-width: $break-md) {
+        width: 40%;
+        font-size: 30px;
+      }
+    }
+    .score-adder{
+      color: $white;
+      background-color: transparent;
+      font-size: 40px;
+      border: none;
+      font-family: $secondary-font;
+    }
+    .validate-set{
+      background-color: $orange;
+      color: $white;
+      border: none;
+      text-transform: uppercase;
+      font-weight: 800;
+      &.disabled{
+        background-color: $medium-grey;
+      }
+    }
+  }
+  .score-editor-ctn {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    @media (max-height: $very-small-height) {
+      margin-bottom: 5px;
+    }
+
+  }
+
+  .goal-selector-ctn {
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .goal-selector,
+    .assist-selector {
+      width: 100%;
+
+      .short {
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: 30vh;
+      }
+    }
+
+    .goal-selector-players-section {
+      display: flex;
+    }
+
+    .player-row {
+      color: $white;
+      display: flex;
+      padding: 10px 5px;
+      align-items: center;
+
+      &.selected {
+        background-color: $extra-light-grey;
+        color: $dark-black;
+        border-radius: 5px;
+
+        .selected-stat {
+          color: $orange;
+        }
+      }
+
+      &.goal-player {
+        padding: 0px;
+      }
+
+      .player-name-ctn {
+        width: 50%;
+        display: flex;
+        align-items: center;
+
+        avatar {
+          margin-right: 10px;
+        }
+
+        .player-name {
+          font-family: $main-font;
+          font-size: 22px;
+          margin: 0px;
+          width: 80%;
+          overflow: hidden;
+        }
+      }
+
+      .player-stats-ctn {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+
+        .player-stat {
+          display: flex;
+          align-items: center;
+          margin-right: 8px;
+
+          span {
+            margin-right: 5px;
+            font-family: $main-font;
+            font-size: 20px;
+          }
+
+          img {
+            width: 20px;
+            height: 20px;
+
+            &.secondary-img {
+              width: 35px;
+            }
+          }
+        }
+      }
+
+      .counters-ctn {
+        display: flex;
+
+        @media (max-width: $break-sm) {
+          flex-direction: column;
+        }
+      }
+
+    }
+
+    .own-goal-title {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      margin: 20px 0px;
+
+      img {
+        height: 20px;
+        width: 20px;
+
+        &.arrow {
+          height: 15px;
+          width: 25px;
+
+          &.reversed {
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      span {
+        font-family: $main-font;
+        font-size: 22px;
+        color: $white;
+      }
+    }
+
+  }
+}

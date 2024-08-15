@@ -1,0 +1,409 @@
+futbak-league-games {
+  width: 100%;
+  display: block;
+  color: white;
+
+  .league-border {
+    border-radius: 10px;
+    border: 3px solid #ffa019;
+  }
+
+  .selectedindex {
+    font-family: "Capture it";
+    font-size: 32px;
+    color: #ffa019;
+    padding: 0 12px;
+  }
+
+  .unselectedindex {
+    font-family: "Capture it";
+    font-size: 25px;
+    padding: 0 12px;
+  }
+
+  .coltab {
+    font-family: "Capture it";
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .versustext {
+    font-family: "Capture it";
+    font-size: 32px;
+    color: #ffa019;
+  }
+
+  .winnertext {
+    font-family: "Capture it";
+    font-size: 32px;
+    color: #ffa019;
+  }
+
+  .neutraltext {
+    font-family: "Capture it";
+    font-size: 32px;
+    color: white;
+  }
+
+  .sorttext {
+    font-family: "Proxima Nova" !important;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: #ffa019;
+  }
+
+  .unsorttext {
+    font-family: "Proxima Nova" !important;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .bordercol {
+    padding: 0px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-color: #ffa019;
+    border-collapse: collapse;
+  }
+
+  .maillotfilter {
+    background: no-repeat center;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0);
+    height: 120px;
+    width: 120px;
+  }
+
+  .maillottab {
+    width: 30px;
+    height: 30px;
+    margin-left: 25px;
+    margin-top: 5px;
+  }
+
+  .maillotwhite {
+    background: no-repeat center;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0);
+    height: 70px;
+    width: 70px;
+  }
+
+  .resized {
+    margin-top: 150px !important;
+    padding-left: 15px;
+    padding-bottom: 25px;
+    background-color: #242424;
+  }
+
+  .lock {
+    width: 25px;
+    height: 25px;
+    margin-left: 3px;
+    margin-top: 3px;
+  }
+
+  .league-border {
+    border-radius: 10px;
+    border: 3px solid #ffa019;
+  }
+
+  .league-input {
+    margin: 0px 10px 10px 10px;
+    background-color: #242424;
+  }
+
+  .row[align-items-center] {
+    text-align: center;
+  }
+
+  .fame {
+    font-family: "Capture it";
+    font-size: 25px;
+    padding: 0 12px;
+  }
+
+  .coltab2 {
+    font-family: "Proxima Nova" !important;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 7px;
+  }
+
+  .coltab3 {
+    font-family: "Proxima Nova" !important;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .coltab4 {
+    font-family: "Proxima Nova" !important;
+    text-align: left;
+    font-size: 15px;
+    margin-top: 7px;
+    padding-left: 25px;
+  }
+
+  .versusimage {
+    width: 70%;
+    margin-left: 20px;
+  }
+
+  .versusimage2 {
+    width: 40%;
+    margin-left: 30px;
+  }
+
+  .levelPro {
+    font-family: "Capture it";
+    font-size: 40px;
+    color: #ffa019;
+  }
+
+  .levelSemi {
+    font-family: "Capture it";
+    font-size: 40px;
+    color: #ffa019;
+  }
+
+  .levelAmateur {
+    font-family: "Capture it";
+    font-size: 40px;
+    color: #ffa019;
+  }
+
+  .confront {
+    font-family: "Capture it";
+    text-align: center !important;
+    font-size: 20px !important;
+    color: white !important;
+    font-weight: normal !important;
+  }
+
+  .teamfinal {
+    margin-bottom: 50px !important;
+    margin-top: -300px !important;
+    margin-left: -200px !important;
+  }
+
+  .gerant {
+    font-family: "Proxima Nova" !important;
+    font-size: 20px !important;
+  }
+
+  .journay {
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+  }
+
+  .title-confront {
+    background-color: #ffa019 !important;
+  }
+
+  .phase {
+    background-color: #ffa019 !important;
+  }
+
+  .journey-text {
+    font-family: "Capture it";
+    text-align: center;
+    color: #ffa019 !important;
+    font-size: 20px;
+  }
+
+  .phase-text {
+    font-family: "Capture it";
+    text-align: center;
+    color: white !important;
+    font-size: 35px;
+  }
+
+  .legendaryPlayer1 {
+    width: 45%;
+    height: 45%;
+    margin: 0 auto;
+    z-index: 1;
+  }
+
+  .legendaryInfo1 {
+    margin-top: -440px !important;
+    margin-bottom: 0px !important;
+    padding-left: 295px;
+    z-index: 2;
+  }
+
+  .legendaryRating1 {
+    font-family: "Proxima Nova";
+    font-weight: bold;
+    color: #f98131;
+    font-size: 55px;
+    padding-left: 10px;
+    padding-top: 10px;
+  }
+
+  .legendaryPosition1 {
+    font-family: "Proxima Nova";
+    font-size: 25px;
+    margin-top: -11px;
+    padding-left: 27px;
+    margin-bottom: -105px;
+  }
+
+  .legendaryPictureSize1 {
+    height: 110px !important;
+    width: 110px !important;
+  }
+
+  .legendaryPicture1 {
+    margin-left: 105px;
+
+  }
+
+  .legendaryName1 {
+    font-family: "Proxima Nova";
+    font-weight: bold;
+    font-size: 32px;
+    text-align: center;
+    margin-left: -297px;
+    margin-top: 10px;
+  }
+
+  .legendaryStats1 {
+    margin-top: 7px;
+  }
+
+  .legendaryFont1 {
+    font-family: "Proxima Nova";
+    color: #f98131;
+    font-size: 24px;
+  }
+
+  .legendaryTeam1 {
+    font-family: "Proxima Nova";
+    font-size: 20px;
+    text-align: center;
+    margin-left: -297px;
+    margin-top: 4px;
+  }
+
+  .legendaryShirt1 {
+    height: 50px;
+    width: 50px;
+    margin-left: 85px;
+    margin-top: -1px;
+  }
+
+  .legendaryRight {
+    margin-left: 472px;
+    margin-top: -800px;
+  }
+
+  .legendaryPlayer2 {
+    width: 40%;
+    height: 40%;
+    z-index: 1;
+  }
+
+  .legendaryInfo3 {
+    margin-top: -399px;
+    margin-bottom: 69px;
+    margin-left: 540px;
+    z-index: 2;
+  }
+
+  .legendaryInfo2 {
+    margin-top: -400px;
+    margin-bottom: 400px;
+    margin-left: 67px;
+    z-index: 2;
+  }
+
+  .legendaryRating2 {
+    font-family: "Proxima Nova";
+    font-weight: bold;
+    color: #f98131;
+    font-size: 52px;
+    padding-left: 2px;
+    padding-top: 15px;
+  }
+
+  .legendaryPosition2 {
+    font-family: "Proxima Nova";
+    font-size: 24px;
+    margin-top: -9px;
+    padding-left: 17px;
+    margin-bottom: -105px;
+  }
+
+  .legendaryPicture2 {
+    margin-top: 10px;
+    margin-left: 94px;
+
+  }
+
+  .legendaryPictureSize2 {
+    height: 100px !important;
+    width: 100px !important;
+  }
+
+  .legendaryName2 {
+    font-family: "Proxima Nova";
+    font-weight: bold;
+    font-size: 32px;
+    text-align: center;
+    margin-left: -544px;
+    margin-top: -5px;
+  }
+
+  .legendaryStats2 {
+    margin-top: 8px;
+  }
+
+  .legendaryFont2 {
+    font-family: "Proxima Nova";
+    color: #f98131;
+    font-size: 20px;
+  }
+
+  .legendaryTeam2 {
+    font-family: "Proxima Nova";
+    font-size: 19px;
+    text-align: center;
+    margin-left: -544px;
+    margin-top: 3px;
+  }
+
+  .legendaryShirt2 {
+    height: 45px;
+    width: 45px;
+    margin-left: 73px;
+    margin-top: -3px;
+  }
+
+  .legendaryName3 {
+    font-family: "Proxima Nova";
+    font-weight: bold;
+    font-size: 32px;
+    text-align: center;
+    margin-left: -80px;
+    margin-top: -5px;
+  }
+
+  .legendaryTeam3 {
+    font-family: "Proxima Nova";
+    font-size: 19px;
+    text-align: center;
+    margin-left: -80px;
+    margin-top: 3px;
+  }
+}

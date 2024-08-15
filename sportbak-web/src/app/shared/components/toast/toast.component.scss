@@ -1,0 +1,26 @@
+@import 'src/app/shared/const/variables.scss';
+
+:host {
+  position: fixed;
+  display: flex;
+  background-color: $green;
+  top: 12pt;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12pt;
+  color: white;
+  border-radius: 3pt;
+  justify-items: center;
+  font-family: 'Roboto';
+  text-align: center;
+}
+
+:host(.error) {
+  background-color: $red;
+}
+
+.icon {
+  margin-left: 6pt;
+  cursor: pointer;
+}
+

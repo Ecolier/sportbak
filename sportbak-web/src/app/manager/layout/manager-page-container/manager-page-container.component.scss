@@ -1,0 +1,487 @@
+@import "src/app/shared/const/variables";
+
+$pending: #f0932b;
+$finsihed: #3498db;
+$created: #6ab04c;
+
+manager-page-container {
+  display: flex;
+  flex-grow: 1;
+  min-height: 100%;
+  background-color: $dark-black;
+  width: 100%;
+  min-height: 100%;
+
+  .light-text {
+    color: $white;
+    font-family: $secondary-font;
+  }
+
+  .manager-page-ctn {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  .page-in-progress {
+    font-family: $main-font;
+    color: $white;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .manager-content {
+    flex: 1;
+    padding: 12px 12px 60px;
+    width: 100%;
+  }
+
+  .page-title {
+    color: $white;
+    font-family: $main-font;
+    font-size: 50px;
+  }
+
+  .action-btn {
+    background-color: $orange;
+    font-family: $secondary-font;
+    border: none;
+    font-size: 30px;
+    position: relative;
+    cursor: pointer;
+
+    &.half {
+      width: 50%;
+    }
+
+    &.full {
+      width: 100%;
+    }
+
+    &.comp-creation-btn {
+      background-color: $green;
+      border-radius: 100px;
+      width: 50%;
+      font-size: 20px;
+      text-align: center;
+      position: relative;
+      &.orange{
+        background-color: transparent;
+        border: 2px solid $orange;
+      }
+      @media (max-width: $break-xs) {
+        font-size: 5vw;
+      }
+
+      info-label {
+        position: absolute;
+        left: 100%;
+      }
+    }
+
+    &:disabled {
+      background-color: $white;
+      color: $extra-light-grey;
+      cursor: not-allowed;
+      border: none;
+    }
+
+  }
+
+  .selector-btn {
+    border-radius: 100px;
+    background: transparent;
+    font-family: $secondary-font;
+    border: $orange solid 2px;
+    color: $orange;
+    outline: none;
+    margin: 0 5px;
+
+
+    @media (max-width: $break-sm) {
+      font-size: 15px;
+    }
+
+    @media (max-width: $break-xs) {
+      font-size: 10px;
+    }
+
+    &.created {
+      border: $created solid 2px;
+      color: $white;
+      transition-duration: 0.3s;
+      background-color: $dark-black;
+
+      &.selected {
+        background-color: $created;
+        color: $white;
+        transition-duration: 0.3s;
+      }
+    }
+
+    &.pending {
+      border: $pending solid 2px;
+      color: $white;
+      transition-duration: 0.3s;
+      background-color: $dark-black;
+
+      &.selected {
+        background-color: $pending;
+        color: $white;
+        transition-duration: 0.3s;
+      }
+    }
+
+    &.finished {
+      border: $finsihed solid 2px;
+      color: $white;
+      transition-duration: 0.3s;
+      background-color: $dark-black;
+
+      &.selected {
+        background-color: $finsihed;
+        color: $white;
+        transition-duration: 0.3s;
+      }
+    }
+
+    &.selected {
+      color: $white;
+    }
+
+
+  }
+
+
+  .white-btn {
+    color: $dark-black;
+    background-color: $medium-grey;
+    border: none;
+    font-family: $main-font;
+    padding: 5px 10px;
+    margin: 2px;
+    transform: scale(0.9);
+    filter: saturate(50%);
+    transition-duration: 0.3s;
+
+    @media (max-width: $break-sm) {
+      font-size: 15px;
+    }
+
+    &.orange {
+      color: $orange;
+    }
+
+    &.green {
+      color: $green;
+    }
+
+    &.selected {
+      transform: scale(1);
+      background-color: $white;
+      filter: saturate(150%);
+      transition-duration: 0.3s;
+    }
+
+  }
+
+  .filter-btn-img {
+    height: 22px;
+  }
+
+  .comp-switch-display-btn {
+    margin-bottom: 20px;
+  }
+
+  .input-title-ctn {
+    display: flex;
+    align-items: center;
+  }
+  .input-title {
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .input-padding {
+    padding: 10px;
+  }
+
+  .placeholder-input::placeholder {
+    font-family: $secondary-font;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+
+  .input-ctn {
+    margin-top: 10px;
+    margin-bottom: 14px;
+
+    &.row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    select {
+      background-color: $light-black;
+      border: 1px solid $light-grey;
+      color: $white;
+      font-family: $secondary-font;
+      padding: 7px 10px;
+    }
+
+    &.pts-config-ctn {
+      display: flex;
+      justify-content: space-between;
+      .pts-config {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  }
+
+  .semi-full-input {
+    width: 50%;
+  }
+
+  .almost-full-input {
+    width: 95%;
+
+    @media (max-width: $break-sm) {
+      width: 80%;
+    }
+  }
+
+  .full-input {
+    width: 100%;
+  }
+
+  .rounded-input-30 {
+    font-family: $secondary-font;
+    border-radius: 30px;
+  }
+
+  .rounded-input-10 {
+    font-family: $secondary-font;
+    border-radius: 10px;
+  }
+
+  .small-input {
+    width: 100px;
+
+    @media (max-width: $break-sm) {
+      width: 60px;
+    }
+  }
+
+  .action-info {
+    position: absolute;
+    background-color: #424242;
+    color: $white;
+    z-index: 10;
+    width: 100%;
+    font-size: 20px;
+    transform: translate(0%, -87%);
+  }
+
+  .create-btn-ctn {
+    display: flex;
+    justify-content: flex-end;
+
+    @media (max-width: $break-sm) {
+      width: 95%;
+    }
+  }
+
+  .back-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .man-comp-creator-ctn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    .man-comp-creator-content {
+      width: 50%;
+
+      @media(max-width: $break-md) {
+        width: 90%;
+      }
+    }
+
+    .comp-creator-btns-ctn {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      button{
+        margin: 10px;
+      }
+    }
+  }
+
+  .comp-btn-ctn {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $spacing-md;
+  }
+
+  .filters-ctn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    @media (max-width: $break-md) {
+      flex-direction: column;
+    }
+
+    .filter-action {
+      display: flex;
+      justify-content: center;
+      width: max-content;
+      padding: 5px;
+
+      .add-btn-support {
+        height: inherit;
+        cursor: pointer;
+
+        .add-btn {
+          height: 100%;
+          width: 40px;
+        }
+      }
+    }
+
+    .filter-btn {
+      display: flex;
+      justify-content: space-evenly;
+
+      button {
+        @media (max-width: 440px) {
+          font-size: 12px;
+          padding: 6px 12px;
+        }
+      }
+    }
+  }
+
+  .creation-title {
+    color: $white;
+    font-family: $secondary-font;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .title-section {
+    display: flex;
+    align-items: baseline;
+
+    .back-btn {
+      cursor: pointer;
+      margin-right: 20px;
+    }
+  }
+
+  .help-info-ctn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+    cursor: pointer;
+  }
+
+  .team-players-warning {
+    font-family: $secondary-font;
+    font-size: 18px;
+    text-align: center;
+    color: $white;
+    background-color: $red;
+    padding: 5px;
+    margin: 0;
+  }
+
+  .edit-page-title {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    padding: 10px;
+    align-items: center;
+    font-size: 25px;
+    font-family: $secondary-font;
+
+    span {
+      color: $white;
+      margin-left: 10px;
+    }
+
+    img {
+      cursor: pointer;
+    }
+  }
+
+  .notifications-holder {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    width: 500px;
+    max-width: calc(100% - 30px);
+    z-index: $z-index-notifications;
+  }
+
+  manager-popup-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition: left 0s, right 0s, opacity 0.5s;
+    z-index: $z-index-modal;
+
+    &.hidden {
+      opacity: 0;
+      top: 100vh;
+      left: 100vw;
+    }
+  }
+
+  .no-comp-text {
+    font-family: $secondary-font;
+    color: $white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 30px 0px;
+
+    img {
+      height: 20px;
+      margin-left: 5px;
+    }
+  }
+
+  manager-error-popup {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: $z-index-popup-error;
+    transition: 1s;
+    max-height: 30vh;
+
+    &.hidden {
+      bottom: -30vh;
+    }
+  }
+
+}

@@ -1,0 +1,23 @@
+<div class="settings-ctn">
+  <div *ngFor="let team of tournament.teams; index as teamIndex" class="team-row">
+    <div class="team-info">
+      <img class="team-shirt" [src]="team.getShirt()" />
+      <span>{{ team.name }}</span>
+    </div>
+    <div class="input-ctn">
+      <span>{{ getTranslation('bonus_points') }}:</span>
+      <input type="number" [(ngModel)]="bonusPoints[teamIndex]" (ngModelChange)="showButtons()" />
+    </div>
+  </div>
+  <div *ngIf="areButtonsEnabled" class="buttons-ctn">
+    <button (click)="validate()"> {{ getTranslation('save') }}</button>
+    <button class="cancel" (click)="initBonusPoints()">{{ getTranslation('cancel') }}</button>
+  </div>
+  <manager-tournament-creator [tournamentToEdit]="tournament" 
+    (onUpdate)="showUpdateStatus($event)">
+  </manager-tournament-creator>
+  <spinning-loader *ngIf="isLoading" [isMedium]="true"></spinning-loader>
+</div>
+<request-status [isVisible]="isRequestStatusVisible" [text]="requestStatusText" [isFailure]="!isRequestSuccess"
+  [displayTime]="1500" (resetRequestStatus)="resetRequestStatus()">
+</request-status>

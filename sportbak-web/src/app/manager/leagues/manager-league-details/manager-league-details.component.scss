@@ -1,0 +1,36 @@
+@import 'src/app/shared/const/variables.scss';
+
+manager-league-details {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  .league-details-ctn {
+    background-color: #2B2B2B;
+    min-height: 100vh;
+    width: 100%;
+    @media (max-width: $break-md){
+      margin-left: 0px;
+    }
+
+    .league-title-ctn {
+      display: flex;
+      align-items: baseline;
+      margin-left: 20px;
+      @media (max-width:$break-md) {
+        margin-left: 60px;
+      }
+
+      .back-btn {
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .league-name {
+    font-family: "BigNoodleTitling";
+    color: #ecf0f1;
+  }
+}

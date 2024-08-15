@@ -1,0 +1,100 @@
+version: "3.9"
+
+# COMMON VARIABLES for every images
+x-common-variables: &COMMON_VARIABLES
+    PLATFORM: ${PLATFORM}
+
+# ENVIRONMENT_MODE in manager_web & manager_worker must be one of the following values: 
+#    - production
+#    - development
+#    - local
+# COMMON VARIABLES for manager_web & manager_worker
+x-common-variables: &COMMON_VARIABLES_MANAGER
+
+    ENVIRONMENT_MODE: development
+    LOCAL_API_VIDEO_URL : http://localhost:8080
+    DEV_API_VIDEO_URL: https://api.dev.video.sportbak.com
+    PROD_API_VIDEO_URL: https://api.video.sportbak.com
+    STATIC_SPORTBAK_URL : https://static.sportbak.com
+    REDIS: redis://:${REDIS_PASSWORD}@localhost:6379
+    DB: mongodb://${MONGODB_ROOT_USERNAME}:${MONGODB_ROOT_PWD}@localhost:27017/sportbak?authSource=admin
+    VIDEO_SERVICE_URL: ws://localhost:9000
+    MANAGER_BACKEND_URL: http://localhost:8081
+    MANAGER_BACKEND_VERSION: ${MANAGER_BACKEND_VERSION}
+    MANAGER_FRONTEND_VERSION: ${MANAGER_FRONTEND_VERSION}
+    MANAGER_WORKER_VERSION: ${MANAGER_WORKER_VERSION}
+    VIDEOAPP_VERSION: ${VIDEOAPP_VERSION}
+    DEFAULT_ENCODER : x264
+
+
+services:
+    manager_redis:
+        image: redis
+        command: redis-server --requirepass ${REDIS_PASSWORD}
+        ports: 
+            - 0.0.0.0:6379:6379
+    manager_db:
+        image: mongo:4.4.6
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ${MONGODB_ROOT_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_ROOT_PWD}
+        ports: 
+            - 127.0.0.1:27017:27017         
+    manager_web:
+        privileged: true
+        build: 
+            context: ./
+            dockerfile: ./dockerfiles/${BUILD_DOCKER_OS}/${BUILD_DOCKER_OS_VERSION}/Dockerfile
+        command: dev-web
+        volumes:
+            - .:/usr/src/app
+            - ./example/config.json:/etc/config/sportbak.json
+            - ./media:/media
+            - ./logs:/logs
+            - ./resources:/resources
+            - ./assets:/assets
+        depends_on:
+            - manager_redis
+            - manager_db
+        environment:
+            << : *COMMON_VARIABLES
+            << : *COMMON_VARIABLES_MANAGER
+        network_mode: host
+    manager_worker:
+        build: 
+            context: ./
+            dockerfile: ./dockerfiles/${BUILD_DOCKER_OS}/${BUILD_DOCKER_OS_VERSION}/Dockerfile
+        command: dev-worker
+        volumes:
+            - ./example/config.json:/etc/config/sportbak.json
+            - .:/usr/src/app
+            - ./media:/media
+            - ./logs:/logs
+            - ./resources:/resources
+        depends_on:
+            - manager_redis
+            - manager_db
+        environment:
+            << : *COMMON_VARIABLES
+            << : *COMMON_VARIABLES_MANAGER
+        network_mode: host               
+    # video:
+    #     image: ${VIDEOAPP_IMAGE_URL}
+    #     command: webservice
+    #     network_mode: host
+    #     volumes:
+    #         - ./media:/media        
+    #     environment: 
+    #         << : *COMMON_VARIABLES
+    #         CAMERA_URL: rtsp://localhost:8554/streaming/channels/101
+    #         MEDIA_PATH: /media
+    #         CAMERA_USER: ${CAMERA_USER}
+    #         CAMERA_PWD: ${CAMERA_PWD}
+    #         DEFAULT_ENCODER : x264
+    # camera:
+    #     image: ${VIDEOAPP_IMAGE_URL}
+    #     command: emulator
+    #     network_mode: host
+networks: 
+    sportbak:
+        external: true

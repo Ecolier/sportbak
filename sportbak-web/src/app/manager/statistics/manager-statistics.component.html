@@ -1,0 +1,71 @@
+<div class="stat-displayer" *ngIf="loaded">
+  <div class="nb-reservation-form">
+    <div class="date-picker">
+      <sbk-date-picker [date]="startRange" [label]="getTranslation('from')"
+                       (dateChange)="updateStatisticsOnStartChange($event)"></sbk-date-picker>
+      <sbk-date-picker [date]="endRange" [label]="getTranslation('to')"
+                       (dateChange)="updateStatisticsOnEndChange($event)"></sbk-date-picker>
+    </div>
+    <span class="filters">{{getTranslation('filters')}}</span>
+    <span class="sub-title">{{getTranslation('sports')}}</span>
+    <div class="pill-group">
+          <span
+            *ngFor="let sport of availableSports"
+            class="pill"
+            [class.selected]="selectedSports.includes(sport)"
+            (click)="toggleSportInSelected(sport)"
+            [style]="customSportColors[sport]">
+            {{getTranslation(sport)}}
+          </span>
+    </div>
+    <span class="sub-title">{{getTranslation('fields')}}</span>
+    <div class="pill-group">
+          <span
+            *ngFor="let field of availableFields"
+            class="pill"
+            [class.selected]="availableFieldsNames.includes(field.name)"
+            (click)="toggleFieldInSelected(field.name)"
+            [style]="getCustomFieldColor(field._id)">
+            {{field.name}}
+          </span>
+    </div>
+  </div>
+  <div class="chart-support">
+    <div [class.half-width]="isLandscape()" [class.full-width]="!isLandscape()">
+      <booking-number-chart *ngIf="statDataModular"
+                            [statData]="statDataModular"
+                            [customColors]="chartColors"
+                            [fields]="selectedFields"
+                            [sizeInterval]="sizeIntervalModular"
+                            [possibleIntervals]="possibleIntervals"
+                            (intervalEmitter)="updateStatisticsOnIntervalChange($event)">
+      </booking-number-chart>
+    </div>
+    <div [class.half-width]="isLandscape()" [class.full-width]="!isLandscape()">
+      <fields-booking-distribution *ngIf="statDataFixed"
+                                   [statData]="statDataFixed"
+                                   [customColors]="chartColors"
+                                   [fields]="selectedFields">
+      </fields-booking-distribution>
+    </div>
+    <div [class.half-width]="isLandscape()" [class.full-width]="!isLandscape()">
+      <days-booking-distribution *ngIf="statDataFixed"
+                                 [statData]="statDataFixed"
+                                 [customColors]="chartColors"
+                                 [fields]="selectedFields"
+                                 [types]="['acceptedByManager', 'acceptedByBooker']"
+                                 [bookingsType]="'accepted'">
+      </days-booking-distribution>
+    </div>
+    <div [class.half-width]="isLandscape()" [class.full-width]="!isLandscape()">
+      <days-booking-distribution *ngIf="statDataFixed"
+                                 [statData]="statDataFixed"
+                                 [customColors]="chartColors"
+                                 [fields]="selectedFields"
+                                 [types]="['canceledByManager', 'canceledByBooker']"
+                                 [bookingsType]="'canceled-by-booker'"></days-booking-distribution>
+    </div>
+  </div>
+</div>
+
+<spinning-loader class="centered" [isMedium]="true" *ngIf="!loaded"></spinning-loader>

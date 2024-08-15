@@ -1,0 +1,48 @@
+<div class="manager-signup-ctn">
+  <h1>{{ getTranslation('signup') }}</h1>
+  <form class="signup-form" [formGroup]="simulateurForm ? simulateurForm : null" (ngSubmit)="onSubmit()">
+    <div class="input-section">
+      <input formControlName="firstname" type="nom" id="nom"
+             placeholder="{{ getTranslation('first_name_placeholder') }}" required>
+    </div>
+    <div class="input-section">
+      <input type="text" formControlName="lastname" id="prenom"
+             placeholder="{{ getTranslation('last_name_placeholder') }}" required>
+    </div>
+    <div class="input-section">
+      <input type="email" formControlName="mail" id="email" aria-describedby="emailHelp"
+             placeholder="{{ getTranslation('mail_placeholder') }}" required>
+    </div>
+
+    <div class="input-section">
+      <input type="tel" formControlName="phone" id="tel"
+             placeholder="{{ getTranslation('phone_placeholder') }}" required>
+    </div>
+    <div class="input-section">
+      <input type="text" formControlName="complex" id="complex"
+             placeholder="{{ getTranslation('complex_name_placeholder') }}" required>
+    </div>
+    <div class="input-section">
+      <select formControlName="playgrounds" id="terrain" required>
+        <option disabled selected hidden value="">{{ getTranslation('nb_playground_placeholder') }}</option>
+        <option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" value="{{ number }}"> {{ number }}
+        </option>
+      </select>
+    </div>
+    <div class="input-section">
+      <select formControlName="countries" id="country" required>
+        <option disabled selected hidden value="">{{ getTranslation('country') }}</option>
+        <option
+          *ngFor="let country of [{name:'USA', code:'US'}, {name:'Canada', code:'CA'}, {name:'UK', code: 'UK'}, {name:'France', code:'FR'}, {name:'Europe', code:'EU'}]"
+          value="{{ country.code }}"> {{ country.name }}</option>
+      </select>
+    </div>
+    <div *ngIf="hasSubmittedLogin" class="loader-ctn">
+      <spinning-loader></spinning-loader>
+    </div>
+    <button class="btn" *ngIf="!hasSubmittedLogin" type="submit"
+            [disabled]="f.mail.invalid || f.firstname.invalid || f.lastname.invalid || f.phone.invalid">
+      {{ getTranslation('validate') }}
+    </button>
+  </form>
+</div>

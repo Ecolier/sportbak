@@ -1,0 +1,10 @@
+<div class="month-selector-ctn">
+  <div class="month-selector-section date" (click)="resetDateToToday()">
+    <span class="text">{{ month }}</span>
+    <span class="text year">{{ year }}</span>
+  </div>
+  <div class="month-selector-section btn">
+    <img src="./assets/img/icons/left-arrow.png" (click)="toPreviousMonth.emit()"/>
+    <img src="./assets/img/icons/right-arrow.png" (click)="toNextMonth.emit()"/>
+  </div>
+</div>

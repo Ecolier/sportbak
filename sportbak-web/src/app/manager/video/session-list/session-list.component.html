@@ -1,0 +1,87 @@
+<div class="manager-content">
+  <div class="top-bar">
+    <div class="title" routerLink="..">
+      <span class="material-icons-round">
+        arrow_back_ios
+      </span>
+      {{ getTranslation('back') }}
+    </div>
+    <div class="search" [class.active]="isSearchFocused">
+      <span class="material-icons-round search-icon">
+        search
+      </span>
+      <input type="text" [(ngModel)]="fieldSearchQuery" (ngModelChange)="searchForField($event)"
+        [placeholder]="getTranslation('searchField')" (focus)="focusSearch()" (blur)="blurSearch()">
+    </div>
+  </div>
+
+  <div class="presentation-options">
+    <div class="filters">
+      <div class="filter enabled" [class.active]="hasFilter('enabled')" (click)="toggleFilter('enabled')">
+        <span class="material-icons-round filter-icon">
+          check
+        </span>
+        {{ getTranslation('enabled') }}
+      </div>
+      <div class="filter disabled" [class.active]="hasFilter('disabled')" (click)="toggleFilter('disabled')">
+        <span class="material-icons-round filter-icon">
+          videocam_off
+        </span>
+        {{ getTranslation('disabled') }}
+      </div>
+      <div class="filter unequipped" [class.active]="hasFilter('unequipped')" (click)="toggleFilter('unequipped')">
+        <span class="material-icons-round filter-icon">
+          warning
+        </span>
+        {{ getTranslation('unequipped') }}
+      </div>
+    </div>
+    <div class="view-mode">
+      <span class="material-icons-round view-mode-icon" [class.active]="viewMode === 'list'"
+        (click)="setViewMode('list')">
+        view_list
+      </span>
+      <span class="material-icons-round view-mode-icon" [class.active]="viewMode === 'grid'"
+        (click)="setViewMode('grid')">
+        grid_view
+      </span>
+    </div>
+  </div>
+
+  <ng-template #noMatchForQuery>
+    <div class="no-match">
+      <span class="material-icons-round no-match-icon">
+        sentiment_dissatisfied
+      </span>
+      <div class="no-match-text">{{ getTranslation('noFieldMatch') }}</div>
+    </div>
+  </ng-template>
+
+  <div *ngIf="isLoading; else sessionPage" class="loading-overlay">
+    <spinning-loader [isMedium]="true"></spinning-loader>
+  </div>
+  <ng-template #sessionPage>
+    <div class="tiles-container" *ngIf="allDisplayedFields.length !== 0; else noMatchForQuery">
+      <div class="fields-ctn active-fields" *ngIf="hasFilter('enabled') && getFieldsForFilters(['enabled']).length !== 0">
+        <ng-container *ngFor="let field of videoConnectedFields">
+          <sbk-session-list-item status="enabled" [field]="field" *ngIf="findInFieldSearchResults(field._id)">
+          </sbk-session-list-item>
+        </ng-container>
+      </div>
+      <div class="fields-ctn">
+        <ng-container *ngIf="hasFilter('disabled')">
+          <ng-container *ngFor="let field of videoDisconnectedFields">
+            <sbk-session-list-item [class.card]="viewMode === 'grid'" status="disabled" [field]="field"
+              *ngIf="findInFieldSearchResults(field._id)"></sbk-session-list-item>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="hasFilter('unequipped')">
+          <ng-container *ngFor="let field of videoUnsupportedFields">
+            <sbk-session-list-item [class.card]="viewMode === 'grid'" status="unequipped" [field]="field"
+              *ngIf="findInFieldSearchResults(field._id)"></sbk-session-list-item>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </ng-template>
+</div>

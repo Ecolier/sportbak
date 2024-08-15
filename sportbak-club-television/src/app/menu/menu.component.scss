@@ -1,0 +1,20 @@
+$color-onyx: #39393a;
+
+:host {
+  background-color: $color-onyx;
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  color: white;
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  font-size: 2em;
+  padding: 12pt;
+}
+
+.button__icon {
+  font-size: 64px;
+}

@@ -1,0 +1,113 @@
+@import "src/app/shared/const/variables";
+
+pool-table {
+  color: $white;
+  .col-title {
+    background-color: $super-dark-black;
+  }
+
+  .number-col {
+    width: 6%;
+    cursor: pointer;
+  }
+
+  .streak-col {
+    width: 20%;
+    cursor: pointer;
+  }
+
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .column-bordered {
+    font-family: $secondary-font;
+    border: 1px solid $dark-grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    font-size: 12px;
+    width: 10%;
+
+    &.large-col {
+      width: 40px;
+    }
+
+    &.team-name-col {
+      width: 100px;
+      width: 100px;
+      cursor: pointer;
+
+      .team {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-left: 3px;
+      }
+    }
+
+    @media (max-width: $break-sm) {
+      font-size: 12px;
+    }
+  }
+
+  .team-shirt {
+    height: 25px;
+  }
+
+  .streak-icon {
+    width: 10px;
+    height: 10px;
+
+    @media (max-width:$break-sm) {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  &.group-name {
+    font-family: $main-font;
+    font-size: 25px;
+    align-items: center;
+  }
+
+
+  &.table-columns-ctn {
+    font-family: $main-font;
+  }
+
+  .column-text {
+    text-transform: capitalize;
+  }
+
+  .column-selected {
+    color: $bg-orange;
+  }
+
+  .team-name-ctn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: $main-font;
+    overflow: hidden;
+    white-space: nowrap;
+
+    p {
+      font-size: 22px;
+    }
+
+    img {
+      height: 25px;
+      object-fit: contain;
+    }
+  }
+
+}

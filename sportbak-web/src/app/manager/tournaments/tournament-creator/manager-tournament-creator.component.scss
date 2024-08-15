@@ -1,0 +1,254 @@
+@import "src/app/shared/const/variables";
+
+manager-tournament-creator {
+  .man-comp-creator-ctn {
+    .man-comp-creator-content {
+      min-width: 400px;
+      position: relative;
+      @media (max-width: $break-sm) {
+        min-width: 0px;
+        width: 100%;
+      }
+      
+      .config-title {
+        background-color: $extra-light-black;
+        color: $white;
+        text-align: center;
+        text-transform: uppercase;
+        margin-top: 0;
+        margin-bottom: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 28px;
+        @media (max-width: $break-sm) {
+          font-size: 18px;
+        }
+      }
+      .actions-btn {
+        margin: 15px;
+        background-color: transparent;
+        color: $orange;
+        border-radius: 5px;
+        border: 1px solid $orange;
+        padding: 5px;
+        &:active{
+          color: $white;
+        }
+      }
+      .tournament-creator-modal-ctn {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+        background-color: $dark-black;
+        z-index: $z-index-modal;
+        .tournament-creator-modal-content {
+          background-color: $dark-grey;
+          max-width: 1300px;
+          height: 90%;
+          width: 90%;
+          padding-bottom: 10px;
+          position: relative;
+          border-radius: 10px;
+          overflow: auto;
+          .tournament-creator-teams-ctn {
+            max-width: fit-content;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: translate(-100%,-20%);
+            @media (max-width: $break-sm) {
+              position: relative;
+              transform: none;
+              max-width: none;
+              width: 100%;
+            }
+            &.playoffs{
+              position: relative;
+              transform: none;
+            }
+            .select-teams-ctn {
+              display: flex;
+              justify-content: flex-start;
+              flex-direction: column;
+              padding: 10px;
+              background-color: $light-black;
+              border: 1px solid $light-grey;
+              border-radius: 10px;
+              min-height: 300px;
+              max-height: 400px;
+              overflow-y: auto;
+              width: 150px;
+              margin-top: 20px;
+              @media (max-width: $break-sm) {
+                margin-top: 0;
+                flex-direction: row;
+                height: auto;
+                width: 100%;
+                flex-wrap: wrap;
+                min-height: 0;
+                max-height: none;
+                height: 150px;
+              }
+              .team {
+                display: flex;
+                align-items: center;
+                color: $white;
+                cursor: pointer;
+                transition-duration: 0.2s;
+                background-color: $dark-grey;
+                border-radius: 3px;
+                margin-top: 10px;
+                @media (max-width: $break-sm) {
+                  margin: 5px;
+                  height: 50px;
+                }
+                &.selected {
+                  background-color: $white;
+                  color: $light-black;
+                  border-radius: 7px;
+                  padding: 0px 3px;
+                  transition-duration: 0.2s;
+                }
+
+                img {
+                  width: 25px;
+                  height: 25px;
+                }
+
+                span {
+                  padding-left: 10px;
+                  font-family: $main-font;
+                  font-size: 22px;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                  overflow:hidden ;
+                }
+              }
+              .need-complete {
+                color: $white;
+                text-align: center;
+              }
+            }
+          }
+          .title-centered {
+            display: flex;
+            justify-content: center;
+            font-size: 24px;
+            width: 100%;
+            text-align: center;
+            align-items: center;
+            min-height: 60px;
+            @media (max-width: $break-sm) {
+              flex-direction: column;
+              margin-top: 20px;
+            }
+          }
+          .select-teams {
+            text-transform: uppercase;
+            margin: 0;
+            color: $white;
+            max-width: 150px;
+            font-size: 16px;
+            padding-bottom: 10px;
+            &.deselect{
+              font-size: 14px;
+              @media (hover:none) and (pointer: coarse) {
+                display: none;
+              }
+            }
+            span{
+              color: $orange;
+            }
+          }
+        }
+      }
+      .tournament-types-ctn {
+        margin-top: 30px;
+        padding-bottom: 20px;
+        .tournament-type {
+          display: flex;
+          justify-content: center;
+          .tournament-action-create {
+            position: relative;
+            background-color: $dark-grey;
+            border-radius: 10px;
+            color: $white;
+            font-family: $secondary-font;
+            border: none;
+            width: 250px;
+            height: 140px;
+            margin: 5px;
+            padding: 10px;
+            text-align: center;
+            &.selected {
+              border: 2px solid $orange;
+            }
+            @media (max-width: $break-md) {
+              width: 200px;
+            }
+            @media (max-width: $break-sm) {
+              width: 150px;
+            }
+            .img-tournament{
+              width: 100%;
+              max-width: 100px;
+            }
+            .settings {
+              position: absolute;
+              left: 10px;
+              top: 10px;
+              padding: 5px;
+              background-color: $extra-light-black;
+              border: none;
+              border-radius: 5px;
+              i {
+                font-size: 24px;
+                color: $light-grey;
+              }
+            }
+            p {
+              max-width: 150px;
+              padding-top: 10px;
+              margin: auto;
+            }
+          }
+        }
+      }
+      .validate-btn-support {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+        @media (max-width: $break-sm) {
+          margin-top: 0px;
+        }
+        .validate-btn {
+          border-radius: 100px;
+          border: none;
+          background-color: $orange;
+          color: $white;
+          padding: 0 30px;
+          font-size: 30px;
+          font-family: $secondary-font;
+        }
+    
+        .return-support {
+          height: inherit;
+          margin-left: 20px;
+    
+          .return {
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}

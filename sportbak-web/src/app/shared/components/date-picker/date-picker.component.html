@@ -1,0 +1,52 @@
+<div class="input-with-label">
+  <label [htmlFor]="id">{{label}}</label>
+  <div class="picker">
+    <div class="input-ctn">
+      <input name="datePicker"
+             [id]="id"
+             [value]="date.toLocaleDateString(lang, {year: 'numeric', month: 'numeric', day: 'numeric'})">
+      <img class="calendar-logo" src="assets/img/icons/calendar.svg" alt="open calendar" (click)="toggleCalendar()">
+    </div>
+    <div [id]="id + 'calendar'" class="dropdown" [class.hidden]="!isShowingCalendar">
+      <div class="head">
+        <div class="left" (click)="previous()"><<</div>
+        <div class="center" (click)="center()">{{headCenter}}</div>
+        <div class="right" (click)="next()">>></div>
+      </div>
+      <table *ngIf="mode === 'days'" class="grid">
+        <tr class="days">
+          <td *ngFor="let day of getWeekDays()" class="day">{{day}}</td>
+        </tr>
+        <tr *ngFor="let row of rows" class="row">
+          <td *ngFor="let day of row"
+              class="cell"
+              [class.selected]="date.toDateString() === day.toDateString()"
+              [class.not-month]="date.getMonth() !== day.getMonth()"
+              (click)="onDayClick(day)">
+            {{day.getDate()}}
+          </td>
+        </tr>
+      </table>
+      <table *ngIf="mode === 'months'" class="grid">
+        <tr *ngFor="let row of rows" class="row">
+          <td *ngFor="let month of row"
+              class="cell"
+              [class.selected]="isMonthSelected(month)"
+              (click)="onMonthClick(month)">
+            {{getLocalMonthName(month)}}
+          </td>
+        </tr>
+      </table>
+      <table *ngIf="mode === 'years'" class="grid">
+        <tr *ngFor="let row of rows" class="row">
+          <td *ngFor="let year of row"
+              class="cell"
+              [class.selected]="isYearSelected(year)"
+              (click)="onYearClick(year)">
+            {{year.getFullYear()}}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

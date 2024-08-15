@@ -1,0 +1,21 @@
+<div class="league-details-ctn">
+  <spinning-loader *ngIf="!hasLoaded" [isMedium]="true" [hasCtn]="true"></spinning-loader>
+  <div *ngIf="hasLoaded">
+    <div class="league-title-ctn">
+      <img class="back-btn" src="./assets/img/icons/arrow-white.png" (click)="redirectToLeagues()"/>
+      <h1 class="league-name">{{ league? league.name : ''}}</h1>
+    </div>
+    <futbak-nav-bar class="league-tabs" [isBig]="true" [selectedTab]="tabSelected" [tabs]="[getTranslation('ranking'), getTranslation('games'), getTranslation('settings')]" linkId="league" (tabClicked)="tabClicked($event)">
+    </futbak-nav-bar>
+    <div>
+      <div *ngIf="tabSelected == 0">
+        <futbak-league-ranking [league]="league"></futbak-league-ranking>
+      </div>
+      <div *ngIf="tabSelected == 1">
+        <futbak-league-games [league]="league"></futbak-league-games>
+      </div>
+      <div *ngIf="tabSelected == 2">
+        <league-settings [league]="league" (updateLeague)="updateLeague($event)"></league-settings>
+      </div>
+    </div>
+  </div>

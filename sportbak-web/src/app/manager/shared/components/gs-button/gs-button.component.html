@@ -1,0 +1,5 @@
+<button [class] = "'gs-button ' + className + ' ' + color" 
+  [class.is-clicked]="isClicked"
+  (click)="onButtonClick()">
+  {{ text }}
+</button>

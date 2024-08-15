@@ -1,0 +1,122 @@
+@import "src/app/shared/const/variables";
+pool-games{
+  color: $white;
+  .no-device-text {
+    font-size: 12px;
+    color: rgb(185, 62, 62);
+    text-align: center;
+    margin: 2px 0px 0px 0px;
+    @media (max-width:$break-sm) {
+      font-size: 14px;
+    }
+  }
+
+  .pool-games-title {
+    font-family: $secondary-font;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 5px;
+    margin: 10px 0px;
+    cursor: pointer;
+    &.phase-title {
+      background-color: $orange;
+    }
+    img {
+      height: 15px;
+      width: 15px;
+      transform: rotate(-90deg);
+      margin-left: 10px;
+      transition-duration: 0.3s;
+      &.rotated {
+        transform: rotate(90deg);
+        transition-duration: 0.3s;
+      }
+    }
+  }
+
+  .game-row {
+    display: flex;
+    justify-content: space-evenly;
+    font-family: $main-font;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    transition-duration: 0.3s;
+   
+    .team-shirt {
+      width: 15px;
+      height: 15px;
+    }
+    .versus {
+      height: 30px;
+      width: 30px;
+    }
+
+    .score-ctn {
+      width: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .score{
+        display: flex;
+      }
+      .score-text {
+        font-family: $main-font;
+        font-size: 25px;
+        @media (max-width:$break-sm) {
+          font-size: 20px;
+        }
+        &.winner-text {
+          color: $bg-orange;
+        }
+      }
+    }
+
+    .team-ctn {
+      display: flex;
+      align-items: center;
+      width: 40%;
+      overflow: hidden;
+      p {
+        margin: 0px;
+      }
+
+      img {
+        height: 30px;
+        width: 30px;
+        object-fit: contain;
+
+        @media (max-width:$break-sm) {
+          height: 35px;
+          width: 35px;
+        }
+      }
+
+      &.team-1 {
+        img {
+          margin: 0px 15px;
+        }
+      }
+
+      &.team-2 {
+        justify-content: flex-end;
+
+        .team-name {
+          margin-right: 15px;
+        }
+
+        img {
+          margin-left: 10px;
+        }
+      }
+
+      .team-name {
+        font-family: $secondary-font;
+        font-size: 15px;
+        margin: 0px;
+        text-transform: capitalize;
+      }
+    }
+  }
+}

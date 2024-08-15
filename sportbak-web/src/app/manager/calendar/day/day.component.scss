@@ -1,0 +1,72 @@
+@import "src/app/shared/const/variables";
+
+.day {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 13px;
+  transition-duration: 0.1s;
+
+  &.disabled{
+    cursor: context-menu;
+    opacity: 0.3;
+  }
+  &:hover {
+    color: $orange;
+    transition-duration: 0.1s;
+    transform: scale(1.3);
+    &.disabled{
+      color: $white;
+      transition: none;
+      transform: none;
+    }
+  }
+  &.clicked {
+    transform: scale(2);
+    opacity: 0;
+    transition-duration: 0.1s;
+  }
+  &.today {
+    background-color: $orange;
+    border-radius: 100px;
+    &:hover {
+      color: $white;
+    }
+  }
+  .booking-circles-ctn {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    height: 6px;
+    align-items: flex-end;
+
+    .circle {
+      $size: 5px;
+      width: $size;
+      height: $size;
+      border-radius: 100%;
+
+      &.green {
+        background-color: $green;
+      }
+
+      &.yellow {
+        background-color: $yellow;
+      }
+
+      &.orange {
+        background-color: darken($red, 5%);
+      }
+
+      &.white-border {
+        border: 1px solid white;
+      }
+    }
+  }
+}

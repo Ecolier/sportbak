@@ -1,0 +1,72 @@
+@import 'src/layout.scss';
+@import 'src/typography.scss';
+
+$animation-speed: 300ms;
+$animation-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+$input-vertical-spacing: $spacing-xs;
+
+sbk-text-field {
+
+  &:hover {
+    box-shadow: 0px 1px 0 0 var(--theme-text-hovered);
+    & .label { color: var(--theme-text-hovered); }
+  }
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: box-shadow $animation-speed $animation-function;
+  box-shadow: 0px 1px 0 0 var(--theme-text-disabled);
+
+  &[focused=true] {
+    box-shadow: 0px 2px 0 0 var(--theme-text);
+  }
+
+  .input-ctn {
+    display: flex;
+    margin: $input-vertical-spacing 0;
+    position: relative;
+  }
+
+  input[sbk-text-field-input] {
+    flex: 1;
+    z-index: 1;
+    border: none;
+    font-size: $font-size-sm;
+    background-color: transparent;
+    color: var(--theme-text-disabled);
+    margin: 0;
+    padding: 0;
+    
+    &:focus {
+      outline: none;
+      color: var(--theme-text);
+      
+      & ~ .label {
+        font-size: $font-size-xs;
+        color: var(--theme-text);
+        bottom: calc(100% + #{$input-vertical-spacing});
+      }
+    }
+  }
+
+  &[empty=false] {
+    .label {
+      font-size: $font-size-xs;
+      bottom: calc(100% + #{$input-vertical-spacing});
+    }
+
+    input {
+      color: var(--theme-text);
+    }
+  }
+
+  .label {
+    color: var(--theme-text-disabled);
+    transform-origin: top left;
+    transition: font-size $animation-speed $animation-function, bottom $animation-speed $animation-function, color $animation-speed $animation-function;
+    position: absolute;
+    bottom: 0;
+    font-size: $font-size-md;
+  }
+}

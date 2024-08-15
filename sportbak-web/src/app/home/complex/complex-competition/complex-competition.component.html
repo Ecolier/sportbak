@@ -1,0 +1,18 @@
+<section class="complex-competition">
+  <div class="competition-picker-content">
+    <div class="competition-picker-ctn" *ngIf="!isOnLeagueTables">
+      <div *ngFor="let competition of competitions; index as competitionIndex">
+        <div *ngIf="competition.type == 'league'" class="competition-ctn"
+          (click)="onCompetitionClick(competitionIndex)">
+          <p class="competition-name">{{competition.name}}</p>
+        </div>
+      </div>
+      <p *ngIf="competitions.length < 1 && hasWaitedForLoading" class="competitions-msg">
+        {{ getTranslation('no_competitions')}}</p>
+      <spinning-loader *ngIf="competitions.length < 1 && !hasWaitedForLoading" [hasCtn]="true" [isMedium]="true">
+      </spinning-loader>
+    </div>
+    <complex-league class="picker-ctn league-ctn" *ngIf="isOnLeagueTables" [league]="selectedCompetition">
+    </complex-league>
+  </div>
+</section>

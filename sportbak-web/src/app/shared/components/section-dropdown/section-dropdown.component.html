@@ -1,0 +1,6 @@
+<div class="header" (click)="toggle()">
+  <i class="dropdown-icon material-icons-round">expand_more</i>
+  <span class="title">{{ title }}</span>
+  <div class="separator"></div>
+</div>
+<ng-content *ngIf="expanded"></ng-content>

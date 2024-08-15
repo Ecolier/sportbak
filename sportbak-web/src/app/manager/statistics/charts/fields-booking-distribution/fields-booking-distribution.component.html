@@ -1,0 +1,8 @@
+<div class="chart-support">
+  <doughnut-chart [doughnutChartData]="chartData" [doughnutChartLabels]="chartLabels"
+                  [doughnutChartColors]="chartColors" [doughnutChartTitle]="chartTitle"
+                  [doughnutChartOptions]="chartOptions"></doughnut-chart>
+  <div *ngIf="!hasBookings" class="no-data">
+    <span>{{getTranslation("no-data-available")}}</span>
+  </div>
+</div>

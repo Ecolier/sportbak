@@ -1,0 +1,28 @@
+
+  <div class="manager-content">
+    <div *ngIf="isLoaded" class="filters-ctn">
+      <div class="filter-action">
+        <manager-multisport-choice *ngIf="isLoaded" (chosenSport)="selectedSport($event)" [complex]="complex"></manager-multisport-choice>
+        <div class="add-btn-support">
+          <img class="add-btn" src="./assets/img/icons/plus-outline.svg" alt="add" (click)="redirectToLeagueEdit(null)">
+        </div>
+      </div>
+      <div class="filter-btn">
+        <button sbk-btn class="selector-btn created" [class.selected]="createdLeaguesChecked" (click)="toggleCreatedLeaguesVisibility()">{{ getTranslation('created_leagues') }}
+        </button>
+        <button sbk-btn class="selector-btn pending" [class.selected]="pendingLeaguesChecked" (click)="togglePendingLeaguesVisibility()">{{ getTranslation('pending_leagues') }}
+        </button>
+        <button sbk-btn class="selector-btn finished" [class.selected]="finishedLeaguesChecked" (click)="toggleFinishedLeaguesVisibility()">{{ getTranslation('finished_leagues') }}
+        </button>
+      </div>
+    </div>
+    <spinning-loader *ngIf="!isLoaded" class="centered" [isMedium]="true"></spinning-loader>
+    <div *ngIf="isLoaded" class="leagues-ctn">
+      <div *ngIf="sportFilter && sportFilter.length < 1" class="no-comp-text">{{ getTranslation('no_leagues')}} <img src="./assets/img/icons/plus-outline.svg" /></div>
+      <ng-container *ngFor="let league of sportFilter">
+        <manager-competition-span
+        *ngIf="createdLeaguesChecked && league.isCreated() || pendingLeaguesChecked && !league.isCreated() && !league.isFinished() || finishedLeaguesChecked && league.isFinished()"
+        [league]="league" (edit)="redirectToLeagueEdit($event)" (onClick)="onLeagueClick($event)"></manager-competition-span>
+      </ng-container>
+    </div>
+  </div>

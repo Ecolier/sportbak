@@ -1,0 +1,14 @@
+<section id="home-social">
+  <div class="home-social-top">
+    <social-panel [facebookLink]="facebookSB" [linkedinLink]="linkedinSB" [twitterLink]="twitterSB" [instagramLink]="instagramSB"></social-panel>
+    <h1>{{ getTranslation('social_title')}}<span>{{ getTranslation('social_title_span')}}</span></h1>
+  </div>
+  <div  class="instagram-panel">
+    <ng-container *ngIf="instagramIsLoaded == true">
+      <ng-container *ngFor="let content of instagramContents ; let i=index">
+          <instagram-card *ngIf="i < 6" (click)="goToInstagram(instagramContents[i].permalink)" [instagramUsername]="instagramContents[i].username" [instagramMainContent]="instagramContents[i].media_url" [instagramTextContent]="instagramContents[i].caption" [contentDate]="instagramContents[i].timestamp"></instagram-card>
+      </ng-container>
+    </ng-container>
+    <div class="fade-panel"></div>
+  </div>
+</section>

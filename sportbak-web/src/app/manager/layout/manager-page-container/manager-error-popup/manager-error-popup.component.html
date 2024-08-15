@@ -1,0 +1,8 @@
+<div *ngIf="errorMessage" class="errorPopup">
+  <div class="message">
+    {{errorMessage}}
+  </div>
+  <div class="close">
+    <img src="assets/img/icons/close.png" alt="close" (click)="closePopup($event)">
+  </div>
+</div>

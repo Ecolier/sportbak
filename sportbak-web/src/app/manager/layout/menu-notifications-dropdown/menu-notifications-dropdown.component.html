@@ -1,0 +1,13 @@
+<div>
+  <div id="bell" (click)="onBellClick()">
+    <img id="notif-icon" src="assets/img/icons/notifications.png" alt="bell">
+    <sbk-badge [value]="computeUnreadNotificationsNumber()"></sbk-badge>
+  </div>
+  <div id="notifications" [class.shown]="isShowingNotifications">
+    <spinning-loader *ngIf="isLoading" id="loader"></spinning-loader>
+    <div class="no-notif" *ngIf="notifications?.length === 0">{{getTranslation('no_notif')}}</div>
+    <menu-notification *ngFor="let notification of notifications?.slice(0,10)"
+                       [notification]="notification" (click)="openNotification($event, notification)"></menu-notification>
+    <div id="see_more" *ngIf="notifications?.length > 0" (click)="redirectToNotifications()">{{getTranslation('see_more')}}</div>
+  </div>
+</div>

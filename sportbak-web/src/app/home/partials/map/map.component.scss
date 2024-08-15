@@ -1,0 +1,188 @@
+@import "src/app/home/const/variables";;
+.google-ctn{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  font-family: $secondary-font;
+  @media screen and (max-width:$small-screen) {
+    flex-direction: column;
+    max-height: none;
+    height: 100%;
+  }
+  .loader-ctn {
+    position: absolute;
+    left: 0;
+    top: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .map-loading{
+    position: absolute;
+    width: 100%;
+    color: $white;
+    top: 50%;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .reload-map{
+      background-color: $orange;
+      border-radius: 5px;
+      color: $white;
+      font-size: 24px;
+      border: none;
+      outline: none;
+    }
+    p{
+      font-size: 24px;
+      text-align: center;
+    }
+  }
+  .place-details{
+    border-radius: 10px;
+    background-color: $dark;
+    color: $white;
+    margin :10px;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    @media screen and (max-width:$small-screen) {
+      padding-top: 10px;
+      padding-left: 0px;
+    padding-right: 0px;
+      height: 100%;
+    }
+    #complex-logo{
+      max-height: 200px;
+      background-color: $white;
+    }
+    .details-content{
+      padding: 20px;
+      h3{
+        font-family: $secondary-font;
+        padding-top: 30px;
+      }
+      padding-top: 20px;
+      address{
+        color: $grey;
+        margin: 0px;
+        i{
+          font-size: 16px;
+          color: $grey;
+        }
+      }
+      #place-reviews{
+        padding-right: 5px;
+        padding-left: 5px;
+      }
+      i{
+        font-size: 16px;
+        color: $yellow;
+        padding-right: 5px;
+      }
+      #place-status{
+        font-size: 12px;
+        color: $grey;
+        margin: 0px;
+      }
+    }
+    .img-ctn{
+      position: relative;
+      img{
+        border-radius: 10px;
+        object-fit: contain;
+        width: 100%;
+        max-height: 200px;
+        cursor: pointer;
+      }
+      .photo-panel{
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        transform: translateY(50%);
+        div{
+          padding: 3px;
+          display: flex;
+          justify-content: center;
+          img{
+            object-fit: cover;
+            width: 100%;
+            height: 90px;
+            max-width: 130px;
+            @media screen and (max-width:$small-screen) {
+            height: 50px;
+            }
+          }
+        }
+      }
+    }
+    .button-ctn{
+      display: flex;
+      justify-content: center;
+      div{
+        min-height: 46px;
+        vertical-align: middle;
+        border: 2px $grey solid;
+        border-radius: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2px;
+        a{
+          text-align: center;
+          padding: 5px 20px;
+          text-decoration: none;
+          margin-left: 10px;
+          margin-right: 10px;
+          color: $white;
+          font-weight: bold;
+          padding: 3px;
+          @media screen and (max-width:$small-screen) {
+            font-size: 13px;
+            padding: 0;
+          }
+        }
+      }
+      div:not(:first-child){
+        background-color: transparent;
+      }
+      #competition-btn{
+        background-color: $orange;
+        color: $white;
+        cursor: pointer;
+        border: none;
+      }
+    }
+    
+  }
+  .error-map{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $main-font;
+    text-transform: uppercase;
+    padding: 30px;
+    font-size: 20px;
+  }
+  #map{
+    height: 486px;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 10px;
+    margin: 10px;
+    position: relative;
+    @media screen and (max-width:$small-screen) {
+      height: 300px;
+    }
+    
+  }
+  
+}

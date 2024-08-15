@@ -1,0 +1,15 @@
+game-date {
+    .game-date {
+        font-family: 'ProximaNova-Regular';
+        text-align: center;
+        width: 100%;
+        color : white; 
+        cursor: pointer;
+    }
+
+    .no-date-ctn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}

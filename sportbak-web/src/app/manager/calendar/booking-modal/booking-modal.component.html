@@ -1,0 +1,150 @@
+<sbk-dialog-header class="light"></sbk-dialog-header>
+<div class="booking-modal-ctn">
+  <div class="booking-modal">
+    <booking-status-badge *ngIf="selectedBooking" [booking]="selectedBooking"></booking-status-badge>
+    <div class="date-info">{{date}}</div>
+    <div class="inputs-ctn">
+      <div class="time-inputs">
+        <span class="time-info">{{ getTranslation('start') }}</span>
+        <select class="time-input" [disabled]="currentMode == MODE_WAITING_PLAYER" [(ngModel)]="selectedStart"
+                (ngModelChange)="setClickedBlockStart($event)">
+          <option *ngFor="let startTime of formattedStartTimes" [value]="startTime"
+                  [selected]="startTime == selectedStart">
+            {{ startTime }}
+          </option>
+        </select>
+        <span class="time-info">{{ getTranslation('end') }}</span>
+        <select class="time-input" [disabled]="currentMode == MODE_WAITING_PLAYER" [(ngModel)]="selectedEnd"
+                (ngModelChange)="setSelectedEnd($event)">
+          <option *ngFor="let endTime of availableEndTimes" [value]="endTime" [selected]="endTime == selectedEnd">
+            {{ endTime }}
+          </option>
+        </select>
+      </div>
+      <div *ngIf="currentMode == MODE_COMP_CREATION || currentMode == MODE_COMP_CREATED" class="comp-game">
+        <ng-container *ngIf="selectedGame">
+          <div class="comp-title">
+            <i *ngIf="selectedGame.type == 'league'" class="la-trophy las comp-icon"></i>
+            <i *ngIf="selectedGame.type == 'tournament'" class="la-sitemap las comp-icon"></i>
+            <span>{{selectedGame.competition}}</span>
+          </div>
+          <div class="comp-game-row">
+            <span class="comp-team">{{ selectedGame.game.teams[0].title }}</span>
+            <img src="./assets/img/icons/team-versus.png" alt="versus"/>
+            <span class="comp-team">{{ selectedGame.game.teams[1].title }}</span>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="selectedBooking && selectedBooking.target && selectedBooking.target.competition">
+          <div class="comp-title">
+            <i *ngIf="selectedBooking.target.competition.type == 'league'" class="la-trophy las comp-icon"></i>
+            <i *ngIf="selectedBooking.target.competition.type == 'tournament'" class="la-sitemap las comp-icon"></i>
+            <span>{{selectedBooking.target.competition.name}}</span>
+          </div>
+          <div class="comp-game-row">
+            <span class="comp-team">{{ selectedBooking.target.teams[0].title }}</span>
+            <img src="./assets/img/icons/team-versus.png" alt="versus"/>
+            <span class="comp-team">{{ selectedBooking.target.teams[1].title }}</span>
+          </div>
+        </ng-container>
+      </div>
+      <ng-container *ngIf="(currentMode != MODE_COMP_CREATION) && (currentMode != MODE_COMP_CREATED)">
+        <div *ngIf="bookerUser" class="booker-row">
+          <avatar class="profile-pic" [picture]="bookerUser.picture" size="40"></avatar>
+          <span class="nickname">{{ bookerUser.nickname }}</span>
+          <img *ngIf="!selectedBooking" class="remove-user" src="./assets/img/icons/close.png"
+               (click)="removeUser()" alt="remove"/>
+        </div>
+        <span class="booker-warning"
+              *ngIf="!bookerUser && bookerEmail.length < 1 && bookerPhone.length < 1 && bookerFirstName.length < 1 && bookerLastName.length <1">
+            {{ getTranslation('booker_warning') }}
+          </span>
+        <div *ngIf="!bookerUser" class="input-ctn">
+          <span class="input-label">{{ getTranslation('player')}}</span>
+          <player-selector [canHaveGuest]="false" [placeholder]="getTranslation('search_player')"
+                           (selectPlayer)="selectBooker($event)"></player-selector>
+        </div>
+        <div class="input-ctn">
+          <span class="input-label">{{ getTranslation('ph_mail')}}</span>
+          <input [readonly]="currentMode == MODE_WAITING_MANAGER || currentMode == MODE_WAITING_PLAYER"
+                 class="text-input" [(ngModel)]="bookerEmail"
+                 (ngModelChange)="setBookerEmail($event)"/>
+        </div>
+        <div class="input-ctn">
+          <span class="input-label">{{ getTranslation('ph_phone')}}</span>
+          <input [readonly]="currentMode == MODE_WAITING_MANAGER || currentMode == MODE_WAITING_PLAYER"
+                 class="text-input" [(ngModel)]="bookerPhone"
+                 (ngModelChange)="setBookerPhone($event)"/>
+        </div>
+        <div class="input-ctn">
+          <span class="input-label">{{ getTranslation('ph_lastname')}}</span>
+          <input [readonly]="currentMode == MODE_WAITING_MANAGER || currentMode == MODE_WAITING_PLAYER"
+                 class="text-input" [(ngModel)]="bookerLastName"
+                 (ngModelChange)="setBookerLastName($event)"/>
+        </div>
+        <div class="input-ctn">
+          <span class="input-label">{{ getTranslation('ph_firstname')}}</span>
+          <input [readonly]="currentMode == MODE_WAITING_MANAGER || currentMode == MODE_WAITING_PLAYER"
+                 class="text-input" [(ngModel)]="bookerFirstName"
+                 (ngModelChange)="setBookerFirstName($event)"/>
+        </div>
+        <div class="input-ctn">
+          <span class="input-label">{{ getTranslation('ph_info')}}</span>
+          <textarea [readonly]="currentMode == MODE_WAITING_MANAGER || currentMode == MODE_WAITING_PLAYER"
+                 class="text-area" [(ngModel)]="managerInfo"
+                 (ngModelChange)="setManagerInfo($event)"></textarea>
+        </div>
+        <div *ngIf="selectedBooking && selectedBooking.bookerComment" class="input-ctn">
+          <span class="input-label">{{ getTranslation('comment')}}</span>
+          <span class="booker-comment">"{{ selectedBooking.bookerComment }}"</span>
+        </div>
+      </ng-container>
+    </div>
+    <div *ngIf="isCanceling" class="cancel-booking-ctn">
+      <span class="cancel-title">{{ getTranslation('cancel_booking_title') }}</span>
+      <input class="cancel-input" type="text" [placeholder]="getTranslation('cancel_booking_ph')"
+             [(ngModel)]="cancelMessage" (ngModelChange)="setCancelMessage($event)"/>
+      <div class="cancel-btns">
+        <button sbk-btn class="medium round" (click)="cancelBooking()">
+          {{ getTranslation('validate') }}
+        </button>
+        <button sbk-btn class="medium round" (click)="hideCancelBooking()">
+          {{ getTranslation('cancel') }}
+        </button>
+      </div>
+    </div>
+    <div *ngIf="!isCanceling" class="buttons-ctn">
+      <booking-decision-maker *ngIf="currentMode == MODE_WAITING_MANAGER" [hasDateChanged]="hasDateChanged"
+                              [booking]="selectedBooking" [dayField]="dayField" (validateBooking)="validate()"
+                              (closeBookingModal)="resetBookingModal()" (showRequestStatus)="onRequestResult($event)"
+                              [buttonDecision]="buttonDecision">
+      </booking-decision-maker>
+
+      <!-- Feature pas fonctionnelle pour l'instant -->
+      <!-- <button sbk-btn *ngIf="currentMode == MODE_BOOKING_CREATED || currentMode == MODE_COMP_CREATED" (click)="startSession()">
+        {{getTranslation('start_session')}}
+      </button> -->
+
+      <button sbk-btn class="round medium"
+              *ngIf="(currentMode == MODE_BOOKING_CREATED || currentMode == MODE_COMP_CREATED) && selectedBooking.target"
+              (click)="toGameSheet()">
+        {{ getTranslation('game_sheet')}}
+      </button>
+
+      <button sbk-btn class="round medium outline"
+              *ngIf="currentMode != MODE_BOOKING_CREATION && currentMode != MODE_COMP_CREATION && currentMode != MODE_WAITING_MANAGER"
+              (click)="showCancelBooking()">
+        {{ getTranslation('cancel_booking') }}
+      </button>
+
+      <button sbk-btn class="round medium"
+              *ngIf="currentMode != MODE_WAITING_MANAGER && currentMode != MODE_WAITING_PLAYER"
+              [disabled]="!canValidate" (click)="validate()" [class.disabled]="!canValidate">
+        {{ getTranslation('save') }}
+      </button>
+
+    </div>
+  </div>
+  <ng-container *ngIf="currentMode == MODE_LOADING">
+    <spinning-loader class="spinning-loader" [isMedium]="true"></spinning-loader>
+  </ng-container>
+</div>

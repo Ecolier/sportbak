@@ -1,0 +1,7 @@
+<futbak-card>
+    <div class="content">
+        <span *ngFor="let tab of _tabs; let i = index" [class.big]="isBig" [class.selected]="i == selectedTab"
+            (click)="onClick(i)">{{tab}}
+        </span>
+    </div>
+</futbak-card>

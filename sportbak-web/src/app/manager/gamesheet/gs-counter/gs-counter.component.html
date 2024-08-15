@@ -1,0 +1,11 @@
+<div class="counter-ctn">
+  <div class="counter-title-ctn">
+    <span class="counter-title">{{ title }}</span>
+    <img class="counter-title-icon" [src]="'./assets/img/gs/' + icon +'.png'">
+  </div>
+  <div class="counter-action-ctn">
+    <img class="action-icon"  src="./assets/img/gs/minus.png" (click)="minusClick()"/>
+    <input class="action-input" type="number" min="0" [(ngModel)]="value">
+    <img class="action-icon" src="./assets/img/gs/plus.png" (click)="plusClick()"/>
+  </div>
+</div>

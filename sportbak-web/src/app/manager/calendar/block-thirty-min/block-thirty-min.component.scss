@@ -1,0 +1,294 @@
+@import "src/app/shared/const/variables";
+
+block-thirty-min {
+
+  .time-block {
+    height: 50px;
+    transition-duration: 0.3s;
+    border-left: 1px solid $medium-grey;
+    display: flex;
+    position: relative;
+    min-width: 150px;
+
+    &.blink {
+      $blink-duration: 1s;
+      animation: blink-animation $blink-duration infinite;
+      -webkit-animation: blink-animation $blink-duration infinite;
+    }
+
+    @keyframes blink-animation {
+      0% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.1);
+      }
+      50% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    @-webkit-keyframes blink-animation {
+      0% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.1);
+      }
+      50% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    &.booking {
+      cursor: pointer;
+    }
+
+    &.accepted {
+      background-color: $cal-green;
+      border-left: 3px solid $cal-dark-green;
+
+      &.border-top {
+        border-top: 2px solid $cal-dark-green;
+      }
+    }
+
+    &.waiting-manager {
+      background-color: $cal-orange;
+      border-left: 3px solid $cal-dark-orange;
+
+      &.border-top {
+        border-top: 2px solid $cal-dark-orange;
+      }
+    }
+
+    &.waiting-player {
+      background-color: $cal-yellow;
+      border-left: 3px solid $cal-dark-yellow;
+
+      &.border-top {
+        border-top: 2px solid $cal-dark-yellow;
+      }
+    }
+
+    &.league {
+      background-color: $cal-purple;
+      border-left: 3px solid $cal-dark-purple;
+
+      &.border-top {
+        border-top: 2px solid $cal-dark-purple;
+      }
+    }
+
+    &.tournament {
+      background-color: $cal-blue;
+      border-left: 3px solid $cal-dark-blue;
+
+      &.border-top {
+        border-top: 2px solid $cal-dark-blue;
+      }
+    }
+
+    &.not-booking {
+      border-top: 1px solid $medium-grey;
+
+      &:hover {
+        background-color: $white;
+        transition-duration: 0.3s;
+      }
+    }
+
+    &.selected-game {
+      &:hover {
+        background-color: $green;
+        border: none;
+        transition-duration: 0.3s;
+      }
+    }
+
+    &.forbidden {
+      cursor: not-allowed;
+    }
+
+    &.hour-mark {
+      border-bottom: 1px solid $medium-grey;
+    }
+
+    &.field-border-right {
+      border-right: 1px solid $medium-grey;
+    }
+
+    .info-ctn {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      border-radius: 5px;
+      color: $white;
+
+      .competition-ctn {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        padding-left: 1px;
+
+        .comp-icon {
+          font-size: 20px;
+        }
+      }
+
+      .info-circle {
+        height: 10px;
+        width: 10px;
+        background-color: grey;
+        border-radius: 100px;
+        margin-left: 5px;
+      }
+
+      &.accepted {
+        color: $cal-dark-green;
+
+        .info-circle {
+          background-color: $cal-dark-green;
+        }
+      }
+
+      &.waiting-manager {
+        color: $cal-dark-orange;
+
+        .info-circle {
+          background-color: $cal-dark-orange;
+        }
+      }
+
+      &.waiting-player {
+        color: $cal-dark-yellow;
+
+        .info-circle {
+          background-color: $cal-dark-yellow;
+        }
+      }
+
+      &.league {
+        color: $cal-dark-purple;
+
+        .info-circle {
+          background-color: $cal-dark-purple;
+        }
+      }
+
+      &.tournament {
+        color: $cal-dark-blue;
+
+        .info-circle {
+          background-color: $cal-dark-blue;
+        }
+      }
+
+      .time-ctn {
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .block-info {
+        width: 100%;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        padding-left: 3px;
+        font-size: 12px;
+        margin-top: 2px;
+
+        &.time {
+          font-size: 10px;
+          width: fit-content;
+        }
+
+        &.name {
+          font-weight: bold;
+        }
+      }
+
+      .profile-ctn {
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 2px;
+      }
+    }
+
+    .competition-icon {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        height: 30px;
+      }
+    }
+
+    .place-selected-game {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+        color: $white;
+      }
+    }
+
+    .competition-game-tooltip {
+      position: absolute;
+      height: 100px;
+      width: 100%;
+      background-color: $super-dark-black;
+      opacity: 0;
+      z-index: -1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(-20px);
+      transition-duration: 0.35s;
+
+      &.league {
+        background-color: $cal-purple;
+        color: $cal-dark-purple;
+      }
+
+      &.tournament {
+        background-color: $cal-blue;
+        color: $cal-dark-blue;
+      }
+
+      &.visible {
+        opacity: 1;
+        z-index: 10;
+        transform: translateY(0px);
+        transition-duration: 0.35s;
+      }
+
+      span {
+        font-family: $main-font;
+        font-size: 20px;
+      }
+
+      img {
+        height: 25px;
+      }
+    }
+  }
+}

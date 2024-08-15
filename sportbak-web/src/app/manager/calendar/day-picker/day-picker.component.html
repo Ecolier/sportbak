@@ -1,0 +1,9 @@
+<div class="day-picker">
+  <div class="arrow-ctn" (click)="toPreviousDay()">
+    <img src="./assets/img/icons/left-arrow.png" />
+  </div>
+  <span class="day-text" (click)="resetDateToToday()">{{ isDateToday ? getTranslation('today') : formattedDate }}</span>
+  <div class="arrow-ctn" (click)="toNextDay()">
+    <img src="./assets/img/icons/right-arrow.png" />
+  </div>
+</div>

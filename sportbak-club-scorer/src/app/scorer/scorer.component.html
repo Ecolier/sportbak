@@ -1,0 +1,113 @@
+<div class="background"></div>
+<div class="background-overlay"></div>
+
+<div *ngIf="running && session?.isPaused" class="pause-overlay" (click)="setPause()">
+  PAUSE ( {{ timer?.pauseTimer || 0 | minutesSeconds }} )
+</div>
+
+<div class="session-ctn">
+
+  <div *ngIf="shouldTriggerNewPeriod" class="new-period-ctn">
+    <div class="right-pane"></div>
+    <div class="left-pane"></div>
+  </div>
+
+  <div class="session-row time-info">
+    <div class="end-time">
+      <ng-container *ngIf="timer">Heure de Fin : {{ sessionStopTime | date:'HH:mm:ss' }}</ng-container>
+    </div>
+    <div class="session-timer-ctn" (click)="setPause()">
+      <svg class="session-timer-ctn-mask" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 5 432 144">
+        <g id="Layer_2" data-name="Layer 2">
+          <g id="Layer_1-2" data-name="Layer 1">
+            <path d="M12.81,10,38.88,114.31A26,26,0,0,0,64.11,134H367.89a26,26,0,0,0,25.23-19.69L419.19,10Z" />
+            <path d="M0,0,29.18,116.73A36,36,0,0,0,64.11,144H367.89a36,36,0,0,0,34.93-27.27L432,0ZM398,115.52A31,31,0,0,1,367.89,139H64.11A31,31,0,0,1,34,115.52L6.4,5H425.6Z" />
+          </g>
+        </g>
+      </svg>
+      <span class="session-stopwatch">{{ (switchTimers ? timer?.timeLeft : timer?.currentTime) || 0 | minutesSeconds }}</span>
+      <span *ngIf="running" class="session-timer">{{ (switchTimers ? timer?.currentTime : timer?.timeLeft)  || 0 | minutesSeconds }}</span>
+    </div>
+    <div class="date-time-ctn" (click)="goStatus()">
+      <div class="date">{{ (date | async) | date: 'dd/MM/Y' }}</div>
+      <div class="time">{{ (date | async) | date: 'HH:mm:ss' }}</div>
+    </div>
+  </div>
+
+  <div class="match__period-info">
+    <div class="match__stage">
+      {{ getCurrentPeriodTitle() }}
+    </div>
+  </div>
+
+  <div class="match__team-info">
+    <div class="team">
+      <div class="team__name text_overflow_three_lines">
+        <div>{{ session?.teamName1 }}</div>
+      </div>
+      <div class="team__score text_overflow_one_line " (click)="addGoal(1)">{{ session?.scoreTeam1 }}</div>
+    </div>
+
+    <div class="match__complex-info">
+      <div class="complex-logo" [ngStyle]="{ 'background-image': 'url(' + logo + ')' }" (click)="showVar()">
+      </div>
+      <div *ngIf="field" class="match__field-name text_overflow_two_lines">{{ field.name }}</div>
+    </div>
+
+    <div class="team">
+      <div class="team__name text_overflow_three_lines">
+        <div>{{ session?.teamName2 }}</div>
+      </div>
+      <div class="team__score text_overflow_one_line " (click)="addGoal(2)">{{ session?.scoreTeam2 }}</div>
+    </div>
+  </div>
+
+  <div style="flex : 1"></div>
+
+  <div class="session-row bottom-row">
+    <sbk-inline-status></sbk-inline-status>
+    <div class="logo" (click)="addBuzz()"></div>
+    <div class="cell">
+      <div *ngIf="isManualSessionStartEnabled && !running" class="gamepad-combination" (click)="startSession()">
+        <div class="row">Commencer une nouvelle session</div>
+        <div class="row">
+          <div>Maintenir appuyer : </div>
+          <div class="gamepad-btn"></div>
+          <div>+</div>
+          <div class="gamepad-btn"></div>
+        </div>
+      </div>
+      <div *ngIf="isManualSessionStopEnabled && running" class="gamepad-combination" (click)="stopSession()">
+        <div class="row">Arrêter la session</div>
+        <div class="row">
+          <div>Maintenir appuyer : </div>
+          <div class="gamepad-btn red"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div *ngIf="willStartSession" class="start session-loader">
+    <div class="session-load-container">
+      <div class="session-starting-in">Début du match dans</div>
+      <div class="session-countdown">{{ willStartSessionCountdown }}</div>
+    </div>
+  </div>
+  <div *ngIf="willStopSession" class="stop session-loader">
+    <div class="session-load-container">
+      <div class="session-starting-in">Fin du match dans</div>
+      <div class="session-countdown">{{ willStopSessionCountdown }}</div>
+    </div>
+  </div>
+
+  <audio *ngIf="session?.sounds && audioEnabled" [volume]="audioVolume" [progressiveVolumeTime]="audioVolumeProgressiveEffectTime" preload="auto" autoplay=true src="assets/ambiance.mp3" loop=true></audio>
+  <video #video [volume]="videoVolume" [progressiveVolumeTime]="videoVolumeProgressiveEffectTime" class="match__video" autoplay muted></video>
+  <audio [volume]="1" preload="auto" autoplay=true [src]="soundTransition"></audio>
+  <!-- <audio *ngIf="isBuzzPlaying" preload="auto" autoplay=true src="assets/buzz.mp3" (ended)="stopAllMedia()"></audio> -->
+  
+  <div class="abort" *ngIf="!video.hidden" (click)="return()">
+    <span class="indicator"></span>
+    Passer la vidéo
+  </div>
+</div>

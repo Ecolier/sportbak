@@ -1,0 +1,18 @@
+<div class="manager-login-ctn">
+  <h1 (click)="activateSuperManager()">{{ getTranslation('login') }}</h1>
+  <div class="input-section">
+    <input type="text" name="managerid" [(ngModel)]="managerId" placeholder="{{ getTranslation('username') }}"
+           (ngModelChange)="setManagerId($event)"/>
+  </div>
+  <div class="input-section">
+    <input type="password" name="password" [(ngModel)]="managerPassword"
+           placeholder="{{ getTranslation('password') }}" (ngModelChange)="setManagerPassword($event)"/>
+  </div>
+  <div *ngIf="superAdmin" class="input-section">
+    <input type="text" name="userId" [(ngModel)]="managerUserId"
+           placeholder="{{ getTranslation('user_id') }}" (ngModelChange)="setManagerUserId($event)"/>
+  </div>
+  <button class="btn login-btn" [disabled]="!(managerId.length > 1 && managerPassword.length > 1)"
+          (click)="onValidate()"> {{
+    getTranslation('log_on') }}</button>
+</div>

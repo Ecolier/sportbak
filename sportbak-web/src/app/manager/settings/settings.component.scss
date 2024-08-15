@@ -1,0 +1,44 @@
+:host {
+  display: flex;
+  flex-grow: 1;
+  position: relative;
+}
+
+futbak-nav-bar {
+  margin-bottom: 64pt;
+}
+
+.manager-content {
+  padding: 12pt;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 0 1 1024px;
+  margin: 0 auto;
+}
+
+.loading-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($color: black, $alpha: .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.animation-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  width: 75%;
+  align-self: center;
+}
+
+sbk-section-dropdown {
+  margin-top: 12px;
+  flex: 1;
+}

@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+.done {
+  color: aquamarine;
+  text-decoration: underline;
+  margin-bottom: 24px;
+}
+
+p {
+  font-family: 'Roboto';
+  margin: 0;
+  text-align: center;
+}

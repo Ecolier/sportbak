@@ -1,0 +1,11 @@
+<div class="manager-page-ctn">
+  <ng-content></ng-content>
+  <div class="notifications-holder">
+    <notification-popup *ngFor="let notification of notifications" (onClose)="hidePopupNotification(notification.notification)" [class.hidden]="notification.hidden"
+                        [notification]="notification.notification" (click)="openNotification($event, notification.notification)"></notification-popup>
+  </div>
+  <manager-error-popup [errorMessage]="errorMessage" (onClose)="hideErrorPopup()"
+                       [class.hidden]="!isShowingErrorPopup"></manager-error-popup>
+  <manager-popup-modal [data]="modalData" [class.hidden]="!isShowingPopupModal"
+                       (onClose)="hidePopupModal()"></manager-popup-modal>
+</div>

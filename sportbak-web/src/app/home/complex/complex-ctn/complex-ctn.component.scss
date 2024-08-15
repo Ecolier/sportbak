@@ -1,0 +1,148 @@
+@import  "src/app/home/const/variables";;
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100%;
+  background-color: $dark;
+  color: $white;
+  padding: 20px;
+}
+.complex-component {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  font-family: $secondary-font;
+  overflow: auto;
+  @media screen and (max-width: $medium-screen) {
+    padding: 10px;
+  }
+  .nav-header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    a{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      #nav-logo {
+        width: 100%;
+        width: 92px;
+        height: 92px;
+        @media screen and (max-width: $medium-screen) {
+          width: 48px;
+          height: 48px;
+        }
+      }
+      #arrow-nav{
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+  .my-complex-ctn{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .my-complex{
+      position: relative;
+      margin: auto;
+      width: 70%;
+      min-height: 550px;
+      border-radius: 25px;
+      background-color: $dark-light-grey;
+      padding-top: 120px;
+      @media screen and (max-width: $medium-screen) {
+        width: 80%;
+        padding-top: 80px;
+      }
+      @media screen and (max-width: $small-screen) {
+        padding-top: 50px;
+        width: 100%;
+        margin-top: 30px;
+        min-height: 450px;
+      }
+      #complex-logo{
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, -50%);
+        background-color: $dark-grey;
+        width: 200px;
+        border-radius: 50%;
+        border: 3px solid $dark-light-grey;
+        @media screen and (max-width: $medium-screen) {
+          width: 150px;
+        }
+        @media screen and (max-width: $small-screen) {
+          width: 100px;
+        }
+      }
+      .complex-nav{
+        .card-navigation{
+          display: flex;
+          justify-content: space-around;
+          width: 90%;
+          margin: auto;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          max-width: 600px;
+          .card-nav-link{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            &.active{
+              a{
+                &::after{
+                  height: 4px;
+                  background-color: $orange;
+                }
+              }
+            }
+            a{
+              text-transform: uppercase;
+              color: $white;
+              font-family: $main-font;
+              font-size: 28px;
+              font-weight: 400;
+              cursor: pointer;
+              padding-left: 5px;
+              padding-right: 5px;
+              text-align: center;
+              position: relative;
+              display: block;
+              @media screen and (max-width:$small-screen) {
+                font-size: 20px;
+              }
+              &::after {
+                      content: "";
+                      display: block;
+                      height: 1px;
+                      width: calc(100% - 10px);
+                      background-color: $white;
+                      bottom: -3px;
+                      position: absolute;
+                    }
+                    &:hover{
+                      &::after{
+                      background-color: $orange;
+                }
+              }
+            }
+          }
+        }
+      }
+      complex-info{
+        width: 100%;
+      }
+      complex-competition{
+        width: 100%;
+      }
+      complex-video{
+        width: 100%;
+      }
+    }
+  }
+}

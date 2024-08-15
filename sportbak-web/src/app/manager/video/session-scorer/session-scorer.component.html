@@ -1,0 +1,29 @@
+<ng-container *ngIf="session">
+
+  <div class="items">
+
+    <sbk-scorer-editable [name]="session?.teamName1" [score]="session?.scoreTeam1" (nameChange)="sendTeamName(1, $event)" (scoreChange)="sendScore(1, $event)"></sbk-scorer-editable>
+  
+    <div class="period-container scorer-item">
+      <div class="timer">
+        <div class="timer__mask"></div>
+        <span class="timer__time">{{ timer?.currentTime || 0 | minuteSeconds }}</span>
+      </div>
+      
+      <div *ngIf="session?.isPaused" class="pause-status">
+        PAUSE ( {{ timer?.pauseTimer || 0 | minuteSeconds }} )
+      </div>
+      
+      <div class="period" [ngSwitch]="timer?.currentPeriod">
+        <ng-container *ngSwitchCase="0">Echauffement</ng-container>
+        <ng-container *ngSwitchCase="1">1re période</ng-container>
+        <ng-container *ngSwitchCase="2">Mi temps</ng-container>
+        <ng-container *ngSwitchCase="3">2e période</ng-container>
+      </div>
+    </div>
+  
+    <sbk-scorer-editable [rightLayout]="true" [name]="session?.teamName2" [score]="session?.scoreTeam2" (nameChange)="sendTeamName(2, $event)" (scoreChange)="sendScore(2, $event)"></sbk-scorer-editable>
+
+  </div>
+  
+</ng-container>

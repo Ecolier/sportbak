@@ -1,0 +1,80 @@
+@import "src/app/shared/const/variables";
+
+calendar-menu {
+  width: 100%;
+  &.is-mobile {
+    position: fixed;
+    bottom: 0;
+    z-index: $z-index-calendar-menu;
+    background-color: $calendar-month-grey;
+    width: 100%;
+    max-height: 50vh;
+    overflow: auto;
+
+    .m-menu-btn-ctn {
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+
+      .mobile-calendar-menu-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 32%;
+        background-color: #ffffff00;
+        border: none;
+        color: $white;
+        font-family: $secondary-font;
+        font-size: 16px;
+        padding: 0;
+
+        &::before {
+          content: "〈";
+          transform: rotate(90deg);
+          margin-top: -10px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .arrow-ctn {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background-color: $calendar-month-grey;
+      z-index: $z-index-calendar-menu + 3;
+      padding: 10px 0;
+      margin-bottom: 5px;
+      img {
+        height: 15px;
+        transform: rotate(180deg);
+        transition-duration: 0.3s;
+
+        &.rotated {
+          transform: rotate(0deg);
+          transition-duration: 0.3s;
+        }
+      }
+    }
+  }
+  .loader-ctn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .no-upcoming-bookings {
+    color: $white;
+    font-family: $secondary-font;
+    margin-left: 10px;
+  }
+
+  menu-section {
+    .menu-section {
+      margin-left: 10px;
+    }
+  }
+}

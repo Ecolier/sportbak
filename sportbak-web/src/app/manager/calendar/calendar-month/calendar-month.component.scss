@@ -1,0 +1,18 @@
+calendar-month {
+  &.m-calendar-month {
+    .calendar-month {
+      display: none;
+      transform: translateY(-50px);
+      transition-duration: 0.3s;
+    }
+    
+    &.visible {
+      .calendar-month {
+        display: block;
+        transform: translateY(0px);
+        transition-duration: 0.3s;
+      }
+    }
+  }
+}
+

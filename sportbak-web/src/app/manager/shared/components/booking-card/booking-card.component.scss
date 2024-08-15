@@ -1,0 +1,57 @@
+@import 'src/app/shared/const/variables';
+
+$margin: 20px;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $white;
+
+  booking-status-badge {
+    margin-bottom: $margin;
+  }
+
+  .sub-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: $margin;
+  }
+
+  .date {
+    text-transform: capitalize;
+    font-weight: bolder;
+    font-size: 20px;
+    margin-bottom: $margin;
+  }
+
+  .schedule {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: $margin;
+
+    .start {
+    }
+
+    .vs {
+      margin: 0 10px;
+    }
+
+    .end {
+    }
+  }
+
+  .field {
+    margin-bottom: $margin;
+  }
+
+  user-card {
+  }
+
+  .comments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

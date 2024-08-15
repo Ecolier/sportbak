@@ -1,0 +1,25 @@
+<div class="calendar-league" (click)="toggleIsOpen()">
+  <span>{{ league.name }}</span>
+  <img [class.open]="isOpen" src="./assets/img/icons/arrow-down-white.png" />
+</div>
+<div *ngIf="isOpen" class="games-ctn">
+  <ng-container *ngIf="hasLoadedLeagueGames">
+    <ng-container *ngFor="let phase of league.game; index as phaseIndex">
+      <ng-container *ngFor="let day of phase; index as dayIndex">
+        <ng-container *ngIf="hasPendingGames(day)">
+          <span  class="game-phase">{{ getTranslation('phase') +' '+ ((phaseIndex+1)) + ' - ' + getTranslation('day') +' '+ ((dayIndex+1))}}</span>
+        </ng-container>
+        <ng-container *ngIf="day.length > 0">
+          <ng-container *ngFor="let game of day" >
+              <calendar-game *ngIf="!game.booking || !game.booking._id" [game]="game"
+              [competition]="league.name" [type]="'league'"
+              (setGame)="updateGame($event)"></calendar-game>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+    </ng-container>
+  </ng-container>
+  <div class="loader-ctn" *ngIf="!hasLoadedLeagueGames">
+    <spinning-loader></spinning-loader>
+  </div>
+</div>

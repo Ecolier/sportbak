@@ -1,0 +1,38 @@
+@import "src/app/shared/const/variables";
+
+field-selector {
+
+  .field-title{
+    font-family: $secondary-font;
+    color: $white;
+    font-size: 20px;
+  }
+
+  .fields-ctn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    .field {
+      background-color: transparent;
+      border: 1px solid $orange;
+      border-radius: 6px;
+      font-family: $secondary-font;
+      color: $white;
+      font-size: 25px;
+      text-align: center;
+      width: 100%;
+      margin: 10px 0px;
+      cursor: pointer;
+      padding: 10px;
+      &.selected{
+        background-color: $white;
+        color: $dark-black;
+      }
+      option{
+        background-color: $light-black;
+        outline: none;
+      }
+    }
+  }
+}

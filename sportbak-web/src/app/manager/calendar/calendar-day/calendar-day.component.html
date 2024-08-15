@@ -1,0 +1,34 @@
+<div class="calendar-ctn">
+  <div class="manager-content">
+    <span *ngIf="isHidden" class="progress-text">{{ getTranslation('calendar_unavailable') }}</span>
+    <div *ngIf="!isHidden" class="month-calendar desktop-calendar">
+      <calendar-month [openingDays]="openingDays" [date]="date" [hasLoadedHome]="hasLoadedHome" (setDate)="setDate($event)"  (daysInMonth)="setOpeningDays($event)"></calendar-month>
+      <calendar-menu (updateUpcomingBookings)="updateUpcomingBookings($event)" [date]="date"
+                     [upcomingBookings]="upcomingBookings" (setDate)="setDate($event)" (setGame)="setGame($event)"
+                     (bookingModified)="notifyDayFields1($event)" [complex]="complex"></calendar-menu>
+    </div>
+    <div class="m-date-ctn mobile-calendar">
+      <day-picker [openingDaysInMonth]="openingDaysInMonth" [date]="date" [daysToOpen]="daysToOpen" (setDate)="setDate($event)" (setDaysToOpen)="setDaysToOpen($event)"></day-picker>
+      <div class="m-arrow-ctn" (click)="toggleMobileMonthDisplay()">
+        <img class="m-month-arrow" [class.rotated]="mobileUI.isMonthDisplayed"
+             src="./assets/img/icons/arrow-down-white.png" alt="show calendar"/>
+      </div>
+      <calendar-month class="m-calendar-month" [openingDays]="openingDays" [class.visible]="mobileUI.isMonthDisplayed" [date]="date"
+                      [hasLoadedHome]="hasLoadedHome" (setDate)="setDate($event)" (daysInMonth)="setOpeningDays($event)"></calendar-month>
+    </div>
+    <div *ngIf="!isHidden" class="day-calendar-ctn" id="dayFieldsVScroll">
+      <day-picker class="desktop-calendar" [date]="date" [daysToOpen]="daysToOpen" [openingDaysInMonth]="openingDaysInMonth" (setDate)="setDate($event)" (setDaysToOpen)="setDaysToOpen($event)"></day-picker>
+      <selected-game [selectedGame]="selectedGame" (resetSelectedGame)="resetSelectedGame()"></selected-game>
+      <day-fields [date]="date" [complex]="complex" [selectedGame]="selectedGame"
+                  (displayMenu)="displayMenu()"
+                  (resetSelectedGame)="resetSelectedGame()" (updateUpcomingBookings)="updateUpcomingBookings($event)"
+                  [bookingToScroll]="bookingToScroll">
+      </day-fields>
+    </div>
+    <calendar-menu class="m-menu" [date]="date" [class.is-mobile]="true" [isMobile]="true"
+                   [upcomingBookings]="upcomingBookings"
+                   (setDate)="setDate($event)" (setGame)="setGame($event)" (bookingModified)="notifyDayFields1($event)"
+                   [complex]="complex" (closeMobileMonthMenu)="closeMobileMonth()">
+    </calendar-menu>
+  </div>
+</div>

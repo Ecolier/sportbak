@@ -1,0 +1,309 @@
+@font-face {
+    font-family: 'ProximaNovaCond-Semibold';
+    src: url('ProximaNovaCond-Semibold.eot');
+    src: url('ProximaNovaCond-Semibold.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNovaCond-Semibold.woff2') format('woff2'),
+        url('ProximaNovaCond-Semibold.woff') format('woff'),
+        url('ProximaNovaCond-Semibold.ttf') format('truetype'),
+        url('ProximaNovaCond-Semibold.svg#ProximaNovaCond-Semibold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNova-Extrabld';
+    src: url('ProximaNova-Extrabld.eot');
+    src: url('ProximaNova-Extrabld.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNova-Extrabld.woff2') format('woff2'),
+        url('ProximaNova-Extrabld.woff') format('woff'),
+        url('ProximaNova-Extrabld.ttf') format('truetype'),
+        url('ProximaNova-Extrabld.svg#ProximaNova-Extrabld') format('svg');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNovaCond-Bold';
+    src: url('ProximaNovaCond-Bold.eot');
+    src: url('ProximaNovaCond-Bold.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNovaCond-Bold.woff2') format('woff2'),
+        url('ProximaNovaCond-Bold.woff') format('woff'),
+        url('ProximaNovaCond-Bold.ttf') format('truetype'),
+        url('ProximaNovaCond-Bold.svg#ProximaNovaCond-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNovaExCn-Black';
+    src: url('ProximaNovaExCn-Black.eot');
+    src: url('ProximaNovaExCn-Black.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNovaExCn-Black.woff2') format('woff2'),
+        url('ProximaNovaExCn-Black.woff') format('woff'),
+        url('ProximaNovaExCn-Black.ttf') format('truetype'),
+        url('ProximaNovaExCn-Black.svg#ProximaNovaExCn-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNovaExCn-Thin';
+    src: url('ProximaNovaExCn-Thin.eot');
+    src: url('ProximaNovaExCn-Thin.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNovaExCn-Thin.woff2') format('woff2'),
+        url('ProximaNovaExCn-Thin.woff') format('woff'),
+        url('ProximaNovaExCn-Thin.ttf') format('truetype'),
+        url('ProximaNovaExCn-Thin.svg#ProximaNovaExCn-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNova-BlackIt';
+    src: url('ProximaNova-BlackIt.eot');
+    src: url('ProximaNova-BlackIt.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNova-BlackIt.woff2') format('woff2'),
+        url('ProximaNova-BlackIt.woff') format('woff'),
+        url('ProximaNova-BlackIt.ttf') format('truetype'),
+        url('ProximaNova-BlackIt.svg#ProximaNova-BlackIt') format('svg');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNovaExCn-Semibold';
+    src: url('ProximaNovaExCn-Semibold.eot');
+    src: url('ProximaNovaExCn-Semibold.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNovaExCn-Semibold.woff2') format('woff2'),
+        url('ProximaNovaExCn-Semibold.woff') format('woff'),
+        url('ProximaNovaExCn-Semibold.ttf') format('truetype'),
+        url('ProximaNovaExCn-Semibold.svg#ProximaNovaExCn-Semibold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNovaCond-Light';
+    src: url('ProximaNovaCond-Light.eot');
+    src: url('ProximaNovaCond-Light.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNovaCond-Light.woff2') format('woff2'),
+        url('ProximaNovaCond-Light.woff') format('woff'),
+        url('ProximaNovaCond-Light.ttf') format('truetype'),
+        url('ProximaNovaCond-Light.svg#ProximaNovaCond-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNovaCond-Extrabld';
+    src: url('ProximaNovaCond-Extrabld.eot');
+    src: url('ProximaNovaCond-Extrabld.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNovaCond-Extrabld.woff2') format('woff2'),
+        url('ProximaNovaCond-Extrabld.woff') format('woff'),
+        url('ProximaNovaCond-Extrabld.ttf') format('truetype'),
+        url('ProximaNovaCond-Extrabld.svg#ProximaNovaCond-Extrabld') format('svg');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNova-Regular';
+    src: url('ProximaNova-Regular.eot');
+    src: url('ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNova-Regular.woff2') format('woff2'),
+        url('ProximaNova-Regular.woff') format('woff'),
+        url('ProximaNova-Regular.ttf') format('truetype'),
+        url('ProximaNova-Regular.svg#ProximaNova-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNovaCond-Black';
+    src: url('ProximaNovaCond-Black.eot');
+    src: url('ProximaNovaCond-Black.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNovaCond-Black.woff2') format('woff2'),
+        url('ProximaNovaCond-Black.woff') format('woff'),
+        url('ProximaNovaCond-Black.ttf') format('truetype'),
+        url('ProximaNovaCond-Black.svg#ProximaNovaCond-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNovaExCn-Bold';
+    src: url('ProximaNovaExCn-Bold.eot');
+    src: url('ProximaNovaExCn-Bold.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNovaExCn-Bold.woff2') format('woff2'),
+        url('ProximaNovaExCn-Bold.woff') format('woff'),
+        url('ProximaNovaExCn-Bold.ttf') format('truetype'),
+        url('ProximaNovaExCn-Bold.svg#ProximaNovaExCn-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNova-Bold';
+    src: url('ProximaNova-Bold.eot');
+    src: url('ProximaNova-Bold.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNova-Bold.woff2') format('woff2'),
+        url('ProximaNova-Bold.woff') format('woff'),
+        url('ProximaNova-Bold.ttf') format('truetype'),
+        url('ProximaNova-Bold.svg#ProximaNova-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNovaCond-Regular';
+    src: url('ProximaNovaCond-Regular.eot');
+    src: url('ProximaNovaCond-Regular.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNovaCond-Regular.woff2') format('woff2'),
+        url('ProximaNovaCond-Regular.woff') format('woff'),
+        url('ProximaNovaCond-Regular.ttf') format('truetype'),
+        url('ProximaNovaCond-Regular.svg#ProximaNovaCond-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNova-Thin';
+    src: url('ProximaNova-Thin.eot');
+    src: url('ProximaNova-Thin.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNova-Thin.woff2') format('woff2'),
+        url('ProximaNova-Thin.woff') format('woff'),
+        url('ProximaNova-Thin.ttf') format('truetype'),
+        url('ProximaNova-Thin.svg#ProximaNova-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNova-Black';
+    src: url('ProximaNova-Black.eot');
+    src: url('ProximaNova-Black.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNova-Black.woff2') format('woff2'),
+        url('ProximaNova-Black.woff') format('woff'),
+        url('ProximaNova-Black.ttf') format('truetype'),
+        url('ProximaNova-Black.svg#ProximaNova-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNovaCond-Thin';
+    src: url('ProximaNovaCond-Thin.eot');
+    src: url('ProximaNovaCond-Thin.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNovaCond-Thin.woff2') format('woff2'),
+        url('ProximaNovaCond-Thin.woff') format('woff'),
+        url('ProximaNovaCond-Thin.ttf') format('truetype'),
+        url('ProximaNovaCond-Thin.svg#ProximaNovaCond-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNova-Light';
+    src: url('ProximaNova-Light.eot');
+    src: url('ProximaNova-Light.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNova-Light.woff2') format('woff2'),
+        url('ProximaNova-Light.woff') format('woff'),
+        url('ProximaNova-Light.ttf') format('truetype'),
+        url('ProximaNova-Light.svg#ProximaNova-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNovaExCn-Light';
+    src: url('ProximaNovaExCn-Light.eot');
+    src: url('ProximaNovaExCn-Light.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNovaExCn-Light.woff2') format('woff2'),
+        url('ProximaNovaExCn-Light.woff') format('woff'),
+        url('ProximaNovaExCn-Light.ttf') format('truetype'),
+        url('ProximaNovaExCn-Light.svg#ProximaNovaExCn-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNova-Semibold';
+    src: url('ProximaNova-Semibold.eot');
+    src: url('ProximaNova-Semibold.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNova-Semibold.woff2') format('woff2'),
+        url('ProximaNova-Semibold.woff') format('woff'),
+        url('ProximaNova-Semibold.ttf') format('truetype'),
+        url('ProximaNova-Semibold.svg#ProximaNova-Semibold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNovaExCn-Extrabld';
+    src: url('ProximaNovaExCn-Extrabld.eot');
+    src: url('ProximaNovaExCn-Extrabld.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNovaExCn-Extrabld.woff2') format('woff2'),
+        url('ProximaNovaExCn-Extrabld.woff') format('woff'),
+        url('ProximaNovaExCn-Extrabld.ttf') format('truetype'),
+        url('ProximaNovaExCn-Extrabld.svg#ProximaNovaExCn-Extrabld') format('svg');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProximaNovaExCn-Regular';
+    src: url('ProximaNovaExCn-Regular.eot');
+    src: url('ProximaNovaExCn-Regular.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNovaExCn-Regular.woff2') format('woff2'),
+        url('ProximaNovaExCn-Regular.woff') format('woff'),
+        url('ProximaNovaExCn-Regular.ttf') format('truetype'),
+        url('ProximaNovaExCn-Regular.svg#ProximaNovaExCn-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BigNoodleTitling';
+    src: url('../bignoodle/big_noodle_titling.ttf');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+@font-face {
+    font-family: 'Roboto';
+    src: url('../roboto/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+

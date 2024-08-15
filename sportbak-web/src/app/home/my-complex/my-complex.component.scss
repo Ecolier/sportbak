@@ -1,0 +1,56 @@
+@import "src/app/home/const/variables";;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100%;
+  background-color: $dark-black;
+  color: $white;
+}
+
+.complex {
+  
+  h1{
+    font-family: $brushwell;
+    text-align: center;
+    font-size: 60px;
+    margin: 0;
+    @media screen and (max-width: $medium-screen) {
+      padding-top: 100px;
+  }
+  }
+  .nav-header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 30px;
+    a{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      #nav-logo {
+        width: 100%;
+        width: 92px;
+        height: 92px;
+        @media screen and (max-width: $medium-screen) {
+          width: 48px;
+          height: 48px;
+        }
+      }
+    }
+  }
+  .map-ctn{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    map{
+      width: 70%;
+      @media screen and (max-width: $medium-screen) {
+        width: 100%;
+    }
+
+    }
+  }
+}

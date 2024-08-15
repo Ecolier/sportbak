@@ -1,0 +1,48 @@
+version: "3.9" 
+services:
+  redis:
+    image: redis
+    networks:
+      - proxy
+  db:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: yv4W3UU8j
+    networks:
+      - proxy
+  web:
+    build: .
+    command: web
+    depends_on:
+      - "db"
+      - "redis"
+    environment: 
+      - REDIS=redis://redis:6379
+      - DB=mongodb://root:yv4W3UU8j@db:27017/sportbak?authSource=admin
+      - VIRTUAL_HOST=api.video.sportbak.com
+      - VIRTUAL_PROTO=http
+      - LETSENCRYPT_HOST=api.video.sportbak.com
+      - LETSENCRYPT_EMAIL=contact@stream.studio
+    volumes: 
+      - .:/usr/src/app
+      - ./medias:/media
+    networks:
+      - proxy
+  worker:
+    build: .
+    command: worker
+    depends_on:
+      - "db"
+      - "redis"
+    environment:
+      - DB=mongodb://root:yv4W3UU8j@db:27017/sportbak?authSource=admin
+      - REDIS=redis://redis:6379
+    volumes:
+      - .:/usr/src/app
+      - ./medias:/media
+    networks:
+      - proxy
+networks:
+  proxy:
+   external: true    

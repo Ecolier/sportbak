@@ -1,0 +1,27 @@
+<div class="game-actions-ctn">
+  <ng-container *ngIf=" game && !game.isGameFinished() ">
+    <button sbk-btn *ngIf="game && !game.startedAt" class="round large start" (click)="onStartClick()">{{getTranslation('start_game')}}</button>
+    <ng-container *ngIf="sportConstants[game.sport].hasGoals">
+      <button sbk-btn *ngIf="hasGameStarted && !isTimerPaused" class="round outline" (click)="onPauseClick()">{{getTranslation('pause_game')}}</button>
+      <button sbk-btn *ngIf="hasGameStarted && isTimerPaused " class="round" (click)="onResumeClick()">{{getTranslation('resume_game')}}</button>
+    </ng-container>
+  </ng-container>
+    
+    <button sbk-btn *ngIf="game && game.isGameFinished() " [ngClass]="sportConstants[game.sport].hasSets && sets.length > 0 ?'round outline disabled' : 'round outline'" (click)="updateGame.emit(); updateAlert.emit()">{{getTranslation('update_game')}}</button>
+    <button sbk-btn *ngIf="game && !game.isGameFinished() && game.startedAt" [ngClass]="sportConstants[game.sport].hasSets && sets.length == 0 ?'round disabled' : 'round '" (click)="toggleGameEndValidModal()">{{getTranslation('end_game')}}</button>
+</div>
+
+
+<manager-modal [isDisplaying]="isGameEndValidModalOn" [mainText]="getTranslation('valid_endgame')"
+  [button1Text]="getTranslation('yes')" [button2Text]="getTranslation('no')"
+  [iconSrc]="'warning'"
+  (button1Action)="validateGameEnd()" (button2Action)="toggleGameEndValidModal()"
+  (close)="toggleGameEndValidModal()"></manager-modal>
+
+<div *ngIf="isShowingUpdateAlert" class="update-alert">
+  <p>{{ getTranslation('update_alert')}}</p>
+</div>
+
+<div *ngIf="isShowingErrorAlert" class="update-alert error">
+  <p>{{ getTranslation('error')}}</p>
+</div>

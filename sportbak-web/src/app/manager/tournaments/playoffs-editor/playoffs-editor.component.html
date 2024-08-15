@@ -1,0 +1,81 @@
+<div (click)="checkPoolsFinished()" class="create-support">
+  <div [ngClass]="currentStep >= 0 ? 'tournament-action-create selected' : 'tournament-action-create'">
+      <button *ngIf="currentStep >= 0" class="settings"><i class="las la-cog"></i></button>
+      <img class="img-tournament" src="./assets/img/icons/final-stage.png" alt="">
+      <p>{{getTranslation('set_up')}}</p>
+    </div>
+</div>
+
+<div class="tournament-creator-modal-ctn" *ngIf="isShowingPlayoffsEditor" (onValidate)="validatePlayoffs()" (onCancel)="hidePlayoffs()">
+  <div class="tournament-creator-modal-content">
+    <img (click)="hidePlayoffs()"  class="close-cross" src="./assets/img/icons/close.png" alt="close">
+    <h1 class="config-title">{{getTranslation('config_title')}}</h1>
+    <p *ngIf="!teams || teams.length == 0" class="teams-warning">{{ getTranslation('need_teams') }}</p>
+    <div *ngIf="teams.length > 0" class="actions-ctn">
+      <div class="info">
+        <p>{{getTranslation('info_1')}}<span class="teams-count">{{teams.length}}</span>{{getTranslation('info_2')}}</p>
+        <select (change)="selectPhase()" *ngIf="competitionTree" [(ngModel)]="selectedStep" class="select-phases">
+          <ng-container *ngFor="let phase of phases; index as phaseIndex">
+            <option value="{{phases[phaseIndex].phaseId}}"  *ngIf="phases[phaseIndex].phaseId >= startedPhase">{{getTranslation(phases[phaseIndex].phase)}}</option>
+          </ng-container>
+        </select>
+      </div>
+      <div class="actions">
+        <button sbk-btn class="small outline" (click)="setRandom()">{{getTranslation('fill_auto')}}</button>
+        <button sbk-btn class="small outline" (click)="resetAllTeamsPlayoffsPosition()">{{getTranslation('empty')}}</button>
+      </div>
+    </div>
+    <div *ngIf="teams.length > 0" class="playoffs-content" >
+      <div  class="tournament-creator-teams-ctn playoffs">
+        <div class="title-centered">
+          <span *ngIf="selectedTeamIndex == undefined" class="select-teams">{{getTranslation('select_teams')}}</span>
+          <p *ngIf="selectedTeamIndex != undefined" class="select-teams deselect">{{getTranslation('deselect_1')}} <span>{{getTranslation('deselect_escape')}}</span>{{getTranslation('deselect_2')}}</p>
+        </div>
+        <div class="select-teams-ctn playoffs">
+          <ng-container *ngFor="let team of teams; index as teamIndex">
+            <div *ngIf="team.playoffsPosition['game'] < 0 " class="team"
+              [class.selected]="selectedTeamIndex == teamIndex"
+              (click)="setSelectedTeam(teamIndex)">
+            <img [src]="team.team.getShirt()" />
+            <span>{{ team.team.name }}</span>
+            </div>
+          </ng-container>
+          <p class="need-complete" *ngIf="teams.length == 0">{{getTranslation('need_teams')}}</p>
+        </div>
+      </div>
+      <div class="competition-tree">
+        <div class="competition-phases">
+          <ng-container *ngIf="competitionTree">
+            <div class="phase-ctn" *ngFor="let item of competitionTree.phases; index as indexTree">
+              <span class="phase-title">{{getTranslation(competitionTree.phases[indexTree].phasesTitles)}}</span>
+              <div class="phase-games-ctn">
+                <div [ngClass]="indexTree !== (competitionTree.phases.length - 1)?'block next-phase':'block'" *ngFor="let item of competitionTree.phases[indexTree].games ; index as indexGames" >
+                  <img class="versus" src="./assets/img/icons/team-versus.png" >
+                  <div [ngClass]="isSelected && indexTree == (competitionTree.phases.length - 1)?'left-block is-selected':'left-block'" (click)="setTeamPosition(competitionTree.phases[indexTree].phasesId, competitionTree.phases[indexTree].games[indexGames].gameIndex, 0)">
+                    <ng-container *ngFor="let team of teams">
+                      <div class="team-ctn" (click)="removeTeamPosition(team)" *ngIf="(team.playoffsPosition.step == competitionTree.phases[indexTree].phasesId) && (team.playoffsPosition.game == competitionTree.phases[indexTree].games[indexGames].gameIndex) && (team.playoffsPosition.team == 0)">
+                        <p class="left">{{ team ? team.team.name : getTranslation('no_team')}}</p>
+                      </div>
+                    </ng-container>
+                  </div>
+                  <div [ngClass]="isSelected && indexTree == (competitionTree.phases.length - 1)?'right-block is-selected':'right-block'" (click)="setTeamPosition(competitionTree.phases[indexTree].phasesId, competitionTree.phases[indexTree].games[indexGames].gameIndex, 1)">
+                    <ng-container *ngFor="let team of teams">
+                      <div class="team-ctn right" (click)="removeTeamPosition(team)" *ngIf="(team.playoffsPosition.step == competitionTree.phases[indexTree].phasesId) && (team.playoffsPosition.game == competitionTree.phases[indexTree].games[indexGames].gameIndex) && (team.playoffsPosition.team == 1)">
+                        <p class="right">{{ team ? team.team.name : getTranslation('no_team')}}</p>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="validate-btn-support">
+      <button sbk-btn class="medium round" (click)="validatePlayoffs()" [disabled]="!shouldUpdate">{{getTranslation('validate')}}</button>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,22 @@
+<div *ngIf="game.team1" class="game-ctn" (click)="onGameClick.emit(game)">
+  <div class="team-ctn top-team" [class.winning-team]="game.team1.gameTeam.goals > game.team2.gameTeam.goals">
+    <div class="team-name-ctn">
+      <img class="team-jersey" *ngIf="game.team1 && game.team1.gameTeam.from != null"
+        [src]="getTeamJersey(game.team1.leagueTeam)">
+      <img class="team-jersey" *ngIf="game.team1 && game.team1.gameTeam.from == null"
+        [src]="getDefaultJersey()">
+      <span class="team-name">{{ game.team1.gameTeam.title }}</span>
+    </div>
+    <span class="goals" [class.winning-team]="game.team1.gameTeam.goals > game.team2.gameTeam.goals">{{game.gameRef.stoppedAt ? game.team1.gameTeam.goals : '-'}}</span>
+  </div>
+  <div class="team-ctn bottom-team" [class.winning-team]="game.team2.gameTeam.goals > game.team1.gameTeam.goals">
+    <div class="team-name-ctn">
+      <img class="team-jersey" *ngIf="game.team2 && game.team2.gameTeam.from != null"
+        [src]="getTeamJersey(game.team2.leagueTeam)">
+      <img class="team-jersey" *ngIf="game.team2 && game.team2.gameTeam.from == null"
+        [src]="getDefaultJersey()">
+      <span class="team-name">{{ game.team2.gameTeam.title}}</span>
+    </div>
+    <span class="goals" [class.winning-team]="game.team2.gameTeam.goals > game.team1.gameTeam.goals">{{game.gameRef.stoppedAt ? game.team2.gameTeam.goals : '-'}}</span>
+  </div>
+</div>

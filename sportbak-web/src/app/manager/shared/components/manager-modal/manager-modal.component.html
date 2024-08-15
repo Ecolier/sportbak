@@ -1,0 +1,12 @@
+<div *ngIf="isDisplaying" class="man-modal-ctn">
+  <div [class]="styles ? 'man-modal-content ' + styles : 'man-modal-content'">
+    <img (click)="close.emit()" alt="close" class="close" src="./assets/img/icons/close.png">
+    <h3 *ngIf="title">{{ title }}</h3>
+    <p *ngIf="mainText" class="light-text main-text">{{ mainText }}</p>
+    <ng-content></ng-content>
+    <div class="btn-ctn">
+      <button *ngIf="button1Text && button1Action" sbk-btn class="round medium outline" (click)="button1Action.emit()">{{button1Text}}</button>
+      <button *ngIf="button2Text && button2Action" sbk-btn class="round medium" (click)="button2Action.emit()">{{button2Text}}</button>
+    </div>
+  </div>
+</div>

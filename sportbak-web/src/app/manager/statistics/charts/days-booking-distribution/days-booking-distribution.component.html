@@ -1,0 +1,14 @@
+<div class="day-rep">
+  <div class="chart-support">
+    <line-chart [lineChartData]="chartData" [lineChartLabels]="chartLabels"
+                [lineChartColors]="chartColors" [lineChartTitle]="chartTitle"
+                [lineChartOptions]="chartOptions"></line-chart>
+  </div>
+  <div class="button-support">
+    <toggle-button [leftText]="getTranslation('complex')"
+                   [rightText]="getTranslation('fields')"
+                   [color]="'rgba( 255, 156, 0, 1)'"
+                   (click)="changeView()">
+    </toggle-button>
+  </div>
+</div>

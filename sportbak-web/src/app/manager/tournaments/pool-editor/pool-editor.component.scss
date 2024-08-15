@@ -1,0 +1,245 @@
+@import "src/app/shared/const/variables";
+
+pool-editor {
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .create-support {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    cursor: pointer;
+    margin: 10px;
+  }
+  .pool-title {
+    color: $white;
+    text-align: center;
+    width: 100%;
+    font-family: $secondary-font;
+    font-size: 27px;
+  }
+  .pool-explanation {
+    cursor: pointer;
+    color: $white;
+    font-family: $secondary-font;
+
+    .pool-explanation-title-ctn {
+      display: flex;
+      .pool-explanation-title {
+        font-size: 20px;
+      }
+      img {
+        height: 25px;
+        margin-left: 5px;
+      }
+    }
+    .pool-explanation-list {
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .dark-input {
+    background-color: $dark-grey;
+    color: $white;
+    border: 1px solid $orange;
+    padding: 7px;
+    padding-left: 15px;
+  }
+
+  .add-pool-ctn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .add-pool-btn {
+    height: 25px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  .pools-actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    button {
+      margin: 0 10px;
+      font-size: 0.7em;
+    }
+  }
+  .pools-title {
+    margin: 0;
+  }
+  .empty {
+    margin-left: 0;
+  }
+  .settings-ctn{
+    width: 100%;
+    padding-left: 180px;
+    @media (max-width: $break-sm) {
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+    &.comp-created{
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+    .config-ctn {
+      width: 100%;
+      max-width: 700px;
+      margin: auto;
+      padding-left: 10%;
+      padding-right: 10%;
+      @media (max-width: $break-sm) {
+        padding: 0;
+      }
+    }
+    .pool-maker-ctn {
+      display: flex;
+      margin: auto;
+      position: relative;
+      max-width: 1000px;
+      padding-left: 20px;
+      padding-right: 20px;
+      height: fit-content;
+      @media (max-width: $break-sm) {
+        margin-top: 30px;
+        flex-direction: column;
+        padding: 5px;
+      }
+      .pools-ctn {
+        width: 100%;
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        @media (max-width: $break-sm) {
+          margin-left: 0px;
+        }
+        .pools {
+          width: 100%;
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+          overflow: auto;
+  
+          @media (max-height: 950px) {
+            max-height: 40vh;
+          }
+          .pool-adding {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            @media (max-width: $break-sm) {
+              width: 95%;
+            }
+            .pool-adding-btn {
+              height: 50px;
+            }
+          }
+          .pool {
+            position: relative;
+            width: 30%;
+            min-height: 150px;
+            background-color: $light-black;
+            color: $white;
+            margin: 10px 0px;
+            border-radius: 3px;
+            border: 1px solid $orange;
+            @media (max-width: $break-sm) {
+              width: 95%;
+              max-width: 150px;
+            }
+            
+            .pool-title {
+              display: flex;
+              width: 100%;
+              justify-content: space-between;
+              align-items: center;
+              padding: 5px 5px;
+              background-color: $orange;
+              color: $white;
+              text-align: center;
+  
+              .pool-name {
+                width: 100%;
+                font-family: $main-font;
+                font-size: 20px;
+              }
+  
+              img {
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+              }
+            }
+            .pool-team {
+              display: flex;
+              justify-content: space-between;
+              margin: 5px;
+              width: 90%;
+  
+              @media (max-width: $break-sm) {
+                margin: 15px 5px;
+              }
+              .team-name {
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                img {
+                  width: 25px;
+                  height: 25px;
+                }
+                span {
+                  font-family: $main-font;
+                  font-size: 22px;
+                }
+              }
+              .remove-img {
+                width: 17px;
+                height: 17px;
+                cursor: pointer;
+                @media (max-width: $break-sm) {
+                  width: 25px;
+                  height: 25px;
+                }
+              }
+            }
+            .pool-add-info {
+              padding: 20px;
+              position: absolute;
+              height: 100%;
+              top: 0px;
+              display: flex;
+              background-color: rgba(0, 0, 0, 0.5);
+              width: 100%;
+              justify-content: center;
+              align-items: center;
+              opacity: 1;
+              z-index: 10;
+              transition-duration: 0.3s;
+              &.hidden {
+                opacity: 0;
+                z-index: -10;
+                transition-duration: 0.3s;
+              }
+              .text {
+                background-color: $white;
+                color: $light-black;
+                padding: 10px 20px;
+                height: fit-content;
+                border-radius: 5px;
+                font-family: $main-font;
+                font-size: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

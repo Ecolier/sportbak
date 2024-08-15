@@ -1,0 +1,17 @@
+<ng-container *ngIf="settings; else noSettingsYet" [formGroup]="settingsForm">
+  <settings-presets *ngIf="presets?.length" [presets]="presets" [selectedPreset]="selectedPreset" [settings]="settings" (saveConfiguration)="saveConfiguration($event)" (deleteConfiguration)="deleteConfiguration($event)" (setPreset)="setPreset($event)"></settings-presets>
+  <session-form theme="dark" formControlName="session"></session-form>
+  <button sbk-btn class="success" (click)="saveDefaultSettings()">
+    {{ getTranslation('saveSettings') }}
+  </button>
+</ng-container>
+
+<ng-template #noSettingsYet>
+  <div class="no-settings-ctn">
+    <div *ngIf="modelType === 'Field'" class="no-settings-callout">{{ getTranslation('noSettingsForField') }}</div> 
+    <div *ngIf="modelType === 'Complex'" class="no-settings-callout">{{ getTranslation('noSettingsForComplex') }}</div> 
+    <button sbk-btn class="medium" (click)="createDefaultSettings()">
+      {{ getTranslation('createSettings') }}
+    </button>
+  </div>
+</ng-template>

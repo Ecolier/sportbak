@@ -1,0 +1,494 @@
+@import "src/app/shared/const/variables";
+
+booking-modal {
+
+  background-color: #565656;
+  border-radius: 3px;
+
+  .booking-modal-ctn {
+    display: flex;
+    flex: 1;
+    overflow: auto;
+    max-height: 80vh;
+
+    .booking-modal {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #565656;
+      padding: 15px 0;
+      transition-duration: 0.35s;
+      font-family: $secondary-font;
+      overflow: auto;
+      flex: 1;
+
+      &.visible {
+        opacity: 1;
+        z-index: 100;
+        transform: translateY(0px);
+        transition-duration: 0.35s;
+        transition-delay: 0.25s;
+      }
+
+      booking-status-badge {
+        width: 50%;
+        margin-bottom: 10px;
+      }
+
+      .date-info {
+        text-align: center;
+        font-size: 20px;
+        font-family: $secondary-font;
+        color: $white;
+        text-transform: capitalize;
+        margin-bottom: 10px;
+      }
+
+      .booking-modal-title {
+        text-align: center;
+        width: 100%;
+        color: $white;
+        font-size: 30px;
+      }
+
+      .booker-comment {
+        color: $white;
+        font-size: 17px;
+        word-break: break-all;
+        width: 80%;
+      }
+
+      .inputs-ctn {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        align-items: center;
+        align-self: center;
+        margin-bottom: $spacing-lg;
+
+        .input-ctn {
+          display: flex;
+          width: 100%;
+          align-items: center;
+          margin-bottom: $spacing-md;
+
+          @media (max-width: $break-md) {
+            flex-direction: column;
+          }
+
+          span {
+            text-align: center;
+          }
+
+          .input-label {
+            font-family: $secondary-font;
+            color: $white;
+            text-transform: uppercase;
+            min-width: 20%;
+          }
+        }
+
+        input,
+        select {
+          background-color: $cal-dark-grey;
+          color: $white;
+          border: 1px solid $orange;
+          border-radius: 5px;
+          width: 100%;
+        }
+
+        .booker-warning {
+          color: $orange;
+          font-size: 17px;
+        }
+
+        .booker-row {
+          margin: $spacing-lg 0;
+          display: flex;
+          align-self: baseline;
+          width: 100%;
+          align-items: center;
+
+          .profile-pic {
+            box-shadow: 0 2px 10px 0 rgb(0 0 0 / 75%);
+          }
+
+          .nickname {
+            color: $white;
+            font-size: 20px;
+            margin-left: 5px;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+
+          .remove-user {
+            height: 15px;
+            margin-left: 15px;
+          }
+        }
+
+        player-selector {
+          height: 80px;
+          width: 100%;
+          z-index: 60;
+          display: flex;
+
+          .player-selector-ctn {
+            width: 100%;
+
+            .input-info {
+              display: none;
+            }
+
+            .input-ctn {
+
+              .search-icon,
+              .close-icon {
+                display: none;
+              }
+
+              input {
+                font-size: 16px;
+                height: 37px;
+                font-family: $secondary-font;
+
+                &::-webkit-input-placeholder {
+                  /* Edge */
+                  color: $white;
+                }
+
+                &:-ms-input-placeholder {
+                  /* Internet Explorer 10-11 */
+                  color: $white;
+                }
+
+                &::placeholder {
+                  color: $white;
+                }
+              }
+            }
+
+            .players-ctn {
+              max-height: 30vh;
+
+              .player-ctn {
+                .player-details {
+                  .player-nickname {
+                    font-family: $secondary-font;
+                    font-size: 16px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .time-inputs {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          align-items: center;
+          margin-bottom: $spacing-md;
+
+          .time-info {
+            color: $white;
+            text-transform: uppercase;
+          }
+
+          .time-input {
+            width: 30%;
+            font-size: 15px;
+            height: 37px;
+            font-family: $secondary-font;
+
+            &:disabled {
+              background-color: black;
+              border: 1px solid $light-grey;
+            }
+          }
+        }
+
+        .comp-game {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 10px;
+
+          .comp-icon {
+            font-size: 42px;
+            margin-right: 10px;
+            color: $white;
+          }
+
+          .comp-title {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            text-transform: uppercase;
+            font-size: 30px;
+            margin: 50px 0px;
+            justify-content: center;
+
+            span {
+              font-family: $secondary-font;
+              color: $white;
+              font-size: 25px;
+            }
+
+            img {
+              height: 50px;
+              margin-right: 10px;
+            }
+          }
+
+          .comp-game-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .comp-team {
+              font-family: $secondary-font;
+              color: $white;
+              font-size: 23px;
+              text-transform: uppercase;
+            }
+
+            img {
+              height: 50px;
+              margin: 0px 10px;
+            }
+          }
+        }
+
+        .field-input {
+          font-family: $main-font;
+          font-size: 25px;
+        }
+
+        .text-input {
+          padding-left: 30px;
+          padding-right: 30px;
+          font-size: 17px;
+          height: 37px;
+          font-family: $secondary-font;
+          transition-duration: 0.3s;
+
+          &.visible {
+            opacity: 1;
+            transition-duration: 0.3s;
+          }
+
+          &::-webkit-input-placeholder {
+            /* Edge */
+            color: rgba(247, 165, 51, 0.8);
+          }
+
+          &:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            font-family: $main-font;
+            color: rgba(247, 165, 51, 0.8);
+          }
+
+          &::placeholder {
+            font-family: $main-font;
+            color: rgba(247, 165, 51, 0.8);
+          }
+
+          &:read-only {
+            background-color: black;
+            border: 1px solid $light-grey;
+          }
+        }
+
+        .text-area {
+          background-color: $cal-dark-grey;
+          border: 1px solid $orange;
+          border-radius: 5px;
+          width: 100%;
+          height: 100px;
+          font-family: $secondary-font;
+          color: $white;
+          resize:none;
+          &::-webkit-input-placeholder {
+            /* Edge */
+            color: rgba(247, 165, 51, 0.8);
+          }
+
+          &:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            font-family: $main-font;
+            color: rgba(247, 165, 51, 0.8);
+          }
+
+          &::placeholder {
+            font-family: $main-font;
+            color: rgba(247, 165, 51, 0.8);
+          }
+
+          &:read-only {
+            background-color: black;
+            border: 1px solid $light-grey;
+          }
+        }
+      }
+
+
+      .buttons-ctn {
+        width: 80%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        @media (max-width: $break-xs) {
+          flex-direction: column;
+        }
+
+        button {
+          margin: 0 10px;
+
+          @media (max-width: $break-xs) {
+            width: 80%;
+            margin: 3px 0;
+          }
+        }
+
+        .back-arrow {
+          height: 25px;
+          margin: 0 25px;
+        }
+
+        .btn {
+          min-width: 80px;
+          margin: 10px 25px;
+          text-transform: uppercase;
+          color: $white;
+          border-radius: 50px;
+          background-color: $orange;
+          font-size: 15px;
+
+          &.validate {
+            background-color: $cal-green;
+          }
+
+          &.cancel {
+            background-color: $red;
+          }
+
+          &:disabled {
+            background-color: $medium-grey;
+            border: none;
+          }
+
+          &.waiting-player {
+            background-color: $cal-dark-grey;
+            color: $orange;
+            font-style: italic;
+            border: 1px solid $orange;
+            width: 30%;
+            cursor: not-allowed;
+          }
+
+          img {
+            height: 35px;
+          }
+
+        }
+      }
+    }
+
+    .spinning-loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .info-ctn {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .request-info {
+      font-size: 30px;
+      font-family: $main-font;
+      opacity: 0;
+      transition-duration: 0.3s;
+
+      &.success {
+        color: $green;
+      }
+
+      &.failure {
+        color: $red;
+      }
+
+      &.visible {
+        opacity: 1;
+        transform: scale(1.1);
+        transition-duration: 3s;
+      }
+    }
+  }
+
+  .cancel-booking-ctn {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 50px;
+    align-self: center;
+
+    .cancel-title {
+      font-family: $secondary-font;
+      color: $red;
+      text-align: center;
+      font-size: 25px;
+    }
+
+    .cancel-input {
+      border-radius: 5px;
+      border: 1px solid $orange;
+      height: 37px;
+      background-color: $cal-dark-grey;
+      color: $white;
+
+      &::placeholder {
+        color: $white;
+      }
+    }
+
+    .cancel-btns {
+      width: 100%;
+      display: flex;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .cancel-btn {
+      border: none;
+      padding: 7px 25px;
+      margin: 0px 15px;
+      background-color: $cal-dark-grey;
+      border-radius: 50px;
+      font-family: $secondary-font;
+
+      &.green {
+        border: 1px solid $cal-green;
+        color: $cal-green;
+      }
+
+      &.red {
+        border: 1px solid $red;
+        color: $red;
+      }
+
+      img {
+        height: 30px;
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+<ng-container [formGroup]="sessionFormGroup">
+
+  <div class="form-group">
+    <div class="form-inline control__field">
+      <label [for]="id + 'duration'" class="control__label">{{ getTranslation('duration') }}</label>
+      <info-label [infoText]="getTranslation('durationTooltip')"></info-label>
+    </div>
+    <input maxlength="3" regexFilter="[0-9]" [validKeys]="['Backspace', 'Tab']" [id]="id + 'duration'" format="hh:mm:ss" class="control__field control__text-input" formControlName="time" [placeholder]="defaultFormValues.time + 'mn'">
+  </div>
+
+  <div class="form-group">
+    <div class="form-inline control__field">
+      <label for="period" class="control__label">{{ getTranslation('period') }}</label>
+      <info-label [infoText]="getTranslation('periodTooltip')"></info-label>
+    </div>
+    <div class="form-inline radio-group control__field">
+      <input class="radio" type="radio" [id]="id + '-period_1'" name="period" [value]="1" [attr.checked]="sessionFormGroup.value.period === 1 ? '' : null" formControlName="period">
+      <label [for]="id + '-period_1'" class="radio-label">1</label>
+      <input class="radio" type="radio" [id]="id + '-period_2'" name="period" [value]="2" [attr.checked]="sessionFormGroup.value.period === 2 ? '' : null" formControlName="period">
+      <label [for]="id + '-period_2'" class="radio-label">2</label>
+      <input class="radio" type="radio" [id]="id + '-period_3'" name="period" [value]="3" [attr.checked]="sessionFormGroup.value.period === 3 ? '' : null" formControlName="period">
+      <label [for]="id + '-period_3'" class="radio-label">3</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-inline control__field">
+      <label [for]="id + '-pause-time'" class="control__label">{{ getTranslation('pauseTime') }}</label>
+      <info-label [infoText]="getTranslation('pauseTimeTooltip')"></info-label>
+    </div>
+    <input maxlength="3" regexFilter="[0-9]" [validKeys]="['Backspace', 'Tab']" [id]="id + '-pause-time'" class="control__field control__text-input" formControlName="pauseTime" [placeholder]="defaultFormValues.pauseTime + 'mn'">
+  </div>
+
+  <div class="form-group">
+    <div class="form-inline control__field">
+      <label [for]="id + '-warmup-time'" class="control__label">{{ getTranslation('warmupTime') }}</label>
+      <info-label [infoText]="getTranslation('warmupTooltip')"></info-label>
+    </div>
+    <input maxlength="3" regexFilter="[0-9]" [validKeys]="['Backspace', 'Tab']" [id]="id + '-warmup-time'" class="control__field control__text-input" formControlName="warmup" [placeholder]="defaultFormValues.warmup + 'mn'">
+  </div>
+
+  <div class="form-group">
+    <div class="form-inline control__field">
+      <label [for]="id + '-first-team-name'" class="control__label">{{ getTranslation('firstTeamName') }}</label>
+      <info-label [infoText]="getTranslation('firstTeamNameTooltip')"></info-label>
+    </div>
+    <input [id]="id + '-first-team-name'" class="control__field control__text-input" formControlName="teamName1">
+  </div> 
+
+  <div class="form-group">
+    <div class="form-inline control__field">
+      <label [for]="id + '-second-team-name'" class="control__label">{{ getTranslation('secondTeamName') }}</label>
+      <info-label [infoText]="getTranslation('secondTeamNameTooltip')"></info-label>
+    </div>
+    <input [id]="id + '-second-team-name'" class="control__field control__text-input" formControlName="teamName2">
+  </div>
+
+  <div class="checkbox-ctn">
+    <div class="form-inline control__field">
+      <input class="control__checkbox" formControlName="sound" [id]="id + '-sounds'" type="checkbox">
+      <label [for]="id + '-sounds'" class="control__label">{{ getTranslation('enableSounds') }}</label>
+      <info-label [infoText]="getTranslation('enableSoundsTooltip')"></info-label>
+    </div>
+  
+    <div class="form-inline control__field">
+      <input class="control__checkbox" formControlName="ambiance" [id]="id + '-ambiance'" type="checkbox">
+      <label [for]="id + '-ambiance'" class="control__label">{{ getTranslation('enableAmbiance') }}</label>
+      <info-label [infoText]="getTranslation('enableAmbianceTooltip')"></info-label>
+    </div>
+  </div>
+</ng-container>

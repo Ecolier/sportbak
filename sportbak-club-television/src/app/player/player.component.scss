@@ -1,0 +1,39 @@
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+video {
+  width: 100%;
+  height: 100%; 
+  object-fit: cover;
+}
+
+.live-indicator {
+  position: absolute;
+  display: inline-block;
+  background-color: white;
+  padding: 9pt;
+  margin: 24pt;
+  right: 0;
+  color: red;
+  border-radius: 9pt;
+  display: flex;
+  font-weight: bold;
+}
+
+@keyframes flashOpacity {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.live-indicator::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background-color: red;
+  border-radius: 100%;
+  margin-right: 9pt;
+  animation: flashOpacity 2s 0s infinite;
+}

@@ -1,0 +1,31 @@
+<section class="complex-component">
+  <div class="nav-header">
+    <a routerLink="/my-complex">
+        <img id="arrow-nav" src="./assets/img/home-competition/arrow.png" >
+    </a>
+    <a routerLink="/">
+        <img id="nav-logo" src="./assets/img/home-page/header/nouveau-logo-sportbak-1.png" alt="sportbak logo small">
+    </a>
+  </div>
+  <div class="my-complex-ctn">
+    <div class="my-complex" *ngIf="myComplex">
+        <img  [src]="logo+myComplex.logo" id="complex-logo">
+        <nav class="complex-nav">
+          <div class="card-navigation">
+            <div class="card-nav-link" [class.active]="complexNav == 'information'">
+              <a (click)="navigation('information')">{{ getTranslation('complex_info')}}</a>
+            </div>
+            <div class="card-nav-link" [class.active]="complexNav == 'competition'">
+              <a (click)="navigation('competition')">{{ getTranslation('complex_competition')}}</a>
+            </div>
+            <div class="card-nav-link" [class.active]="complexNav == 'video'">
+              <a (click)="navigation('video')">{{ getTranslation('complex_video')}}</a>
+            </div>
+          </div>
+        </nav>
+        <complex-info *ngIf="complexNav == 'information'"></complex-info>
+        <complex-competition *ngIf="complexNav == 'competition'"></complex-competition>
+        <complex-video *ngIf="complexNav == 'video'"></complex-video>
+    </div>
+  </div>
+</section>

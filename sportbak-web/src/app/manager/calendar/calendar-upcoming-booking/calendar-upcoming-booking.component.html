@@ -1,0 +1,32 @@
+<div class="upcoming-booking">
+  <div class="booking-infos-ctn">
+    <div class="booking-infos" (click)="onBooking(booking)">
+      <tip [size]="10" [classes]="['orange']"></tip>
+      <span class="booking-info">{{ date }}</span>
+      <span class="booking-info">{{ hour }}</span>
+    </div>
+    <div *ngIf="!isSendingRequest" class="btns">
+      <img src="./assets/img/icons/manager-space/validate.png" (click)="acceptBooking()" alt="validate">
+      <img src="./assets/img/icons/manager-space/close.png" (click)="toggleIsShowingRefusalConfirmation()" alt="refuse">
+      <img src="./assets/img/icons/manager-space/arrow.png" (click)="redirectToCalendarDay()" alt="goto">
+    </div>
+  </div>
+  <div class="booking-contact" [class.visible]="isContactVisible">
+    <span class="booker-info">{{ bookerContact}}</span>
+  </div>
+  <div *ngIf="isShowingRefusalConfirmation" class="refusal-confirmation">
+    <span class="text">{{ getTranslation('confirm_booking_refusal') }}</span>
+    <div class="refusal-btns">
+      <button class="refusal-btn" (click)="refuseBooking()">{{ getTranslation('yes')}}</button>
+      <button class="refusal-btn cancel" (click)="toggleIsShowingRefusalConfirmation()">{{ getTranslation('no')}}</button>
+    </div>
+  </div>
+</div>
+<request-status
+  [isVisible]="isRequestStatusVisible"
+  [text]="requestStatusText"
+  [isFailure]="!isRequestSuccess"
+  [displayTime]="1500"
+  [errorCode]="requestStatusErrorCode"
+  (resetRequestStatus)="resetRequestStatus()">
+</request-status>

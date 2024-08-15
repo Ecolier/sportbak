@@ -1,0 +1,25 @@
+@import "src/app/shared/const/variables";
+
+.errorPopup {
+  background-color: $red;
+  padding: 10px;
+  border-radius: 10px;
+  color: $white;
+  font-family: $secondary-font;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .message {
+    margin-right: 10px;
+  }
+
+  .close {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 15px;
+    }
+  }
+}

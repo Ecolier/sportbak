@@ -1,0 +1,77 @@
+<div class="background"></div>
+<div class="background-overlay"></div>
+
+<div class="status-ctn">
+  <div class="title">
+    Informations
+  </div>
+
+  <div class="details">
+    <div class="details-column" *ngFor="let c of dataset" [ngStyle]="c.style">
+      <div class="details-section" *ngFor="let s of c.sections" [ngStyle]="s.style"> 
+        <div class="details-section-title" [ngStyle]="getStyle(s.title)">{{ getValue(s.title) }} : </div>
+        <div class="details-row" *ngFor="let r of s.rows" [ngStyle]="r.style">
+          <div class="details-row-title" [ngStyle]="getStyle(r.title)">{{ getValue(r.title) }} :</div>
+          <div class="details-row-value" [ngStyle]="getStyle(r.value)">{{ getValue(r.value) }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <sbk-inline-status [showHealthyStatus]="true"></sbk-inline-status>
+
+  
+  <div class="footer">
+    <div class="gamepad-combination back" (click)="back()">
+      <div class="row">Retour</div>
+      <div class="row">
+        <div>Appuyer : </div>
+        <div class="gamepad-btn red"></div>
+      </div>
+    </div>
+    <div class="gamepad-combination streaming" (click)="askConfirmationResetConfiguration()">
+      <div class="row">Reset configuration</div>
+      <div class="row">
+        <div>Maintenir appuyer : </div>
+        <div class="gamepad-btn blue"></div>
+        <div>+</div>
+        <div class="gamepad-btn blue"></div>
+      </div>
+    </div>
+    <div class="gamepad-combination streaming" (click)="showStreaming()">
+      <div class="row">Visionner la caméra</div>
+      <div class="row">
+        <div>Maintenir appuyer : </div>
+        <div class="gamepad-btn"></div>
+        <div>+</div>
+        <div class="gamepad-btn"></div>
+      </div>
+    </div>
+    <div class="gamepad-combination reboot" (click)="selectShutdownMode()">
+      <div class="row">Arrêter/Redémarrer le système</div>
+      <div class="row">
+        <div>Maintenir appuyer : </div>
+        <div class="gamepad-btn green"></div>
+        <div>+</div>
+        <div class="gamepad-btn green"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<sbk-popup *ngIf="showingPopup()" 
+  [title]="popupInput.title"
+  [message]="popupInput.message"
+  [buttonRed]="popupInput.buttonRed"
+  [buttonGreen]="popupInput.buttonGreen"
+  [buttonBlue]="popupInput.buttonBlue"
+  [buttonWhite]="popupInput.buttonWhite"
+  (onClose)="outputPopup($event)"
+></sbk-popup>
+
+
+<sbk-web-rtc-player *ngIf="isLiveFeedbackVisible" [url]="configService.cameraServiceSocketUrl" [token]="webRTCToken" (onError)="webRTCError($event)"></sbk-web-rtc-player>
+<div class="abort" *ngIf="isLiveFeedbackVisible" (click)="stopStreaming()">
+  <span class="indicator"></span>
+  Passer la vidéo
+</div>

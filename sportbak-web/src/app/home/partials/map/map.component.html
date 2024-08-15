@@ -1,0 +1,53 @@
+<div class="google-ctn">
+  <div id="map">
+  </div>
+  <div class="map-loading" *ngIf="mapLoadingError">
+    <p>{{mapLoadingError}}</p>
+    <button (click)="OnReload()" class="reload-map">{{ getTranslation('map_reload')}} <i class="las la-redo-alt"></i></button>
+  </div>
+  <div *ngIf="!loadedMap" class="loader-ctn">
+    <spinning-loader [hasCtn]="true" [isMedium]="true"></spinning-loader>
+  </div>
+  <div *ngIf="name !=undefined || name !=null " class="place-details">
+    <img (click)="closeModal()" class="close-cross" src=".\assets\img\icons\close-search.png">
+    <div *ngIf="photos!=undefined; else logoImage" class="img-ctn">
+      <img [src]="photoActive[0]!=undefined? photoActive[0].getUrl() : ''">
+      <div  class="photo-panel">
+        <ng-container *ngFor="let photo of photos; let i=index">
+          <div *ngIf="i < 4" >
+            <img (click)="imageSelect(i)" [src]="photos[i].getUrl()" >
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <ng-template #logoImage>
+        <img [src]="logo" id="complex-logo">
+    </ng-template>
+    <div class="details-content">
+      <h3>{{name}}</h3>
+      <address><i class="las la-map-marker"></i>{{formatted_address}}</address>
+      <address><i class="las la-phone"></i>{{formatted_phone_number}}</address>
+      <p id="place-status">{{status}}</p>
+      <span  *ngIf="rating!=undefined" id="place-rating">{{rating}}<i class="las la-star"></i></span>
+      <span *ngIf="reviews!=undefined" id="place-reviews">({{reviews.length}})</span>
+      <p></p>
+    </div>
+    <div class="button-ctn">
+      <div id="competition-btn">
+        <a  (click)="showCompetition(complexId)">{{ getTranslation('nav_show_complexe')}}</a>
+      </div>
+      <!-- Add back when we have the app link working -->
+      <!-- <div>
+        <a href="sportbak://" target="_blank">{{ getTranslation('map_app')}}</a>
+      </div> -->
+      <div>
+        <a href="tel:{{formatted_phone_number}}" target="_blank">{{ getTranslation('map_call')}}</a>
+      </div>
+    </div>
+  </div>
+  <ng-template #noData *ngIf="mapError">
+      <div class="error-map">
+        <p>{{mapError}}</p>
+      </div>
+  </ng-template>
+</div>

@@ -1,0 +1,35 @@
+<div class="fouls-ctn">
+  <div *ngIf="game && game.startedAt" class="fouls-content">
+    <img class="fouls-img" src="./assets/img/icons/whistle-foul.png" (click)="displayFoulsModal(0)" />
+    <img class="fouls-img card" src="./assets/img/icons/card-yellow.png" (click)="displayFoulsModal(1)" />
+    <img class="fouls-img card" src="./assets/img/icons/card-red.png" (click)="displayFoulsModal(2)" />
+  </div>
+</div>
+<gs-modal *ngIf="isFoulsModalOn" [title]="getTranslation('foul') + '/' + getTranslation('yellow_card') + '/' + getTranslation('red_card')" (onValidate)="validateFouls()" (onCancel)="hideFoulsModal()">
+  <div class="team-title-ctn">
+    <span  class="team-title" [class.selected-team]="selectedTeam == 0" (click)="setSelectedTeam(0)">{{ game.teams[0].title }}</span>
+    <span  class="team-title" [class.selected-team]="selectedTeam == 1" (click)="setSelectedTeam(1)">{{ game.teams[1].title }}</span>
+  </div>
+
+  <div class="players-ctn">
+    <div class="player-ctn">
+      <div *ngFor="let player of game.teams[selectedTeam].players; index as playerIndex" class="player-row">
+        <div class="player-name-ctn">
+          <img class="player-img"
+            [src]=" player.user.picture ? 'https://api.futbak.com/static/images/users/' + player.user.picture : 'https://api.futbak.com/static/images/users/logoGuestFull.png'" />
+          <span class="player-name"> {{ player.user.nickname }}</span>
+        </div>
+        <div class="counters-ctn">
+          <gs-counter [title]="getTranslation('fouls')" [value]="player.fouls" [icon]="'foul'" (onMinus)="decreasePlayerFouls(playerIndex)" (onPlus)="increasePlayerFouls(playerIndex)"></gs-counter>
+          <div class="cards-ctn">
+            <div class="yellow-cards-ctn">
+              <img class="counter-card bordered" [class.selected]="player.yellowcards > 0" src="./assets/img/gs/card-yellow.png" (click)="onYellowCardClick(playerIndex)"/>
+              <img class="counter-card second-card" [class.selected]="player.yellowcards > 1" src="./assets/img/gs/card-yellow.png" (click)="onYellowCardClick(playerIndex)"/>
+            </div>
+            <img class="counter-card" [class.selected]="player.redcards > 0" src="./assets/img/gs/card-red.png" (click)="onRedCardClick(playerIndex)"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</gs-modal>

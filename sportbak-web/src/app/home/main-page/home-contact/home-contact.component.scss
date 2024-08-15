@@ -1,0 +1,58 @@
+@import  "src/app/home/const/variables";;
+.home-contact{
+  background-color: $dark-grey;
+  min-height: 529px;
+  color: $white;
+  display: flex;
+  justify-content: flex-end;
+  font-family: $secondary-font;
+  @media screen and (max-width:$small-screen) {
+    text-align: center;
+    padding: 0px 20px;
+  }
+  .home-contact-left{
+    padding-right: 50px;
+    padding-left: 20px;
+    @media screen and (max-width:$small-screen) {
+      padding: 0px;
+      social-panel,span{
+        display: none;
+      }
+      .span-ctn::after{
+        content: "on vous répond très rapidement";
+        text-transform: uppercase;
+        font-size: 20px;
+      }
+    }
+    h1{
+      font-size: 56px;
+      font-family: $main-font;
+      margin-top: 60px;
+      padding-bottom: 20px;
+      max-width: 500px;
+    }
+    p{
+      font-size: 22px;
+    }
+  }
+  .home-contact-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    @media screen and (max-width:$small-screen) {
+      display: none;
+    }
+    h2{
+      font-size: 43px;
+      max-width: 580px;
+      font-weight: bold;
+      max-width: 500px;
+      margin: auto;
+      text-align: center;
+    }
+    img{
+      bottom: 0px;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,101 @@
+@import "src/app/shared/const/variables";
+
+booking-decision-maker {
+  width: 100%;
+  .decision-maker-ctn {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+
+    .decision-ctn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .elements-ctn{
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+    .result-text {
+      color: $white;
+      font-size: 18px;
+    }
+
+    .booker-comment {
+      text-align: center;
+      color: $white;
+      font-size: 15px;
+      width: 80%;
+      margin: 20px 0px;
+      font-family: $secondary-font;
+      font-style: italic;
+    }
+
+    .manager-action {
+      font-family: $secondary-font;
+      background-color: rgba(0, 0, 0,0);
+      width: 25%;
+      min-width: 80px;
+      border: 1px solid $cal-green;
+      border-radius: 50px;
+      color: $cal-green;
+      text-transform: uppercase;
+      margin: 0px 10px;
+      &.red {
+        color: $orange;
+        border: 1px solid $orange;
+      }
+    }
+
+    .comment-ctn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80%;
+      margin-bottom: 20px;
+      .comment-text {
+        color: $white;
+        font-size: 20px;
+        text-transform: uppercase;
+      }
+
+      input {
+        width: 100%;
+        height: 35px;
+        margin: 10px 0px;
+        border: 1px solid $orange;
+        border-radius: 5px;
+        background-color: $cal-dark-grey;
+        color: $white;
+        &::placeholder {
+          color: $white;
+        }
+      }
+
+      .comment-ctn-btns {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+
+        .comment-btn {
+          background-color: $cal-dark-grey;
+          border: 1px solid $cal-green;
+          padding: 5px 30px;
+          border-radius: 50px;
+          color: $cal-green;
+
+          &.red {
+            border: 1px solid $orange;
+            color: $orange;
+          }
+
+          img {
+            height: 25px;
+          }
+        }
+      }
+    }
+  }
+}

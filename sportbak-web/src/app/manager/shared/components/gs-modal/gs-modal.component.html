@@ -1,0 +1,9 @@
+<div class="modal-ctn">
+  <div class="modal">
+    <div class="modal-title-ctn" (click)="onTitleClick()">
+      <img class="back-arrow" src="./assets/img/icons/arrow-white.png"/>
+      <span class="modal-title">{{ title }}</span>
+    </div>
+      <ng-content></ng-content>
+  </div>
+</div>

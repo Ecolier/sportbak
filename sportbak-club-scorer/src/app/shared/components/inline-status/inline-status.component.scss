@@ -1,0 +1,32 @@
+@import 'src/typography.scss';
+@import 'src/layout.scss';
+
+:host {
+  position: fixed;
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto';
+  font-size: $font-size-xs;
+}
+
+.status {
+  display: flex;
+  margin-bottom: $spacing-xs;
+}
+
+.indicator {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  background-color: indianred;
+  margin-right: $spacing-md;
+}
+
+.indicator.active {
+  background-color: palegreen;
+}
+
+.indicator.inactive {
+  background-color: indianred;
+}

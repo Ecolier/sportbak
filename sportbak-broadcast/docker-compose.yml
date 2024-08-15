@@ -1,0 +1,53 @@
+version: "3.9" 
+
+# COMMON VARIABLES to backend_web & backend_worker
+x-common-variables: &COMMON_VARIABLES_MANAGER
+    SPORTBAK_URL: https://api.dev.sportbak.com/
+    SPORTBAK_USER: 'developpment@sportbak.com'
+    SPORTBAK_PASSWORD: 'v85*pL$$1dNq_4c'
+    DB: 'mongodb://root:yv4W3UU8j@localhost:27017/sportbak?authSource=admin'
+    REDIS: 'redis://localhost:6379'
+    EXPIRATION : 30
+
+services:
+  backend_redis:
+    image: redis
+    network_mode: host 
+  backend_db:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: yv4W3UU8j
+    network_mode: host 
+  backend_web:
+    build: .
+    command: dev-web
+    depends_on:
+      - "backend_redis"
+      - "backend_db"
+    environment: 
+      << : *COMMON_VARIABLES_MANAGER
+      VIRTUAL_HOST: 'api.video.sportbak.com'
+      VIRTUAL_PROTO: 'http'
+      LETSENCRYPT_HOST: 'api.video.sportbak.com'
+      LETSENCRYPT_EMAIL: 'contact@sportbak.com'
+      MEDIA_URL: 'https://api.video.sportbak.com/media/'
+    volumes: 
+      - .:/usr/src/app
+      - ./media:/media
+    network_mode: host 
+  backend_worker:
+    build: .
+    command: dev-worker
+    depends_on:
+      - "backend_redis"
+      - "backend_db"
+    environment: 
+      << : *COMMON_VARIABLES_MANAGER
+    volumes: 
+      - .:/usr/src/app
+      - ./media:/media
+    network_mode: host
+networks: 
+  sportbak:
+    external: true

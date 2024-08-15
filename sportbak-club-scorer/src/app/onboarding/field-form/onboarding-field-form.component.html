@@ -1,0 +1,10 @@
+<form class="login-form" (ngSubmit)="submit()">
+  <a routerLink="/onboarding/login" class="select-label">
+    <i class="material-icons">arrow_back_ios_new</i>
+    Selection du terrain
+  </a>
+  <sbk-select class="select-fields" name="field" [(ngModel)]="fields" (indexChange)="selectField($event)" >
+    <sbk-option *ngFor="let field of fields; index as i" [value]="field">{{ field.name }}</sbk-option>
+  </sbk-select>
+  <button sbk-btn type="submit">Valider</button>
+</form>

@@ -1,0 +1,11 @@
+<div *ngIf="options" class="options-ctn">
+  <div class="option selected">
+    <ng-container *ngTemplateOutlet="this.options.toArray()[selectedIndex]!.contentTemplateRef"></ng-container>
+    <i class="material-icons expand">expand_more</i>
+  </div>
+  <div class="available-options">
+    <div *ngFor="let option of otherOptionsComponent; index as i" class="option" (click)="setSelectedElement(option)">
+      <ng-container *ngTemplateOutlet="option.contentTemplateRef" ></ng-container>
+    </div>
+  </div>
+</div>

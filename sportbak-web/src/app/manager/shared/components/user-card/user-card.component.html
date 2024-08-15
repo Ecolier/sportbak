@@ -1,0 +1,11 @@
+<div class="card" *ngIf="user">
+  <div class="user">
+    <avatar [picture]="user.picture" [size]="40"></avatar>
+    <div class="nickname" *ngIf="user.nickname">{{user.nickname}}</div>
+  </div>
+  <div class="info">
+    <div class="name" *ngIf="user.firstname && user.lastname">{{user.firstname}} {{user.lastname}}</div>
+    <div class="email" *ngIf="user.email">{{getTranslation('mail')}}{{user.email}}</div>
+    <div class="phone" *ngIf="user.numPhone">{{getTranslation('phone')}}{{user.numPhone}}</div>
+  </div>
+</div>

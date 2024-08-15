@@ -1,0 +1,46 @@
+<gs-modal *ngIf="isDisplayed"
+  class="team-editor-modal"
+  [title]="getTranslation('team_edit')"
+  (onValidate)="validateTeamUpdate()" (onCancel)="cancelTeamUpdate()">
+  <div class="team-editor-ctn">
+    <div class="team-edit-content">
+      <div *ngIf="!isEditingTeamName" class="team-name-ctn">
+        <div class="shirt-ctn" (click)="toggleShirtSelector()">
+          <img class="shirt-icon" [src]="team.getShirt()" [default]="unknownShirt"/>
+          <img class="shirt-edit-icon" src="./assets/img/icons/plus.png"/>
+        </div>
+        <h1> {{ team.name }}</h1>
+        <button sbk-btn class="round" (click)="editTeamName()">{{ getTranslation('edit') }}</button>
+      </div>
+      <div *ngIf="isEditingTeamName" class="team-edit-ctn">
+        <input autofocus type="text" [(ngModel)]="teamNameInput" (ngModelChange)="updateTeamInput($event)"/>
+        <button sbk-btn class="round" [disabled]="teamNameInput.length === 0" (click)="validateTeamName()">
+          {{ getTranslation('validate')}}
+        </button>
+        <button sbk-btn class="round cancel" (click)="cancelTeamNameEdit()">
+          {{ getTranslation('cancel')}}
+        </button>
+      </div>
+      <player-selector [canHaveGuest]="canTeamHaveGuest" [playersToExclude]="team.player"
+                       (selectPlayer)="addPlayerToTeam($event)"></player-selector>
+      <div class="players-ctn">
+        <div *ngFor="let player of team.player; index as playerIndex" class="player-row">
+          <div class="player-ctn">
+            <avatar [picture]="player.user.picture" [size]="50"></avatar>
+            <div class="player-details">
+              <span class="player-nickname">{{ player.user.nickname }}</span>
+              <span>{{ player.user.firstname }}  {{ player.user.lastname }}</span>
+              <span *ngIf="player.user.numPhone || player.user.email" class="player-contact"> {{player.user.numPhone}} {{player.user.numPhone && player.user.email ? '-' : ''}} {{player.user.email}}</span>
+            </div>
+            <img class="captain-icon"  [class.not-captain]="player.user._id != team.captain" src="./assets/img/icons/captain-armband.png" (click)="setCaptain(player.user._id)"/>
+          </div>
+          <img class="remove-icon" src="./assets/img/icons/close.png" (click)="removePlayer(playerIndex)"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</gs-modal>
+
+<ng-container *ngIf="isSelectingShirt">
+  <shirt-selector (close)="toggleShirtSelector()" (setTeamShirt)="setTeamShirt($event)"></shirt-selector>
+</ng-container>

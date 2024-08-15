@@ -1,0 +1,30 @@
+@import  "src/app/home/const/variables";;
+#home-community-find{
+  background-color: $dark-black;
+  color: $white;
+  .home-community-h1{
+    display: flex;
+    justify-content: flex-end;
+    @media screen and (max-width:$small-screen) {
+      flex-direction: column;
+    }
+    h1{
+      font-family: $brushwell;
+      font-size: $h1-size;
+      text-align: right;
+      padding-top: 40px;
+      max-width: 900px;
+      padding-right: 50px;
+      margin: 0;
+      @media screen and (max-width: $medium-screen) {
+        font-size: 60px;
+        padding-bottom: 40px;
+      }
+      @media screen and (max-width:$small-screen) {
+        padding-bottom: 0px;
+        font-size: 40px;
+      }
+    }
+  }
+
+}

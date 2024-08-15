@@ -1,0 +1,6 @@
+<div class="icon"><ng-content select="[icon]"></ng-content></div>
+<span class="title"><ng-content select="[title]"></ng-content></span> 
+<div class="additional-item" *ngIf="hasAdditionalItem">
+  <ng-content select="[additional-item]"></ng-content>
+  <ng-content select="[additional-item-reverse]"></ng-content>
+</div>

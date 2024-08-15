@@ -1,0 +1,59 @@
+@import "src/app/shared/const/variables";
+
+time-selector {
+  .time-title {
+    color: $white;
+    font-family: $main-font;
+    font-size: 30px;
+  }
+  .time-ctn {
+    display: flex;
+    color: $white;
+    width: 50%;
+    max-width: 500px;
+    justify-content: space-around;
+    border: 1px solid $orange;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 20px;
+    max-width: 250px;
+    @media (max-width:$break-sm) {
+      width: 90%;
+    }
+    .time-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 40px;
+      .time{
+        padding: 10px;
+        border: 1px solid $orange;
+        border-radius: 12px;
+      }
+      .time-arrow {
+        width: 15px;
+        padding: 10px;
+        &.reversed{
+          transform: rotate(180deg);
+        }
+      }
+
+      .ampm-btn {
+        border: none;
+        border-radius: 5px;
+        color: $white;
+        font-family: $main-font;
+        font-size: 25px;
+        transition-duration: 0.3s;
+        background: none;
+        margin: 10px 0px;
+        &.selected{
+          color: $dark-black;
+          background-color: $white;
+          transition-duration: 0.3s;
+        }
+      }
+    }
+  }
+}

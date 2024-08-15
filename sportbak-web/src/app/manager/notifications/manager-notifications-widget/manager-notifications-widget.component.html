@@ -1,0 +1,11 @@
+<div id="widget" *ngIf="notification" [class.unread]="!notification.openedAt">
+  <div id="header">
+    <img [src]="notification | notificationIcon" alt="icon">
+    <div id="sport" *ngIf="hasSpecificSportType">{{getTranslation(notification.sport)}}</div>
+  </div>
+  <div id="content">
+    <div id="title">{{ notification.title }}</div>
+    <div id="message">{{ notification.message }}</div>
+    <div id="dateAgo">{{ notification.createdAt | dateAgo }}</div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+@import "src/app/shared/const/variables";
+
+menu-section {
+  .menu-section {
+    display: flex;
+    align-items: center;
+    font-family: $secondary-font;
+    color: $white;
+    margin: 10px 5px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+
+    @media (max-width:$break-sm) {
+      font-size: 25px;
+    }
+    .section-title {
+      text-transform: uppercase;
+    }
+
+    &:hover {
+      color: $orange;
+      transition-duration: 0.2s;
+    }
+
+    img {
+      height: 5px;
+      margin-left: 10px;
+      transform: rotate(-90deg);
+      transition-duration: 0.2s;
+
+      &.open {
+        transform: rotate(0deg);
+        transition-duration: 0.2s;
+      }
+    }
+  }
+}

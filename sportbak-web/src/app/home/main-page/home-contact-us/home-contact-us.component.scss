@@ -1,0 +1,181 @@
+@import  "src/app/home/const/variables";;
+#home-contact-us {
+  background-color: $dark-black;
+  color: $white;
+  font-family: $secondary-font;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  .home-contact-us-ctn {
+    width: 70%;
+    border-radius: 21px;
+    background-color: $dark-grey;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    @media screen and (max-width: $small-screen) {
+      background-color: $dark-black;
+      .contact-us-left {
+        display: none;
+      }
+    }
+    iframe {
+      margin-bottom: 40px;
+      border-radius: 10px;
+    }
+    p {
+      font-size: 22px;
+      @media screen and (max-width: $small-screen) {
+        font-size: 20px;
+      }
+    }
+    h2 {
+      font-size: 40px;
+      font-weight: bold;
+      @media screen and (max-width: $small-screen) {
+        font-size: 28px;
+      }
+    }
+    .contact-p-mail {
+      margin-top: 40px;
+      margin-bottom: 5px;
+      margin-left: 40px;
+      padding-bottom: 40px;
+      span {
+        display: block;
+      }
+    }
+    .line {
+      width: 100%;
+      height: 2px;
+      background-color: $white;
+    }
+    .contact-social {
+      padding-top: 10px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .contact-us {
+      width: 80%;
+      margin-bottom: 20px;
+      padding-right: 30px;
+      @media screen and (max-width: $small-screen) {
+        background-color: none;
+        padding: 0;
+        width: 100%;
+      }
+      label {
+        display: block;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin: 0;
+        @media screen and (max-width: $small-screen) {
+          display: none;
+        }
+      }
+      input {
+        width: 100%;
+        height: 43px;
+        border-radius: 100px;
+      }
+      input,
+      textarea {
+        color: black;
+        text-transform: none;
+        font-weight: bold;
+        padding-left: 10px;
+        border: initial;
+        &::placeholder {
+          color: $grey;
+          font-family: $secondary-font;
+          padding-left: 10px;
+          font-weight: bold;
+        }
+        &:focus {
+          outline: none;
+          border: 4px $orange solid !important; 
+        }
+      }
+      textarea {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        &::placeholder{
+          padding-top: 5px;
+        }
+      }
+      button {
+        float: right;
+        border: none;
+        width: 200px;
+        background: $orange;
+        border-radius: 100px;
+        font-family: Proxima Nova;
+        font-size: 18px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        color: $white;
+        &:hover {
+          background-color: $orange-hover;
+        }
+        &:focus{
+          outline: none;
+        }
+      }
+      .form-group {
+        .error-input{
+          border: 3px #C0392B solid;
+        }
+        .message-box{
+          width: 100%;
+          border-radius: 3px;
+          color: white;
+          text-align: left;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          p{
+            margin: 0;
+            font-size: 16px;
+            padding-left: 30px;
+            @media screen and (max-width: $small-screen) {
+              padding-left: 10px;
+            }
+          }
+          img{
+            width: 50px;
+            object-fit: contain;
+
+          }
+        }
+        button{
+          font-family: $secondary-font;
+        }
+        .success{
+          background-color: $success;
+        }
+        .error{
+          background-color: $error;
+        }
+
+        @media screen and (max-width: $small-screen) {
+          div {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            text-align: center;
+          }
+          .form-btn {
+            display: flex;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}

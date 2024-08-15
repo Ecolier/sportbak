@@ -1,0 +1,115 @@
+<div class="create-support" (click)="showPoolEditor()">
+  <div [ngClass]="currentStep && currentStep < 0 ? 'tournament-action-create selected' : 'tournament-action-create'">
+    <button *ngIf="currentStep && currentStep < 0" class="settings"><i class="las la-cog"></i></button>
+    <img class="img-tournament" src="./assets/img/icons/pools.png" alt="">
+    <p>{{getTranslation('set_up')}}</p>
+  </div>
+</div>
+<div *ngIf="isShowingPoolEditor" class="tournament-creator-modal-ctn">
+  <div class="tournament-creator-modal-content">
+    <img (click)="closePoolEditor()" class="close-cross" src="./assets/img/icons/close.png" alt="close">
+    <h1 class="config-title">{{getTranslation('config_title')}}</h1>
+    <div [ngClass]="!isCompCreated? 'settings-ctn':'settings-ctn comp-created'">
+
+      <div class="config-ctn">
+        <div class="input-ctn pts-config-ctn">
+          <div class="pts-config">
+            <div class="input-title-ctn">
+              <span class="light-text input-title">{{ getTranslation('victory') }}</span>
+              <info-label [infoText]="getTranslation('info_victory')"></info-label>
+            </div>
+            <manager-input [type]="'number'" [value]="victoryPoints" [class]="'centered small'" (onChange)="setVictoryPoints.emit($event)"></manager-input>
+          </div>
+          <div class="pts-config">
+            <div class="input-title-ctn">
+              <span class="light-text input-title">{{ getTranslation('draw') }}</span>
+              <info-label [infoText]="getTranslation('info_draw')"></info-label>
+            </div>
+            <manager-input [type]="'number'" [value]="drawPoints" [class]="'centered small'" (onChange)="setDrawPoints.emit($event)"></manager-input>
+          </div>
+          <div class="pts-config">
+            <div class="input-title-ctn">
+              <span class="light-text input-title">{{ getTranslation('defeat') }}</span>
+              <info-label [infoText]="getTranslation('info_loss')" [isFromLeft]="true"></info-label>
+            </div>
+            <manager-input [type]="'number'" [value]="lossPoints" [class]="'centered small'" (onChange)="setLossPoints.emit($event)"></manager-input>
+          </div>
+        </div>
+        <div *ngIf="!tournament || tournament.state != 'created'" class="input-ctn ">
+          <div class="input-title-ctn">
+            <span class="light-text input-title">{{ getTranslation('confrontations') }}</span>
+            <info-label [infoText]="getTranslation('info_confrontations')"></info-label>
+          </div>
+          <select class="full-input" name="confrontations" [(ngModel)]="selectedConfrontations"
+            (ngModelChange)="updateConfrontations($event)">
+            <option *ngFor="let confrontationNb of confrontationsOptions ; index as cIndex" [value]="confrontationNb"
+              [selected]="confrontationNb == selectedConfrontations">{{ confrontationNb }}
+              <ng-container *ngIf="cIndex == 0" >
+                {{ getTranslation('confrontation') }}
+              </ng-container>
+              <ng-container *ngIf="cIndex > 0" >
+                {{ getTranslation('confrontations') }}
+              </ng-container>
+            </option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="!isCompCreated" class="pool-maker-ctn">
+        <div class="tournament-creator-teams-ctn">
+          <div class="title-centered team">
+            <span *ngIf="selectedTeamIndex == undefined" class="select-teams">{{getTranslation('select_teams')}}</span>
+             <p *ngIf="selectedTeamIndex != undefined" class="select-teams deselect">{{getTranslation('deselect_1')}} <span>{{getTranslation('deselect_escape')}}</span>{{getTranslation('deselect_2')}}</p>
+          </div>
+          <div class="select-teams-ctn">
+            <ng-container *ngFor="let tournamentTeam of teams; index as teamIndex">
+              <div *ngIf="tournamentTeam.poolName.length < 1" class="team" [class.selected]="selectedTeamIndex == teamIndex"
+              (click)="setSelectedTeam(teamIndex)">
+                <img [src]="tournamentTeam.team.getShirt()"  alt="shirt"/>
+                <span>{{ tournamentTeam.team.name }}</span>
+              </div>
+            </ng-container>
+            <p class="need-complete" *ngIf="teams.length == 0">{{getTranslation('need_teams')}}</p>
+          </div>
+        </div>
+        <div class="pools-ctn">
+          <div class="title-centered">
+            <span class="light-text input-title pools-title">{{getTranslation('pools')}}</span>
+            <div class="pools-actions">
+              <img class="add-pool-btn" (click)="addPool()" src="./assets/img/icons/plus-outline.svg"/>
+              <button sbk-btn class="small outline" (click)="randomFill()">{{getTranslation('fill_auto')}}</button>
+              <button sbk-btn class="small outline" (click)="clearPools()">{{getTranslation('empty')}}</button>
+            </div>
+          </div>
+          <div class="pools">
+            <div *ngFor="let pool of pools; index as poolIndex" class="pool" (click)="addTeamToPool(poolIndex)">
+              <div class="pool-title">
+                <span class="pool-name">{{ pool.name }}</span>
+                <img src="./assets/img/icons/close.png" (click)="removePool(poolIndex)" />
+              </div>
+              <ng-container *ngFor="let tournamentTeam of teams">
+                <div *ngIf="tournamentTeam.poolName == pool.name" class="pool-team">
+                  <div class="team-name">
+                    <img [src]="tournamentTeam.team.getShirt()" />
+                    <span>{{tournamentTeam.team.name}}</span>
+                  </div>
+                  <img class="remove-img" src="./assets/img/icons/close.png"
+                  (click)="removeTeamFromPool(poolIndex,tournamentTeam)" />
+                </div>
+              </ng-container>
+              <div class="pool-add-info" [class.hidden]="selectedTeamIndex == undefined" >
+                <span class="text">{{ getTranslation('add_to_pool')}}</span>
+              </div>
+            </div>
+            <div (click)="addPool()"  class="pool pool-adding">
+              <p>{{getTranslation('add_pool')}}</p>
+              <img class="pool-adding-btn" src="./assets/img/icons/plus-outline.svg"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="validate-btn-support">
+        <button sbk-btn class="medium round" (click)="hidePoolEditor()">{{getTranslation('validate')}}</button>
+      </div>
+    </div>
+  </div>
+</div>

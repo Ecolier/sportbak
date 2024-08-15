@@ -1,0 +1,35 @@
+<div class="back" (click)="close.emit()">
+  <img class="back-arrow" src="assets/img/icons/arrow-white.png" alt="return">
+  <div>{{getTranslation('shirt_selection')}}</div>
+</div>
+<div class="inner-shirt-modal">
+  <div class="title">{{getTranslation('default_shirts')}}</div>
+  <div class="shirts-ctn">
+    <spinning-loader *ngIf="!loaded" [hasCtn]="true"></spinning-loader>
+    <img class="custom-shirt-image" *ngFor="let shirt of defaultShirts" [src]="shirtsBaseUrl + shirt"
+         (click)="setTeamShirt.emit(shirt)"/>
+  </div>
+  <div class="title">{{getTranslation('custom_shirts')}}</div>
+  <div class="shirts-ctn" id="shirt-ctn">
+    <spinning-loader *ngIf="!loaded" [hasCtn]="true"></spinning-loader>
+    <div *ngIf="loaded && customShirts.length === 0" class="no-shirt">{{getTranslation('no_custom_shirt')}}</div>
+    <div class="custom-shirt" *ngFor="let shirt of customShirts">
+      <img class="custom-shirt-image" [src]="shirtsBaseUrl + shirt"
+           (click)="setTeamShirt.emit(shirt)"
+           [default]="unknownShirt"/>
+      <div class="delete-custom-shirt" (click)="deleteShirt(shirt)">
+        <img src="assets/img/icons/close.png" alt="delete shirt">
+      </div>
+    </div>
+  </div>
+  <div class="shirt-adder">
+    <span class="add-shirt-title">{{getTranslation('add_shirt')}}</span>
+    <label for="shirt" class="custom-file-upload">
+      <img src="assets/img/gs/plus.png" alt="{{getTranslation('add_shirt')}}">
+    </label>
+    <input type="file"
+           id="shirt" name="shirt"
+           accept="image/png, image/jpeg"
+           (change)="addShirt($event)"/>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<ng-template #home>
+  <router-outlet></router-outlet>
+</ng-template>
+
+<main>
+  <ng-container *ngIf="manager; else home">
+    <manager-menu *ngIf="isManagerMenuVisible" ></manager-menu>
+    <manager-page-container>
+      <router-outlet></router-outlet>
+    </manager-page-container>
+  </ng-container>
+</main>

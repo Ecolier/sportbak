@@ -1,0 +1,42 @@
+<div class="confrontations-ranking-ctn animated-table-left">
+  <div class="support-tables">
+    <div *ngFor="let template of templates; let part = index" class="table" [ngStyle]="{'width': template.width}" [ngClass]="{'scrollable': template.scrollable, 'right-gradient': !scrollingMaximum}" (scroll)="template.scrollable ? onScroll($event) : null;">
+      <table class="table-header" [ngStyle]="{'width': template.tableWidth}">
+        <tr>
+          <td *ngFor="let column of template.columns; let i = index" [ngStyle]="column.styles.header">
+            <futbak-label-autoadjust *ngIf="!column.icon_src"
+              [ngClass]="['header-column' + (partIndexSelected == part && headerIndexSelected == i ? '-selected' : '')]" [fontSize]="titleFontSize"
+              [minFontSizeAutoAdjust]="12" [text]="column.title" (click)="headerColumnClicked(part, i)"></futbak-label-autoadjust>
+            <img *ngIf="column.icon_src" src="{{column.icon_src}}" class="column-icon" (click)="headerColumnClicked(part, i)"/>
+          </td>
+        </tr>
+      </table>
+    
+      <table *ngIf="teamsObj" class="table-content" [ngStyle]="{'width': template.tableWidth}">
+        <tr *ngFor="let team of teamsObj; let ri = index" [ngClass]="{'my-team' : team.isMyTeam}">
+          <td *ngFor="let column of template.columns; let ci = index" [ngStyle]="column.styles.value">
+            <div *ngIf="column.key == 'team'; else isSerie" class="div-name" [ngStyle]="{'max-height': rowContentHeight + 'px'}" (click)="teamClicked(team)">
+              <div  class="column-shirt" [ngStyle]="{'max-height': rowContentHeight + 'px'}">
+                <img class="maillottab" [src]="team.shirt ? staticShirtUrl + team.shirt : unknownShirtUrl">
+              </div>
+              <div class="column-name" [ngStyle]="{'max-height': rowContentHeight + 'px'}">
+                <div class="name-value" [ngStyle]="nameStyle">{{ team.name }}</div>
+              </div>
+            </div>
+            <ng-template #isSerie>
+              <div *ngIf="column.key == 'serie'; else normalValue" class="div-icons-match">
+                <img *ngFor="let match of team.lastresults" class="icon-match" 
+                [ngStyle]="{'max-height': (rowContentHeight-10) + 'px'}"
+                [src]="(match == 1 ? assestsPath.win : (match == 0 ? assestsPath.draw : assestsPath.lose))">
+              </div>
+            </ng-template>
+            <ng-template #normalValue>
+              <label class="normal-value" [class.special-text]="column.key == 'points'"
+                [ngStyle]=" column.key == 'points' ? styles['points'] : styles['normal']">{{ getValue(team, column.key) }}</label>
+            </ng-template>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

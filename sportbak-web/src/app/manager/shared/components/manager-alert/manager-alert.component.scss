@@ -1,0 +1,24 @@
+manager-alert {
+  .manager-alert-ctn {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    background-color: #05924C;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0px;
+    z-index: 600;
+    &.failure {
+      background-color: #e74c3c;
+    }
+
+    .message {
+      color: #ecf0f1;
+      text-align: center;
+      font-family: "BigNoodleTitling";
+      font-size: 28px;
+      width: 100%;
+    }
+  }
+}

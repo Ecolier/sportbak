@@ -1,0 +1,50 @@
+@import "src/app/shared/const/variables";
+calendar-tournament {
+  width: 100%;
+  .game-phase {
+    color: $extra-light-grey;
+    font-family: $secondary-font;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-transform: uppercase;
+  }
+  .pool-name {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: $extra-light-grey;
+    font-family: $secondary-font;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  .calendar-tournament {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: $secondary-font;
+    color: $extra-light-grey;
+    transition-duration: 0.2s;
+    &:hover {
+      color: $orange;
+      transition-duration: 0.2s;
+    }
+
+    img {
+      transform: rotate(-90deg);
+      height: 5px;
+      margin-left: 10px;
+      transition-duration: 0.2s;
+
+      &.open {
+        transform: rotate(0deg);
+        transition-duration: 0.2s;
+      }
+    }
+  }
+}

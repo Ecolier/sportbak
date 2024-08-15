@@ -1,0 +1,106 @@
+@import "src/app/shared/const/variables";
+
+gs-modal {
+  .modal-ctn {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    z-index: $z-index-modal;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    background-color: $light-black;
+    background-image: url("/assets/img/game-sheet-background.jpg");
+    background-position: center;
+
+    .modal {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 75%;
+      max-width: 1000px;
+      position: relative;
+
+      @media (max-width: $break-sm) {
+        justify-content: space-between;
+      }
+
+      @media (max-width: $break-md) {
+        width: 75%;
+      }
+
+      @media (max-width: $break-sm) {
+        width: 85%;
+      }
+
+      @media (max-width: $break-xs) {
+        width: 100%;
+      }
+    }
+
+  }
+
+  .modal-title-ctn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    .back-arrow {
+      height: 40px;
+    }
+
+    .modal-title {
+      color: $white;
+      font-size: 25px;
+      font-family: $main-font;
+      margin-left: 20px;
+    }
+  }
+
+  .btns-ctn {
+    display: flex;
+    justify-content: space-evenly;
+
+    .modal-action-btn {
+      width: 40%;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+
+      img {
+        height: 40px;
+        width: 40px;
+      }
+
+      &.validate {
+        background-color: $green;
+        border-bottom: 8px solid $dark-green;
+        transition-duration: 0.2s;
+
+        &.is-clicked {
+          transform: scale(0.95) translateY(4px);
+          background-color: $dark-green;
+          transition-duration: 0.2s;
+        }
+      }
+
+      &.cancel {
+        background-color: $red;
+        border-bottom: 8px solid $dark-red;
+        transition-duration: 0.2s;
+
+        &.is-clicked {
+          transform: scale(0.95) translateY(4px);
+          background-color: $dark-red;
+          transition-duration: 0.2s;
+        }
+      }
+
+      &.full {
+        width: 100%;
+      }
+    }
+
+  }
+}

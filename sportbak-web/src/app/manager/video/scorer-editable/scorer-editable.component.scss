@@ -1,0 +1,63 @@
+:host {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  position: relative;
+  flex: 1;
+}
+
+.edit-btn {
+
+  & .background {
+    transition: background-color .2s;
+    background-color: rgba(255, 255, 255, .06);
+    position: absolute;
+    border-radius: 100%;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, .12);
+    }
+  }
+
+  margin-right: 8px;
+  font-size: 18px;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.team-name {
+  margin-bottom: 8px;
+}
+
+.team-score {
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+input[type="text"] {
+  background: transparent;
+  border: none;
+  text-align: center;
+  padding: 0 !important;
+  color: white;
+  width: 100%;
+
+  &:focus::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  &::placeholder {
+    color: white;
+  }
+}
+
+.team-ctn {
+  position: relative;
+  padding: 8px;
+}

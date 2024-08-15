@@ -1,0 +1,34 @@
+@import 'src/layout.scss';
+@import 'src/typography.scss';
+
+:host {
+  display: flex;
+  flex: 1;
+}
+
+.select-label {
+  font-size: $font-size-md;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--theme-text-primary);
+
+  i { margin-right: $spacing-sm; }
+}
+
+.select-fields {
+  margin: $spacing-md 0;
+}
+
+:host {
+  display: flex;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+}
+
+select option { background: none; }

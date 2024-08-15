@@ -1,0 +1,10 @@
+<div *ngIf="game.status != 'fin' && game.status != 'stop' && game.status != 'error' && game.status != 'complete'"
+  class="game-row" (click)="selectGame(game)">
+  <div class="team-ctn">
+    <span class="team-name">{{ game.teams[0].title }}</span>
+  </div>
+  <img class="vs-icon" src="./assets/img/icons/team-versus.png" />
+  <div class="team-ctn reversed">
+    <span class="team-name">{{game.teams[1].title}}</span>
+  </div>
+</div>

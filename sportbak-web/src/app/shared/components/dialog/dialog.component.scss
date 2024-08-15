@@ -1,0 +1,46 @@
+@import 'src/app/shared/const/variables.scss';
+
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: $z-index-modal;
+  display: flex;
+  
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+
+.content {
+  background-color: white;
+}
+
+.modal-window {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 3pt;
+    box-shadow: 0 19px 38px rgb(0 0 0 / 30%), 0 15px 12px rgb(0 0 0 / 22%);
+    flex: 1;
+    margin: auto 12px;
+}
+
+.header {
+  color: black;
+  font-size: 2em;
+}
+
+@media screen and (min-width: $break-sm) {
+  .modal-window {
+    margin: auto;
+    width: $break-sm;
+    flex: none;
+  }
+}

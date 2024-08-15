@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  video:
+    build: .
+    command: webservice
+    volumes: 
+      - .:/code
+      - ./media:/media
+    environment: 
+      PYTHONUNBUFFERED: 1
+      CAMERA_URL: rtsp://emulator:8554/streaming/channels/101
+      OPENSSL_CONF: ''
+      DEFAULT_ENCODER : vaapi
+      CAMERA_USER: TO_DEFINED
+      CAMERA_PWD: TO_DEFINED
+    ports:
+      - 9000:9000
+    networks:
+      - sportbak      
+    cap_add:
+      - ALL
+  emulator:
+    build: .
+    command: emulator
+    volumes:
+      - .:/code
+    networks:
+      - sportbak
+networks: 
+  sportbak: 
+    external: true

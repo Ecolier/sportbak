@@ -1,0 +1,18 @@
+<player-controls 
+  *ngIf="isFullscreen" 
+  [title]="stream.name" 
+  [ngClass]="controlsVisible ? 'active' : ''">
+</player-controls>
+<div *ngIf="isFullscreen" class="live-indicator">
+  <span i18n>Live</span>
+</div>
+<video [srcObject]="srcObject" playsinline autoplay muted loop>
+</video>
+<div class="fullscreen-prompt" 
+  [ngClass]="isFullscreenPromptVisible ? 'active' : ''"
+  (click)="goToFullscreenMode()">
+  <span class="material-icons-outlined">
+    fullscreen
+  </span>
+  <span i18n>Fullscreen</span>
+</div>

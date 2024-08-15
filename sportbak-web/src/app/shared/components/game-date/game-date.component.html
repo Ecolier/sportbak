@@ -1,0 +1,6 @@
+<div class="game-date">
+  <ng-container *ngIf="isDateSet" >{{ date }}</ng-container>
+  <div *ngIf="!isDateSet" class="no-date-ctn">
+    <button sbk-btn class="round outline">{{date}}</button>
+  </div>
+</div>

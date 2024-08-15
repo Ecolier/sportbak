@@ -1,0 +1,16 @@
+<section class="complex-info">
+      <div class="info-ctn">
+        <div class="complex-image">
+          <img *ngIf="image && myComplex" id="complex-image" [src]="image + myComplex.image">
+        </div>
+        <div class="complex-details">
+          <div *ngIf="myComplex" class="details-ctn">
+            <p class="complex-name">{{myComplex.name}} :</p>
+            <address ><i class="las la-map-marked-alt"></i><span> {{myComplex.address.street}} </span>
+              <span>{{myComplex.address.zipcode}} {{myComplex.address.city}} </span></address>
+            <address><i class="las la-phone"></i> {{myComplex.phone}}</address>
+            <social-panel [facebookLink]="myComplex.socialNetwork.facebook" [linkedinLink]="myComplex.socialNetwork.linkedin" [twitterLink]="myComplex.socialNetwork.twitter" [instagramLink]="myComplex.socialNetwork.instagram" [websiteLink]="myComplex.socialNetwork.website"></social-panel>
+          </div>
+        </div>
+      </div>
+</section>

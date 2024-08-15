@@ -1,0 +1,22 @@
+<div class="nb-res">
+  <div class="chart-support">
+    <bar-chart [barChartData]="chartData" [barChartLabels]="chartLabels" [barChartColors]="chartColors"
+               [barChartTitle]="chartTitle" [barChartOptions]="chartOptions"></bar-chart>
+    <div *ngIf="!hasBookings" class="no-data">
+      <span>{{getTranslation("no-data-available")}}</span>
+    </div>
+  </div>
+  <div class="buttons">
+    <div class="button-support">
+      <toggle-button [leftText]="getTranslation('complex')"
+                     [rightText]="getTranslation('fields')"
+                     [color]="'rgba( 255, 156, 0, 1)'"
+                     (click)="changeView()">
+      </toggle-button>
+    </div>
+    <select [(ngModel)]="sizeInterval" (ngModelChange)="emitInterval()">
+      <option [value]="interval.value" *ngFor="let interval of possibleIntervals">{{getTranslation(interval.name)}}</option>
+    </select>
+  </div>
+</div>
+

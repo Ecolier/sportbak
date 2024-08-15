@@ -1,0 +1,59 @@
+@import "src/app/shared/const/variables";
+
+calendar-league {
+  width: 100%;
+  .calendar-league {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: $secondary-font;
+    color: $extra-light-grey;
+    transition-duration: 0.2s;
+
+    @media (max-width: $break-md){
+      margin: 15px 0;
+    }
+
+    &:hover {
+      color: $orange;
+      transition-duration: 0.2s;
+    }
+
+    img {
+      transform: rotate(-90deg);
+      height: 5px;
+      margin-left: 10px;
+      transition-duration: 0.2s;
+
+      &.open {
+        transform: rotate(0deg);
+        transition-duration: 0.2s;
+      }
+    }
+  }
+
+  .games-ctn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    .game-phase {
+      color: $extra-light-grey;
+      font-family: $secondary-font;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .no-games {
+      font-size: 12px;
+      color: $white;
+      margin-bottom: 10px;
+    }
+  }
+}

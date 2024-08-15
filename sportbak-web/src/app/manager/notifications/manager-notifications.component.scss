@@ -1,0 +1,43 @@
+@import "src/app/shared/const/variables";
+
+:host {
+  flex: 1;
+
+  .manager-content {
+    display: flex;
+    justify-content: center;
+
+    .notif-loader {
+    }
+
+    #notif-holder {
+      width: 100%;
+
+      .no-notif {
+        font-family: $secondary-font;
+        color: $white;
+        width: 100%;
+        text-align: center;
+        font-size: 20px;
+      }
+
+      #load_more {
+        font-family: $secondary-font;
+        color: $white;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+
+        &:hover {
+          color: $light-grey;
+        }
+      }
+
+      #moreLoader {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}

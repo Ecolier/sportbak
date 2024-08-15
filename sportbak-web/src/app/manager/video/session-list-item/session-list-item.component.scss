@@ -1,0 +1,138 @@
+@import "src/app/shared/const/variables.scss";
+
+:host {
+  flex: 1;
+  color: white;
+  position: relative;
+  display: flex;
+}
+
+:host([status="enabled"]) {
+  flex-direction: column;
+
+  .field-manager__title {
+    justify-content: space-between;
+  }
+}
+
+:host([status="disabled"]),
+:host([status="unequipped"]) {
+  flex-direction: row;
+  align-items: center;
+
+  &.card {
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0px 3px 6px rgb(0 0 0 / 12%);
+    border-radius: 4px;
+
+    .status-description {
+      border-bottom: none;
+    }
+  }
+}
+
+.field-manager__title {
+  color: white;
+  font-size: 21px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.live-pill {
+  margin-left: 8px;
+  padding: 8px 12px;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 1);
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: .2s background-color, .2s color;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+.field-status {
+  display: flex;
+  align-items: center;
+}
+
+.status-icon {
+  padding: 16px;
+  margin-right: 16px;
+  background-color: $red;
+  border-radius: 100%;
+  height: 64px;
+  width: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.warning {
+    background-color: $orange;
+  }
+}
+
+.contact-us {
+  color: white;
+}
+
+.status-description {
+  flex: 1;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+  color: rgba(255, 255, 255, 0.75);
+  display: flex;
+}
+
+.status-action {
+  align-self: center;
+}
+
+.status-content {
+  flex-grow: 1;
+}
+
+.support-webrtc {
+  position : relative;
+}
+
+video {
+  background: black;
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.webrtc-connection {
+  position: absolute;
+  top : 50%;
+  left : 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  color : white;
+}
+
+@keyframes connecting {
+  0% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 0.8;
+  }
+  66% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.webrtc-connection {
+  animation: connecting 2s linear infinite alternate;
+}

@@ -1,0 +1,11 @@
+<div class="manager-content">
+  <spinning-loader *ngIf="!isLoaded" [isMedium]="true" class="notif-loader"></spinning-loader>
+  <div *ngIf="isLoaded" id="notif-holder">
+    <div *ngIf="!hasNotif" class="no-notif">{{getTranslation('no_notif')}}</div>
+    <manager-notifications-widget *ngFor="let notification of notifications" [notification]="notification" (click)="openNotification($event, notification)"></manager-notifications-widget>
+    <div id="load_more" *ngIf="hasMore && !isLoadingMore" (click)="getMoreNotifications()">{{getTranslation('load_more')}}</div>
+    <div id="moreLoader" *ngIf="isLoadingMore">
+      <spinning-loader></spinning-loader>
+    </div>
+  </div>
+</div>

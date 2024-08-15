@@ -1,0 +1,85 @@
+<div class="gs-teams-ctn" >
+  <p class="teams-info"> {{ day }} . {{ month }} . {{ date.getFullYear() }}</p>
+  <div (click)="toggleTeamPlayers()" class="teams-ctn">
+    <div [class]="game && !game.startedAt ? 'team-name-ctn' : 'team-name-ctn start'">
+      <p class="team-name">{{game ? game.teams[0].title : '' }}</p>
+    </div>
+    <div [class]="game && !game.startedAt ? 'vs-ctn' : 'vs-ctn start'">
+      <p class="vs">vs</p>
+    </div>
+    <div [class]="game && !game.startedAt ? 'team-name-ctn reversed' : 'team-name-ctn reversed start'">
+      <p class="team-name reversed">{{game ? game.teams[1].title : '' }}</p>
+    </div>
+  </div>
+  <div (click)="toggleTeamPlayers()" class="sub-team-info">
+    <div class="team-ctn" *ngIf="game && game.teams[0]">
+      <avatar *ngFor="let player of game.teams[0].players" [picture]="player.user.picture" [size]="30"></avatar>
+      <img class="add-btn" src="./assets/img/icons/add-btn.png">
+    </div>
+    <p class="teams-info"> {{ complex ? complex.name : ''}}</p>
+    <div class="team-ctn right" *ngIf="game && game.teams[1]">
+      <img class="add-btn" src="./assets/img/icons/add-btn.png">
+      <avatar *ngFor="let player of game.teams[1].players" [picture]="player.user.picture" [size]="30"></avatar>
+    </div>
+  </div>
+  <div *ngIf="game.isGameFinished()" class="game-status">
+      <p>
+        {{ getTranslation('game_is_over') }}
+      </p>
+  </div>
+</div>
+
+<gs-modal *ngIf="isTeamPlayersOn" [title]="'PLAYER SELECTION'" (onValidate)="toggleTeamPlayers()"
+  (onCancel)="toggleTeamPlayers()">
+  <div class="team-names-ctn">
+    <p class="team-title first">{{ game && game.teams[0] ? game.teams[0].title : 'Team 1'}}</p>
+    <div class="title-separator"></div>
+    <p class="team-title">{{ game && game.teams[1] ? game.teams[1].title : 'Team 2'}}</p>
+  </div>
+  <div class="players-ctn">
+    <div class="team-players-ctn" *ngIf="game && game.teams[0]">
+      <div *ngFor="let player of game.teams[0].players" class="player-row">
+        <img class="player-img"
+          [src]=" player.user.picture ? 'https://api.futbak.com/static/images/users/' + player.user.picture : 'https://api.futbak.com/static/images/users/logoGuestFull.png'" />
+        <div class="player-details">
+          <span class="player-nickname">{{ player.user.nickname }}</span>
+          <span class="player-name">{{ player.user.firstname }} {{ player.user.lastname }}</span>
+          <span *ngIf="player.user.numPhone || player.user.email" class="player-contact"> {{player.user.numPhone}}
+            {{player.user.numPhone && player.user.email ? '-' : ''}} {{player.user.email}}</span>
+        </div>
+        <img class="remove-player" src="./assets/img/icons/close.png"
+          (click)="removePlayerFromTeam(0, player.user._id)" />
+      </div>
+      <button *ngIf="!(game.status == 'complete' && game.devicesFutbakIsUsed)" class="add-player-btn"
+        (click)="displayPlayerSelector(0)">
+        <img src="./assets/img/icons/add-btn.png" />
+        <span>{{ getTranslation('add_player') }}</span>
+      </button>
+    </div>
+    <div class="separator"></div>
+    <div class="team-players-ctn" *ngIf="game && game.teams[1]">
+      <div *ngFor="let player of game.teams[1].players" class="player-row">
+        <img class="player-img"
+          [src]=" player.user.picture ? 'https://api.futbak.com/static/images/users/' + player.user.picture : 'https://api.futbak.com/static/images/users/logoGuestFull.png'" />
+        <div class="player-details">
+          <span class="player-nickname">{{ player.user.nickname }}</span>
+          <span class="player-name">{{ player.user.firstname }} {{ player.user.lastname }}</span>
+          <span *ngIf="player.user.numPhone || player.user.email" class="player-contact"> {{player.user.numPhone}}
+            {{player.user.numPhone && player.user.email ? '-' : ''}} {{player.user.email}}</span>
+        </div>
+        <img class="remove-player" src="./assets/img/icons/close.png"
+          (click)="removePlayerFromTeam(1, player.user._id)" />
+      </div>
+      <button *ngIf="!(game.status == 'complete' && game.devicesFutbakIsUsed)" class="add-player-btn"
+        (click)="displayPlayerSelector(1)">
+        <img src="./assets/img/icons/add-btn.png" />
+        <span>{{ getTranslation('add_player') }}</span>
+      </button>
+    </div>
+  </div>
+</gs-modal>
+
+<gs-modal *ngIf="isPlayerSelectorOn" class="player-selector-modal" [title]="getTranslation('player_selector')"  (onValidate)="togglePlayerSelector()">
+  <player-selector [playersToExclude]="game.teams[teamToAddPlayersTo].players" (selectPlayer)="addPlayerToTeam($event)">
+  </player-selector>
+</gs-modal>

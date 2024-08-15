@@ -1,0 +1,13 @@
+<live 
+  *ngFor="let stream of streams"
+  [srcObject]="srcObjects[stream.id]"
+  (click)="promptForFullscreen(stream.id)">
+</live>
+<a class="menu-button"
+  [routerLink]="['/menu']"
+  [ngClass]="isOverlayModeEnabled ? 'active' : ''">
+  <span class="material-icons-outlined button__icon">
+    menu
+  </span>
+  Menu
+</a>

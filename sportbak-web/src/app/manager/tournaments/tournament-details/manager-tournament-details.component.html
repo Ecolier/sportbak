@@ -1,0 +1,33 @@
+<div class="tournament-details-ctn" id="tournament-details">
+  <spinning-loader *ngIf="!hasLoaded" [isMedium]="true" [hasCtn]="true"></spinning-loader>
+  <div *ngIf="hasLoaded">
+    <div class="tournament-title-ctn">
+      <img class="back-btn" src="./assets/img/icons/arrow-white.png" (click)="redirectToTournaments()"/>
+      <h1 class="tournament-name">{{ tournament? tournament.name : ''}}</h1>
+    </div>
+    <futbak-nav-bar *ngIf="(tournament && tournament.is_pool) || tournament.arePoolsFinished" class="tournament-tabs" [selectedTab]="tabSelected" [tabs]="[getTranslation('ranking'), getTranslation('playoffs'), getTranslation('settings')]" linkId="tournament" (tabClicked)="tabClicked($event)">
+    </futbak-nav-bar>
+    <futbak-nav-bar *ngIf="tournament && !tournament.is_pool && !tournament.arePoolsFinished" class="tournament-tabs" [selectedTab]="tabSelected" [tabs]="[getTranslation('playoffs'), getTranslation('settings')]" linkId="tournament" (tabClicked)="tabClicked($event)">
+    </futbak-nav-bar>
+
+    <div *ngIf="tournament.pool && tournament.pool.length > 0">
+      <div *ngIf="tabSelected == 0">
+        <manager-tournament-ranking [tournament]="tournament"></manager-tournament-ranking>
+      </div>
+      <div *ngIf="tabSelected == 1">
+        <futbak-competitions-playoffs [tournament]="tournament" (clickOnGame)="gameClicked($event)"></futbak-competitions-playoffs>
+      </div>
+        <div *ngIf="tabSelected == 2">
+        <tournament-settings [tournament]="tournament" (updateTournament)="updateTournament($event)" ></tournament-settings>
+      </div>
+    </div>
+  
+    <div *ngIf="!tournament.pool || tournament.pool.length == 0">
+      <div *ngIf="tabSelected == 0">
+        <futbak-competitions-playoffs [tournament]="tournament" (clickOnGame)="gameClicked($event)"></futbak-competitions-playoffs>
+      </div> 
+        <div *ngIf="tabSelected == 1">
+        <tournament-settings [tournament]="tournament" (updateTournament)="updateTournament($event)"></tournament-settings>
+      </div>
+    </div>
+</div>

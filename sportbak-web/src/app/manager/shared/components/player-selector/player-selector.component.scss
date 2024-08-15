@@ -1,0 +1,112 @@
+@import "src/app/shared/const/variables";
+
+player-selector {
+  width: 100%;
+  .player-selector-ctn {
+    width: 100%;
+    .input-ctn {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      margin: 10px 0;
+      align-items: flex-end;
+     
+      input {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid $orange;
+        width: 100%;
+        color: $white;
+        font-family: $secondary-font;
+        padding-left: 30px;
+        padding-right: 30px;
+        font-size: 30px;
+        height: 29px;
+        @media (max-width: $break-sm) {
+          width: 80%;
+        }
+      }
+      .close-icon {
+        width: 20px;
+        height: 20px;
+        margin: 3px;
+        transform: translate(-100%, -2px);
+      }
+    }
+
+    .guest-btn-ctn {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .guest-btn {
+        background-color: $orange;
+        border: none;
+        border-bottom: 1px solid $dark-orange;
+        width: 60%;
+        font-family: $main-font;
+        font-size: 25px;
+        text-align: center;
+        padding: 10px;
+        color: #ecf0f1;
+        border-radius: 5px;
+        @media(max-width: 800px){
+          width: 80%;
+        }
+      }
+    }
+    .players-ctn {
+      max-height: 60vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background-color: $dark-grey;
+      &.hidden {
+        display: none;
+      }
+      .player-ctn {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        flex: 0 0 15%;
+        cursor: pointer;
+        background-color: $dark-grey;
+
+        &:hover {
+          background-color: lighten($dark-grey, 10%);
+          border-radius: 5px;
+        }
+
+        .player-details {
+          display: flex;
+          width: 80%;
+          flex-direction: column;
+          font-family: $secondary-font;
+          font-size: 15px;
+          color: #ecf0f1;
+          word-break: break-all;
+          align-items: flex-start;
+
+          .player-nickname {
+            font-family: $main-font;
+            font-size: 25px;
+
+            @media (max-width: $break-sm) {
+              font-size: 19px;
+            }
+          }
+
+          .player-contact {
+            font-style: italic;
+            color: $extra-light-grey;
+          }
+        }
+        avatar {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}

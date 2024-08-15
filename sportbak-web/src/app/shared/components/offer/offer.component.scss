@@ -1,0 +1,137 @@
+@import "src/app/shared/const/variables";
+
+$size: 230px;
+.offer-ctn{
+  width: $size + 1px;
+  position: relative;
+  .offer-title{
+    text-align: center;
+  }
+    ::ng-deep ngx-slick-carousel {
+      .slick-prev, .slick-next {
+        position: absolute;
+        display: block;
+        height: 40px;
+        width: 40px;
+        line-height: 0px;
+        font-size: 0px;
+        cursor: pointer;
+        background: transparent;
+        color: transparent;
+        top: 40%;
+        padding: 0px;
+        border: none;
+        outline: none;
+        z-index: 5;
+        content: '';
+        &::before{
+          font-size: 30px;
+          opacity: 1;
+        }
+      }
+      .slick-next{
+        right: -40px;
+        
+      }
+      .slick-prev{
+        left: -40px;
+      }
+      .slick-dots{
+        position: relative;
+        display: inline;
+        margin: auto;
+        z-index: 5;
+          li {
+            display: none;
+            button {
+              position: absolute;
+              top: 0;
+              left: 0;
+              content: "";
+              background-color: $white;
+              width: 20px;
+              height: 20px;
+              border-radius: 100%;
+              font-size: 0px;
+              line-height: 20px;
+              text-align: center;
+              color: transparent;
+              opacity: 1;
+              &::before{
+                content: "";
+              }
+          }
+        }
+  
+      }
+      .slick-list {
+          .slide {
+            width: $size;
+            height: $size;
+            margin: 20px;
+            background-color: transparent;
+            border: 1px solid $white;
+            border-radius: 10px;
+            overflow: hidden;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
+            color: $white;
+            img{
+              width: $size;
+            }
+            .offer{
+              height: 100%;
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              align-items: center;
+              padding-top: 20px;
+              padding-bottom: 20px;
+              padding-right: 5px;
+              padding-left: 10px;
+              span,li{
+                display: block;
+                font-size: 14px;
+              }
+              li{
+                display:list-item;
+                list-style-type: disc;
+                list-style-position: inside;
+                span{
+                  display: inline;
+                  position: relative;
+                  left: -5px;
+                }
+              }
+              .price-ctn,.contents-ctn{
+                width: 100%;
+              }
+              .price-ctn{
+                text-align:left;
+                text-transform: uppercase;
+                font-weight: 700;
+                text-align: center;
+                .main-price{
+                  color: $orange;
+                  font-size: 22px;
+                  padding-top: 15px;
+                }
+                .second-price{
+                  font-size: 16px;
+                  color: $medium-grey;
+                }
+              }
+              .video-btn {
+                width: 70%;
+                font-size: 20px;
+              }
+              
+          }
+        }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<div class="notificiation-widget-ctn" (click)="toggleDetailsDisplay()">
+  <div class="notif-title-ctn">
+    <p class="light-text notif-title"> {{ notification.title }} </p>
+    <span class="date"> {{getTranslation('created_on')}}{{ notification.createdAt.toLocaleDateString() }}</span>
+    <div class="show-more-btn">
+      <img class="details-icon" [class.reversed]="!isDisplayingDetails" src="./assets/img/icons/arrow-down-white.png"/>
+    </div>
+  </div>
+  <div *ngIf="isDisplayingDetails" class="details-ctn">
+    <p class="light-text">{{notification.content}}</p>
+    <p class="light-text bottom-info">
+      {{ notification.peopleOfTargets }}
+      {{ getTranslation('people_reached') }}
+    </p>
+  </div>
+</div>
+

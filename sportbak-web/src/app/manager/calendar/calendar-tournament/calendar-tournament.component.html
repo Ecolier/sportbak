@@ -1,0 +1,52 @@
+<div class="calendar-tournament" (click)="toggleIsOpen()">
+  <span>{{ tournament.name }}</span>
+  <img [class.open]="isOpen" src="./assets/img/icons/arrow-down-white.png" />
+</div>
+<ng-container *ngIf="isOpen && hasLoadedTournamentGames">
+  <ng-container *ngIf="matches.pool">
+    <ng-container *ngFor="let pool of matches.pool">
+      <span class="pool-name">{{ pool.name }}</span>
+      <ng-container *ngFor="let phase of pool.game; index as phaseIndex">
+        <ng-container *ngFor="let day of phase; index as dayIndex">
+          <span class="game-phase" *ngIf="day.length > 0">{{ getTranslation('phase') +' '+ ((phaseIndex+1)) + ' - ' + getTranslation('day') +' '+ ((dayIndex+1))}}</span>
+          <ng-container *ngFor="let game of day">
+            <calendar-game [game]="game"
+              [competition]="tournament.name" [type]="'tournament'"
+              (setGame)="updateGame($event)"></calendar-game>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="matches.roundOf16.length > 0">
+    <span class="game-phase">{{ getTranslation('round_16') }}</span>
+    <ng-container  *ngFor="let game of matches.roundOf16">
+      <calendar-game *ngIf="!game.booking || !game.booking._id" [game]="game" (setGame)="updateGame($event)" [competition]="tournament.name" [type]="'tournament'">
+      </calendar-game>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="matches.quarterFinals.length > 0">
+    <span class="game-phase">{{ getTranslation('quarter_finals') }}</span>
+    <ng-container *ngFor="let game of matches.quarterFinals">
+      <calendar-game *ngIf="!game.booking || !game.booking._id" [game]="game" (setGame)="updateGame($event)" [competition]="tournament.name" [type]="'tournament'">
+      </calendar-game>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="matches.semiFinals.length > 0">
+    <span class="game-phase">{{ getTranslation('semi_finals') }}</span>
+    <ng-container *ngFor="let game of matches.semiFinals">
+      <calendar-game *ngIf="!game.booking || !game.booking._id" [game]="game" (setGame)="updateGame($event)" [competition]="tournament.name" [type]="'tournament'">
+      </calendar-game>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="matches.final.length > 0">
+    <span class="game-phase">{{ getTranslation('finals') }}</span>
+    <ng-container *ngFor="let game of matches.final">
+      <calendar-game *ngIf="!game.booking || !game.booking._id" [game]="game" (setGame)="updateGame($event)" [competition]="tournament.name" [type]="'tournament'">
+      </calendar-game>
+    </ng-container>
+  </ng-container>
+</ng-container>
+<div class="loader-ctn" *ngIf="isOpen && !hasLoadedTournamentGames">
+  <spinning-loader></spinning-loader>
+</div>

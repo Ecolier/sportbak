@@ -1,0 +1,10 @@
+<div class="previous-ctn">
+  <img src="./assets/img/icons/arrow-white.png" (click)="onPreviousClick()"/>
+</div>
+
+<manager-modal [isDisplaying]="isShowingValidationModal" [mainText]="getTranslation('redirection_alert')"
+[button1Text]="getTranslation('validate')" [button2Text]="getTranslation('cancel')"
+[iconSrc]="'warning'"
+(button1Action)="backToPrevious()" (button2Action)="toggleIsShowingValidationModal()"
+(close)="toggleIsShowingValidationModal()">
+</manager-modal>

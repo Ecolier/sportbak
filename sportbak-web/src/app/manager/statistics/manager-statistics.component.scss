@@ -1,0 +1,124 @@
+@import "src/app/shared/const/variables";
+
+:host {
+  display: flex;
+  flex: 1;
+}
+
+.stat-displayer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 10px;
+
+  .nb-reservation-form {
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+    margin-bottom: 20px;
+
+    .date-picker {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      sbk-date-picker {
+        margin-right: 10px;
+      }
+    }
+
+    .filters {
+      color: white;
+      font: $secondary-font;
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .sub-title {
+      color: white;
+      font: $secondary-font;
+      margin-top: 5px;
+    }
+
+    .pill-group {
+      color: white;
+      font: $secondary-font;
+      display: flex;
+      justify-content: space-evenly;
+      align-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 5px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+
+      .pill {
+        background-color: $light-grey;
+        opacity: 30%;
+        padding: 5px 10px;
+        margin: 5px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        text-align: center;
+        transition-duration: 0.2s;
+      }
+
+      @media (max-width: $break-xs) {
+        .pill {
+          font-size: 3vw;
+        }
+      }
+
+      .pill:hover {
+        box-shadow: 5px 5px 10px 0 black;
+      }
+
+      .selected {
+        background-color: $orange;
+        opacity: 100%;
+      }
+    }
+  }
+
+  input, select {
+    color: white;
+    background-color: $light-grey;
+    border: 1px solid $light-grey;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: $secondary-font;
+    margin: 5px;
+  }
+
+  option {
+    font-family: $secondary-font;
+    border-radius: 5px;
+  }
+
+  .chart-support {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: space-between;
+    width: 100%;
+
+    .half-width {
+      width: 50%;
+    }
+
+    .full-width {
+      width: 90%;
+    }
+
+    @media (max-width: $break-md) {
+      .half-size {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<manager-modal [isDisplaying]="true" [mainText]="getTranslation('field_selector')"
+[button1Text]="getTranslation('validate')" [button2Text]="getTranslation('cancel')"
+[iconSrc]="'warning'"
+(button1Action)="validate()" (button2Action)="cancel()"
+(close)="cancel()">
+<div class="fields-ctn">
+  <select class="field"  [(ngModel)]="selectedField"
+  (ngModelChange)="selectField($event)">
+    <option *ngFor="let field of filterComplex; index as fieldIndex"  [value]="fieldIndex"
+        [selected]="selectedField == fieldIndex">
+        {{ field.name }}
+    </option>
+  </select>
+</div>
+</manager-modal>

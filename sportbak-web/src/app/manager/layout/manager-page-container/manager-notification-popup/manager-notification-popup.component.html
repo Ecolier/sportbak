@@ -1,0 +1,9 @@
+<img id="close" src="assets/img/icons/close.png" alt="close" (click)="closeNotification($event)">
+<div id="header">
+  <img [src]="notification.payload | notificationIcon" alt="icon">
+  <div id="sport" *ngIf="hasSpecificSportType">{{getTranslation(notification.payload.sport)}}</div>
+</div>
+<div id="content">
+  <div id="title">{{ notification.title }}</div>
+  <div id="message">{{ notification.message }}</div>
+</div>

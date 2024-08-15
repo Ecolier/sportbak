@@ -1,0 +1,52 @@
+
+<ng-container *ngIf="(backendConnectionStatus$ | async) === 'close'; else ready">
+  <div class="background"></div>
+  <div class="background-overlay"></div>
+  <div class="loader-ctn">
+    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    Initialisation du système vidéo...
+  </div>
+  <sbk-inline-status [showHealthyStatus]="true"></sbk-inline-status>
+</ng-container>
+<ng-template #ready>
+  <div *ngIf="layout === 'onboarding'; else notOnboarding" class="onboarding-layout">
+    <sbk-inline-status [showHealthyStatus]="true"></sbk-inline-status>
+    <div class="brand-ctn">
+      <div class="brand-logo"></div>
+    </div>
+    <div class="onboarding-content-ctn" [@routerTransition]="prepareRoute(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+    
+    <div class="footer">
+      <div class="gamepad-combination" (click)="showStreaming()">
+        <div class="row">Visionner la caméra</div>
+        <div class="row">
+          <div>Appuyer : </div>
+          <div class="gamepad-btn green"></div>
+          <div>+</div>
+          <div class="gamepad-btn green"></div>
+        </div>
+      </div>
+      <div class="gamepad-combination" (click)="goStatus()">
+        <div class="row">Page des status</div>
+        <div class="row">
+          <div>Appuyer : </div>
+          <div class="gamepad-btn blue"></div>
+          <div>+</div>
+          <div class="gamepad-btn blue"></div>
+        </div>
+      </div>
+    </div>
+    <sbk-web-rtc-player *ngIf="isLiveFeedbackVisible" [url]="configService.cameraServiceSocketUrl" [token]="webRTCToken" (onError)="webRTCError($event)"></sbk-web-rtc-player>
+    <div class="abort" *ngIf="isLiveFeedbackVisible" (click)="stopStreaming()">
+      <span class="indicator"></span>
+      Passer la vidéo
+    </div>
+  </div>
+  <ng-template #notOnboarding>
+    <router-outlet #outlet></router-outlet>
+  </ng-template>
+</ng-template>
+
+<sbk-screensaver></sbk-screensaver>

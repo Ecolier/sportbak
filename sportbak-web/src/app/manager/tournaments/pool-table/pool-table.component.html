@@ -1,0 +1,117 @@
+<div class="flex-row table-columns-ctn">
+  <div class="flex-column column-bordered number-col col-title large-col" (click)="sortResume(1, 0)">
+    <span class="column-text" [class.column-selected]="colSelectedIndex == 0"
+      [ngClass]="(sortOrder == 1 || sortOrder == -1) ? 'sorttext' : 'unsorttext'">
+      {{ getTranslation('rank')}}
+    </span>
+  </div>
+  <div class="flex-column column-bordered team-name-col col-title" (click)="sortResume(2, 1)">
+    <span class="column-text" [class.column-selected]="colSelectedIndex == 1"
+      [ngClass]="(sortOrder == 2 || sortOrder == -2) ? 'sorttext' : 'unsorttext'">
+      {{ getTranslation('team')}}
+    </span>
+  </div>
+  <div class="flex-column column-bordered number-col col-title" (click)="sortResume(3, 2)">
+    <span class="column-text" [class.column-selected]="colSelectedIndex == 2"
+      [ngClass]="(sortOrder == 3 || sortOrder == -3) ? 'sorttext' : 'unsorttext'">
+      {{ getTranslation('games_played')}}
+    </span>
+  </div>
+  <div class="flex-column column-bordered number-col col-title" (click)="sortResume(4, 3)">
+    <span class="column-text" [class.column-selected]="colSelectedIndex == 3"
+      [ngClass]="(sortOrder == 4 || sortOrder == -4) ? 'sorttext' : 'unsorttext'">
+      {{ getTranslation('win')}}
+    </span>
+  </div>
+  <div class="flex-column column-bordered number-col col-title" (click)="sortResume(5, 4)">
+    <span class="column-text" [class.column-selected]="colSelectedIndex == 4"
+      [ngClass]="(sortOrder == 5 || sortOrder == -5) ? 'sorttext' : 'unsorttext'">
+      {{ getTranslation('draw')}}
+    </span>
+  </div>
+  <div class="flex-column column-bordered number-col col-title" (click)="sortResume(6, 5)">
+    <span class="column-text" [class.column-selected]="colSelectedIndex == 5"
+      [ngClass]="(sortOrder == 6 || sortOrder == -6) ? 'sorttext' : 'unsorttext'">
+      {{ getTranslation('loss')}}
+    </span>
+  </div>
+  <div class="flex-column column-bordered number-col col-title" (click)="sortResume(7, 6)">
+    <span class="column-text" [class.column-selected]="colSelectedIndex == 6"
+      [ngClass]="(sortOrder == 7 || sortOrder == -7) ? 'sorttext' : 'unsorttext'">
+      {{ getTranslation('goals_for')}}
+    </span>
+  </div>
+  <div class="flex-column column-bordered number-col col-title" (click)="sortResume(8, 7)">
+    <span class="column-text" [class.column-selected]="colSelectedIndex == 7"
+      [ngClass]="(sortOrder == 8 || sortOrder == -8) ? 'sorttext' : 'unsorttext'">
+      {{ getTranslation('goals_against')}}
+    </span>
+  </div>
+  <div class="flex-column column-bordered number-col col-title" (click)="sortResume(9, 8)">
+    <span class="column-text" [class.column-selected]="colSelectedIndex == 8"
+      [ngClass]="(sortOrder == 9 || sortOrder == -9) ? 'sorttext' : 'unsorttext'">
+      {{ getTranslation('goals_diff')}}
+    </span>
+  </div>
+  <div class="flex-column column-bordered number-col col-title" (click)="sortResume(10, 9)">
+    <span class="column-text" [class.column-selected]="colSelectedIndex == 9"
+      [ngClass]="(sortOrder == 10 || sortOrder == -10) ? 'sorttext' : 'unsorttext'">
+      {{ getTranslation('points')}}
+    </span>
+  </div>
+  <div class="flex-column column-bordered streak-col col-title large-col" (click)="sortResume(25, 10)">
+    <span class="column-text" [class.column-selected]="colSelectedIndex == 10"
+      [ngClass]="(sortOrder == 25 || sortOrder == -25) ? 'sorttext' : 'unsorttext'">
+      {{ getTranslation('streak')}}
+    </span>
+  </div>
+</div>
+<div class="flex-row rowtab" *ngFor="let team of pool.teams">
+  <div class="flex-column column-bordered number-col number-col large-col">
+    <span>{{ team.rank }}</span>
+  </div>
+  <div class="flex-row column-bordered team-name-col team-name-ctn">
+    <img class="team-shirt" [src]="getShirt(team)">
+    <span class="team"> {{ team.name }}</span>
+  </div>
+  <div class="flex-column column-bordered number-col">
+    <span>{{ team.matchsplayed }}</span>
+  </div>
+  <div class="flex-column column-bordered number-col">
+    <span>{{ team.wmatch }}</span>
+  </div>
+  <div class="flex-column column-bordered number-col">
+    <span>{{ team.dmatch }}</span>
+  </div>
+  <div class="flex-column column-bordered number-col">
+    <span>{{ team.lmatch }}</span>
+  </div>
+  <div class="flex-column column-bordered number-col">
+    <span>{{ team.goal }}</span>
+  </div>
+  <div class="flex-column column-bordered number-col">
+    <span>{{ team.tgoal }}</span>
+  </div>
+  <div class="flex-column column-bordered number-col">
+    <span>{{ team.goal - team.tgoal }}</span>
+  </div>
+  <div class="flex-column column-bordered number-col">
+    <span>{{ team.points }}</span>
+  </div>
+  <div class="flex-column column-bordered streak-col large-col"
+    style="padding: 0px !important; padding-bottom: 0px !important;">
+    <div class="flex-row" align-items-center *ngIf="team && team.lastresults && team.lastresults.length == 0">
+      <div class="flex-column"></div>
+      <div class="flex-column">
+        <p style="margin-top: 0px !important; margin-bottom: 0px !important;">-</p>
+      </div>
+    </div>
+    <div class="flex-row" align-items-center *ngIf=" team && team.lastresults && team.lastresults.length > 0">
+      <div class="flex-column" *ngFor="let match of team.lastresults">
+        <img *ngIf="match == 1" class="streak-icon" src="./assets/img/icons/winMatch.png">
+        <img *ngIf="match == 0" class="streak-icon" src="./assets/img/icons/drawMatch.png">
+        <img *ngIf="match == -1" class="streak-icon" src="./assets/img/icons/loseMatch.png">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+@import "src/app/shared/const/variables";
+
+
+div {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border-radius: 10px;
+  width: 100%;
+
+  #bell {
+    position: relative;
+    width: fit-content;
+
+    #notif-icon {
+      height: 38px;
+    }
+
+    sbk-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+    }
+  }
+
+  #notifications {
+    position: absolute;
+    top: 50px;
+    background: $dark-grey;
+    padding: 0 5px;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 10px;
+    transition: 1s;
+    overflow: hidden;
+    height: 0;
+
+    &.shown {
+      overflow-y: scroll;
+      height: 300px;
+    }
+
+    #loader {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .no-notif {
+      margin-top: 20px;
+      color: $white;
+      font-family: $secondary-font;
+      border-radius: 10px;
+      background-color: $light-black;
+      padding: 5px;
+    }
+
+    #see_more {
+      color: $white;
+      font-family: $secondary-font;
+      cursor: pointer;
+      margin: 10px 0;
+
+      &:hover {
+        color: $light-grey;
+      }
+    }
+
+  }
+
+}

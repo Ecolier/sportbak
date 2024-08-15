@@ -1,0 +1,87 @@
+@import "src/app/shared/const/variables";
+
+manager-tournament-ranking {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  #pools{
+    max-width: none !important;
+    width: 80%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .actions-ctn{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    .display{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 20px;
+      .display-img{
+        width: 30px;
+        cursor: pointer;
+        &.row{
+          transform: rotate(90deg);
+        }
+        &.disabled{
+          opacity: 0.5;
+        }
+      }
+    }
+    .select-pools{
+      padding: 10px;
+      display: block;
+      font-size: 20px;
+      font-family: $secondary-font;
+      color: $orange;
+      background-color: $light-black;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      cursor: pointer;
+      &:focus {
+        option {
+          background-color: $dark-grey;
+        }
+      }
+      option {
+        background-color: $dark-grey;
+        color: $white;
+      }
+    }
+  }
+  .pools-ctn {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    &.row{
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+    }
+    &.hidden {
+      display: none;
+    }
+    .pool-ctn {
+      margin: 10px 10px;
+      width: 70%;
+    }
+    .pool-table {
+      min-height: 150px;
+    }
+    .pool-name {
+      color: $white;
+      display: block;
+      margin: 10px 0px;
+    }
+
+  }   
+}

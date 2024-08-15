@@ -1,0 +1,18 @@
+<p (click)="idClick($event)" class="light-text" *ngIf="debugMode">{{ league ? league._id : tournament._id}}</p>
+<div class="competition-span-ctn"(click)="onCompClick()">
+  <div [class.pending]="league ? !league.isCreated() && !league.isFinished() : !tournament.isCreated() && !tournament.isFinished()" [class.finished]="league ? league.isFinished() : tournament.isFinished()"  class="competition-img">
+    <img class="comp-icon" [src]="chooseIcon()" />
+  </div>
+  <div class="competition-details">
+    <span class="light-text comp-name">
+      {{ league ? league.name : tournament.name }}
+    </span>
+    <span class="secondary-detail">
+      {{ getTranslation('created_on')}}: {{ createdAtDate }}
+    </span>
+    <span class="secondary-detail">
+      {{ getTranslation('last_game')}}: {{ lastGameDate }}
+    </span>
+  </div>
+  <button class="action-btn light-text" (click)="onEditClick($event)"> {{ getTranslation('edit') }}</button>
+</div>

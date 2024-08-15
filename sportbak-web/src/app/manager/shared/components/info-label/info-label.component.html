@@ -1,0 +1,8 @@
+<div class="info-label-ctn">
+  <img src="./assets/img/icons/info.png" class="icon-desk" (mouseover)="onMouseOver()" (mouseout)="onMouseExit()"/>
+  <img src="./assets/img/icons/info.png" class="icon-mobile" (click)="onClick()"/>
+
+  <div class="info-text" [class.from-left]="isFromLeft" [class.spread]="isSpread" [class.futbuzz]="isFutBuzz" [class.visible]="isMouseOver" [class.hidden]="!isMouseOver">
+    {{ infoText }}
+  </div>
+</div>

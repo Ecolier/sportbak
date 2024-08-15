@@ -1,0 +1,123 @@
+@import 'src/layout.scss';
+@import 'src/typography.scss';
+
+$animation-speed: 300ms;
+$animation-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+sbk-select.collapsed {
+
+  .available-options {
+    display: none;
+  }
+  
+  color: var(--theme-text-disabled);
+
+  &:hover {
+    color: var(--theme-text-hovered);
+    .options-ctn .option:first-child { box-shadow: 0px 1px 0 0 var(--theme-text-hovered) }
+  }
+  
+  &:before {
+    content: '';
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .available-options {
+    &:before {
+      content: '';
+      background-color: transparent;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+  
+  .option.selected {
+    cursor: pointer;
+    box-shadow: 0px 1px 0 0 var(--theme-text-disabled);
+    color: var(--theme-text);
+  }
+}
+
+sbk-select.expanded {
+  .option.selected {
+    color: var(--theme-text);
+  }
+}
+
+sbk-select {
+
+  .available-options {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    &:before {
+      content: "";
+      background-color: var(--theme-light-overlay);
+      position: absolute;
+      top: 0;
+      left: -$spacing-lg;
+      right: -$spacing-lg;
+      bottom: -$spacing-xs;
+      border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    }
+  }
+
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  
+  transition: color $animation-speed $animation-function;
+  color: var(--theme-text);
+  
+  &:before {
+    content: "";
+    background-color: var(--theme-light-overlay);
+    position: absolute;
+    top: -$spacing-xs;
+    left: -$spacing-lg;
+    right: -$spacing-lg;
+    bottom: 0;
+    border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+    
+  }
+  
+  .options-ctn {
+    flex: 1;
+    z-index: 1000;
+  }
+  
+  .option {
+    z-index: 1;
+    padding: $spacing-lg 0;
+    display: flex;
+    justify-content: space-between;
+    transition: color $animation-speed $animation-function;
+    
+    &.selected {
+      transition: box-shadow $animation-speed $animation-function;
+      cursor: default;
+      box-shadow: 0px 2px 0 0 var(--theme-text);
+    }
+
+    color: var(--theme-text-disabled);
+    
+    &:hover {
+      color: var(--theme-text);
+    }
+    
+    &.hide-selected {
+      &.selected {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Brushwell';
+    src: url('Brushwell.eot');
+    src: url('Brushwell.eot?#iefix') format('embedded-opentype'),
+        url('Brushwell.woff2') format('woff2'),
+        url('Brushwell.woff') format('woff'),
+        url('Brushwell.ttf') format('truetype'),
+        url('Brushwell.svg#Brushwell') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

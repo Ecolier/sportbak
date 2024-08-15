@@ -1,0 +1,30 @@
+@import "../../../../shared/const/variables";
+
+#status-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: $super-dark-black;
+  border: none;
+  font-family: $secondary-font;
+  padding: 10px;
+  text-align: center;
+
+  &.accepted {
+    background-color: $cal-green;
+  }
+
+  &.request, &.waiting {
+    background-color: $cal-yellow;
+  }
+
+  &.canceled, &.refused {
+    background-color: $cal-orange;
+  }
+
+  &.expired, &.removed, &.closed {
+    background-color: $light-grey;
+  }
+
+}

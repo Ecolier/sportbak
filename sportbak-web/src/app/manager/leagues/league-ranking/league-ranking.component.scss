@@ -1,0 +1,17 @@
+@import 'src/app/shared/const/variables.scss';
+
+$mobile-max-screen-width: $break-md;
+
+futbak-league-ranking {
+  width: 100%;
+  display: block;
+
+  futbak-competitions-confrontations-ranking {
+    margin: 10px;
+  }
+
+  .support-rank {
+    margin-top: 15px;
+  }
+
+}

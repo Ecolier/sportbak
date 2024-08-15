@@ -1,0 +1,23 @@
+<ng-container>
+  <div class="presets-ctn">
+      <label for="presets" class="presets-label">{{getTranslation('presets_label') }}</label>
+      <select name="presets" class="presets-select" [(ngModel)]="selectedPreset" (ngModelChange)="selectPreset($event)">
+        <option *ngFor="let preset of presets" value="{{ preset.name }}" [selected]="preset.name == selectedPreset"> {{ preset.name }}
+        </option>
+      </select>
+      <img src="./assets/img/icons/plus.png" class="presets-actions img" (click)="toggleIsShowingModal('save')">
+      <button *ngIf="selectedPreset != 'default' && selectedPreset" class="presets-actions warning" (click)="toggleIsShowingModal('delete')"><i class="las la-trash-alt"></i></button>
+  </div>
+</ng-container>
+
+<manager-modal [isDisplaying]="isShowingModal" [mainText]="getTranslation(actionModal+'_presets_modal')"
+[button1Text]="getTranslation('validate')" [button2Text]="getTranslation('cancel')"
+[iconSrc]="'warning'"
+(button1Action)="validateModal()" (button2Action)="toggleIsShowingModal()"
+(close)="toggleIsShowingModal()">
+<ng-container *ngIf="actionModal == 'save'">
+  <div class="config-naming-ctn">
+    <input type="text" name="configuration" class="naming-input" [(ngModel)]="configurationName" placeholder="{{ getTranslation('naming_placeholder') }}"/>
+  </div>
+</ng-container>
+</manager-modal>

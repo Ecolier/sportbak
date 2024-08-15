@@ -1,0 +1,64 @@
+@use 'sass:color';
+@import 'typography.scss';
+
+$theme-primary: #030E12;
+$theme-text: color.scale(#2A3C50, $lightness: 90%);
+$theme-hovered-text: color.scale(#2A3C50, $lightness: 75%);
+$theme-disabled-text: color.scale(#2A3C50, $lightness: 40%);;
+$theme-light-overlay: color.scale($theme-primary, $lightness: 5%);
+
+:root {
+  --theme-primary: #{$theme-primary};
+  --theme-text: #{$theme-text};
+  --theme-text-disabled: #{$theme-disabled-text};
+  --theme-text-hovered: #{$theme-hovered-text};
+  --theme-light-overlay: #{$theme-light-overlay};
+  
+  --theme-secondary: #FFF;
+  --theme-text-secondary: #000;
+}
+
+html, body {
+  height: 100%;
+}
+
+html {
+  font-size: $font-size-xs;
+  font-family: 'BigNoodle', Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  color: var(--theme-text);
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+input {
+  font-family: Roboto;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+}

@@ -1,0 +1,22 @@
+@import  "src/app/home/const/variables";
+
+.application-services-card{
+  width: 280px;
+  height: 300px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(156, 160, 172, 0.4);
+  padding: 22px;
+  margin: 10px;
+  background-color: $dark-black;
+  img{
+    width: 50px;
+    height: 50px;
+  }
+  h1{
+    padding-top: 10px;
+    font-size: 35px;
+  }
+  p{
+    font-family: $secondary-font;
+  }
+}

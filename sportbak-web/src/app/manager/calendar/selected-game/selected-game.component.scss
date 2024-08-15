@@ -1,0 +1,70 @@
+@import "src/app/shared/const/variables";
+
+selected-game {
+  .selected-game-ctn {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    @media (max-width:$break-sm) {
+      margin-top: 65px;
+    }
+    .selected-game {
+      width: 70%;
+      justify-content: center;
+      background-color: $super-dark-black;
+      display: flex;
+      justify-content: space-around;
+      position: relative;
+      animation: gameAnim 2.6s infinite linear;
+      @keyframes gameAnim {
+        0% {
+          transform: scale(1);
+          box-shadow: none;
+        }
+
+        25% {
+          transform: scale(1.1);
+          box-shadow: 0px 6px 43px 0px $orange;
+
+        }
+
+        50% {
+          transform: scale(1);
+          box-shadow: none;
+        }
+
+        100% {
+          transform: scale(1);
+          box-shadow: none;
+        }
+      }
+      span {
+        font-family: $main-font;
+        color: $white;
+        text-align: left;
+        font-size: 25px;
+        display: flex;
+        align-items: center;
+        &.reversed {
+          text-align: right;
+        }
+      }
+      img {
+        height: 50px;
+      }
+      .close-btn {
+        position: absolute;
+        right: 0px;
+        bottom: -1px;
+        height: 20px;
+        border-radius: 100px;
+      }
+    }
+    .info {
+      color: $white;
+    }
+  }
+}

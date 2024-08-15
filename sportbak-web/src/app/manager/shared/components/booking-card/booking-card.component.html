@@ -1,0 +1,20 @@
+<div class="container">
+  <booking-status-badge [booking]="booking"></booking-status-badge>
+  <div *ngIf="needSubtitle" class="sub-title">
+    {{getTranslation(booking.status)}}
+  </div>
+  <div class="date">{{date}}</div>
+  <div class="schedule">
+    <div class="start">{{startAt}}</div>
+    <div class="vs">----------</div>
+    <div class="end">{{endAt}}</div>
+  </div>
+<!--  <div class="field" *ngIf="booking.field.name">{{booking.field.name}}</div>-->
+  <user-card [user]="booking.booker"></user-card>
+  <div class="comments">
+    <div class="booker-comment"
+         *ngIf="booking.bookerComment">{{getTranslation('booker_comment')}}{{booking.bookerComment}}</div>
+    <div class="manager-comment"
+         *ngIf="booking.managerComment">{{getTranslation('manager_comment')}}{{booking.managerComment}}</div>
+  </div>
+</div>

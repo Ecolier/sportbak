@@ -1,0 +1,276 @@
+@import "src/app/shared/const/variables";
+
+manager-space {
+
+  display: flex;
+    flex: 1;
+
+
+  .loader-ctn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .followers-list{
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: auto;
+    width: 100%;
+    .follower-ctn{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      .avatar-ctn{
+        display: flex;
+        align-items: center;
+        margin-top: 12px;
+        .followers-name{
+          margin: 4px;
+        }
+        .followers-details{
+          font-size: 14px;
+          color: $medium-grey;
+          margin: 2px;
+        }
+        .avatar{
+        height: 40px;
+        width: 40px;
+        border-radius: 100px;
+        margin-right: 10px;
+        object-fit: cover;
+        }
+      }
+      .contact-ctn{
+        display: flex;
+        .contact{
+          color: $white;
+          font-size: 25px;
+          margin-left: 5px;
+          margin-right: 5px;
+          position: relative;
+          .figcaption{
+            position: absolute;
+            background-color: $super-dark-black;
+            border-radius: 3px;
+            left: -10px;
+            top: 0;
+            transform: translateX(-100%);
+            padding-left: 10px;
+            padding-right: 10px;
+            opacity: 0.9;
+            display: none;
+          }
+          &:hover{
+            .figcaption{
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+  .manager-space-content {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+
+    @media (max-width: $break-md) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header-ctn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      @media (max-width : $break-md) {
+        flex-direction: row;
+        width: 100%;
+      }
+
+      &.followers {
+        cursor: pointer;
+        border: 2px solid $orange;
+        padding: 10px;
+        border-radius: 12px;
+        height: 200px;
+        @media (max-width: $break-md) {
+          
+        }
+      }
+    }
+  }
+
+  .complex-logo {
+    height: 150px;
+    border-radius: 100px;
+    @media (max-width : $break-md) {
+      height: 80px;
+    }
+  }
+
+  .manager-space-text {
+    font-family: "BigNoodleTitling";
+    color: #ecf0f1;
+    text-align: center;
+    width: 100%;
+
+    &.complex-name {
+      font-size: 40px;
+      @media (max-width : $break-md) {
+        font-size: 25px;
+        text-align: start;
+        margin-left: 5px;
+      }
+    }
+
+    &.complex-supporters-nb {
+      font-size: 70px;
+      margin: 0px;
+      cursor: pointer;
+      @media (max-width:$break-md) {
+        font-size: 25px;
+        width: auto;
+      }
+    }
+
+    &.complex-supporters {
+      font-size: 35px;
+      cursor: pointer;
+      @media (max-width:$break-md) {
+        margin:0px;
+        font-size: 25px;
+        margin-left: 5px;
+        width: auto;
+      }
+    }
+  }
+
+  .complex-info-title {
+    font-family: "BigNoodleTitling";
+    font-size: 30px;
+    color: #bdc3c7;
+    margin-top: 30px;
+    text-align: left;
+    margin-left: 30px;
+  }
+
+  .complex-info-ctn {
+    display: flex;
+    justify-content: space-evenly;
+
+    @media(max-width: $break-md) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .info-ctn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+      @media(max-width) {
+        width: 100%;
+      }
+    }
+
+    .complex-info-span {
+      display: flex;
+      margin: 10px;
+      align-items: center;
+      img {
+        height: 25px;
+        width: 25px;
+      }
+
+      .complex-info-text {
+        margin: 0px;
+        padding: 0px;
+        font-size: 18px;
+        margin-left: 10px;
+        text-decoration: none;
+        cursor: default;
+        &.clickable:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+        @media (max-width:$break-md) {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .complex-openings-days {
+      margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    flex: 1;
+
+      @media(max-width: $break-md) {
+        width: 100%;
+      }
+
+      .day-ctn {
+        display: flex;
+        width: 60%;
+        justify-content: space-between;
+        margin: 12px 0px;
+
+        @media(max-width: $break-md) {
+          width: 80%;
+        }
+
+        .slots-ctn {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .day-name {
+          color: #F7A533;
+          width: 50%;
+        }
+
+        .openings-ctn {
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      .hours {
+        display: flex;
+        flex-direction: column;
+
+        .light-text {
+          margin-left: 10px;
+        }
+      }
+
+      .day {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+      }
+    }
+  }
+
+  .change-password {
+    font-family: $main-font;
+    font-size: 25px;
+    color: $orange;
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 50px;
+  }
+}

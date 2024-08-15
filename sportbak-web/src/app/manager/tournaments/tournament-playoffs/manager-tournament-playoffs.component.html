@@ -1,0 +1,28 @@
+<div class="tournament-games-ctn">
+  <div class="content-ctn">
+    <p *ngIf="tournament && tournament.finalStage < 0" class="pools-not-finished"> {{ getTranslation('pools_not_finished') }}</p>
+    <div class="steps-ctn">
+      <div class="step" *ngIf="roundOf16Games && roundOf16Games.length > 0">
+        <h2 class="step-title">{{ getTranslation('round_of_16') }}</h2>
+        <manager-tournament-playoffs-game class="round-of-16-game" *ngFor="let game of roundOf16Games" [game]="game"
+          (onGameClick)="onGameClick($event)"></manager-tournament-playoffs-game>
+      </div>
+      <div class="step" *ngIf="quarterFinalsGames && quarterFinalsGames.length > 0">
+        <h2 class="step-title">{{ getTranslation('quarter_finals') }}</h2>
+        <manager-tournament-playoffs-game class="quarter-finals-game" *ngFor="let game of quarterFinalsGames"
+          [game]="game" (onGameClick)="onGameClick($event)">
+        </manager-tournament-playoffs-game>
+      </div>
+      <div class="step" *ngIf="semiFinalsGames && semiFinalsGames.length > 0">
+        <h2 class="step-title">{{ getTranslation('semi_finals') }}</h2>
+        <manager-tournament-playoffs-game class="semi-finals-game" *ngFor="let game of semiFinalsGames" [game]="game"
+          (onGameClick)="onGameClick($event)"></manager-tournament-playoffs-game>
+      </div>
+      <div class="step final" *ngIf="finalGame && finalGame.length > 0">
+        <h2 class="step-title">{{ getTranslation('final') }}</h2>
+        <manager-tournament-playoffs-game class="final-game" *ngFor="let game of finalGame" [game]="game"
+          (onGameClick)="onGameClick($event)"></manager-tournament-playoffs-game>
+      </div>
+    </div>
+  </div>
+</div>

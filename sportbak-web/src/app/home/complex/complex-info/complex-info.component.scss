@@ -1,0 +1,52 @@
+@import  "src/app/home/const/variables";;
+
+.complex-info {
+  display: flex;
+  justify-content: center;
+  .info-ctn{
+      border-radius: 10px;
+      margin: 20px;
+      color: $white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-family: $main-font;
+      background-color: $secondary-dark-grey;
+      @media screen and (max-width:$small-screen) {
+        flex-direction: column;
+        font-size: 18px;
+        padding: 5px;
+      }
+      .complex-details{
+        padding-left: 20px;
+        padding-right: 20px;
+        @media screen and (max-width:$small-screen) {
+          padding: 0;
+        }
+        .details-ctn{
+          .complex-name{
+            margin-bottom: 10px;
+            font-size: 30px;
+            @media screen and (max-width:$small-screen) {
+              margin-top: 10px;
+            }
+          }
+          address{
+            margin-bottom: 10px;
+          }
+        }
+      }
+      .complex-image{
+        object-fit: contain;
+        max-width: 500px;
+        max-height: 300px;
+        @media screen and (max-width:$small-screen) {
+          padding: 0;
+        }
+        #complex-image{
+          width: 100%;
+        }
+      }
+    }
+}

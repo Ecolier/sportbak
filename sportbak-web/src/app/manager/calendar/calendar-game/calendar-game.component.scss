@@ -1,0 +1,34 @@
+@import "src/app/shared/const/variables";
+calendar-game {
+  width: 100%;
+  .game-row {
+    position: relative;
+    width: 95%;
+    margin: 5px;
+    padding: 5px 10px;
+    border: 1px solid $cal-green;
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    &:hover {
+      border: 1px solid $orange;
+      transition-duration: 0.3s;
+    }
+    .vs-icon {
+      height: 30px;
+    }
+    .team-ctn {
+      width: 45%;
+      font-family: $secondary-font;
+      text-transform: uppercase;
+      color: $extra-light-grey;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      &.reversed {
+        justify-content: flex-end;
+      }
+    }
+  }
+}

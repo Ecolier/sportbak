@@ -1,0 +1,4 @@
+<div class="manager-alert-ctn" [class.failure]="hasFailed">
+  <span *ngIf="nbOfFails <= 2" class="message">{{ hasFailed ? failureMsg : successMsg }}</span>
+  <span *ngIf="nbOfFails > 2" class="message"> {{ getTranslation('contact_futbak')}} </span>
+</div>

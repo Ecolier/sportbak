@@ -1,0 +1,240 @@
+@import "src/app/shared/const/variables";
+
+:host {
+  z-index: $z-index-menu;
+  position: relative;
+  min-width: $menu-width;
+
+  @media screen and (max-width: $break-sm) {
+    min-width: 0;
+  }
+}
+
+  .complex-logo {
+    width: 54px;
+    height: 54px;
+    border-radius: 100px;
+    background-size: contain;
+  }
+
+  menu-notifications-dropdown {
+    width: 100%;
+  }
+
+  .navigation {
+    padding: 12px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+  }
+
+  .manager-menu-ctn {
+    padding: $spacing-md 0;
+    width: $menu-width;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    min-height: 100%;
+    background-color: #2B2B2B;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+
+    &.desktop {
+      @media(max-width: $break-sm) {
+        display: none;
+      }
+    }
+
+    &.mobile {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background-color: #2B2B2B;
+      z-index: 500;
+
+      @media(min-width: $break-sm) {
+        display: none;
+      }
+
+      &.hidden {
+        display: none;
+      }
+
+      &.hiding-menu {
+        transform: translateX(-100%);
+        transition: 0.4s;
+      }
+
+      &.showing-menu {
+        transform: translateX(0px);
+        transition: 0.6s;
+        box-shadow: 24px 3px 155px 72px rgba(0, 0, 0, 0.75);
+      }
+
+
+      .close-ctn {
+        top: 0;
+        right: 0;
+        position: absolute;
+        z-index: 10;
+
+        img {
+          width: 30px;
+          height: 30px;
+          margin: 10px;
+        }
+      }
+    }
+
+    &.hidden {
+      display: none;
+    }
+
+    .menu-navigation, .menu-preference{
+      display: flex;
+      flex-direction: column;
+      margin-bottom: $spacing-lg;
+
+      .menu-label{
+        font-family:$third-font;
+        text-transform: uppercase;
+        color: $medium-dark-grey;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 16px;
+
+        @media (max-height: 740px) {
+          font-size: 2.3vh;
+          margin-top: 15px;
+        }
+      }
+      a {
+        transition-duration: 0.3s;
+         &:hover {
+           background: $orange;
+           padding-left: 15px;
+           border-radius: 4px;
+           transition-duration: 0.3s;
+         }
+         &.selected {
+           background: $orange;
+           border-radius: 4px;
+           padding-left: 15px;
+           transition-duration: 0.3s;
+         }
+         &:active {
+           transform: scale(0.9);
+           transition-duration: 0.1s;
+         }
+        text-decoration: none;
+        font-family: $third-font;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        color: white;
+        background: none;
+        text-align: left;
+        width: 200px;
+        max-width: 260px;
+        margin: 5px;
+        padding: $spacing-sm;
+        outline: none;
+        @media(max-width: $break-sm) {
+          font-size: 14px;
+        }
+        @media (max-height: $break-sm) {
+          font-size: 2vh;
+          padding: 0px;
+          padding-left: 2px;
+        }
+        &.selected {
+          background: $orange;
+          border-radius: 4px;
+        }
+        i{
+          padding-right: 8px;
+        }
+      }
+    }
+    #log-out-btn{
+      text-align: center;
+      outline: none;
+      background: $orange;
+      width: 188px;
+      font-family: $secondary-font;
+      color: $white;
+      font-weight: 600;
+      font-size: 20px;
+      border: none;
+      border-radius: 30px;
+      padding: 5px;
+      text-transform: uppercase;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      @media(max-width: $break-sm) {
+        font-size: 18px;
+        margin-top: 15px;
+      }
+
+      @media (max-height: 740px) {
+        font-size: 2.7vh;
+      }
+    }
+    #logo-sportbak{
+      width: 65px;
+      height: 65px;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+    .complex-ctn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+      .complex-name {
+        font-size: 1em;
+        display: inline-block;
+        margin-left: $spacing-md;
+      }
+    }
+  }
+
+  .light-text {
+    color: #ecf0f1;
+  }
+
+  .mobile-menu-icon-ctn {
+    background-color: $super-dark-black;
+    position: fixed;
+    top: 7px;
+    border-radius: 100px;
+    right: 10px;
+    z-index: 100;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -1px 4px 24px 1px rgba(0,0,0,0.75);
+    .mobile-menu-icon {
+      width: 30px;
+      height: 30px;
+      transform: translateY(3px);
+    }
+
+    @media (min-width: $break-sm) {
+      display: none;
+    }
+    @media (max-width: $break-xs) {
+      height: 35px;
+      width: 35px;
+
+      .mobile-menu-icon {
+        height: 20px;
+        width: 20px;
+      }
+    }
+  }
+

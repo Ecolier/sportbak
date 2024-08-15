@@ -1,0 +1,52 @@
+@import "src/app/shared/const/variables";
+
+futbak-nav-bar {
+  display: block;
+  width: 100%;
+
+  .content {
+    display: flex;
+    justify-content: space-around;
+
+    span {
+      color: $white;
+      font-family: $main-font;
+      font-size: 20px;
+      &:hover {
+        cursor: pointer;
+      }
+      &.big {
+        font-size: 25px;
+      }
+      &.selected {
+        color: $orange;
+      }
+    }
+  }
+
+  .content-table-nav-bar {
+    margin: 0px 20px 0px 20px;
+    height: 100%;
+
+    table {
+      table-layout: fixed;
+      height: 100%;
+      width: 100%;
+
+      tr{
+          line-height: 5px;
+      }
+
+      .nav-bar-tab {
+        futbak-label-autoadjust {
+          margin: 10px;
+          font-size: 30px;
+          font-family: 'BigNoodleTitling';
+          text-transform: uppercase;
+          text-align: center;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

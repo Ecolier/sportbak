@@ -1,0 +1,32 @@
+@import "src/app/shared/const/variables";
+
+.manager-multisport-creator{
+  font-family: $secondary-font;
+  color: $white;
+  h2{
+    margin-top: 100px;
+    font-family: $secondary-font;
+    text-align: center;
+  }
+  .sport-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    span{
+      font-size: 24px;
+      display: block;
+      background-color: none;
+      border: 1px solid $medium-grey;
+      border-radius: 12px;
+      cursor: pointer;
+      text-transform: uppercase;
+      padding: 10px;
+      margin: 20px;
+      font-weight: 500;
+      &:hover{
+        border: 1px solid $orange;
+      }
+    }
+  }
+}

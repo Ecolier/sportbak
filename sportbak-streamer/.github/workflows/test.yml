@@ -1,0 +1,30 @@
+name: test
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker/build-push-action@v2
+        with:
+          push: false
+          tags: ghcr.io/sportbak/videoapp:latest
+          secrets: |
+            GIT_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
+      - run: docker run ghcr.io/sportbak/videoapp:latest tests
+  push_to_registry:
+    name: Push Docker image to GitHub Packages
+    needs: build
+    if: ${{ github.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: gabcoh1986/sportbakvideos_videoapp/videoapp
+          tag_with_ref: true

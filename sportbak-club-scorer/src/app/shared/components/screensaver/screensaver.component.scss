@@ -1,0 +1,72 @@
+:host {
+    --visible : 'hidden';
+    --background-color : 'red';
+    visibility : var(--visible);
+
+    width: 100%;
+    height: 100%;
+    .support {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--background-color);
+    }
+}
+
+.support-anim {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding : 20px 40px;
+
+  // disabled lag animation
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  transform: translateZ(0);
+}
+
+.gamepad-combination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      font-size: 120px;
+      &.small {
+        font-size: 80px;
+      }
+    }
+  }
+  
+  .gamepad-btn {
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    display: inline-block;
+    margin : 0px 20px;
+    background-color: white;
+    text-align: left;
+  
+    &.red {
+      background-color: indianred;
+    }
+    
+    &.green {
+      background-color: limegreen;
+    }
+  
+    &.blue {
+      background-color: lightskyblue;
+    }
+  
+  }
+  

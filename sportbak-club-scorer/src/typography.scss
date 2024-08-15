@@ -1,0 +1,17 @@
+$font-size-xs: 24px;
+$font-size-sm: 32px;
+$font-size-md: 44px;
+$font-size-lg: 62px;
+$font-size-xl: 94px;
+
+@font-face {
+  font-family: BigNoodle;
+  src: url('/assets/big_noodle_titling.ttf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: BigNoodle;
+  src: url('/assets/big_noodle_titling_oblique.ttf');
+  font-style: oblique;
+}

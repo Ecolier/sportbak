@@ -1,0 +1,16 @@
+<player-controls 
+  [title]="replay.name" 
+  [ngClass]="controlsVisible ? 'active' : ''">
+</player-controls>
+<video #video playsinline autoplay muted loop>
+  <source [src]="replay.url" type="video/mp4">
+</video>
+<div class="progress-bar">
+  <div class="progress-bar__time">{{ currentTime }}</div>
+  <div class="progress-bar__locator">
+    <div class="progress-bar__pin" 
+      [ngStyle]="{'left': progress + '%'}" 
+      (mousedown)="selectPin()"></div>
+  </div>
+  <div class="progress-bar__duration">{{ videoDuration }}</div>
+</div>

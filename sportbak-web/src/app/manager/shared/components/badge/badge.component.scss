@@ -1,0 +1,30 @@
+@import "../../../../shared/const/variables";
+
+:host {
+  $--background-color-focused: $orange;
+  $--background-color-unfocused: $orange;
+  $--border-color: rgba(0, 0, 0, 0.2);
+  $size: 22px;
+
+  display: block;
+  color: $white;
+  font-family: $secondary-font;
+  font-weight: 700;
+  .support {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $size;
+    height: $size;
+    background-color: $--background-color-unfocused;
+    border-radius: 50%;
+
+    &.focusing {
+      background-color: $--background-color-focused;
+      padding: 2px 5px;
+      font-size: 12px;
+      line-height: 10px;
+      border: 1px solid $--border-color;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<div class="actions-ctn">
+  <select class="select-pools"  [(ngModel)]="selectedPool"
+  (ngModelChange)="selectPools($event)">
+    <option [value]="-1"
+        [selected]="selectedPool == -1">
+        {{ getTranslation("all_pools") }}
+    </option>
+    <option *ngFor="let pool of tournament.pool; index as poolIndex"  [value]="poolIndex"
+        [selected]="selectedPool == poolIndex">
+        {{ pool.name }}
+    </option>
+  </select>
+  <div class="display">
+    <img (click)="chooseDisplay()" [ngClass]="!displayRow ? 'display-img' : 'display-img disabled'" src="./assets/img/icons/display.png" >
+    <img (click)="chooseDisplay()" [ngClass]="displayRow ? 'display-img row' : 'display-img row disabled'" src="./assets/img/icons/display.png" >
+  </div>
+</div>
+<div [ngClass]="displayRow ? 'pools-ctn row' : 'pools-ctn'" id="pools" [class.hidden]="!poolsWidthSet">
+  <div *ngFor="let pool of pools" class="pool-ctn">
+    <span class="pool-name">{{pool.name}}</span>
+    <div class="pool-table">
+      <pool-table [pool]="pool" [tournament]="tournament" [colSelectedIndex]="colSelectedIndex"
+        (setColSelectedIndex)="setColSelectedIndex($event)"></pool-table>
+    </div>
+    <pool-games [tournament]="tournament" [pool]="pool" (onGameClick)="onGameClick($event)"></pool-games>
+  </div>
+</div>

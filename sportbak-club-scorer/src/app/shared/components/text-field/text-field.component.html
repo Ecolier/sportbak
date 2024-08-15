@@ -1,0 +1,5 @@
+<ng-template #inputTemplateContent><ng-content></ng-content></ng-template>
+<div class="input-ctn">
+  <ng-container *ngTemplateOutlet="inputTemplate"></ng-container>
+  <label class="label">{{ placeholder }}</label>
+</div>

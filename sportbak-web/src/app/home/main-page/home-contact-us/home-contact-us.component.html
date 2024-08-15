@@ -1,0 +1,33 @@
+<section id="home-contact-us">
+  <div class="home-contact-us-ctn">
+    <div class="contact-us">
+      <h2>{{ getTranslation('contact_us_recontact')}}</h2>
+      <p>{{ getTranslation('contact_us_happy')}}</p>
+        <div class="form-group">
+          <div *ngIf="messageResponse != undefined" [ngClass]="messageSuccess == true ? 'message-box success' : 'message-box error'">
+            <img src=".\assets\img\icons\whistle-foul.png" >
+            <div>
+              <ng-container *ngFor="let item of messageResponse">
+                <p>{{item}}</p>
+              </ng-container>
+            </div>
+          </div>
+          <div> 
+            <label for="name">{{ getTranslation('label_name')}}</label>
+            <input [(ngModel)]="name" [class.error-input]="errorName" type="text" id="name" name="name" placeholder="{{ getTranslation('name_placeholder')}}">
+          </div>
+          <div>
+            <label for="email">{{ getTranslation('label_mail')}}</label>
+            <input [(ngModel)]="email" [class.error-input]="errorEmail" type="email" id="email" name="email" placeholder="{{ getTranslation('mail_placeholder')}}">
+          </div>
+          <div>
+            <label for="message">{{ getTranslation('label_message')}}</label>
+            <textarea [(ngModel)]="message" [class.error-input]="errorMessage" name="message" id="message" cols="30" rows="7" placeholder="{{ getTranslation('message_placeholder')}}"></textarea>
+          </div>
+          <div class="form-btn">
+            <button (click)="sendMessage()" class="orange-button">{{ getTranslation('send_button')}}</button>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>

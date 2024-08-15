@@ -1,0 +1,47 @@
+@import "src/app/shared/const/variables";
+
+request-status {
+  .request-status-ctn {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $green;
+    opacity: 0;
+    &.failure {
+      background-color: $red;
+    }
+
+    &.visible {
+      transform: translateY(0px);
+      opacity: 1;
+      z-index: $z-index-modal;
+      transition-duration: 0.25s;
+    }
+
+    &.hidden {
+      opacity: 0;
+      z-index: -2;
+      transform: translateY(50px);
+      transition-duration: 0.25s;
+    }
+
+    .request-status-text {
+      font-family: $main-font;
+      font-size: 30px;
+      color: $white;
+      text-align: center;
+      width: 90%;
+      margin: 10px 0px;
+    }
+
+    img {
+      height: 23px;
+      margin-right: 10px;
+    }
+
+  }
+}

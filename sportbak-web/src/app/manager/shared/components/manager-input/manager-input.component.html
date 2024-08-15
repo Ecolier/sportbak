@@ -1,0 +1,7 @@
+<input
+  [class]="'manager-input ' + class"
+  [class.invalid]="value.toString().trim().length < 1"
+  [type]="type"
+  (ngModelChange)="onInputChanged($event)"
+  [(ngModel)]="value"
+  [attr.maxlength]="maxlength"/><br>

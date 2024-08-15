@@ -1,0 +1,78 @@
+@import "src/app/shared/const/variables";
+
+manager-announcement-widget {
+  display: flex;
+  justify-content: center;
+
+  .notificiation-widget-ctn {
+    cursor: pointer;
+    background-color: #424242;
+    width: 80%;
+    margin: 10px 0;
+    border-radius: 15px;
+    overflow: hidden;
+    transition-duration: 1s;
+    @media(max-width: $break-md) {
+      width: 90%;
+      margin: 5px 0px;
+    }
+
+    .notif-title-ctn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 15px;
+      overflow: hidden;
+      background-color: $light-black;
+
+      .notif-title {
+        width: 50%;
+        font-size: 22px;
+        margin: 0 5px;
+        padding: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        @media(max-width: $break-md) {
+          font-size: 16px;
+        }
+      }
+
+      .date {
+        font-style: italic;
+        width: 40%;
+        color: $light-grey;
+        font-size: 16px;
+        word-break: break-word;
+
+        @media (max-width: $break-sm) {
+          font-size: 3vw;
+        }
+      }
+
+      .show-more-btn {
+        width: 10%;
+        padding: 1vw;
+        display: flex;
+        justify-content: center;
+
+        .details-icon {
+          width: 50%;
+          max-width: 30px;
+          transform: rotate(180deg);
+
+          &.reversed {
+            transform: rotate(0deg);
+          }
+        }
+      }
+    }
+
+    .details-ctn {
+      padding: 5px 10px;
+    }
+
+    .bottom-info {
+      font-style: italic;
+    }
+  }
+}

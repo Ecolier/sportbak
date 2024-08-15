@@ -1,0 +1,96 @@
+@import "src/app/shared/const/variables";
+
+days-selector {
+  .days-selector-ctn {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    position: relative;
+    &.prev-month-anim{
+      animation: toPrevMonth;
+      animation-duration: 0.6s;
+    }
+    @keyframes toPrevMonth {
+      0%{
+        transform: translateX(0px);
+        opacity: 1;
+      }
+      50%{
+        transform: translateX(500px);
+        opacity: 0;
+      }
+      51%{
+        transform: translateX(-500px);
+        opacity: 0;
+      }
+      100%{
+        transform: translateX(0px);
+        opacity: 1;
+      }
+    }
+    &.next-month-anim{
+      animation: toNextMonth;
+      animation-duration: 0.6s;
+    }
+    @keyframes toNextMonth {
+      0%{
+        transform: translateX(0px);
+        opacity: 1;
+      }
+      50%{
+        transform: translateX(-500px);
+        opacity: 0;
+      }
+      51%{
+        transform: translateX(500px);
+        opacity: 0;
+      }
+      100%{
+        transform: translateX(0px);
+        opacity: 1;
+      }
+    }
+    .loading-ctn {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      z-index: 2;
+    }
+    .days-names {
+      display: flex;
+      .day-name{
+        color: $extra-light-grey;
+        flex: 1;
+        text-align: center;
+        font-family: $secondary-font;
+        font-size: 12px;
+        text-transform: uppercase;
+        @media (max-width: $break-sm) {
+          font-size: 13px;
+        }
+        &.sunday {
+          border-right: none;
+        }
+      }
+    }
+
+    .days-ctn {
+
+      display: flex;
+    flex: 1 0 14%;
+     
+      .day-col {
+        display: flex;
+        flex-direction: column;
+
+        &.sunday {
+
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@import "src/app/shared/const/variables";
+
+$margin: 10px;
+
+.card{
+  display: flex;
+  flex-direction: column;
+  background-color: $dark-grey;
+  border-radius: 10px;
+  color: $white;
+  padding: 10px;
+
+  .user {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: $margin;
+
+    avatar {
+      $avatar-size: 40px;
+      margin-right: 10px;
+    }
+
+    .nickname {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+  }
+
+  .info {
+
+    display: flex;
+    flex-direction: column;
+
+    .name {
+      margin-bottom: $margin;
+    }
+
+    .email {
+      margin-bottom: $margin;
+
+    }
+
+    .phone {
+
+    }
+  }
+}

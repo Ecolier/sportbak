@@ -1,0 +1,25 @@
+@import "src/app/shared/const/variables";
+
+manager-input {
+  input{
+    cursor: pointer;
+    background-color: $light-black;
+    border: 1px solid $light-grey;
+    border-radius: 10px;
+    color: $white;
+    font-family: $secondary-font;
+    padding: 7px 10px;
+    &.small{
+      width: 80px;
+    }
+    &.invalid {
+      border: 1px solid $orange;
+    }
+    &.centered {
+      text-align: center;
+    }
+  }
+  input[type=number] {
+    padding: 7px 0;
+  }
+}

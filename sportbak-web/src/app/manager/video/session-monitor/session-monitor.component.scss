@@ -1,0 +1,61 @@
+@import 'src/app/shared/const/variables.scss';
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.controls-ctn {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  .settings-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0px 1px 3px rgb(0 0 0 / 6%);
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.9);
+    transition: background-color .2s, color .2s;
+    backdrop-filter: blur(8px);
+    border: none;
+    padding: 5px;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.12);
+      color: white;
+    }
+    option{
+      background-color: $dark-grey;
+    }
+    &.settings-select {
+      margin-left: 5px;
+      flex: 1;
+      max-width: 50%;
+    }
+  }
+}
+
+
+.settings-icon {
+  font-size: 8px;
+}
+
+inline-scorer {
+  margin-top: 8px;
+}
+
+sbk-session-control:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+@media screen and (min-width: $break-sm) {
+  .controls-ctn {
+    flex-direction: row;
+  }
+  sbk-session-control:not(:last-child) {
+    margin-bottom: 0;
+    margin-right: 8px;
+  }
+}

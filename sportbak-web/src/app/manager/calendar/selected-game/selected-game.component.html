@@ -1,0 +1,9 @@
+<div *ngIf="selectedGame" class="selected-game-ctn">
+  <div class="selected-game">
+    <span>{{selectedGame.game.teams[0].title}}</span>
+    <img src="./assets/img/icons/team-versus.png"/>
+    <span>{{selectedGame.game.teams[1].title}}</span>
+    <img class="close-btn"  src="./assets/img/icons/manager-space/close.png" (click)="closeGameSelection()"/>
+  </div>
+  <span class="info">{{getTranslation('place_game')}}</span>
+</div>

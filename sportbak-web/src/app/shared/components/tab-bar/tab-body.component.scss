@@ -1,0 +1,8 @@
+:host {
+  display: none;
+}
+
+:host(.selected) {
+  display: flex;
+  flex-grow: 1;
+}

@@ -1,0 +1,13 @@
+<ng-container >
+      <div class="form-contact">
+            <div #popup *ngIf='messageSuccess == true' class="message-box">
+                  <img src=".\assets\img\icons\whistle-foul.png" >
+                  <div>
+                      <p >{{messageResponse}}</p>
+                  </div>
+            </div>
+            <input [(ngModel)]="mail" #email [class.error-input]="errorMessage" type="email" class="email" placeholder="{{ getTranslation('mail_placeholder')}}">
+            <input [(ngModel)]="subject"  type="text" class="subject" placeholder="Votre sujet">
+            <button (click)="sendContact()" class="orange-button">{{ getTranslation('contact_button')}}</button>
+      </div>
+</ng-container>

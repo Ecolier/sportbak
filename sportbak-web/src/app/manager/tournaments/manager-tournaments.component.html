@@ -1,0 +1,30 @@
+
+  <div class="manager-content">
+      <div class="filters-ctn" *ngIf="isLoaded">
+        <div class="filter-action">
+          <manager-multisport-choice  (chosenSport)="selectedSport($event)" [complex]="complex"></manager-multisport-choice>
+          <div class="add-btn-support">
+            <img class="add-btn" src="./assets/img/icons/plus-outline.svg" alt="add" (click)="redirectToTournamentEdit(null)">
+          </div>
+        </div>
+        <div class="filter-btn">
+          <button sbk-btn class="selector-btn created" [class.selected]="createdTournamentsChecked" (click)="toggleCreatedTournamentsVisibility()">
+            {{ getTranslation('created_tournaments')}}
+          </button>
+          <button sbk-btn class="selector-btn pending" [class.selected]="pendingTournamentsChecked" (click)="togglePendingTournamentsVisibility()">
+            {{ getTranslation('pending_tournaments')}}
+          </button>
+          <button sbk-btn class="selector-btn finished" [class.selected]="finishedTournamentsChecked" (click)="toggleFinishedTournamentsVisibility()">{{ getTranslation('finished_tournaments') }}
+          </button>
+        </div>
+      </div>
+      <spinning-loader *ngIf="!isLoaded" class="centered" [isMedium]="true"></spinning-loader>
+      <ng-container *ngIf="isLoaded">
+        <div *ngIf="sportFilter && sportFilter.length < 1" class="no-comp-text">{{ getTranslation('no_tournaments')}} <img src="./assets/img/icons/plus-outline.svg" /></div>
+        <ng-container *ngFor="let tournament of sportFilter">
+          <manager-competition-span
+            *ngIf="createdTournamentsChecked && tournament.isCreated() || pendingTournamentsChecked && !tournament.isCreated() && !tournament.isFinished() || finishedTournamentsChecked && tournament.isFinished()"
+            [tournament]="tournament" (edit)="redirectToTournamentEdit($event)" (onClick)="onTournamentClick($event)"></manager-competition-span>
+        </ng-container>
+      </ng-container>
+  </div>

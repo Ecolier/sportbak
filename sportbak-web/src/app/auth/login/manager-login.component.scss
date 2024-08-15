@@ -1,0 +1,318 @@
+@import "src/app/shared/const/variables";
+
+
+manager-login {
+  width: 100%;
+  
+}
+
+#manager-login {
+  background-color: $super-dark-black;
+  outline: none;
+  .manager-portal-ctn {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    @media (max-width: $break-md) {
+      padding-top: 100px;
+    }
+    .commercial{
+      padding: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      background-color: black;
+      offer{
+        margin-left: 40px;
+        margin-right: 40px;
+        max-height: 270px;
+        margin-bottom: 30px;
+      }
+      .commercial-info{
+        width: 100%;
+        margin-bottom: 20px;
+        span{
+          font-family: $main-font;
+          text-transform: uppercase;
+          display: block;
+          text-align: center;
+        }
+        .location{
+          color: $white;
+        }
+        .duration{
+          color: $medium-grey;
+        }
+      }
+    }
+    .manager-forms-ctn {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 30px;
+      @media (max-width: $break-sm) {
+        flex-direction: column;
+        align-items: center;
+      }
+      .alert-message{
+        position: absolute;
+        top: 0;
+        transform: translateY(-80%);
+        width: 100%;
+        border-radius: 3px;
+        color: white;
+        text-align: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: 2s linear 1s fadeOut;
+
+        &.success{
+          background-color: $light-green;
+          }
+        &.error{
+          background-color: $light-red;
+          }
+      }
+      .manager-form-helper{
+        text-align: center;
+        margin-top: 40px;
+        a{
+          color: $orange;
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+    .videos-ctn {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 60px;
+      justify-content: space-around;
+      
+      h1 {
+        text-align: center;
+      }
+      
+      .videos{
+        display: flex;
+        width: 100%;
+        padding-bottom: 30px;
+        justify-content: space-around;
+        @media (max-width: $break-sm) {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .video-ctn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          .video-title {
+            font-size: 16px;
+            color: $white;
+            text-align: center;
+            padding: 10px;
+          }
+        }
+        .video {
+          margin-top: 30px;
+          width: 90%;
+          height: 30vh;
+          @media (max-width: $break-sm) {
+            width: 80%;
+          }
+        }
+      }
+
+    }
+
+    .video-player{
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(43, 43, 43, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: $z-index-modal;
+      top: 0px;
+      left: 0px;
+      box-sizing: content-box;
+      .player-ctn{
+        padding-top: 40px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        @media (max-width: $break-md) {
+          width: 90%;
+        }
+        @media (max-width: $break-sm) {
+          width: 100%;
+        }
+        video{
+          width: 100%;
+        }
+      }
+    }
+    .docs-ctn {
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      color: $white;
+      margin-top: 50px;
+
+      p{
+        width: 50%;
+        cursor: pointer;
+        text-align: center;
+      }
+      p:hover {
+        color: $orange;
+      }
+    }
+  }
+
+  .manager-login-ctn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    @media (max-width: $break-sm) {
+      width: 100%;
+    }
+  }
+
+  .manager-signup-ctn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    @media (max-width: $break-sm) {
+      width: 100%;
+    }
+
+    h1 {
+      @media (max-width: $break-sm) {
+        margin-top: 30px;
+      }
+    }
+
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80%;
+
+      .loader-ctn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+  h1 {
+    font-family: $main-font;
+    color: #ecf0f1;
+    margin: 0;
+  }
+
+  .input-title {
+    color: #ecf0f1;
+    text-align: center;
+    font-family: $secondary-font;
+    font-size: 20px;
+  }
+
+  .input-section {
+    margin: 20px 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input {
+    font-family: $secondary-font;
+    width: 80%;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: none;
+    padding: 0 10px;
+    outline: none;
+    @media (max-width: $break-md) {
+      width: 80%;
+    }
+    &:focus {
+      outline: none;
+      border: 4px $orange solid !important; 
+    }
+  }
+
+  select {
+    font-family: $secondary-font;
+    width: 80%;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: none;
+    padding: 0 10px;
+    @media (max-width: $break-md) {
+      width: 80%;
+    }
+    &:focus {
+      outline: none;
+      border: 4px $orange solid !important; 
+    }
+  }
+
+  .btn {
+    color: #ecf0f1;
+    background-color: $orange;
+    font-family: $secondary-font;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    font-size: 20px;
+    padding: 10px 30px;
+    margin-top: 20px;
+    
+    &:disabled {
+      color: darkgrey;
+      background-color: #ecf0f1;
+      cursor: not-allowed;
+    }
+    &.outline{
+      background-color: transparent;
+      border: 2px solid $orange;
+    }
+  }
+
+  .connection-error {
+    color: #ecf0f1;
+    margin-top: 20px;
+    font-size: 18px;
+    color: $red;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

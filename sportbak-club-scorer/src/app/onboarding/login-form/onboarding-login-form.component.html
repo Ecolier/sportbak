@@ -1,0 +1,13 @@
+<div *ngIf="loginLoading" class="loading-overlay">
+  <div class="lds-ripple"><div></div><div></div></div>
+</div>
+
+<form class="login-form" (ngSubmit)="login()" autocomplete="false">
+  <sbk-text-field placeholder="Username">
+    <input id="username" autofocus type="text" sbk-text-field-input [(ngModel)]="username" [ngModelOptions]="{standalone: true}" autocomplete="off">
+  </sbk-text-field>
+  <sbk-text-field placeholder="Password">
+    <input id="password" type="password" sbk-text-field-input [(ngModel)]="password" [ngModelOptions]="{standalone: true}" autocomplete="off">
+  </sbk-text-field>
+  <button sbk-btn type="submit">Login</button>
+</form>

@@ -1,0 +1,57 @@
+@import "../../../../shared/const/variables";
+
+#widget {
+  font-family: $secondary-font;
+  color: $white;
+  background-color: $dark-black ;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 2px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &.unread {
+    background-color: $light-black;
+  }
+
+  #header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+
+    img {
+      width: 20px;
+      margin-bottom: 5px;
+    }
+
+    #sport {
+      font-style: italic;
+      font-size: 7px;
+      color: $white;
+    }
+  }
+
+  #content {
+    font-family: $secondary-font;
+    #title {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    #message {
+      font-size: 12px;
+      margin-bottom: 3px;
+    }
+
+    #dateAgo {
+      font-style: italic;
+      font-size: 9px;
+      color: $light-grey;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<div class="controls-ctn">
+  <sbk-session-control #startSessionControl="sbkSessionControl"
+    [disabled]="session === undefined && isSessionStarting"
+    [hasAdditionalItem]="true"
+    (click)="startOrPause()">
+    <i icon *ngIf="session === undefined" class="material-icons-round">play_arrow</i>
+    <i icon *ngIf="session?.isPaused === false" class="material-icons-round">pause</i>
+    <i icon *ngIf="session?.isPaused === true" class="material-icons-round">play_arrow</i>
+    <span title *ngIf="session === undefined && !isSessionStarting">{{ getTranslation('startSession') }}</span>
+    <span title *ngIf="session?.isPaused === false">{{ getTranslation('pauseSession') }}</span>
+    <span title *ngIf="session?.isPaused === true">{{ getTranslation('resumeSession') }}</span>
+    <span title *ngIf="session === undefined && isSessionStarting">{{ getTranslation('startingSession') }}</span>
+    <span *ngIf="session === undefined && !isSessionStarting" additional-item class="settings-btn" (click)="openSettingsDialog($event)">
+      {{ getTranslation('moreSettings') }}
+    </span>
+    <select *ngIf="session === undefined && !isSessionStarting && settings?.length" additional-item-reverse  name="presets" class="settings-btn settings-select" [(ngModel)]="selectedPreset" (ngModelChange)="selectPreset($event)" (click)="stopPropagation()">
+      <option *ngFor="let preset of settings" value="{{ preset.name }}" [selected]="preset.name == selectedPreset"> {{ preset.name }}
+      </option>
+    </select>
+  </sbk-session-control>
+  <sbk-session-control
+    action="restart"
+    [disabled]="session === undefined"
+    (click)="resetSession()">
+    <i icon class="material-icons-round">replay</i>
+    <span title>{{ getTranslation('restartSession') }}</span>
+  </sbk-session-control>
+  <sbk-session-control
+    action="stop"
+    [disabled]="session === undefined"
+    (click)="stopSession()">
+    <i icon class="material-icons-round">stop</i>
+    <span title>{{ getTranslation('stopSession') }}</span>
+  </sbk-session-control>
+</div>
+<inline-scorer *ngIf="session !== undefined" [fieldId]="fieldId"></inline-scorer>

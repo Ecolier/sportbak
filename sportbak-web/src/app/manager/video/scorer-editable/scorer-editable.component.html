@@ -1,0 +1,8 @@
+<div [@changeEditingState]="isEditing ? 'editing' : 'idle'" class="edit-btn" (click)="toggleEditing()">
+  <span class="material-icons-round">edit</span>
+  <div [@bubble]="isEditing ? 'editing' : 'idle'" class="background"></div>
+</div>
+<div class="team-ctn">
+  <input #firstInput [(ngModel)]="name" type="text" class="team-name" [placeholder]="name" (blur)="nameChange.next(name)">
+  <input type="text" [(ngModel)]="score" class="team-score" [placeholder]="score" [disabled]="!isEditing" (blur)="scoreChange.next(score)">
+</div>

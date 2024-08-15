@@ -1,0 +1,5 @@
+{
+  "staticUrl" : "https://static.sportbak.com",
+  "videoServiceHost": "localhost",
+  "videoServicePort": "8081"
+}

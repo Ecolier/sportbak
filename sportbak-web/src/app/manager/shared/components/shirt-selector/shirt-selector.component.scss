@@ -1,0 +1,134 @@
+@import "src/app/shared/const/variables";
+
+shirt-selector {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  z-index: $z-index-modal + 1;
+  background-color: $light-black;
+
+  .back {
+    margin-left: 50%;
+    transform: translateX(-50%);    width: 80%;
+    position: fixed;
+    top: 0;
+    padding: 15px;
+    color: $white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 25px;
+    font-family: $secondary-font;
+    background-color: $light-black;
+
+    .back-arrow {
+      height: 30px;
+      margin-right: 20px;
+    }
+  }
+
+  .inner-shirt-modal {
+    margin: auto;
+    padding-top: 80px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1000px;
+
+    .title {
+      color: $white;
+      font-family: $secondary-font;
+      font-size: 20px;
+    }
+
+    .shirts-ctn {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 30px;
+      justify-content: center;
+      overflow: auto;
+      max-height: 80vh;
+
+      @mixin shirt {
+        margin: 20px;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+
+      .custom-shirt-image {
+        @include shirt;
+      }
+
+      .no-shirt {
+        color: $white;
+        font-family: $secondary-font;
+      }
+
+      .custom-shirt {
+        position: relative;
+
+        .delete-custom-shirt {
+          $side: 20px;
+          $move: 10px;
+          position: absolute;
+          right: $move;
+          top: $move;
+          background-color: $orange;
+          width: $side;
+          height: $side;
+          border-radius: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            $size: 50%;
+            width: $size;
+            height: $size;
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    .shirt-adder {
+      color: $white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .add-shirt-title {
+        margin-bottom: 10px;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      .custom-file-upload {
+        $size: 70px;
+        width: $size;
+        height: $size;
+        border-radius: 10px;
+        border: solid 2px $light-grey;
+        background-color: $dark-grey;
+        cursor: pointer;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: $size / 2;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+<ng-template #menu>
+  <menu-notifications-dropdown
+    (toggleNotifications)="toggleNotifications()"
+    (closeMenu)="toggleMobileMenu()"
+    [isShowingNotifications]="isShowingNotifications"
+    [notifications]="notifications">
+  </menu-notifications-dropdown>
+  <div class="navigation">
+    <div class="menu-navigation">
+      <p class="menu-label">{{ getTranslation('menu') }}</p>
+      <a *ngFor="let serviceMenuItem of serviceMenuItems | keyvalue: originalMenuOrder"
+         [routerLink]="[serviceMenuItem.value.redirection]"
+         [class.selected]="serviceMenuItem.key === (activeMenuItemKey$ | async)" (click)="toggleMobileMenu()">
+        <i class="las {{serviceMenuItem.value.icon}}"></i>
+        {{ getTranslation(serviceMenuItem.value.title) }}
+      </a>
+    </div>
+
+    <div class="menu-preference">
+      <p class="menu-label">{{ getTranslation('preference') }}</p>
+      <a *ngFor="let preferenceMenuItem of preferenceMenuItems | keyvalue: originalMenuOrder"
+         [routerLink]="[preferenceMenuItem.value.redirection]"
+         [class.selected]="preferenceMenuItem.key === (activeMenuItemKey$ | async)" (click)="toggleMobileMenu()">
+        <i class="las {{preferenceMenuItem.value.icon}}"></i>
+        {{ getTranslation(preferenceMenuItem.value.title) }}
+      </a>
+    </div>
+    <button sbk-btn class="round outline uppercase" *ngFor="let actionMenuItem of actionMenuItems | keyvalue"
+            (click)="actionMenuItem.value.action?.apply()" [routerLink]="[actionMenuItem.value.redirection]">
+      {{ getTranslation(actionMenuItem.value.title) }}
+    </button>
+  </div>
+
+</ng-template>
+
+<div class="manager-menu-ctn desktop" [class.isHidden]="">
+  <div class="complex-ctn">
+    <div *ngIf="complex" class="complex-logo"
+         [ngStyle]="{ 'background-image': 'url(' + logoURL + complex.logo + ')' }"></div>
+    <p class="complex-name light-text">{{complex ? complex.name : ''}}</p>
+  </div>
+  <ng-container *ngTemplateOutlet="menu"></ng-container>
+  <img src="./assets/img/home-page/header/nouveau-logo-sportbak-1.png" id="logo-sportbak"
+    (click)="redirectToHome()">
+</div>
+
+<div class="manager-menu-ctn mobile" [class.hiding-menu]="!isMobileMenuDisplayed"
+     [class.showing-menu]="isMobileMenuDisplayed">
+  <div class="close-ctn">
+    <img src="./assets/img/icons/close.png" (click)="toggleMobileMenu()">
+  </div>
+  <ng-container *ngTemplateOutlet="menu"></ng-container>
+  <img src="./assets/img/home-page/header/nouveau-logo-sportbak-1.png" id="logo-sportbak" (click)="redirectToHome()">
+</div>
+<div class="mobile-menu-icon-ctn" (click)="toggleMobileMenu()">
+  <img class="mobile-menu-icon" src="./assets/img/icons/mobile-menu.png"/>
+</div>

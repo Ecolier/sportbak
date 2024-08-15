@@ -1,0 +1,6 @@
+<div class="menu-section" (click)="onClick()">
+  <span class="section-title">{{ text }}</span>
+  <img src="./assets/img/icons/arrow-down-white.png" [class.open]="isOpen"/>
+</div>
+<ng-content *ngIf="isOpen">
+</ng-content>

@@ -1,0 +1,7 @@
+  <div class="calendar-month">
+    <month-selector [month]="monthName" [year]="currentDate ? currentDate.getFullYear() : ''"
+    (toPreviousMonth)="toPreviousMonth()" (toNextMonth)="toNextMonth()" (setDate)="selectDay($event)"></month-selector>
+    <days-selector [openingDays]="openingDays" [date]="date" [days]="days" [isLoading]="isLoading"
+      [clickedPreviousMonth]="clickedPreviousMonth" [clickedNextMonth]="clickedNextMonth"
+      (selectDay)="selectDay($event)"></days-selector>
+  </div>

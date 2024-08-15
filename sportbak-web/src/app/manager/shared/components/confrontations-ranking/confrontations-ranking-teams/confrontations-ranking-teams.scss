@@ -1,0 +1,199 @@
+futbak-competitions-confrontations-ranking-teams {
+  display: block;
+  color : white;
+
+  label {
+    display: unset;
+    margin-bottom: unset;
+  }
+
+  .rank-title {
+    margin-top : 10px;
+  }
+
+  .confrontations-ranking-ctn {
+    margin: 0px auto;
+    max-width: 900px;
+  }
+
+  .support-tables {
+    display: flex;
+    flex-direction: row;
+    width:  100%;
+
+    .table {
+      height: 100%;
+      padding-bottom: 5px;
+      &.scrollable {
+        overflow-x: auto;
+        //margin-left : -1px;
+        &.right-gradient {
+          -webkit-mask-image: -webkit-linear-gradient(right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%);
+        }
+      }
+    }
+    
+  }
+
+  table {
+    table-layout: fixed;
+    width: 100%;
+    text-align: center;
+
+    &.table-header {
+      background-color: rgba($color: #000000, $alpha: 0.2);
+      height: 30px;
+      tr {
+        td {
+          border: 1px solid grey;
+          position: relative;
+          padding: 0px;
+          vertical-align: middle;
+          cursor : pointer;
+          
+          futbak-label-autoadjust {
+            width: 100%;
+            font-family: 'BigNoodleTitling';
+            font-style: oblique;
+            text-transform: uppercase;
+
+            &.header-column {
+              color: white;
+              font-weight: 400;
+            }
+
+            &.header-column-selected {
+              color: #ff7815;
+              font-weight: 800;
+            }
+          }
+
+          .column-icon {
+            position: absolute;
+            top : 50%;
+            max-width: 80%;
+            height: 80%;
+            transform: translate(-50%, -50%);
+            object-fit: contain;
+          }
+        }
+      }
+    }
+
+    &.table-content {
+      height: 100%;
+      tr {
+        &.my-team {
+          color : #ff7815;
+          font-weight: bold;
+        }
+        td {
+          border: 1px solid grey;
+          width: 100%;
+          height: 40px;
+          overflow: hidden;
+          padding: 0px;
+          vertical-align: middle;
+
+          .normal-value {
+            font-family: 'BigNoodleTitling';
+            font-style: oblique;
+            text-transform: uppercase;
+            text-align: center;
+            color : white;
+
+            &.special-text {
+              font-size: 28px;
+            }
+          }
+
+          .div-name {
+            display: flex;
+            flex-direction: row;
+            align-self: center;
+            justify-content: flex-start;
+            padding : 0px 5px;
+
+            .column-picture-use {
+              img {
+                position: relative;
+              }
+            }
+
+            .column-shirt {
+              display: flex;
+              align-self: center;
+              justify-content: center;
+              width: 15%;
+              min-width: 15%;
+              margin-right: 5px;
+              img {
+                max-width: 40px;
+                max-height: 90%;
+                width: 100%;
+                object-fit: contain;
+              }
+            }
+
+            .column-name {
+              font-family: 'BigNoodleTitling';
+              font-style: oblique;
+              line-height: initial;
+              display: flex;
+              align-items: center;
+              width: 85%;
+              .name-value {
+                width: 100%;
+                text-align: left;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color : white;
+              }
+            }
+          }
+
+          .div-icons-match {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            padding : 5px;
+            width: 100%;
+            height: 100%;
+            .icon-match {
+              max-width: 30%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .animated-table-left {
+    animation: tableLeftAnimation 0.25s ease-out forwards;
+  }
+
+  @keyframes tableLeftAnimation {
+    0% {
+      transform: translateX(-800px);
+    }
+
+    100% {
+      transform: translateX(0px);
+    }
+  }
+  .animated-table-right {
+    animation: tableRightAnimation 0.25s ease-out forwards;
+  }
+
+  @keyframes tableRightAnimation {
+    0% {
+      transform: translateX(800px);
+    }
+
+    100% {
+      transform: translateX(0px);
+    }
+  }
+}

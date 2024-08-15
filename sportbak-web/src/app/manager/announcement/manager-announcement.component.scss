@@ -1,0 +1,89 @@
+@import "src/app/shared/const/variables";
+
+manager-announcements {
+  display: flex;
+  flex: 1;
+
+  .manager-content {
+    max-width: 100%;
+  }
+  .no-notif-ctn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .no-notif-text {
+    width: 100%;
+    text-align: center;
+    color: $white;
+    font-family: $secondary-font;
+  }
+
+  .complex-name {
+    font-size: 20px;
+  }
+
+  .message-textarea {
+    height: 200px;
+  }
+
+  .send-button {
+    border-radius: 100px;
+    font-size: 20px;
+  }
+
+  .btn-container {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  
+  .create-notif-ctn {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    justify-content: flex-start;
+    margin: auto;
+
+    @media (max-width: 942px) {
+      width: 90%;
+    }
+  }
+
+
+}
+
+.notif-loader {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  img {
+    &.spinning-loader {
+      height: 100px;
+      width: 100px;
+    }
+  }
+}
+
+.loader-ctn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .loader {
+    height: 50px;
+    width: 50px;
+    animation: rotating 0.8s linear infinite;
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

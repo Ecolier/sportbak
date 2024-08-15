@@ -1,0 +1,84 @@
+<div *ngIf="gamesFiltered && numberOfConfrontation > 0; else noMatchs">
+  <div class="sort-ctn">
+    <button sbk-btn class="button-sort" (click)="toggleSortButton()">
+      {{ getTranslation(SORT_BUTTON[sortButtonTextIndex]) }}
+    </button>
+  </div>
+  <div *ngIf="sortButtonTextIndex == 0">
+
+    <ng-container *ngFor="let phase of this.gamesFiltered; let phaseIndex = index">
+      <futbak-card *ngIf="nbConfrontationByPhases[phaseIndex]">
+        <div class="title-phase" (click)="showHidePhase(phaseIndex)">
+          {{ getTranslation('phase') + ((phaseIndex + 1)) }}
+          <img class="phase-arrow" [class.phase-arrow-up]="!showHidePhases[phaseIndex]"
+            [class.phase-arrow-down]="showHidePhases[phaseIndex]" src="../../../../assets/img/icons/arrow-white.png" />
+        </div>
+        <div *ngIf="showHidePhases[phaseIndex]">
+          <div *ngFor="let day of phase; let dayIndex = index">
+            <div *ngIf="nbConfrontationByDays[phaseIndex][dayIndex]">
+              <futbak-card class="title-day" [ngStyle]="titleDayStyle" noPadding="true"
+                (click)="showHideDay(phaseIndex, dayIndex)">
+                {{ getTranslation('day') + ((dayIndex + 1)) }}
+                <img class="day-arrow" [class.day-arrow-up]="!showHideDays[phaseIndex][dayIndex]"
+                  [class.day-arrow-down]="showHideDays[phaseIndex][dayIndex]"
+                  src="../../../../assets/img/icons/arrow-orange.png" />
+              </futbak-card>
+              <div *ngIf="showHideDays[phaseIndex][dayIndex]">
+                <div *ngFor="let game of day; let gameIndex = index">
+                  <futbak-game-row class="game-row" [game]="game" [teams]="getLeagueTeams(game)" [compType]="compType"
+                    [compName]="compName" [league_id]="league_id" (startedAtUpdated)="startedAtUpdated($event, game)"
+                    (click)="clikOnGame(game)"></futbak-game-row>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </futbak-card>
+    </ng-container>
+  </div>
+  <futbak-card *ngIf="sortButtonTextIndex == 1">
+    <div *ngIf="mode == 'past'">
+      <div *ngFor="let day of finishedGamesDatesList; index as finishedGameIndex">
+        <futbak-card class="title-day" [ngStyle]="titleDayStyle" (click)="toggleGameDay(true, finishedGameIndex)">
+          {{formatDate(day.date)}}
+          <img class="day-arrow" [class.day-arrow-up]="!day.isVisible" [class.day-arrow-down]="day.isVisible"
+            src="../../../../assets/img/icons/arrow-orange.png" />
+        </futbak-card>
+        <div *ngIf="day.isVisible">
+          <div *ngFor="let game of day.games">
+            <futbak-game-row class="game-row" [game]="game" [teams]="getLeagueTeams(game)" [compType]="compType"
+              [compName]="compName" [league_id]="league_id" (startedAtUpdated)="startedAtUpdated($event, game)"
+              (click)="clikOnGame(game)"></futbak-game-row>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="mode == 'future'">
+      <div *ngFor="let day of upcomingGamesDatesList; index as upcomingGameIndex">
+        <futbak-card class="title-day" [ngStyle]="titleDayStyle" (click)="toggleGameDay(false, upcomingGameIndex)">
+          <img class="day-arrow" [class.day-arrow-up]="!day.isVisible" [class.day-arrow-down]="day.isVisible"
+            src="../../../../assets/img/icons/arrow-orange.png" />
+          {{formatDate(day.date)}}
+        </futbak-card>
+        <div *ngIf="day.isVisible">
+          <div *ngFor="let game of day.games">
+            <futbak-game-row class="game-row" [game]="game" [teams]="getLeagueTeams(game)" [compType]="compType"
+              [compName]="compName" [league_id]="league_id" (startedAtUpdated)="startedAtUpdated($event, game)"
+              (click)="clikOnGame(game)"></futbak-game-row>
+          </div>
+        </div>
+      </div>
+    </div>
+  </futbak-card>
+</div>
+<ng-template #noMatchs>
+  <div class="no-game-title" [ngStyle]="noGameTitleStyle" *ngIf="mode == 'normal'">
+    Aucun matchs
+  </div>
+  <div class="no-game-title" [ngStyle]="noGameTitleStyle" *ngIf="mode == 'past'">
+    Aucun match n'a été encore terminé ...
+  </div>
+  <div class="no-game-title" [ngStyle]="noGameTitleStyle" *ngIf="mode == 'future'">
+    Tous les matchs ont été joués ...
+  </div>
+</ng-template>

@@ -1,0 +1,12 @@
+<div class="help-ctn">
+  <img src="./assets/img/icons/help.png"
+    (click)="toggleTooltip()" 
+    (mouseenter)="toggleTooltip()"
+  />
+  <div class="help-info-tooltip" 
+    [class.visible]="isTooltipOn"
+    [class.hidden]="!isTooltipOn"  
+  >
+    <p>{{ text }}</p>
+  </div>
+</div>

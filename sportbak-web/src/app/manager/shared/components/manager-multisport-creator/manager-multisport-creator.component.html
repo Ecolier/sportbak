@@ -1,0 +1,8 @@
+<div class="manager-multisport-creator">
+  <h2>{{ getTranslation('choose_sport')}}</h2>
+  <div *ngIf="complex" class="sport-list">
+    <ng-container *ngFor="let sport of complex.sport">
+      <span (click)="selectSportCreation(sport)">{{sport}}</span>
+    </ng-container>
+  </div>
+</div>

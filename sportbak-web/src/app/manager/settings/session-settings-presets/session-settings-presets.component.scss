@@ -1,0 +1,51 @@
+@import "src/app/shared/const/variables";
+
+  .presets-ctn{
+    font-family: $secondary-font;
+    font-size: 16px;
+    color: $white;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+    .presets-actions{
+      background-color: transparent;
+      margin-left: 10px;
+      font-size: 20px;
+      padding: 0px;
+      border: none;
+      border-radius: 3px;
+      &.warning{
+        color: $red;
+      }
+      &.img{
+        width: 25px;
+        background-color: transparent;
+        cursor: pointer;
+      }
+      i{
+        font-size: 25px;
+      }
+    }
+    .presets-select{
+      font-size: 16px;
+      padding-left: 5px;
+      margin-left: 10px;
+    }
+  }
+  
+  .config-naming-ctn{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    .naming-label{
+      color: $white;
+      margin-right: 10px;
+    }
+    .naming-input{
+      width: 100%;
+      border: 0px;
+      border-radius: 4px;
+    }
+  }

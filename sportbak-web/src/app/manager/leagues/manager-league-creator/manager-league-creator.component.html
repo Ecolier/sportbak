@@ -1,0 +1,105 @@
+<div class="man-comp-creator-ctn">
+  <div class="man-comp-creator-content">
+    <div class="input-ctn">
+      <div class="input-title-ctn">
+        <span class="light-text input-title">{{ getTranslation('name') }}</span>
+        <info-label [infoText]="getTranslation('info_name')"></info-label>
+      </div>
+      <manager-input id="leagueName" [class]="'full-input'" [type]="'text'" [value]="name" (onChange)="setName($event)">
+      </manager-input>
+    </div>
+    <div class="input-ctn" *ngIf="!leagueToEdit || (leagueToEdit && !leagueToEdit.isCreated())">
+      <div class="input-title-ctn">
+        <span class="light-text input-title">{{ getTranslation('confrontations') }}</span>
+        <info-label [infoText]="getTranslation('info_confrontations')"></info-label>
+      </div>
+      <select class="full-input rounded-input-10" name="confrontations" [(ngModel)]="selectedConfrontations"
+              (ngModelChange)="setConfrontations($event)">
+        <option *ngFor="let confrontationNb of confrontations; index as cIndex" [value]="confrontationNb"
+                [selected]="confrontationNb == selectedConfrontations">{{ confrontationNb }}
+          <ng-container *ngIf="cIndex == 0">
+            {{ getTranslation('confrontation') }}
+          </ng-container>
+          <ng-container *ngIf="cIndex > 0">
+            {{ getTranslation('confrontations') }}
+          </ng-container>
+        </option>
+      </select>
+    </div>
+    <div class="input-ctn pts-config-ctn">
+      <div class="pts-config">
+        <div class="input-title-ctn">
+          <span class="light-text input-title">{{ getTranslation('victory') }}</span>
+          <info-label [infoText]="getTranslation('info_victory')"></info-label>
+        </div>
+        <manager-input [class]="'small-input centered'" [value]="pointsForVictory" [type]="'number'"
+                       (onChange)="setPointsForVictory($event)"></manager-input>
+      </div>
+      <div class="pts-config">
+        <div class="input-title-ctn">
+          <span class="light-text input-title">{{ getTranslation('draw') }}</span>
+          <info-label [infoText]="getTranslation('info_draw')"></info-label>
+        </div>
+        <manager-input [class]="'small-input centered'" [value]="pointsForDraw" [type]="'number'"
+                       (onChange)="setPointsForDraw($event)"></manager-input>
+      </div>
+      <div class="pts-config">
+        <div class="input-title-ctn">
+          <span class="light-text input-title">{{ getTranslation('defeat') }}</span>
+          <info-label [infoText]="getTranslation('info_loss')" [isFromLeft]="true"></info-label>
+        </div>
+        <manager-input [class]="'small-input centered'" [value]="pointsForDefeat" [type]="'number'"
+                       (onChange)="setPointsForDefeat($event)"></manager-input>
+      </div>
+    </div>
+
+    <manager-team-adder [teams]="selectedTeams" [isCompCreated]="isLeagueCreated" [canTeamHaveGuest]="false"
+                        [addsPlayerAtCreation]="true"
+                        (onTeamAdd)="addLeagueTeam($event)" (onTeamDelete)="onTeamDelete($event)"
+                        (checkTeamPlayers)="checkAllTeamsHavePlayers()"
+                        (setAllTeamHaveDifferentNames)="setAllTeamHaveDifferentNames($event)"
+                        (checkStart)="checkShouldEnableStart()">
+    </manager-team-adder>
+    
+    <div class="alert-ctn">
+      <p *ngIf="!allTeamsHavePlayers" class="team-players-warning">{{ getTranslation('team_players_warning')}}</p>
+      <p *ngIf="!allTeamsHaveDifferentNames" class="team-players-warning">{{ getTranslation('team_name_warning')}}</p>
+    </div>
+
+    <div class="comp-creator-btns-ctn">
+      <div class="comp-btn-ctn" *ngIf="leagueToEdit ? !leagueToEdit.isCreated() : true">
+        <button sbk-btn class="round medium outline"
+                [disabled]="!areParamsValid || !allTeamsHaveDifferentNames"
+                (click)="onSaveClick()">{{ getTranslation('save') }}
+        </button>
+        <br>
+        <info-label [infoText]="getTranslation('save_tooltip')" [isFromLeft]="true"
+                    [mobileDisplayTime]="3000"></info-label>
+      </div>
+      <div class="comp-btn-ctn" *ngIf="leagueToEdit ? !leagueToEdit.isCreated() : true">
+        <button sbk-btn class="round medium"
+                [disabled]="!shouldEnableStart"
+                (click)="onStartClick()">{{ getTranslation('start') }}
+        </button>
+        <info-label [infoText]="getTranslation('start_tooltip')" [isFromLeft]="true"
+                    [mobileDisplayTime]="3000"></info-label>
+      </div>
+      <button sbk-btn class="round medium outline"
+              *ngIf="leagueToEdit ? leagueToEdit.isCreated() : false" [disabled]="!areParamsValid"
+              (click)="onUpdateClick()">{{ getTranslation('update') }}</button>
+    </div>
+
+    <manager-modal [isDisplaying]="isShowingWarningModal" [title]="getTranslation('alert_title')"
+                   [mainText]="getTranslation('start_alert')" (close)="cancelWarningModal()"
+                   [button1Text]="getTranslation('validate')" (button1Action)="validateWarningModal()"
+                   [button2Text]="getTranslation('cancel')" (button2Action)="cancelWarningModal()">
+    </manager-modal>
+
+    <manager-modal [isDisplaying]="isShowingNotifyPlayersModal" [title]="getTranslation('alert_title')"
+                   [mainText]="getTranslation('notify_players')" (close)="hideNotifyPlayerModal()"
+                   [button1Text]="getTranslation('yes')" (button1Action)="onNotifyPlayerYesClick()"
+                   [button2Text]="getTranslation('no')" (button2Action)="onNotifyPlayerNoClick()" >
+    </manager-modal>
+
+  </div>
+</div>

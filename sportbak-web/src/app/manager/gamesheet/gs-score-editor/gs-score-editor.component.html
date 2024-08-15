@@ -1,0 +1,130 @@
+<ng-container *ngIf="game && game.status != 'pending' && sportConstants[game.sport].hasGoals">
+  <div class="score-ctn">
+    <div class="score-section">
+      <div class="score-editor-section">
+        <button class="score-adder" (click)="displayGoalSelector(0)">+</button>
+      </div>
+      <input class="score-input" [(ngModel)]="team1Goals" (ngModelChange)="onTeamGoalsChange(0, $event)" type="number" min="0" placeholder="0" />
+    </div>
+    <div *ngIf="!game.isGameFinished()" class="score-editor-section timer">
+      <div class="content" [class.paused]="isTimerPaused">
+        {{ ("0" + minutes).slice(-2) }} : {{ ("0" + seconds).slice(-2) }}
+      </div>
+    </div>
+    <div class="score-section">
+      <input class="score-input" [(ngModel)]="team2Goals" (ngModelChange)="onTeamGoalsChange(1, $event)" type="number" min="0" placeholder="0"/>
+      <div class="score-editor-section">
+        <button class="score-adder" (click)="displayGoalSelector(1)">+</button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="game && game.status != 'pending' && sportConstants[game.sport].hasSets">
+  <ng-container *ngIf="game  && game.teams[0] && sportConstants[game.sport].hasSets && game.teams[0].sets.length > 0">
+    <div class="set-score">
+      <h1 class="team-set-score">{{scoreTeam1}} &#8208; {{scoreTeam2}}</h1>
+      <div class="set-ctn">
+          <div class="set-games"  *ngFor="let set of game.teams[0].sets; index as setIndex">
+            <input class="set-game-score" [(ngModel)]="team1Sets[setIndex]" (ngModelChange)="onInputSetChange()"  type="number" min="0" />
+            <span class="hyphen">&#8208;</span>
+            <input class="set-game-score" [(ngModel)]="team2Sets[setIndex]" (ngModelChange)="onInputSetChange()"  type="number" min="0" /><i (click)="removeSet(setIndex)" class="las la-minus-square"></i>
+          </div>
+      </div>
+    </div>
+  </ng-container>
+  <!-- <div class="score-editor-ctn">
+    <div class="score-editor-section">
+      <gs-button [text]="'-1'" [className]="team1Games > 0 ?'content red' : 'content grey'" (onClick)="decreaseGames(0)"></gs-button>
+    </div>
+    <div  class="score-editor-section">
+      <gs-button [text]="'-1'" [className]="team2Games > 0 ?'content red' : 'content grey'"  (onClick)="decreaseGames(1)"></gs-button>
+    </div>
+  </div>
+  <div class="score-ctn sets">
+    <div class="score-section">
+      <input class="score-input" [(ngModel)]="team1Games"  type="number" min="0" />
+    </div>
+    <div class="score-section">
+      -
+    </div>
+    <div class="score-section">
+      <input class="score-input" [(ngModel)]="team2Games"  type="number" min="0" />
+    </div>
+  </div>
+  <div class="score-editor-ctn">
+    <div class="score-editor-section">
+      <gs-button [text]="'+1'" [className]="team1Games < sportConstants[game.sport].maxGames ?'content green' : 'content grey'" (onClick)="increaseGames(0)"></gs-button>
+    </div>
+    <div class="score-editor-section">
+      <gs-button (click)="onValidateSet()"  [text]="getTranslation('valid_set')" [className]=" sets.length < maxSets && (team1Games !== maxGames || team2Games !== maxGames) && team1Games !== team2Games ?'button green' : 'button grey'" ></gs-button>
+    </div>
+    <div class="score-editor-section">
+      <gs-button [text]="'+1'" [className]="team2Games < sportConstants[game.sport].maxGames ?'content green' : 'content grey'" (onClick)="increaseGames(1)"></gs-button>
+    </div>
+  </div> -->
+
+  <div class="score-ctn">
+    <div class="score-section sets">
+      <div class="score-editor-section">
+        <button class="score-adder" (click)="decreaseGames(0)">-</button>
+      </div>
+      <input class="score-input" [(ngModel)]="team1Games"  type="number" min="0" placeholder="0" />
+      <div class="score-editor-section">
+        <button class="score-adder" (click)="increaseGames(0)">+</button>
+      </div>
+    </div>
+    <div class="score-editor-section">
+      <button *ngIf="sets.length < maxSets && (team1Games !== maxGames || team2Games !== maxGames) && team1Games !== team2Games" class="validate-set" (click)="onValidateSet()">{{getTranslation('valid_set')}}</button>
+    </div>
+    <div class="score-section sets">
+      <div class="score-editor-section">
+        <button class="score-adder" (click)="decreaseGames(1)">-</button>
+      </div>
+      <input class="score-input" [(ngModel)]="team2Games"  type="number" min="0" placeholder="0"/>
+      <div class="score-editor-section">
+        <button class="score-adder" (click)="increaseGames(1)">+</button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<gs-modal *ngIf="isGoalSelectorOn" [title]="getTranslation('goal_for') + ' ' + selectedTeam.title + '!'" (onValidate)="validateGoalSelector()" (onCancel)="cancelGoalSelector()">
+  <div class="goal-selector-ctn">
+    <div class="goal-selector-players-section">
+      <div class="goal-selector">
+        <div *ngIf="selectedTeam" [class.short]="isDisplayingOwnGoals">
+          <div *ngFor="let player of selectedTeam.players; index as playerIndex" class="player-row">
+            <div class="player-name-ctn">
+              <avatar [picture]="player.user.picture" [size]="40"></avatar>
+<!--              <img class="player-img"-->
+<!--                [src]=" player.user.picture ? 'https://api.futbak.com/static/images/users/' + player.user.picture : 'https://api.futbak.com/static/images/users/logoGuestFull.png'" />-->
+              <p class="player-name"> {{ player.user.nickname }}</p>
+            </div>
+            <div class="counters-ctn">
+              <gs-counter [title]="getTranslation('goals')" [value]="player.goals" [icon]="'goals'" (onMinus)="decreasePlayerGoals(playerIndex)" (onPlus)="increasePlayerGoals(playerIndex)"></gs-counter>
+              <gs-counter [title]="getTranslation('assists')" [value]="player.assists" [icon]="'assists'" (onMinus)="decreasePlayerAssists(playerIndex)" (onPlus)="increasePlayerAssists(playerIndex)"></gs-counter>
+            </div>
+
+          </div>
+        </div>
+        <ng-container *ngIf="otherTeam">
+          <div class="own-goal-title" (click)="toggleIsDisplayingOwnGoals()">
+            <img src="./assets/img/icons/own-goal.png" />
+            <span>{{ getTranslation('own_goal')}}</span>
+            <img class="arrow" [class.reversed]="isDisplayingOwnGoals" src="./assets/img/icons/arrow-down-white.png" />
+          </div>
+          <ng-container *ngIf="isDisplayingOwnGoals">
+            <div *ngFor="let player of otherTeam.players; index as playerIndex" class="player-row">
+              <div class="player-name-ctn">
+                <img class="player-img"
+                  [src]=" player.user.picture ? 'https://api.futbak.com/static/images/users/' + player.user.picture : 'https://api.futbak.com/static/images/users/logoGuestFull.png'" />
+                <p class="player-name"> {{ player.user.nickname }}</p>
+              </div>
+              <gs-counter [title]="getTranslation('own_goals')" [value]="player.owngoals" [icon]="'assists'" (onMinus)="decreasePlayerOwnGoals(playerIndex)" (onPlus)="increasePlayerOwnGoals(playerIndex)"></gs-counter>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</gs-modal>

@@ -1,0 +1,14 @@
+<div id="instagram-card">
+  <div class="top-card">
+    <img loading="lazy" class="profil-image" src="./assets/img/home-page/header/nouveau-logo-sportbak-1.png" >
+    <div>
+      <h4>{{instagramUsername}}</h4>
+      <span><time>{{contentDate | date:'dd MMMM yyyy' }}</time></span>
+    </div>
+    <img loading="lazy" class="instagram-logo" src="./assets/img/home-page/header/instagram-icon-card.png" >
+  </div>
+  <img loading="lazy" class="content-image" [src]="instagramMainContent" >
+  <div class="bottom-card">
+    <p>{{instagramTextContent}}</p>
+  </div>
+</div>

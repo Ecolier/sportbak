@@ -1,0 +1,4 @@
+<ng-container *ngFor="let input of numberOfInputs; let last = last; let i = index">
+  <input #input maxlength="2" [attr.data-id]="i" type="text" [ngModel]="valueComponents" (ngModelChange)="onChange($event, i)" (keydown)="tryForNumber($event)" [attr.placeholder]="placeholders[i]">
+  <span *ngIf="!last" class="separator">{{ splitter }}</span>
+</ng-container>

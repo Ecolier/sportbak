@@ -1,0 +1,189 @@
+@import "src/app/shared/const/variables";
+
+manager-team-adder {
+  
+  .title-ctn {
+    display: flex;
+    align-items: baseline;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    .add-btn {
+      cursor: pointer;
+      margin-left: 15px;
+    }
+  }
+
+  .adding-team-ctn{
+    margin-top: 5px;
+    background-color: $light-black;
+    border: 1px solid $light-grey;
+    border-radius: 10px;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 450px;
+    overflow: auto;
+    &.has-team{
+      display: block;
+    }
+  }
+  .is-adding{
+    margin-top: 10px;
+    margin-bottom: 50px;
+  }
+  .add-teams-btn{
+    background-color: transparent;
+    border: 1px solid $orange;
+    color: $orange;
+    font-size: 16px;
+    border-radius: 100px;
+  }
+  .action-btn {
+    padding: 5px 25px;
+    font-size: 22px;
+    color: $white;
+    border-radius: 100px;
+    background-color: $orange;
+    color: $orange;
+    color: $white;
+    i{
+      font-size: 26px;
+    }
+    &.cancel {
+      background-color: transparent;
+      border: 1px solid $white;
+    }
+    &.action{
+      background-color: transparent;
+      border: 1px solid $orange;
+      color: $orange;
+    }
+    &.delete{
+      background-color: transparent;
+      color: $orange;
+    }
+
+  }
+
+  .title {
+    font-size: 35px;
+    font-family: $secondary-font;
+  }
+
+  .team-input {
+    background-color: $light-black;
+    border: 1px solid $orange;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 20px;
+    font-family: $secondary-font;
+    background-color: transparent;
+    color: $white;
+    &::placeholder{
+      color: $light-grey;
+    }
+    &.error{
+    border: 2px solid $red;
+    }
+  }
+
+  .btns-ctn {
+    display: flex;
+    margin-top: 10px;
+    button {
+      width: 50%;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  .add-players-btn {
+    margin-bottom: 20px;
+  }
+
+  .gs-team-btn {
+    width: 30%;
+  }
+
+  .team-section {
+    margin: 10px 0px;
+    padding: 8px 0px;
+    background-color: $extra-light-black;
+    width: 100%;
+    .team-ctn {
+      display: flex;
+      align-items: center;
+      margin: 5px;
+      justify-content: space-between;
+      .team-ctn-info,.team-ctn-action{
+        display: flex;
+        align-items: center;
+      }
+      .team-ctn-info{
+        justify-content: start;
+        max-width: 200px;
+        @media (max-width:$break-md) {
+          max-width: 150px;
+        }
+      }
+      .team-ctn-action{
+        justify-content: end;
+      }
+      .team-shirt {
+        width: 40px;
+        height: 40px;
+      }
+
+      .team-name {
+        width: 60%;
+        font-size: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-left: 5px;
+        white-space: nowrap;
+      }
+
+      .team-btn {
+        font-size: 16px;
+        padding: 5px 10px;
+        margin: 0px 3px;
+      }
+    }
+
+    .team-players {
+      display: flex;
+      flex-wrap: wrap;
+      padding-left: 15px;
+      width: 90%;
+    }
+  }
+
+  .player-img {
+    position: relative;
+  }
+
+  .player-tooltip {
+    position: absolute;
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 2px;
+    top: 60px;
+    left: -50px;
+    opacity: 0;
+    z-index: 20;
+    transition-duration: 0.15s;
+  }
+
+  .player-img:hover .player-tooltip {
+    visibility: visible;
+    top: 35px;
+    opacity: 1;
+    transition-duration: 0.3s;
+  }
+}

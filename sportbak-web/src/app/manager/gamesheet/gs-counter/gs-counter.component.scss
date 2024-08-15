@@ -1,0 +1,69 @@
+@import "src/app/shared/const/variables";
+
+gs-counter {
+
+  // This is to remove the arrows in the number input
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+  img {
+    height: 30px;
+  }
+  .counter-ctn {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 10px;
+    padding: 3px 15px;
+    border: 1px solid $white;
+    @media (max-width: $break-sm) {
+      margin: 3px 15px;
+    }
+  }
+
+  .counter-title-ctn {
+    display: flex;
+    justify-content: center;
+    font-family: $main-font;
+    align-items: baseline;
+
+    img {
+      height: 25px;
+    }
+    .counter-title{
+      font-size: 25px;
+      margin-right: 3px;
+    }
+    .counter-title-icon{
+
+    }
+  }
+
+  .counter-action-ctn {
+    display: flex;
+    align-items: center;
+
+    .action-icon {
+
+    }
+
+    .action-input {
+      height: 40px;
+      width: 50px;
+      text-align: center;
+      font-family: $main-font;
+      font-size: 45px;
+      border: none;
+      background: none;
+      color: $white;
+      margin: 0px 5px;
+    }
+  }
+}

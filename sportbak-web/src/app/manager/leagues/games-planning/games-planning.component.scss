@@ -1,0 +1,144 @@
+@import 'src/app/shared/const/variables.scss';
+
+$mobile-max-screen-width: $break-md;
+
+futbak-competitions-games-planning {
+  display: block;
+
+  .sort-ctn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    .button-sort {
+    }
+  }
+
+  futbak-card {
+    .futbak-card {
+      futbak-button {
+        @media (max-width:$mobile-max-screen-width) {
+          height: 45px;
+        }
+
+        &.button-sort {
+          margin-left: 50%;
+          transform: translate(-50%);
+
+          @media (max-width:$mobile-max-screen-width) {
+            height: 45px;
+          }
+
+          .support {
+            @media (max-width:$mobile-max-screen-width) {
+              height: 45px;
+            }
+          }
+
+          table {
+            tr {
+              td {
+                futbak-label-autoadjust {
+                  font-size: 30px;
+
+                  @media (max-width:$mobile-max-screen-width) {
+                    font-size: 20px;
+                  }
+
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  table {
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+  }
+
+  .title-phase {
+    position: relative;
+    background-color: #ff7815;
+    font-family: 'BigNoodleTitling';
+    font-style: oblique;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    padding: 5px;
+    font-size: 20px;
+    cursor: pointer;
+
+    .phase-arrow {
+      height: 22px;
+      margin-left: 10px;
+
+      &.phase-arrow-up {
+        transform: rotate(90deg);
+      }
+
+      &.phase-arrow-down {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  .title-day {
+    position: relative;
+    font-family: 'BigNoodleTitling';
+    font-style: oblique;
+    text-transform: uppercase;
+    text-align: center;
+    color: #ff7815;
+    cursor: pointer;
+
+    .day-arrow {
+      height: 15px;
+      margin-left: 5px;
+
+      &.day-arrow-up {
+        transform: rotate(90deg);
+      }
+
+      &.day-arrow-down {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  .no-game-title {
+    font-family: 'BigNoodleTitling';
+    font-style: oblique;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    animation: fadeAndScale 2s infinite;
+  }
+
+  .game-row {
+    margin: 20px 10px 20px 10px
+  }
+
+
+  @keyframes fadeAndScale {
+    0% {
+      opacity: 0.5;
+      transform: scale(.9, .9);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+
+    100% {
+      opacity: 0.5;
+      transform: scale(.9, .9);
+    }
+  }
+
+}

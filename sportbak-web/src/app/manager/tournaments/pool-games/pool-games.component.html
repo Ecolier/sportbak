@@ -1,0 +1,21 @@
+<div *ngFor="let phase of pool.game; index as phaseIndex">
+  <div class="pool-games-title phase-title" (click)="togglePhase(phaseIndex)">
+    <span>{{getTranslation('phase')}} {{ phaseIndex +1 }}</span>
+    <img [class.rotated]="!phaseDisplay[phaseIndex]" src="./assets/img/icons/arrow-white.png"/>
+  </div>
+  <ng-container *ngIf="phaseDisplay[phaseIndex]">
+    <div *ngFor="let day of phase;  index as dayIndex">
+      <div class="pool-games-title" (click)="toggleDay(phaseIndex, dayIndex)">
+        <span>{{getTranslation('day')}} {{dayIndex+1}}</span>
+        <img [class.rotated]="!dayDisplay[phaseIndex][dayIndex]" src="./assets/img/icons/arrow-white.png"/>
+      </div>
+      <ng-container *ngIf="dayDisplay[phaseIndex][dayIndex]">
+        <div *ngFor="let game of day">
+          <futbak-game-row class="game-row" [game]="game" [teams]="getLeagueTeams(game)" [compType]="'tournament'" [size]="'small'"
+                    [compName]="tournament.name" [tournament_id]="tournament._id">
+          </futbak-game-row>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

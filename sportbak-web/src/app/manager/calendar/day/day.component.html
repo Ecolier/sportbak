@@ -1,0 +1,13 @@
+<ng-container *ngIf="date">
+  <div [ngClass]="isOpen ? 'day' : 'day disabled'" *ngFor="let day of days;index as dayIndex" (click)="onDayClick(DAY, dayIndex, day)"
+       [class.empty]="!day.date"
+       [class.today]="day.date ? day.date.getDate() == date.getDate() && day.date.getMonth() == date.getMonth() && day.date.getFullYear() == day.date.getFullYear() : false"
+       [class.clicked]="clickedDayName == DAY && clickedDayIndex == dayIndex">
+    <span class="day-nb">{{ day.date ? day.date.getDate() : '' }}</span>
+    <div *ngIf="day.date" class="booking-circles-ctn">
+      <tip *ngIf="day.waitingForPlayerBookings > 0" [size]="5" [classes]="['yellow']"></tip>
+      <tip *ngIf="day.waitingForManagerBookings > 0" [size]="5" [classes]="['orange', (day.date ? day.date.getDate() == date.getDate() && day.date.getMonth() == date.getMonth() && day.date.getFullYear() == day.date.getFullYear() : false) ? 'white-border' : '']"></tip>
+      <tip *ngIf="day.validatedBookings > 0" [size]="5" [classes]="['green']"></tip>
+    </div>
+  </div>
+</ng-container>

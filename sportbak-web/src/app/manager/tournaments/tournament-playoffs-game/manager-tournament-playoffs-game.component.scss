@@ -1,0 +1,103 @@
+@import "src/app/shared/const/variables";
+
+manager-tournament-playoffs-game {
+
+  &.round-of-16-game {
+    height: 12%;
+    display: flex;
+    align-items: center;
+  }
+
+  &.quarter-finals-game {
+    height: 25%;
+    display: flex;
+    align-items: center;
+  }
+
+  &.semi-finals-game {
+    height: 50%;
+    display: flex;
+    align-items: center;
+  }
+
+  &.final-game {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .game-ctn {
+    position: relative;
+
+    .vs-ctn {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .vs-img {
+        height: 50px;
+        position: absolute;
+      }
+    }
+
+    .team-ctn {
+      width: 200px;
+      display: flex;
+      font-family: $main-font;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #636e72;
+      border-radius: 10px;
+
+      &.top-team {
+        margin-bottom: 6px;
+      }
+
+      &.winning-team {
+        border: 1px solid $orange-medium;
+      }
+
+      .team-name-ctn {
+        display: flex;
+        justify-content: flex-end;
+        overflow: hidden;
+        margin-right: 10px;
+
+        img {
+          height: 50px;
+          margin-right: 5px;
+        }
+      }
+
+      .team-name {
+        font-size: 20px;
+        align-self: center;
+        overflow: initial;
+        color: $white;
+      }
+
+      .team-jersey {
+        height: 45px;
+      }
+
+      .goals {
+        font-size: 30px;
+        background-color: #636e72;
+        color: $white;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        width: 45px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.winning-team {
+          background-color: $orange-medium;
+        }
+      }
+    }
+  }
+}

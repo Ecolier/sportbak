@@ -1,0 +1,25 @@
+<ng-container *ngIf="!selectedGame || (selectedGame && selectedGame.game.sport == dayField.sport)">
+  <div class="title-field" *ngIf="!isMobile" 
+    [title]="dayField.bookingSettings && dayField.bookingSettings.visibility && dayField.bookingSettings.visibility == 'private' ? getTranslation('private_field'): ''">
+    <img *ngIf="dayField.bookingSettings && dayField.bookingSettings.visibility && dayField.bookingSettings.visibility == 'private'" src="./assets/img/icons/manager-space/lock.png" [alt]="dayField.sport">
+    <div class="field-name">{{ dayField.name }}</div>
+    <img [src]="dayField.getSportIcon()" [alt]="dayField.sport">
+  </div>
+  <block-thirty-min *ngFor="let block of dayField.timeBlocks; index as blockIndex"
+    [block]="block" [isMobile]="isMobile"
+    [hourMark]="blockIndex % 2 != 0 && !block.booking"
+    [name]="block.booking ? block.getName() : ''"
+    [contact]="block.booking ? block.getContact() : ''"
+    [borderRight]="borderRight"
+    [time]="block.booking ? block.getTime() : ''"
+    [selectedGame]="selectedGame"
+    [displayStatus]="block.booking ? block.getDisplayStatus() : ''"
+    [competition]="block.booking ? block.getCompetition() : null"
+    (click)="onBlockClick(block)">
+  </block-thirty-min>
+
+  <request-status [isVisible]="isRequestStatusVisible" [text]="requestStatusText" [errorCode]="requestStatusErrorCode"
+                  [isFailure]="!isRequestSuccess" (resetRequestStatus)="resetRequestStatus()">
+  </request-status>
+
+</ng-container>

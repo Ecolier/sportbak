@@ -1,0 +1,351 @@
+{
+    "width" : 1920,
+    "height" : 1080,
+    "redraw" : true,
+    "objects" : [
+        {
+            "visible" : true,
+            "enabled" : true,
+            "origin" : {
+                "external" : {
+                    "x" : 0,
+                    "y" : 0
+                },
+                "internal" : {
+                    "x" : 0,
+                    "y" : 0
+                }
+            },
+            "position" : {
+                "x" : 20,
+                "y" : 20
+            },
+            "size" : {
+                "keep_image_ratio" : true,
+                "ratio_width_on_height" : 4,
+                "width_percentage" : true,
+                "height_percentage" : true,
+                "width" : 0.40,
+                "height" : null
+            },
+            "children" : [
+                {
+                    "visible" : true,
+                    "enabled" : true,
+                    "id" : "team1",
+                    "background_color" : "black",
+                    "text" : "",
+                    "font" : "BigNoodleTitling",
+                    "font_size" : 60,
+                    "font_color" : "white",
+                    "origin" : {
+                        "external" : {
+                            "x" : 0,
+                            "y" : 0
+                        },
+                        "internal" : {
+                            "x" : 0,
+                            "y" : 0
+                        }
+                    },
+                    "position" : {
+                        "x" : 0,
+                        "y" : 0
+                    },
+                    "size" : {
+                        "width_percentage" : true,
+                        "height_percentage" : true,
+                        "width" : 0.35,
+                        "height" : 0.5
+                    }
+                },
+                {
+                    "visible" : true,
+                    "enabled" : true,
+                    "id" : "score",
+                    "background_color" : "orange",
+                    "text" : "",
+                    "font" : "BigNoodleTitling",
+                    "font_size" : 60,
+                    "font_color" : "black",
+                    "origin" : {
+                        "external" : {
+                            "x" : 0.35,
+                            "y" : 0
+                        },
+                        "internal" : {
+                            "x" : 0,
+                            "y" : 0
+                        }
+                    },
+                    "position" : {
+                        "x" : 0,
+                        "y" : 0
+                    },
+                    "size" : {
+                        "width_percentage" : true,
+                        "height_percentage" : true,
+                        "width" : 0.3,
+                        "height" : 0.5
+                    }
+                },
+                {
+                    "visible" : true,
+                    "enabled" : true,
+                    "id" : "team2",
+                    "text" : "",
+                    "font" : "BigNoodleTitling",
+                    "font_size" : 60,
+                    "font_color" : "white",
+                    "background_color" : "black",
+                    "origin" : {
+                        "external" : {
+                            "x" : 1,
+                            "y" : 0
+                        },
+                        "internal" : {
+                            "x" : 1,
+                            "y" : 0
+                        }
+                    },
+                    "position" : {
+                        "x" : 0,
+                        "y" : 0
+                    },
+                    "size" : {
+                        "width_percentage" : true,
+                        "height_percentage" : true,
+                        "width" : 0.35,
+                        "height" : 0.5
+                    }
+                },
+                {
+                    "visible" : true,
+                    "enabled" : true,
+                    "id" : "time",
+                    "text" : "",
+                    "background_color" : "white",
+                    "font" : "BigNoodleTitling",
+                    "font_size" : 40,
+                    "font_color" : "black",
+                    "origin" : {
+                        "external" : {
+                            "x" : 0.35,
+                            "y" : 0.5
+                        },
+                        "internal" : {
+                            "x" : 0,
+                            "y" : 0
+                        }
+                    },
+                    "position" : {
+                        "x" : 0,
+                        "y" : 0
+                    },
+                    "size" : {
+                        "width_percentage" : true,
+                        "height_percentage" : true,
+                        "width" : 0.3,
+                        "height" : 0.25
+                    }
+                },
+                {
+                    "visible" : true,
+                    "enabled" : true,
+                    "id" : "period",
+                    "text" : "",
+                    "font" : "BigNoodleTitling",
+                    "font_size" : 40,
+                    "font_color" : "black",
+                    "background_color" : "white",
+                    "origin" : {
+                        "external" : {
+                            "x" : 0.35,
+                            "y" : 0.75
+                        },
+                        "internal" : {
+                            "x" : 0,
+                            "y" : 0
+                        }
+                    },
+                    "position" : {
+                        "x" : 0,
+                        "y" : 0
+                    },
+                    "size" : {
+                        "width_percentage" : true,
+                        "height_percentage" : true,
+                        "width" : 0.3,
+                        "height" : 0.25
+                    }
+                }
+            ]
+        },
+        {
+            "visible" : true,
+            "enabled" : true,
+            "image" : "${resources}/overlay/overlay-top-right-logo.png",
+            "origin" : {
+                "external" : {
+                    "x" : 1,
+                    "y" : 0
+                },
+                "internal" : {
+                    "x" : 1,
+                    "y" : 0
+                }
+            },
+            "position" : {
+                "x" : -20,
+                "y" : 20
+            },
+            "size" : {
+                "keep_image_ratio" : true,
+                "width_percentage" : true,
+                "height_percentage" : true,
+                "width" : null,
+                "height" : null
+            },
+            "children" : []
+        },
+        {
+            "visible" : true,
+            "enabled" : true,
+            "image" : "${assets}/overlay_sportbak_logo.png",
+            "origin" : {
+                "external" : {
+                    "x" : 0.5,
+                    "y" : 1
+                },
+                "internal" : {
+                    "x" : 0.5,
+                    "y" : 1
+                }
+            },
+            "position" : {
+                "x" : 0,
+                "y" : -20
+            },
+            "size" : {
+                "keep_image_ratio" : true,
+                "width_percentage" : true,
+                "height_percentage" : true,
+                "width" : 0.25,
+                "height" : null
+            },
+            "children" : []
+        },
+        {
+            "visible" : false,
+            "enabled" : true,
+            "id": "pause",
+            "image" : "${assets}/overlay_action_pause.png",
+            "origin" : {
+                "external" : {
+                    "x" : 0.5,
+                    "y" : 0.5
+                },
+                "internal" : {
+                    "x" : 0.5,
+                    "y" : 0.5
+                }
+            },
+            "position" : {
+                "x" : 0,
+                "y" : 0
+            },
+            "size" : {
+                "keep_image_ratio" : true,
+                "width_percentage" : true,
+                "height_percentage" : true,
+                "width" : 0.75,
+                "height" : null
+            },
+            "children" : []
+        },
+        {
+            "visible" : false,
+            "enabled" : true,
+            "id": "goal",
+            "image" : "${assets}/overlay_action_goal.png",
+            "origin" : {
+                "external" : {
+                    "x" : 0.5,
+                    "y" : 0.5
+                },
+                "internal" : {
+                    "x" : 0.5,
+                    "y" : 0.5
+                }
+            },
+            "position" : {
+                "x" : 0,
+                "y" : 0
+            },
+            "size" : {
+                "keep_image_ratio" : true,
+                "width_percentage" : true,
+                "height_percentage" : true,
+                "width" : 0.75,
+                "height" : null
+            },
+            "children" : []
+        },
+        {
+            "visible" : false,
+            "enabled" : true,
+            "id": "buzz",
+            "image" : "${assets}/overlay_action_buzz.png",
+            "origin" : {
+                "external" : {
+                    "x" : 0.5,
+                    "y" : 0.5
+                },
+                "internal" : {
+                    "x" : 0.5,
+                    "y" : 0.5
+                }
+            },
+            "position" : {
+                "x" : 0,
+                "y" : 0
+            },
+            "size" : {
+                "keep_image_ratio" : true,
+                "width_percentage" : true,
+                "height_percentage" : true,
+                "width" : 0.75,
+                "height" : null
+            },
+            "children" : []
+        },
+        {
+            "visible" : false,
+            "enabled" : true,
+            "id": "var",
+            "image" : "${assets}/overlay_action_var.png",
+            "origin" : {
+                "external" : {
+                    "x" : 0.5,
+                    "y" : 0.5
+                },
+                "internal" : {
+                    "x" : 0.5,
+                    "y" : 0.5
+                }
+            },
+            "position" : {
+                "x" : 0,
+                "y" : 0
+            },
+            "size" : {
+                "keep_image_ratio" : true,
+                "width_percentage" : true,
+                "height_percentage" : true,
+                "width" : 0.75,
+                "height" : null
+            },
+            "children" : []
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+<futbak-nav-bar [selectedTab]="tabSelected" [tabs]="[getTranslation('results'), getTranslation('upcoming_games')]" linkId="league" [height]="60" (tabClicked)="tabClicked($event)"> </futbak-nav-bar>
+
+<futbak-competitions-games-planning 
+    [league_id]="league._id"
+    [mode]="tabSelected == 0 ? 'past' : 'future'" 
+    [games]="league.game" 
+    [teams]="league.teams"  
+    [filterTeams]="teamsFiltered" 
+    [compType]="'league'"
+    [compName]="league.name"
+    (startedAtOfGameUpdated)="startedAtOfGameUpdated($event)"
+    (clickOnPendingGame)="gameInPendingClicked($event)"
+    (clickOnFinishedGame)="gameFinishedClicked($event)">
+</futbak-competitions-games-planning>

@@ -1,0 +1,25 @@
+@import  "src/app/home/const/variables";;
+.social-panel-partials{
+  display: flex;
+  justify-content: space-between;
+  max-width: 260px;
+  padding-bottom: 20px;
+  .social-panel-icon{
+    display: block;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    background-color: $white;
+    text-align: center;
+    border-radius: 100%;
+    margin: 5px;
+    &:hover{
+      filter: grayscale(100%);
+    }
+    i{
+      padding-top: 10px;
+      color: $dark;
+      font-size: 28px;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<spinning-loader *ngIf="!hasLoaded" [hasCtn]="true" [isMedium]="true"></spinning-loader>
+<div *ngIf="hasLoaded">
+  <h1 class="league-name">{{ league? league.name : ''}}</h1>
+  <futbak-nav-bar class="league-tabs" [tabs]="[getTranslation('ranking'), getTranslation('games')]" linkId="league"
+    (tabClicked)="tabClicked($event)"> </futbak-nav-bar>
+  <div>
+    <div *ngIf="tabSelected == 0">
+      <futbak-league-ranking [league]="league"></futbak-league-ranking>
+    </div>
+    <div *ngIf="tabSelected == 1">
+      <futbak-league-games [league]="league"></futbak-league-games>
+    </div>
+  </div>

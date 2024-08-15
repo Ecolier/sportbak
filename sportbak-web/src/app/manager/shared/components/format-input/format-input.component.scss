@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+}
+
+input {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  flex: 1;
+  min-width: 0;
+}
+
+input:focus {
+  outline: transparent;
+}

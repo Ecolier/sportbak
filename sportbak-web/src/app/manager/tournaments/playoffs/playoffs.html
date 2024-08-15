@@ -1,0 +1,18 @@
+<div *ngIf="playoffsAvailable ;else noPlayoffs" class="restriction-width-large">
+  <div class="support-round">
+    <div *ngFor="let round of roundsAvailable;let i = index" class="round" [ngClass]="{'selected' : i == roundSelected}" (click)="changeRoundSelected(i)">
+      {{ round }}
+    </div>
+  </div>
+  <div class="support">
+    <div [id]="supportCanvasId" class="support-canvas">
+      <canvas [id]="canvasId"></canvas>
+    </div>
+  </div>
+
+</div>
+<ng-template #noPlayoffs>
+  <div class="no-playoffs">
+    {{getTranslation('noPlayoffs')}}
+  </div>
+</ng-template> 

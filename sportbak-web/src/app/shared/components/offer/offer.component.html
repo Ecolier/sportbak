@@ -1,0 +1,27 @@
+<div class="offer-ctn">
+  <h1 class="offer-title">{{card.title}}</h1>
+    <ngx-slick-carousel *ngIf="card" class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+      <div ngxSlickItem  class="slide">
+        <div class="offer">
+          <div class="contents-ctn">
+            <ng-container *ngFor="let item of card.content.text; index as contentIndex">
+              <li class="content"><span>{{card.content.text[contentIndex]}}</span></li>
+            </ng-container>
+          </div>
+          <button (click)="showVideo.emit(card.content.video)" sbk-btn class="round white video-btn" *ngIf="card.content.video">{{ getTranslation('watch') }}</button>
+          <div class="price-ctn">
+            <span class="main-price">{{card.price_1}}</span>
+            <span class="second-price">{{card.price_2}}</span>
+          </div>
+        </div>
+      </div>
+      <ng-container *ngIf="card.content.img">
+        <div *ngFor="let image of card.content.img" ngxSlickItem class="slide">
+          <div>
+            <img class="img-offer" src="{{'./assets/img/offers/'+image}}">
+          </div>
+        </div>
+      </ng-container>
+    </ngx-slick-carousel>
+</div>
+

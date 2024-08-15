@@ -1,0 +1,38 @@
+<div class="days-selector-ctn" [class.prev-month-anim]="clickedPreviousMonth"
+  [class.next-month-anim]="clickedNextMonth">
+  <div *ngIf="isLoading" class="loading-ctn">
+    <spinning-loader [isMedium]="true"></spinning-loader>
+  </div>
+  <div class="days-names">
+    <span class="day-name">{{ getTranslation('monday') }}</span>
+    <span class="day-name">{{ getTranslation('tuesday') }}</span>
+    <span class="day-name">{{ getTranslation('wednesday') }}</span>
+    <span class="day-name">{{ getTranslation('thursday') }}</span>
+    <span class="day-name">{{ getTranslation('friday') }}</span>
+    <span class="day-name">{{ getTranslation('saturday') }}</span>
+    <span class="day-name sunday">{{ getTranslation('sunday') }}</span>
+  </div>
+  <div *ngIf="openingDays.length > 0" class="days-ctn">
+    <div class="day-col">
+      <day-column [isOpen]="openingDays[0].length > 0 ? true : false"  [days]="mondays" [DAY]="MONDAY"  [date]="date" (emitDays)="emitDays($event)"></day-column>
+    </div>
+    <div class="day-col">
+      <day-column [isOpen]="openingDays[1].length > 0 ? true : false" [days]="tuesdays" [DAY]="TUESDAY" [date]="date" (emitDays)="emitDays($event)"></day-column>
+    </div>
+    <div class="day-col">
+      <day-column [isOpen]="openingDays[2].length > 0 ? true : false" [days]="wednesdays" [DAY]="WEDNESDAY" [date]="date" (emitDays)="emitDays($event)"></day-column>
+    </div>
+    <div class="day-col">
+      <day-column [isOpen]="openingDays[3].length > 0 ? true : false" [days]="thursdays" [DAY]="MONDAY" [date]="date" (emitDays)="emitDays($event)"></day-column>
+    </div>
+    <div class="day-col">
+      <day-column [isOpen]="openingDays[4].length > 0 ? true : false" [days]="fridays" [DAY]="FRIDAY" [date]="date" (emitDays)="emitDays($event)"></day-column>
+    </div>
+    <div class="day-col">
+      <day-column [isOpen]="openingDays[5].length > 0 ? true : false" [days]="saturdays" [DAY]="SATURDAY" [date]="date" (emitDays)="emitDays($event)"></day-column>
+    </div>
+    <div class="day-col sunday">
+      <day-column [isOpen]="openingDays[6].length > 0 ? true : false" [days]="sundays" [DAY]="MONDAY" [date]="date" (emitDays)="emitDays($event)"></day-column>
+    </div>
+  </div>
+</div>

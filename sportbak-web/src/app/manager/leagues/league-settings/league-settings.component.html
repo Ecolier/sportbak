@@ -1,0 +1,26 @@
+<div class="settings-ctn">
+  <div *ngFor="let team of league.teams; index as teamIndex" class="team-row">
+    <div class="team-info">
+      <img class="team-shirt" [src]="team.getShirt()" />
+      <span>{{ team.name }}</span>
+    </div>
+    <div class="input-ctn">
+      <span>{{ getTranslation('bonus_points')}}:</span>
+      <input type="number" [(ngModel)]="bonusPoints[teamIndex]" (ngModelChange)="showButtons()"/>
+    </div>
+  </div>
+  <div *ngIf="areButtonsEnabled" class="buttons-ctn">
+    <button class="settings-btn" (click)="validate()"> {{ getTranslation('save')}}</button>
+    <button class="settings-btn cancel" (click)="initBonusPoints()">{{ getTranslation('cancel')}}</button>
+  </div>
+  <manager-league-creator [leagueToEdit]="league" (onUpdate)="showUpdateStatus($event)">
+  </manager-league-creator>
+    <spinning-loader *ngIf="isLoading" [isMedium]="true" [hasCtn]="true"></spinning-loader>
+</div>
+<request-status
+  [isVisible]="isRequestStatusVisible"
+  [text]="requestStatusText"
+  [isFailure]="!isRequestSuccess"
+  [displayTime]="1500"
+  (resetRequestStatus)="resetRequestStatus()">
+</request-status>

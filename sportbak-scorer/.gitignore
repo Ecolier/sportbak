@@ -1,0 +1,31 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+media
+
+# testing
+/coverage
+
+# production
+/dist
+
+# misc
+.DS_Store
+.env
+npm-debug.log
+
+
+yarn-offline-mirror/
+yarn-error.log
+
+core
+
+logs
+example/config.json
+
+package-lock.json
+
+build-prod-test.sh
+resources/

@@ -1,0 +1,40 @@
+<div class="title-ctn">
+  <img (click)="goBack()" class="back-btn" src="./assets/img/icons/arrow-white.png"/>
+  <span>{{ getTranslation('notification_creation') }}</span>
+</div>
+<div *ngIf="!isLoading" class="new-notif-ctn">
+  <div class="new-notif-content">
+    <p class="light-text">{{ getTranslation('targeted_people')}} {{ numberOfFollowers }}
+      {{ getTranslation('targeted_people2')}} </p>
+    <div class="input-ctn">
+      <p class="light-text input-title">{{ getTranslation('title') }}</p>
+      <manager-input id="notificationTitle"
+                     class="full-input"
+                     [type]="'text'"
+                     [value]="notificationTitle" [maxlength]="50"
+                     (onChange)="onNotificationTitleChange($event)"></manager-input>
+    </div>
+    <div class="input-ctn">
+      <p class="light-text input-title">{{ getTranslation('text') }}</p>
+      <manager-textarea class="full-input"
+                        [value]="notificationContent"
+                        (onChange)="onNotificationContentChange($event)"></manager-textarea>
+      <br>
+    </div>
+    <div class="btn-container">
+      <button sbk-btn *ngIf="!isLoading" class="round"
+              [class.disabled]="notificationTitle.length < 1 || notificationContent.length < 1"
+              [disabled]="notificationTitle.length < 1 || notificationContent.length < 1 || !canCreateNotifications"
+              (click)="onSendClick()">
+        {{ getTranslation('send') }}
+      </button>
+      <!-- leaving this out for now, too restrictive for user -->
+      <!-- <span
+      class="notification-tooltip desktop">{{ getTranslation('notification_tooltip1') }} {{millisecondsToDay(delayBetweenNotifications)}} {{getTranslation('days')}}
+      <br> {{ timeBeforeNextNotification}} {{ getTranslation('notification_tooltip2') }}</span> -->
+    </div>
+  </div>
+</div>
+<spinning-loader *ngIf="isLoading" class="notif-loader"></spinning-loader>
+<manager-alert *ngIf="hasSubmitted" [successMsg]="getTranslation('notification_success')"
+               [failureMsg]="failureMsg" [hasFailed]="hasFailedSending"></manager-alert>

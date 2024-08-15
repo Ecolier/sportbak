@@ -1,0 +1,89 @@
+<div class="man-comp-creator-ctn">
+  <div class="man-comp-creator-content">
+    <div class="input-ctn">
+      <div class="input-title-ctn">
+        <span class="light-text input-title">{{ getTranslation('name') }}</span>
+        <info-label [infoText]="getTranslation('info_name')"></info-label>
+      </div>
+      <manager-input id="tournamentName" [class]="'full-input'" [type]="'text'" [value]="name"
+      (onChange)="setName($event)"></manager-input>
+    </div>
+    
+    <manager-team-adder [teams]="leagueTeams" [isCompCreated]="tournamentToEdit && tournamentToEdit.isCreated()"
+    [addsPlayerAtCreation]="true"
+    [canTeamHaveGuest]="false" (onTeamAdd)="addTournamentTeam($event)"
+    (onTeamDelete)="deleteTournamentTeam($event)" (checkTeamPlayers)="checkAllTeamsHavePlayers()"
+    (setAllTeamHaveDifferentNames)="setAllTeamHaveDifferentNames($event)"></manager-team-adder>
+    
+    
+    <div class="tournament-types-ctn">
+      <div class="input-title-ctn">
+        <span class="light-text input-title">{{ getTranslation('tournament_types') }}</span>
+        <info-label [infoText]="getTranslation('info_tournament_types')"></info-label>
+      </div>
+      <div class="tournament-type">
+        <pool-editor *ngIf="!tournamentToEdit || !tournamentToEdit.isCreated() || tournamentToEdit.finalStage < 0"  (click)="selectTournamentType('pool')" [isPool]="isPool" [currentStep]="currentsStep" [tournament]="tournamentToEdit ? tournamentToEdit : null" [teams]="selectedTeams" [pools]="pools"
+        [selectedConfrontations]="confrontations" [victoryPoints]="pointsForVictory" [drawPoints]="pointsForDraw"
+        [lossPoints]="pointsForLoss" (checkTeamsPools)="checkAndUpdatePoolsTeams()"
+        (setConfrontations)="setConfrontations($event)" (setVictoryPoints)="setPointsForVictory($event)"
+        (setDrawPoints)="setPointsForDraw($event)" (setLossPoints)="setPointsForLoss($event)"
+        (setPools)="setPools($event)" (checkPoolsValid)="checkPoolsValid()" [isCompCreated]="tournamentToEdit && tournamentToEdit.isCreated()" (setCurrentStep)="setCurrentStep($event)"></pool-editor>
+        <playoffs-editor *ngIf="!tournamentToEdit || !tournamentToEdit.isCreated() ||  tournamentToEdit.finalStage >= 0"  (click)="selectTournamentType('final')" [isPool]="isPool" [currentStep]="currentsStep" [teams]="selectedTeams"
+          [tournament]="tournamentToEdit ? tournamentToEdit : null" [competitionTree]="competitionTree" [selectedStep]="selectedStep" [startedPhase]="startedPhase" [isShowingPlayoffsEditor]="isShowingPlayoffsEditor" [poolsToPlayoff]="poolsToPlayoff" (chosenPhase)="selectStep($event)" [shouldUpdate]="arePlayoffsValid"
+          (checkParamsValid)="checkParamsValidity()" [isCompCreated]="tournamentToEdit && tournamentToEdit.isCreated()" (setCurrentStep)="setCurrentStep($event)" (updatePoolToPlayoff)="onSaveClick('update')" (checkForUpdate)="checkPlayoffsValid()" (cancelPlayoffs)="cancelPlayoffs()"></playoffs-editor>
+        </div>
+      </div>
+      
+      
+      <div class="alert-ctn">
+        <p *ngIf="!allTeamsHavePlayers" class="team-players-warning">{{ getTranslation('team_players_warning')}}</p>
+        <p *ngIf="!allTeamsHaveDifferentNames" class="team-players-warning">{{ getTranslation('team_name_warning')}}</p>
+        <p *ngIf="isPool && !arePoolsValid" class="team-players-warning">{{ getTranslation('pools_invalid_warning')}}</p>
+        <p *ngIf="isPool==false && !arePlayoffsValid "
+           class="team-players-warning">{{ getTranslation('playoffs_invalid_warning')}}</p>
+        <p *ngIf="!allTeamsHaveDifferentNames" class="team-players-warning">{{ getTranslation('team_name_warning')}}</p>
+      </div>
+    <div class="comp-creator-btns-ctn">
+      <div class="comp-btn-ctn" *ngIf="tournamentToEdit ? !tournamentToEdit.isCreated() : true">
+          <button sbk-btn class="round medium outline"
+          [disabled]="!shouldEnableSave"
+          (click)="onSaveClick('save')">{{ getTranslation('save') }}
+          <info-label [infoText]="getTranslation('save_tooltip')" [isFromLeft]="true"
+          [mobileDisplayTime]="3000"></info-label>
+        </button>
+      </div>
+      
+      <div class="comp-btn-ctn" *ngIf="tournamentToEdit ? !tournamentToEdit.isCreated() : true">
+        <button sbk-btn class="round medium"
+        [disabled]="!shouldEnableStart"
+        (click)="onStartClick()">{{ getTranslation('start')}}
+        <info-label [infoText]="getTranslation('start_tooltip')" [isFromLeft]="true"
+        [mobileDisplayTime]="3000"></info-label>
+      </button>
+      </div>
+      <button class="action-btn margined light-text full comp-creation-btn orange"
+        *ngIf="tournamentToEdit && tournamentToEdit.isCreated() && tournamentToEdit.finalStage < 0" [disabled]="!areParamsValid" (click)="togglePoolToPlayoffModal()">
+        {{getTranslation('playoffs')}}
+      </button>
+      <button sbk-btn class="round"
+      *ngIf="tournamentToEdit ? tournamentToEdit.isCreated() : false" [disabled]="!areParamsValid || !shouldEnableSave"
+      (click)="onSaveClick('update')">{{ getTranslation('update') }}</button>
+    </div>
+  
+  <manager-modal [isDisplaying]="isShowingWarningModal" [mainText]="getTranslation('start_alert')"
+  [button1Text]="getTranslation('validate')" [button2Text]="getTranslation('cancel')"
+  [iconSrc]="'warning'"
+  (button1Action)="validateWarningModal()" (button2Action)="cancelWarningModal()"
+  (close)="cancelWarningModal()"></manager-modal>
+  <manager-modal [isDisplaying]="isShowingPoolToPlayoffModal" [mainText]="getTranslation('pools_not_finished')"
+  [button1Text]="getTranslation('validate')" [button2Text]="getTranslation('cancel')"
+  [iconSrc]="'warning'"
+  (button1Action)="startPlayoffs() ; togglePoolToPlayoffModal()" (button2Action)="togglePoolToPlayoffModal()"
+  (close)="togglePoolToPlayoffModal()"></manager-modal>
+  <manager-modal [isDisplaying]="isShowingNotifyPlayersModal" [mainText]="getTranslation('notify_players')"
+  [button1Text]="getTranslation('yes')" [button2Text]="getTranslation('no')" [iconSrc]="'notification'"
+  (button1Action)="onNotifyPlayerYesClick()" (button2Action)="onNotifyPlayerNoClick()"
+                   (close)="hideNotifyPlayerModal()"></manager-modal>
+
+  </div>
+</div>

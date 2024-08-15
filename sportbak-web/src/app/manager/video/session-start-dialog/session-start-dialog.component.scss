@@ -1,0 +1,50 @@
+@import 'src/app/shared/const/variables.scss';
+
+:host {
+  padding: 12pt;
+  background-color: #2b2b2b;
+  color: white;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.preselect-settings{
+  margin-bottom: 10px;
+}
+
+session-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 6pt;
+  border-bottom: 1px solid #EEE;
+  margin-bottom: 12pt;
+}
+
+.submit-button {
+  margin-top: 6pt;
+  color: white;
+  border-radius: 3pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12pt;
+  cursor: pointer;
+
+  &:hover {
+    transform: none;
+  }
+}
+
+.redirection-button {
+  background-color: transparent;
+  border: none;
+  color: blue;
+}

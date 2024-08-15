@@ -1,0 +1,36 @@
+@import 'src/app/shared/const/variables.scss';
+
+.around {
+  width: 100%;
+  position: relative;
+  color: white;
+  font-size: 1em;
+  z-index: 1;
+  cursor: pointer;
+  .toggle {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    border-radius: 100px;
+    z-index: -1;
+    transition-duration: 0.5s;
+    transition-property: all;
+    right: auto;
+  }
+
+  .button {
+    display: flex;
+    justify-content: space-around;
+    border-radius: 100px;
+    text-align: center;
+
+    .btn-txt {
+      padding: $spacing-sm;
+      width: 50%;
+    }
+  }
+}
+
+
+
+

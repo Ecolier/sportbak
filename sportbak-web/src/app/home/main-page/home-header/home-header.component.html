@@ -1,0 +1,43 @@
+<section  id="home-header">
+    <div class="video-ctn">
+        <video oncanplay="this.play()" onloadedmetadata="this.muted = true" autoplay muted loop class="home-header-background-video"><source src="./assets/video/smoke.mp4" type="video/mp4"></video>
+    </div>
+    <div class="home-header-img-phone">
+        <img #imagePhone id="img-phone" src="./assets/img/home-page/header/phone.png" >
+    </div>
+    <home-navigation></home-navigation>
+    <div class="home-header-center">
+        <div class="presentation-ctn">
+            <img id="big-logo-sportbak" src="./assets/img/home-page/header/logo-sportbak.png" alt="logo sportbak grand">
+            <div class="sport"><span>{{ getTranslation('header_foot')}}</span><span>&middot;</span><span>{{ getTranslation('header_padel')}}</span></div>
+            <h1>{{ getTranslation('header_title')}}</h1>
+            <p #presentationText id="presentation-text">{{ getTranslation('header_main_text')}}</p>
+        </div>
+        <div class="app-ctn">
+            <a href="https://play.google.com/store/apps/details?id=app.futbak&hl=fr&gl=US" target="_blank">
+                <img src="./assets/img/home-page/header/playstore-logo.png" alt="googleplay logo">
+            </a>
+            <a href="https://apps.apple.com/fr/app/futbak/id1440185531" target="_blank">
+                <img src="./assets/img/home-page/header/app-store-logo.png" alt="appstore logo">
+            </a>
+        </div>
+    </div>
+    <div class="home-bottom">
+            <div class="partners">
+                <p>{{ getTranslation('header_join_partners')}}</p>
+                <div class="partners-img">
+                   <img src="./assets/img/home-page/header/partners/footclub5-nice.png">
+                   <img src="./assets/img/home-page/header/partners/kaiser-foot.png">
+                   <img src="./assets/img/home-page/header/partners/le-classico-logo.png">
+                   <img src="./assets/img/home-page/header/partners/logo-slide-1.png">
+                   <img src="./assets/img/home-page/header/partners/monclub-futbol-boucbelair.png" >
+                </div>
+            </div>
+    </div>
+    <div class="social-media">
+        <a href="https://www.instagram.com/sportbakofficial/" target="_blank"><img src="./assets/img/home-page/header/instagram-icon.png" alt="Icone Instagram"></a>
+        <a href="https://twitter.com/futbak" target="_blank"><img src="./assets/img/home-page/header/twitter-icon.png" alt="Icone Twitter"></a>
+        <a href="https://www.linkedin.com/company/futbak" target="_blank"><img src="./assets/img/home-page/header/linkedin-icon.png" alt="Icone Linkedin"></a>
+        <a href="https://www.facebook.com/SportBakFR" target="_blank"><img id="facebook" src="./assets/img/home-page/header/facebook-icon.png" alt="Icone Facebook"></a>
+    </div>
+</section>

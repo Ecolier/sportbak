@@ -1,0 +1,33 @@
+@import "src/app/shared/const/variables";
+
+gs-previous-action {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .previous-ctn {
+    width: 90%;
+    max-width: 800px;
+    margin: 10px 0px;
+
+    @media (max-height: $very-small-height) {
+      margin: 0px;
+      margin-top: 5px;
+    }
+ 
+    @media (max-width: $break-md) {
+      width: 70%;
+    }
+
+    @media (max-width: $break-sm) {
+      width: 80%;
+    }
+
+    @media (max-width: $break-xs) {
+      width: 96%;
+    }
+    img {
+      height: 30px;
+      cursor: pointer;
+    }
+  }
+}

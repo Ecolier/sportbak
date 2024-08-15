@@ -1,0 +1,131 @@
+@import "src/app/shared/const/variables";
+
+manager-contact {
+  display: flex;
+  flex: 1;
+
+  .contact-ctn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .contact-content {
+      width: 50%;
+      min-width: 200px;
+
+      label {
+        padding-bottom: 10px;
+      }
+
+      .title {
+        font-family: $secondary-font;
+        color: $white;
+      }
+
+      .sub-title {
+        font-family: $secondary-font;
+        color: $white;
+      }
+
+      .flex {
+        margin-top: 10px;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-evenly;
+        align-content: center;
+        flex-wrap: wrap;
+
+        button {
+          margin: 10px;
+        }
+
+        .no-margin {
+          margin: 0;
+        }
+      }
+      .send-btn-ctn {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        button {
+          width: 100%;
+        }
+      }
+
+      .direct-contact-ctn {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .subject-input {
+    margin-bottom: 30px;
+    font-family: $secondary-font;
+    height: 35px;
+    border: none;
+    border-radius: 30px;
+
+    @media (max-width: $break-md) {
+      width: 100%;
+    }
+  }
+
+  .message-input {
+    font-family: $secondary-font;
+    height: 160px;
+    border: none;
+    border-radius: 15px;
+
+    @media (max-width: $break-md) {
+      width: 100%;
+    }
+  }
+
+  .contact-email {
+    font-size: 18px;
+    color: #F7A533;
+    display: block;
+  }
+
+  .action-btn {
+    margin-top: 20px;
+
+    @media (max-width: $break-md) {
+      width: 100%;
+    }
+  }
+
+  .message-info {
+    @media (max-width: $break-md) {
+      text-align: center;
+      font-size: 20px;
+      padding: 10px;
+    }
+  }
+
+  .loader-ctn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .loader {
+      height: 50px;
+      width: 50px;
+      animation: rotating 0.8s linear infinite;
+    }
+  }
+
+  @keyframes rotating {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

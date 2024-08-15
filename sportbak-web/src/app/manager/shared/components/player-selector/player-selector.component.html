@@ -1,0 +1,22 @@
+<div class="player-selector-ctn">
+  <div class="input-ctn">
+    <input id="playerInput" type="text"  [placeholder]="placeholder? placeholder : getTranslation('placeholder')" [(ngModel)]="playerInput"
+      (input)="onStartType.emit()"
+      (ngModelChange)="updatePlayerInput($event)" />
+    <img class="close-icon" src="./assets/img/icons/close-search.png" (click)="onClearClick()" alt="close"/>
+  </div>
+  <div *ngIf="canHaveGuest" class="guest-btn-ctn">
+    <button class="guest-btn" (click)="getGuestPlayer()">{{ getTranslation('play_as_guest') }}</button>
+  </div>
+  <div class="players-ctn" [class.hidden]="playerInput.length < 1">
+    <div *ngFor="let player of playersMatchingSearch" class="player-ctn" (click)="onPlayerClick(player)">
+      <avatar [picture]="player.user.picture" [size]="40"></avatar>
+      <div class="player-details">
+        <span class="player-nickname">{{ player.user.nickname }}</span>
+        <span>{{ player.user.firstname }} {{ player.user.lastname }}</span>
+        <span *ngIf="player.user.numPhone || player.user.email" class="player-contact"> {{player.user.numPhone}}
+          {{player.user.numPhone && player.user.email ? '-' : ''}} {{player.user.email}}</span>
+      </div>
+    </div>
+  </div>
+</div>

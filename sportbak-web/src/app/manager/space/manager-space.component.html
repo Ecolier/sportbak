@@ -1,0 +1,125 @@
+
+  <div  class="manager-content">
+    <div class="loader-ctn">
+      <spinning-loader *ngIf="!complex" [isMedium]="true"></spinning-loader>
+    </div>
+    <div *ngIf="complex" class="manager-space-content">
+      <div class="header-ctn">
+        <img class="complex-logo" [src]="complex ? logoURL + complex.logo : ''" />
+        <p class="manager-space-text complex-name">{{complex ? complex.name : ''}}</p>
+      </div>
+      <div *ngIf="followers" class="header-ctn followers" (click)="toggleFollowersModal()">
+        <div class="manager-space-text complex-supporters-nb"> {{ followers.length }}</div>
+        <div class="manager-space-text complex-supporters"> {{ getTranslation('followers')}}</div>
+      </div>
+    </div>
+      <div *ngIf="complex" class="complex-info-ctn">
+      <div class="info-ctn">
+        <div class="info-content">
+          <p class="complex-info-title">{{ getTranslation('complex_info')}}</p>
+          <div *ngIf="complex.address" class="complex-info-span">
+            <img src="./assets/img/icons/manager-space/home.png" />
+            <a [href]="complex && complex.address ? 'https://maps.google.com/?q=' + complex.getFormattedAddress(true) : ''" 
+              class="light-text complex-info-text" 
+              [class.clickable]="complex && complex.address"
+              target="_blank">
+              {{ complex && complex.address ? complex.getFormattedAddress(true) : '-' }}
+            </a>
+          </div>
+          <div *ngIf="complex && complex.phone" class="complex-info-span">
+            <img src="./assets/img/icons/manager-space/phone.png" />
+            <a  [href]="complex && complex.phone ? 'tel:' + complex.phone : ''" 
+              class="light-text complex-info-text"
+              [class.clickable]="complex && complex.phone">
+              {{ complex && complex.phone ? complex.phone : '-' }}</a>
+          </div>
+          <div *ngIf="complex && complex.socialNetwork && complex.socialNetwork.email" class="complex-info-span">
+            <img src="./assets/img/icons/manager-space/email.png" />
+            <a [href]="complex && complex.socialNetwork && complex.socialNetwork.email ? 'mailto:' + complex.socialNetwork.email : ''" 
+              class="light-text complex-info-text"
+              [class.clickable]="complex && complex.socialNetwork && complex.socialNetwork.email">
+              {{ complex && complex.socialNetwork && complex.socialNetwork.email ? complex.socialNetwork.email : '-' }}</a>
+          </div>
+          <div *ngIf="complex && complex.socialNetwork && complex.socialNetwork.website" class="complex-info-span">
+            <img src="./assets/img/icons/manager-space/website.png" />
+            <a [href]="complex && complex.socialNetwork && complex.socialNetwork.website ? complex.socialNetwork.website : ''" 
+              class="light-text complex-info-text" 
+              [class.clickable]="complex && complex.socialNetwork && complex.socialNetwork.website"
+              target="_blank">
+              {{ getTranslation('website') }}
+            </a>
+          </div>
+          <div *ngIf="complex && complex.socialNetwork && complex.socialNetwork.facebook" class="complex-info-span">
+            <img src="./assets/img/icons/manager-space/facebook.png" />
+            <a [href]="complex && complex.socialNetwork && complex.socialNetwork.facebook ? complex.socialNetwork.facebook : ''" 
+              class="light-text complex-info-text" 
+              [class.clickable]="complex && complex.socialNetwork && complex.socialNetwork.facebook"
+              target="_blank">
+              Facebook
+            </a>
+          </div>
+          <div *ngIf="complex && complex.socialNetwork && complex.socialNetwork.twitter" class="complex-info-span">
+            <img src="./assets/img/icons/manager-space/twitter.png" />
+            <a [href]="complex && complex.socialNetwork && complex.socialNetwork.twitter ? complex.socialNetwork.twitter : ''" 
+              class="light-text complex-info-text" 
+              [class.clickable]="complex && complex.socialNetwork && complex.socialNetwork.twitter"
+              target="_blank">
+              Twitter
+            </a>
+          </div>
+          <div *ngIf="complex && complex.socialNetwork && complex.socialNetwork.snapchat" class="complex-info-span">
+            <img src="./assets/img/icons/manager-space/snapchat.png" />
+            <a [href]="complex && complex.socialNetwork && complex.socialNetwork.snapchat ? complex.socialNetwork.snapchat : ''" 
+              class="light-text complex-info-text" 
+              [class.clickable]="complex && complex.socialNetwork && complex.socialNetwork.snapchat"
+              target="_blank">
+              Snapchat
+            </a>
+          </div>
+          <div *ngIf="complex && complex.socialNetwork && complex.socialNetwork.instagram" class="complex-info-span">
+            <img src="./assets/img/icons/manager-space/instagram.png" />
+            <a [href]="complex && complex.socialNetwork && complex.socialNetwork.instagram ? complex.socialNetwork.instagram : ''" 
+              class="light-text complex-info-text"
+              [class.clickable]="complex && complex.socialNetwork && complex.socialNetwork.instagram" 
+              target="_blank">
+              Instagram
+            </a>
+          </div>
+          <p *ngIf="complex && complex.name" class="change-password" (click)="onPasswordChangeClick()">{{ getTranslation('change_password')}}</p>
+        </div>
+      </div>
+      <div class="complex-openings-days">
+
+        <div *ngFor="let day of openingDays" class="day-ctn">
+          <span class="light-text day-name">{{ getTranslation(day.dayName | lowercase) }}</span>
+          <div class="slots-ctn">
+
+            <ng-container *ngFor="let slot of day.slots">
+              <span class="light-text">{{ slot[0] }}  -- {{ slot[1] }}</span>
+            </ng-container>
+            <span *ngIf="day.slots.length == 0" class="light-text">{{ getTranslation('close')}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <manager-modal
+      [isDisplaying]="isShowingFollowers" [styles]="'followers'"
+       (close)="toggleFollowersModal()">
+      <div *ngIf="followers" class="followers-list">
+        <div class="follower-ctn" *ngFor="let follower of followers">
+          <div class="avatar-ctn">
+            <img class="avatar" [src]="follower.follower.picture ? 'https://api.futbak.com/static/images/users/' + follower.follower.picture : 'https://api.futbak.com/static/images/users/logoGuestFull.png'" alt="">
+            <div>
+              <p class="followers-name">{{follower.follower.nickname}}</p>
+                <p class="followers-details" *ngIf="follower.follower.email">{{follower.follower.email}}</p>
+                <p class="followers-details" *ngIf="follower.follower.numPhone">{{follower.follower.numPhone}}</p>
+            </div>
+          </div>
+          <div class="contact-ctn">
+            <a *ngIf="follower.follower.numPhone" class="contact" href="tel:{{follower.follower.numPhone}}"><i class="las la-phone"></i></a>
+            <a *ngIf="follower.follower.email" class="contact" href="mailto:{{follower.follower.email}}"><i class="las la-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </manager-modal>
+  </div>

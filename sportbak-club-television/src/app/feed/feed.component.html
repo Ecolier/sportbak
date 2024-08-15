@@ -1,0 +1,5 @@
+<div *ngFor="let replay of feed" class="replay" [routerLink]="['/replay', replay.id]">
+  <div style="background-image: url({{ replay.thumbnailUrl }});" class="replay__thumbnail"></div>
+  <h1 class="replay__title">{{ replay.title }}</h1>
+  <h2 class="replay__date">{{ replay.date }}</h2>
+</div>

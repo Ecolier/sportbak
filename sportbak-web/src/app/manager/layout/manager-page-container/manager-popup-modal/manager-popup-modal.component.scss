@@ -1,0 +1,60 @@
+@import "src/app/shared/const/variables";
+
+$margin: 10px;
+
+.exterior {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal {
+    width: 500px;
+    background-color: $super-dark-black;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+
+    .close {
+      position: absolute;
+      height: 20px;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    booking-card {
+      margin-bottom: $margin;
+    }
+
+    .goto-booking {
+      color: $white;
+      font-family: $secondary-font;
+      cursor: pointer;
+
+      &:hover {
+        color: $light-grey;
+      }
+    }
+
+    .new_supporter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: $secondary-font;
+      color: $white;
+
+      .title {
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: bolder;
+        margin-bottom: $margin;
+      }
+    }
+  }
+}

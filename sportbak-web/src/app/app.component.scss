@@ -1,0 +1,247 @@
+@import "src/app/shared/const/variables";
+
+$white: #fff;
+$black: #000;
+$color-blaze-orange: #ff6e00;
+$mobile-max-screen-width: $break-md;
+
+:host ::ng-deep main {
+  display: flex;
+  height: 100%;
+  max-width: 100%;
+  align-items: flex-start;
+  font-family: $secondary-font;
+}
+
+:host ::ng-deep .btn-orange {
+  min-width: 170px;
+  height: 40px;
+  font-size: 15px;
+  line-height: 15px;
+  color: $white;
+  font-family: 'ProximaNova-Regular';
+  background-color: $color-blaze-orange;
+  border: 1px solid $color-blaze-orange;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  border-radius: 25px;
+  text-transform: uppercase;
+
+  &:hover {
+    color: $color-blaze-orange;
+    background-color: $white;
+    border: 1px solid $color-blaze-orange;
+  }
+
+  &.btn-more-information {
+    display: none !important;
+  }
+}
+
+:host ::ng-deep ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+:host ::ng-deep .main-content {
+  margin: 0 auto;
+  min-width: 720px;
+  width: 100%;
+}
+
+
+/* Floating Action Button */
+
+:host ::ng-deep .floating-action-button {
+  position: fixed;
+  bottom: 25px;
+  /*50px*/
+  left: 25px;
+  /*50px*/
+  z-index: 100;
+
+  .btn-floating-action {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    line-height: 30px;
+    color: $white;
+    background-color: $color-blaze-orange;
+    border: 1px solid $color-blaze-orange;
+    border-radius: 50%;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+
+    font-size: 15px;
+    line-height: 15px;
+    width: auto;
+    height: 34px;
+    border-radius: 25px;
+
+    span {
+      display: block;
+      margin: -4px 0 0 0;
+    }
+
+    &:hover {
+      color: $color-blaze-orange;
+      background-color: $white;
+      border: 1px solid $color-blaze-orange;
+    }
+  }
+
+  .floating-action-subNav {
+    box-shadow: 0 1px 6px rgba(59, 64, 69, 0.6);
+    background-color: #fff;
+    position: absolute;
+    bottom: 42px;
+    min-width: 220px;
+    border-radius: 20px;
+    padding: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s;
+    transform: translateY(73px);
+
+    &.active {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    li {
+      a {
+        padding: 10px;
+        display: block;
+        font-size: 15px;
+        line-height: 15px;
+        font-family: 'ProximaNova-Regular';
+        cursor: pointer;
+        color: #717171;
+
+        span {
+          &.simulateur {
+            background-image: url('../assets/img/icons/simulation.png');
+            background-repeat: no-repeat;
+            background-size: 20px auto;
+            background-position: left center;
+            padding: 3px 0 3px 30px;
+          }
+        }
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+
+:host ::ng-deep .lang-select {
+  .select-style-one {
+    background-color: transparent;
+    color: #fff;
+    font-family: 'ProximaNova-Regular';
+    font-size: 15px;
+    line-height: 15px;
+    border: 0;
+    text-transform: uppercase;
+    outline: none;
+    min-width: 35px;
+    padding: 8px;
+    cursor: pointer;
+    box-sizing: content-box;
+    background-image: url('../assets/img/icons/down-arrow-two.png');
+    background-repeat: no-repeat;
+    background-size: 11px auto;
+    background-position: 96% center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    option {
+      color: white;
+      background-color: #202020;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+:host ::ng-deep .dropdown-blc {
+  button {
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    font-family: $secondary-font;
+    font-size: 15px;
+    line-height: 15px;
+    padding: 0 25px 0 0;
+    background-repeat: no-repeat;
+    background-size: 11px auto;
+    background-position: 96% center;
+  }
+}
+
+:host ::ng-deep .close-cross {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  cursor: pointer;
+  &.big{
+    top: 0px;
+    transform: translateY(-50%);
+    width: 40px;
+    @media (max-width: $break-md) {
+      top: 10px;
+      transform: translateY(0%);
+      width: 20px;
+    }
+
+  }
+}
+
+@media (max-width: $break-md) {
+  :host ::ng-deep .floating-action-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+  }
+}
+
+@media (max-width: $break-md) {
+  :host ::ng-deep main {
+    &.withMenu {
+      padding: 65px 0 0;
+    }
+  }
+
+  :host ::ng-deep .floating-action-button {
+    display: none;
+  }
+}
+
+@media (max-width: $break-sm) {
+  :host ::ng-deep main {
+    &.withMenu {
+      padding: 47px 0 0;
+    }
+  }
+
+  :host ::ng-deep .main-content {
+    min-width: 100%;
+    width: 100%;
+  }
+
+  :host ::ng-deep .dropdown-blc button {
+    font-size: 12px;
+    line-height: 12px;
+    padding: 0 20px 0 0;
+    background-size: 9px auto;
+  }
+}

@@ -1,0 +1,17 @@
+<section class="home-phone-device-history">
+  <h1 >digitaliser le monde du sport amateur</h1>
+  <div class="home-phone-ctn">
+    <div class="slick-carousel-area">
+      <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+            <div class="history-content">
+              <p>{{slide.mainContent1}}<span>{{slide.secondaryContent1}}</span>{{slide.mainConsecondaryContent2}}<span>{{slide.secondaryContent2}}</span>
+              </p>
+              <p>{{slide.mainContent3}}<span>{{slide.secondaryContent3}}</span>
+              </p>
+            </div>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </div>
+</section>

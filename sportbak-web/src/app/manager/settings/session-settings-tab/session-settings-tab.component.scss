@@ -1,0 +1,44 @@
+:host {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 12pt;
+}
+
+.save-button {
+  padding: 12pt;
+  display: block;
+  background-color: #F7A533;
+  color: white;
+  border-radius: 3pt;
+  cursor: pointer;
+}
+
+.no-settings-callout {
+  color: white;
+  margin-bottom: 12pt;
+  font-size: 1em;
+  text-align: center;
+}
+
+.no-settings-button {
+  padding: 12pt;
+  background-color: #F7A533;
+  border-radius: 3pt;
+}
+
+.no-settings-ctn {
+  margin: auto;
+}
+
+session-form {
+  margin-bottom: 12pt;
+}
+
+.no-settings-ctn button {
+  margin: auto;
+}
+
+button {
+  text-transform: none;
+}

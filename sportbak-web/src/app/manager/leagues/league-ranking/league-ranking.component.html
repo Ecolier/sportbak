@@ -1,0 +1,17 @@
+<futbak-card classes="confrontations-card">
+  <futbak-nav-bar [selectedTab]="tabSelected" [tabs]="[getTranslation('teams'), getTranslation('players')]"
+    (tabClicked)="tabClicked($event)"> </futbak-nav-bar>
+
+  <div *ngIf="tabSelected == 0" class="support-rank">
+    <futbak-competitions-confrontations-ranking-teams 
+      [sport]="league.sport"
+      [teams]="league.teams">
+    </futbak-competitions-confrontations-ranking-teams>
+  </div>
+  <div *ngIf="tabSelected == 1" class="support-rank">
+    <futbak-competitions-confrontations-ranking-players 
+      [sport]="league.sport"
+      [teams]="league.teams">
+    </futbak-competitions-confrontations-ranking-players>
+  </div>
+</futbak-card>

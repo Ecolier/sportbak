@@ -1,0 +1,37 @@
+@import "src/app/home/const/variables";;
+
+
+  .league-name{
+    font-family: $main-font;
+    color: $white;
+    text-align: center;
+    font-size: 30px;
+  }
+  @media (max-width:$medium-screen) {
+    .league-name {
+      font-size: 25px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+@media (max-width:$medium-screen) {
+    futbak-nav-bar{
+      &.league-tabs{
+        margin:0px;
+      }
+      futbak-card{
+        table{
+          tr{
+            td{
+              futbak-label-autoadjust{
+                font-size: 15px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .futbak-card{
+      margin: 0px;
+    }
+  }

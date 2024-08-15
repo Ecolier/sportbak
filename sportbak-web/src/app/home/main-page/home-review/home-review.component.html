@@ -1,0 +1,24 @@
+<section class="home-review" *ngIf="slides.length > 0">
+  <div class="home-review-h1">
+    <h1>{{ getTranslation('review_title')}}</h1>
+  </div>
+  <div class="home-review-ctn">
+    <div class="slick-carousel-area">
+      <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+          <div class="com-player-article">
+            <div class="logo-article-ctn">
+              <img class="logo-article" src="./assets/img/home-page/header/nouveau-logo-sportbak-1.png" alt="logo sportbak">
+            </div>
+            <div>
+              <h2>{{slide.name}}</h2>
+              <span>{{slide.commentaire}}</span>
+              <p>"{{slide.article}}"
+              </p>
+            </div>
+          </div>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </div>
+</section>

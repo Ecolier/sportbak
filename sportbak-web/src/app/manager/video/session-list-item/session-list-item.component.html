@@ -1,0 +1,37 @@
+<ng-container *ngIf="status === 'enabled' && settings">
+  <div class="field-manager__title">{{ field.name }}
+    <div *ngIf="isLiveStreamReady" class="live-pill" (click)="openLiveStream()">🔴 {{ isLiveStreamLoaded ? getTranslation('hideLiveStream') : getTranslation('showLiveStream') }}</div>
+  </div>
+  <div class="support-webrtc" *ngIf="isLiveStreamLoaded">
+    <video #liveStream></video>
+    <div class="webrtc-connection" *ngIf="isLiveStreamConnecting">{{ getTranslation('webrtcConnecting') }}</div>
+  </div>
+  <sbk-session-monitor [fieldId]="field._id" [settings]="settings"></sbk-session-monitor>
+</ng-container>
+
+<ng-container *ngIf="status === 'disabled'">
+  <span class="material-icons-round status-icon">
+    videocam_off
+  </span>
+  <div class="status-description">
+    <div class="status-content">
+      <div class="field-manager__title">{{ field.name }}</div>
+      {{ getTranslation('videoDisconnected') }}
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="status === 'unequipped'">
+  <span class="material-icons-round status-icon warning">
+    warning
+  </span>
+  <span class="status-description">
+    <div class="status-content">
+      <div class="field-manager__title">{{ field.name }}</div>
+      {{ getTranslation('videoNotEquipped') }}
+    </div>
+    <div class="status-action">
+      <a routerLink="/manager/contact" class="contact-us">{{ getTranslation('notEquippedContact') }}</a>
+    </div>
+  </span>
+</ng-container>

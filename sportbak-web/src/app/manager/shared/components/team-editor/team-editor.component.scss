@@ -1,0 +1,190 @@
+@import "src/app/shared/const/variables";
+
+team-editor {
+
+  gs-modal {
+    &.team-editor-modal {
+      .modal-ctn {
+        flex-direction: column;
+        align-items: center;
+
+        .modal {
+          width: 80%;
+
+          @media (max-width: $break-md) {
+            width: 100%;
+          }
+
+          .modal-title-ctn {
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .team-editor-ctn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+
+    .team-edit-content {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 70vh;
+
+      @media(max-width: $break-md) {
+        width: 95%;
+      }
+
+      player-selector {
+        margin-top: 30px;
+      }
+
+      .players-ctn {
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 100%;
+        max-height: 70vh;
+
+        @media(max-width: $break-md) {
+          width: 100%;
+        }
+
+        .player-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin: 10px;
+
+          .player-details {
+            display: flex;
+            flex-direction: column;
+            font-family: $secondary-font;
+            font-size: 15px;
+            color: #ecf0f1;
+            word-break: break-all;
+
+            .player-nickname {
+              font-family: $main-font;
+              font-size: 25px;
+
+              @media (max-width: $break-sm) {
+                font-size: 19px;
+              }
+            }
+
+            .player-contact {
+              font-style: italic;
+              color: $extra-light-grey;
+            }
+          }
+
+          .player-ctn {
+            display: flex;
+            align-items: center;
+          }
+
+          avatar {
+            margin-right: 15px;
+          }
+
+
+          .remove-icon {
+            width: 30px;
+            margin-left: 10px;
+          }
+
+          .captain-icon {
+            width: 55px;
+            height: 40px;
+            margin-left: 20px;
+            object-fit: cover;
+
+            &.not-captain {
+              filter: grayscale(100%);
+            }
+          }
+        }
+      }
+
+      .team-name-ctn {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $medium-grey;
+        border-radius: 10px;
+        padding: 0Px 15px;
+        .shirt-ctn {
+          position: relative;
+        }
+
+        .shirt-icon {
+          width: 50px;
+          margin-right: 8px;
+          cursor: pointer;
+        }
+
+        .shirt-edit-icon {
+          height: 25px;
+          position: absolute;
+          right: 5px;
+          top: 30px;
+        }
+
+        h1 {
+          font-family: $main-font;
+          font-size: 28px;
+          color: #ecf0f1;
+          width: 80%;
+        }
+      }
+
+      .team-edit-ctn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background-color: $medium-grey;
+        border-radius: 10px;
+        justify-content: space-between;
+        padding: 10px 20px;
+        input {
+          width: 60%;
+          height: 42px;
+          font-size: 24px;
+          background-color: $dark-grey;
+          color: $white;
+          border-radius: 5px;
+          font-family: $secondary-font;
+          border: 1px solid $orange;
+        }
+      }
+
+
+      .add-player-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $medium-grey;
+        color: $white;
+        font-family: $main-font;
+        font-size: 25px;
+        padding: 10px 0;
+        width: 80%;
+        margin-top: 20px;
+        border: none;
+        border-radius: 7px;
+
+        img {
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

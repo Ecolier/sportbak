@@ -1,0 +1,4 @@
+<div class="request-status-ctn" [class.visible]="isVisible" [class.hidden]="!isVisible" [class.failure]="isFailure">
+  <span class="request-status-text">{{ text }}</span>
+  <img src="./assets/img/icons/close.png" (click)="hide()"/>
+</div>

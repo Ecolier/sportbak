@@ -1,0 +1,27 @@
+@import  "src/app/home/const/variables";
+@import "src/app/shared/const/variables";
+
+.complex-video {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .no-video-text {
+    font-size: 23px;
+    font-family: $main-font;
+    @media (max-width: $break-sm) {
+      font-size: 14px;
+    }
+  }
+  .video-ctn{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: $white;
+      min-height: 350px;
+      font-size: 24px;
+      font-family: $main-font;
+      text-align: center;
+    }
+}

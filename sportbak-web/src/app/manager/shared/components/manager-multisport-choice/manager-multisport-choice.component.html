@@ -1,0 +1,9 @@
+<section id="manager-multisport-choice">
+  <label for="sport-choice">Sport:</label>
+  <select name="sport-choice" id="sport-choice" (click)="selectSport()" [(ngModel)]="sportType">
+    <option  selected value="all">{{ getTranslation('select') }}</option>
+    <ng-container *ngFor="let sport of complex.sport">
+      <option value="{{sport}}">{{sport | titlecase}}</option>
+    </ng-container>
+  </select>
+</section>

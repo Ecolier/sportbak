@@ -1,0 +1,47 @@
+  <section id="manager-login">
+    <home-navigation [displayOptions]="false"></home-navigation>
+    <div class="manager-portal-ctn">
+      <div class="manager-forms-ctn">
+        <div *ngIf="alert" class="alert-message" [ngClass]="alertSuccess == true ? 'alert-message success' : 'alert-message error'">
+          <p>{{alert}}</p>
+        </div>
+        <login-form *ngIf="isLogin" (alertMessage)="getAlert($event)"></login-form>
+        <register-form *ngIf="!isLogin" (alertMessage)="getAlert($event)"></register-form>
+        <div class="manager-form-helper">
+          <a *ngIf="!isLogin" (click)="toggleLogin()">{{
+            getTranslation('log_on') }}</a>
+          <a *ngIf="isLogin" (click)="toggleLogin()">{{
+            getTranslation('signup') }}</a>
+        </div>
+      </div>
+      <div class="commercial">
+        <div class="commercial-info">
+          <span class="location">{{getTranslation('french_price')}}</span>
+          <span class="duration">{{getTranslation('price_duration')}}</span>
+        </div>
+        <ng-container *ngFor="let card of offers; index as offerIndex">
+          <offer [card]="offers[offerIndex]" (showVideo)="toggleVideoPlayer($event)"></offer>
+        </ng-container>
+      </div>
+      <div class="videos-ctn">
+        <h1>{{ getTranslation('video_title') }}</h1>
+        <div class="videos">
+          <div class="video-ctn">
+            <iframe loading="lazy" class="video" src="https://www.youtube.com/embed/8VPR8s1di6w" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="video-ctn">
+            <iframe loading="lazy" class="video" src="https://www.youtube.com/embed/46fhLsRUaFA" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isShowingPlayer" class="video-player">
+        <div class="player-ctn">
+          <img (click)="toggleVideoPlayer(null)" class="close-cross big" src=".\assets\img\icons\close.png">
+          <video [src]="playerSrc" autoplay controls></video>
+        </div>
+      </div>
+    </div>
+    <home-footer></home-footer>
+    <manager-alert *ngIf="isLoginSuccess != undefined" [successMsg]="getTranslation('signup_success')"
+                   [failureMsg]="getTranslation('signup_failure')" [hasFailed]="!isLoginSuccess"></manager-alert>
+  </section>

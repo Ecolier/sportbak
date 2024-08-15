@@ -1,0 +1,42 @@
+<section [class.active]="isMenuDisplayed" class="home-navigation">
+  <div [ngClass]="isLoginRoute == true ? 'home-nav login' : 'home-nav'">
+    <div class="home-header-logo">
+      <a (click)="onHomeClick()">
+        <img src="./assets/img/home-page/header/nouveau-logo-sportbak-1.png" alt="sportbak logo small">
+      </a>
+    </div>
+    <nav class="home-nav-link">
+      <div class="main-navigation">
+        <a (click)="clickEvent()" routerLink="/" fragment="home-header">{{ getTranslation('nav_home')}}</a>
+        <a (click)="clickEvent()" routerLink="/" fragment="application-section">{{ getTranslation('nav_services')}}</a>
+        <a (click)="clickEvent()" routerLink="/"
+           fragment="home-community-find">{{ getTranslation('nav_where_play')}}</a>
+        <a (click)="clickEvent()" routerLink="/" fragment="home-contact-us">{{ getTranslation('nav_contact')}}</a>
+      </div>
+      <div class="home-connect">
+        <button *ngIf="!isLoginRoute" sbk-btn class="menu-item outline round" routerLink="/manager">
+          {{ getTranslation('nav_manager')}}
+        </button>
+        <button (click)="onLogClick()" *ngIf="isLoginRoute && isRegister" sbk-btn class="menu-item outline round"
+                routerLink="/manager">
+          {{ getTranslation('log_on')}}
+        </button>
+        <button (click)="onLogClick()" *ngIf="isLoginRoute && !isRegister" sbk-btn class="menu-item outline round"
+                routerLink="/manager">
+          {{ getTranslation('register')}}
+        </button>
+        <button sbk-btn class="menu-item round" routerLink="/my-complex">
+          {{ getTranslation('nav_my_complex')}}
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-social-nav">
+      <a href="https://www.facebook.com/FutBak/" target="_blank"><i class="lab la-facebook-f"></i></a>
+      <a href="https://twitter.com/futbak" target="_blank"><i class="lab la-twitter"></i></a>
+      <a href="https://www.instagram.com/sportbakofficial/" target="_blank"><i class="lab la-instagram"></i></a>
+      <img (click)="clickEvent()" id="nav-burger"
+           [src]="isMenuDisplayed ? '../assets/img/home-page/header/close.png' : '../assets/img/home-page/header/menu.png'"
+           alt="nav-burger">
+    </div>
+  </div>
+</section>

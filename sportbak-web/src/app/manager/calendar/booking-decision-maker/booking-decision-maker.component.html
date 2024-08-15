@@ -1,0 +1,26 @@
+<div class="decision-maker-ctn">
+  <div *ngIf="mode == VIEW_INIT" class="decision-ctn">
+    <div class="comment-ctn">
+      <span class="comment-text">{{ commentViewText }}</span>
+      <input type="text" [placeholder]="getTranslation('accept_placeholder')"
+             [(ngModel)]="commentText" (ngModelChange)="onCommentTextChange($event)"/>
+    </div>
+    <div class="buttons-ctn">
+      <button class="manager-action" (click)="acceptBooking()">
+        <ng-container *ngIf="!hasDateChanged">
+          {{ getTranslation('validate') }}
+        </ng-container>
+        <ng-container *ngIf="hasDateChanged">
+          {{ getTranslation('modify') }}
+        </ng-container>
+      </button>
+      <button class="manager-action red" (click)="cancelBooking()">{{ getTranslation('refuse')}}</button>
+    </div>
+  </div>
+  <div class="elements-ctn" *ngIf="mode == VIEW_LOADING">
+    <spinning-loader></spinning-loader>
+  </div>
+  <div *ngIf="mode == VIEW_RESULT">
+    <span class="result-text">{{ resultText }}</span>
+  </div>
+</div>

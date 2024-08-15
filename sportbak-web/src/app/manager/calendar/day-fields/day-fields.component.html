@@ -1,0 +1,55 @@
+<span *ngIf="isDebug" style="color: azure;font-size: 15px;">{{date}}</span>
+<div class="mobile-day-fields">
+  <div *ngIf="!complex || !hasBuiltBookings" class="day-loader">
+    <span *ngIf="!complex" class="loading-msg">{{ getTranslation('getting_openings') }}</span>
+    <span *ngIf="complex && !hasBuiltBookings" class="loading-msg">{{ getTranslation('getting_bookings') }}</span>
+    <spinning-loader [isMedium]="true"></spinning-loader>
+  </div>
+  <ng-container *ngIf="complex && hasBuiltBookings">
+    <div class="m-fields-ctn">
+      <div *ngFor="let dayField of dayFields; index as fieldIndex" class="m-field-title">
+        <ng-container *ngIf="selectedGame? selectedGame.game.sport == dayField.sport : true">
+          <span class="field-name" [class.selected]="fieldIndex == mobileUI.selectedFieldIndex"
+          (click)="selectFieldIndex(fieldIndex)">
+          {{ dayField.name }} - {{dayField.sport}}
+        </span>
+        <img class="field-sport" [src]="dayField.getSportIcon()"  alt="sport"/>
+      </ng-container>
+      </div>
+    </div>
+    <div class="m-field-ctn">
+      <div *ngIf="complex && hasBuiltBookings" class="hours-ctn">
+        <span *ngFor="let hour of hours" class="hour-span">{{hour}}</span>
+      </div>
+      <day-field class="m-bookings-ctn" [borderRight]="true" [dayField]="dayFields[mobileUI.selectedFieldIndex]"
+        [isMobile]="true" [fields]="complex.fields" [complex]="complex" [selectedGame]="selectedGame"
+        (resetSelectedGame)="resetSelectedGame_()">
+      </day-field>
+    </div>
+  </ng-container>
+</div>
+<div class="desktop-day-fields">
+  <div *ngIf="!complex || !hasBuiltBookings" class="day-loader">
+    <span *ngIf="!complex" class="loading-msg">{{ getTranslation('getting_openings') }}</span>
+    <span *ngIf="complex && !hasBuiltBookings" class="loading-msg">{{ getTranslation('getting_bookings') }}</span>
+    <spinning-loader [isMedium]="true"></spinning-loader>
+  </div>
+  <div *ngIf="complex && hasBuiltBookings" class="hours-ctn">
+    <img [class.scroll-enabled]="canScrollLeft" src="./assets/img/icons/arrow-white.png" (click)="goLeft()"  alt="go left"/>
+    <span *ngFor="let hour of hours" class="hour-span">{{hour}}</span>
+  </div>
+  <div id="fields-ctn">
+    <ng-container *ngIf="complex && hasBuiltBookings">
+      <day-field *ngFor="let dayField of dayFields; index as fieldIndex" class="field-ctn"
+        [borderRight]="fieldIndex == dayFields.length-1" [dayField]="dayField" [fields]="complex.fields"
+        [complex]="complex" [selectedGame]="selectedGame"
+        (resetSelectedGame)="resetSelectedGame_()">
+      </day-field>
+    </ng-container>
+  </div>
+  <div *ngIf="complex && hasBuiltBookings" class="hours-ctn">
+    <img [class.scroll-enabled]="canScrollRight" class="rotated" src="./assets/img/icons/arrow-white.png"
+      (click)="goRight()"  alt="go right"/>
+    <span *ngFor="let hour of hours" class="hour-span">{{hour}}</span>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<manager-modal [isDisplaying]="true" [mainText]="getTranslation('time_selector')"
+[button1Text]="getTranslation('validate')" [button2Text]="getTranslation('cancel')"
+[iconSrc]="'warning'" [styles]="'medium'"
+(button1Action)="validate()" (button2Action)="cancel()"
+(close)="cancel()">
+   <div class="time-ctn">
+    <div class="time-col">
+      <img class="time-arrow" src="./assets/img/icons/arrow-up-white.png" (click)="increaseHours()"/>
+      <span class="time">{{ hours }}</span>
+      <img class="time-arrow reversed" src="./assets/img/icons/arrow-up-white.png" (click)="decreaseHours()"/>
+    </div>
+    <div class="time-col">
+      <span>:</span>
+    </div>
+    <div class="time-col">
+      <img class="time-arrow" src="./assets/img/icons/arrow-up-white.png" (click)="increaseMinutes()"/>
+      <span class="time">{{ minutes }}</span>
+      <img class="time-arrow reversed" src="./assets/img/icons/arrow-up-white.png" (click)="decreaseMinutes()"/>
+    </div>
+    <div *ngIf="isAMPM" class="time-col">
+      <button class="ampm-btn" [class.selected]="isAM" (click)="toggleIsAm()">AM</button>
+      <button class="ampm-btn" [class.selected]="!isAM" (click)="toggleIsAm()">PM</button>
+    </div>
+   </div>
+</manager-modal>

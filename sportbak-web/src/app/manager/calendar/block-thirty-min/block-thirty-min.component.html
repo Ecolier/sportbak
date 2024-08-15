@@ -1,0 +1,30 @@
+<div class="time-block {{displayStatus}} {{divId}}" [class.booking]="block.booking" [class.not-booking]="!block.booking"
+  [class.selected-game]="selectedGame && !block.booking" [class.hour-mark]="hourMark" [class.field-border-right]="borderRight"
+  [class.forbidden]="block.booking && selectedGame" [class.border-top]="block.isFirstBookingBlock"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()">
+  <span *ngIf="selectedGame && !block.booking" class="place-selected-game">
+    {{ getTranslation('place_here')}}
+  </span>
+  <div *ngIf="block.booking && block.isFirstBookingBlock && block.booking.targetModel == 'Game'" class="info-ctn {{displayStatus}}">
+    <div class="time-ctn">
+      <span class="block-info time">{{ time }}</span>
+      <div class="info-circle"></div>
+    </div>
+    <div class="profile-ctn">
+      <avatar *ngIf="!competition && block.booking.booker" [picture]="bookerPicture" size="20"></avatar>
+      <span class="block-info name" *ngIf="name && !competition">{{ name }}</span>
+    </div>
+    <span class="block-info contact" *ngIf="contact && !competition"> {{ contact }}</span>
+    <div *ngIf="competition" class="competition-ctn">
+      <i *ngIf="competition && competition['type'] == 'league'" class="la-trophy las comp-icon" src="./assets/img/icons/manager-space/cal-league.svg"></i>
+      <i *ngIf="competition && competition['type'] == 'tournament'" class="la-sitemap las comp-icon" src="./assets/img/icons/manager-space/cal-tournament.svg"></i>
+      <span class="block-info name" > {{ competition['name'] }}</span>
+    </div>
+  </div>
+  <div *ngIf="block.booking && block.booking.target && competition" class="competition-game-tooltip {{displayStatus}}" [class.visible]="isHovered">
+    <span>{{ block.booking.target['teams'][0]['title'] }}</span>
+    <img src="./assets/img/icons/team-versus.png" />
+    <span>{{ block.booking.target['teams'][1]['title'] }}</span>
+  </div>
+</div>

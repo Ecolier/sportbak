@@ -1,0 +1,28 @@
+<div class="page" (click)="clickOutside($event)">
+    <div class="support" (click)="clickInside($event)">
+        <div *ngIf="title" class="title">
+            {{ title }}
+        </div>
+        <div *ngIf="message" class="message">
+            {{ message }}
+        </div>
+        <div class="support-button">
+            <div *ngIf="buttonRed" class="button" (click)="clickRedButton($event)">
+                <div class="gamepad-btn red"></div>
+                <div>{{ buttonRed }}</div>
+            </div>
+            <div *ngIf="buttonGreen" class="button" (click)="clickGreenButton($event)">
+                <div class="gamepad-btn green"></div>
+                <div>{{ buttonGreen }}</div>
+            </div>
+            <div *ngIf="buttonBlue" class="button" (click)="clickBlueButton($event)">
+                <div class="gamepad-btn blue"></div>
+                <div>{{ buttonBlue }}</div>
+            </div>
+            <div *ngIf="buttonWhite" class="button" (click)="clickWhiteButton($event)">
+                <div class="gamepad-btn white"></div>
+                <div>{{ buttonWhite }}</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,3 @@
+<div *ngIf="booking?.status" id="status-badge" [className]="booking.status">
+  {{getTranslation(booking.status + '_by_' + booking.initiator)}}
+</div>

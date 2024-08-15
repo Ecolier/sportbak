@@ -1,0 +1,131 @@
+@import "src/app/shared/const/variables";
+
+day-fields {
+  .day-loader {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+
+    .loading-msg {
+      color: $white;
+      font-family: $main-font;
+      font-size: 25px;
+    }
+  }
+
+  .hours-ctn {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1px;
+    background-color: $dark-black;
+    @media (max-width: $break-sm) {
+      margin-top: 0px;
+      font-size: 11px;
+    }
+
+    img {
+      height: 20px;
+      width: 20px;
+      align-self: center;
+      opacity: 0;
+      transition-duration: 0.3s;
+      &.rotated {
+        transform: rotate(180deg);
+      }
+
+      &.scroll-enabled {
+        opacity: 1;
+        transition-duration: 0.3s;
+      }
+    }
+
+    .hour-span {
+      height: 100px;
+      color: $white;
+      text-align: end;
+      padding-right: 2px;
+    }
+  }
+
+  .desktop-day-fields {
+    position: relative;
+    margin-top: 25px;
+    min-height: 85vh;
+    display: flex;
+
+    @media (max-width: $break-sm) {
+      display: none;
+    }
+
+    #fields-ctn {
+      scroll-behavior: smooth;
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      .field-ctn {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  .mobile-day-fields {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: $break-sm) {
+      display: none;
+    }
+
+    .m-fields-ctn {
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 12px;
+
+      .m-field-title {
+        display: flex;
+        align-items: center;
+        margin: 0 12px;
+      }
+
+      .field-name {
+        white-space: nowrap;
+        color: $light-grey;
+        padding: 0px 3px;
+        font-family: $secondary-font;
+
+        transition-duration: 0.3s;
+        &.selected {
+          color: $white;
+          font-size: 25px;
+          transition-duration: 0.3s;
+        }
+      }
+      .field-sport {
+        height: 15px;
+      }
+    }
+    .m-field-ctn {
+      display: flex;
+      padding: 0px 3px;
+      justify-content: center;
+    }
+    .m-bookings-ctn {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      margin-top: 9px;
+    }
+  }
+}

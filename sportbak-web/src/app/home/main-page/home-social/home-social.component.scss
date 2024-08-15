@@ -1,0 +1,40 @@
+@import  "src/app/home/const/variables";;
+#home-social{
+  color: white;
+  background-color: $dark-black;
+  padding-bottom: 100px;
+  .home-social-top{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-left: 40px;
+    h1{
+      font-family: $brushwell;
+      font-size: $h1-size;
+      padding-right: 50px;
+      padding-left: 30px;
+      span{
+        display: inline-block;
+      }
+      @media screen and (max-width: $medium-screen) {
+        font-size: 60px;
+      }
+    }
+  }
+  .instagram-panel{
+    max-width: 1500px;
+    position: relative;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 800px;
+    overflow: hidden;
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+    mask-position: top;
+    mask-image: -webkit-gradient(linear, left center, 
+    left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+  }
+}

@@ -1,0 +1,11 @@
+<player-controls 
+  *ngIf="isFullscreen" 
+  [title]="title" 
+  [ngClass]="controlsVisible ? 'active' : ''">
+</player-controls>
+<div *ngIf="isLive && isFullscreen" class="live-indicator">
+  <span i18n>Live</span>
+</div>
+<video playsinline autoplay muted loop>
+  <source [src]="url" type="video/mp4">
+</video>

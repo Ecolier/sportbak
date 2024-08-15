@@ -1,0 +1,19 @@
+@import "src/app/shared/const/variables";
+
+manager-dual-choice {
+  .manager-dual-choice-ctn {
+    button {
+      width: 50%;
+      border: 1px solid $light-grey;
+      background-color: transparent;
+      font-family: $secondary-font;
+      color: $white;
+      padding: 5px;
+      outline: none;
+      &.selected {
+        border: 1px solid $orange;
+        color: $orange;
+      }
+    }
+  }
+}

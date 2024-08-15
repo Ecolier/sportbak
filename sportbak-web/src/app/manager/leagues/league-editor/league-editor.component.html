@@ -1,0 +1,26 @@
+
+  <div class="manager-content">
+    <ng-container *ngIf="hasLoaded">
+      <div class="edit-page-title">
+        <img class="back-btn" src="./assets/img/icons/arrow-white.png" (click)="askForRegistration()"/>
+        <span *ngIf="!league">{{getTranslation('league_creation')}}</span>
+        <span *ngIf="league">{{ getTranslation('league_modification')}}</span>
+      </div>
+      <ng-container *ngIf="!isSportChosen">
+        <manager-multisport-creator [complex]="complex" (onBackClick)="redirectToLeagues()"
+                                    (sportCreation)="selectedSportCreation($event)"></manager-multisport-creator>
+      </ng-container>
+      <ng-container *ngIf="isSportChosen">
+        <manager-league-creator [leagueToEdit]="league" [sport]="sport" (onBackClick)="registerAndRedirectToLeagues()">
+        </manager-league-creator>
+      </ng-container>
+    </ng-container>
+    <div class="loader-ctn">
+      <spinning-loader *ngIf="!hasLoaded" [isMedium]="true"></spinning-loader>
+    </div>
+    <manager-modal
+      [isDisplaying]="isAskingRegistration && isSportChosen"
+      [title]="getTranslation('you_didnt_save')" (close)="closeWarning()"
+      [button1Text]="getTranslation('validate')" (button1Action)="registerAndRedirectToLeagues()">
+    </manager-modal>
+  </div>

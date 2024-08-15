@@ -1,0 +1,320 @@
+@import "src/app/shared/const/variables";
+
+futbak-game-row {
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .team-shirt {
+    height: 50px;
+    width: 50px;
+
+    @media (max-width:$break-sm) {
+      height: 35px;
+      width: 35px;
+    }
+  }
+
+  .set-score{
+    input{
+      width: 40px;
+      font-size: 1.5rem;
+      margin-top: 5px;
+      padding: 5px;
+    }
+    flex-direction: column;
+    justify-content: center;
+  }
+  .score{
+    input{
+      width: 80px;
+      font-size: 2rem;
+    }
+    &.small{
+      input{
+        width: 50px;
+        font-size: 1rem;
+      }
+    }
+  }
+  .score , .set-score {
+    display: flex;
+    align-items: center;
+    input{
+      text-align: center;
+      font-family: $secondary-font;
+      color: $white;
+      border: 1px solid $orange;
+      border-radius: 12px;
+      background-color: transparent;
+      &::placeholder{
+        color: $white;
+        opacity: 0.2;
+      }
+    }
+  }
+  .versus-ctn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .team-goals {
+    font-family: $main-font;
+    font-size: 35px;
+
+    @media (max-width:$break-sm) {
+      font-size: 20px;
+    }
+
+    &.winner {
+      color: $orange-medium;
+    }
+  }
+
+  .goals-separator {
+    font-family: $main-font;
+    font-size: 30px;
+    margin: 0px 5px;
+
+    @media (max-width:$break-sm) {
+      font-size: 10px;
+    }
+  }
+
+  .team-name-ctn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: max-content;
+    &.reversed {
+      justify-content: flex-end;
+    }
+  }
+
+  .team-name {
+    font-family: $main-font;
+    font-size: 25px;
+    overflow: hidden;
+    padding: 0px 3px;
+    @media (max-width:$break-sm) {
+      font-size: 20px;
+    }
+  }
+
+  .versus-icon {
+    height: 50px;
+    &.small{
+      height: 40px;
+    }
+  }
+
+  .game-row {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $light-black;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 12px;
+    padding: 10px;
+    .main-game-row{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      .score-ctn{
+        display: flex;
+      }
+    }
+    .actions-game-row{
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 20px;
+      width: 100%;
+    }
+    .playground-name {
+      text-align: center;
+    }
+  }
+  
+}
+
+.game-row-support {
+  width: 100%;
+  position: relative;
+  @media (max-width:$break-sm) {
+    margin: 0px;
+  }
+  .super-admin-infos {
+    width: 100%;
+    text-align: center;
+
+    .game-playground {
+      width: 100%;
+      margin-top: 5px;
+      font-size: 25px;
+      color: darkorange;
+    }
+
+    .game-status {
+      width: 100%;
+      font-size: 25px;
+      color: white;
+      margin-top: 5px;
+      text-transform: uppercase;
+
+      &.game-status-complete {
+        color: green;
+      }
+
+      &.game-status-error {
+        color: red;
+      }
+
+      &.game-status-stop {
+        color: orange;
+      }
+    }
+
+    .game-infos {
+      margin-top: 2px;
+      width: 100%;
+      font-size: 15px;
+      color: white;
+    }
+
+    .game-id {
+      margin-top: 3px;
+      width: 100%;
+      font-size: 12px;
+      color: grey;
+    }
+  }
+
+  .title-date {
+    font-family: 'ProximaNova-Regular';
+    text-align: center;
+    width: 100%;
+    font-weight: 150px;
+    font-size: 25px;
+    padding-top: 10px;
+    color: white;
+
+    &.invalide-date {
+      color: grey;
+    }
+
+    .choose-date {
+      height: 100%;
+      width: 100%;
+
+      .datetime-text {
+        visibility: hidden;
+      }
+
+      button {
+        visibility: hidden;
+      }
+    }
+  }
+
+  .game-soon,
+  .game-error,
+  .game-without-devcie,
+  .game-stats-processing {
+    font-family: 'ProximaNova-Regular';
+    text-align: center;
+    width: 100%;
+    font-size: 15px;
+    padding-top: 10px;
+    @media (max-width:$break-sm) {
+      padding-top: 0px;
+    }
+
+    &.game-error,
+    &.game-without-devcie {
+      color: rgb(185, 62, 62);
+    }
+
+    &.game-stats-processing {
+      animation: scale 3s infinite;
+      color: grey;
+    }
+
+    &.game-soon {
+      color: grey;
+    }
+  }
+
+  .game-superadmin {
+    width: 100%;
+
+    .game-superadmin-id,
+    .game-superadmin-infos,
+    .game-superadmin-playground {
+      font-family: 'ProximaNova-Regular';
+      text-align: center;
+      width: 100%;
+      font-size: 10px;
+      padding-top: 10px;
+
+      &.game-superadmin-id {
+        font-size: 15px;
+        color: darkgrey;
+      }
+
+      &.game-superadmin-infos {
+        color: grey;
+      }
+
+      &.game-superadmin-playground {
+        color: orangered;
+      }
+    }
+  }
+
+
+
+  &.clickable {
+    cursor: pointer;
+  }
+
+
+  .border {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transform: skewX(-20deg);
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
+    border-style: solid;
+    border-width: 1px;
+    border-color: darkgreen;
+
+    &.support-border {
+      transform: skewX(-20deg) translate(-3px, -3px);
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  @keyframes scale {
+    0% {
+      transform: scale(.9, .9);
+    }
+
+    50% {
+      transform: scale(1, 1);
+    }
+
+    100% {
+      transform: scale(.9, .9);
+    }
+  }
+
+}

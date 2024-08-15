@@ -1,0 +1,31 @@
+@import "src/app/shared/const/variables";
+day-field {
+
+  @media (max-width:$break-md) {
+    margin-bottom: 50px;
+  }
+  background-color: $cal-dark-grey;
+  .title-field {
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .field-name {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      font-family: $secondary-font;
+      color: $white;
+      font-size: 15px;
+      height: 35px;
+      background-color: $cal-dark-grey;
+    }
+
+      img {
+        height: 20px;
+    }
+  }
+
+
+}

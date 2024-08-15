@@ -1,0 +1,9 @@
+<div class="header">
+  <div class="tab" *ngFor="let tab of tabs; index as i" [class.selected]="i === index" (click)="selectTab(i); tab.select.emit()">{{ tab.title }}</div>
+</div>
+
+<div class="body">
+  <sbk-tab-body *ngFor="let tab of tabs; index as i" [class.selected]="i === index">
+    <ng-container *ngTemplateOutlet="tab.bodyTemplate"></ng-container>
+  </sbk-tab-body>
+</div>

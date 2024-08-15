@@ -1,0 +1,37 @@
+@use 'sass:color';
+
+$btn-hover-bg: color.scale(#6FB382, $lightness: 12%);
+$animation-speed: 300ms;
+$animation-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+[sbk-btn] {
+  margin-top: 24px;
+  background-color: #6FB382;
+  border-radius: 6px;
+  padding: 24px 64px;
+  text-transform: capitalize;
+  font-size: 44px;
+  color: var(--theme-text);
+  font-family: inherit;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  transition: background $animation-speed $animation-function;
+
+  &:hover {
+    background-color: $btn-hover-bg;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: $btn-hover-bg;
+  }
+}
+
+button[sbk-btn] {
+  border: none;
+}
+
+a[sbk-btn] {
+  text-decoration: none;
+}

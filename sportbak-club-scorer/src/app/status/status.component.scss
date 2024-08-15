@@ -1,0 +1,179 @@
+@use 'sass:color';
+@import 'src/typography.scss';
+@import 'src/layout.scss';
+
+sbk-inline-status {
+  margin: 30px;
+}
+
+video {
+  position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.background {
+  
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-image: url('/assets/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+}
+
+.background-overlay {
+  background-color: #111317;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: .75;
+  backdrop-filter: blur(8px);
+}
+
+.status-ctn {
+  position: fixed;
+  width : 100%;
+  height : 100%;
+  top : 0;
+  left : 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  width : 100%;
+  font-size : 4em;
+  text-align: center;
+  margin : 2%;
+}
+
+.details {
+  flex : 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin : 0% 5%;
+
+  .details-column {
+    padding: 10px;
+  }
+  .details-section {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .details-column,.details-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .details-section-title {
+    font-size : 2.5em;
+  }
+
+  .details-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .details-row-title {
+    width : 50%;
+    max-width: 400px;
+    font-size: 1em;
+    padding-left: 3%;
+    text-align: left;
+  }
+
+  .details-row-value {
+    width : 50%;
+    font-size: 0.8em;
+    font-family: 'Roboto';
+    padding-left: 10px;
+    text-align: left;
+    color : lightgrey;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.gamepad-combination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    font-size: 1.5em;
+  }
+}
+
+.gamepad-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+  display: inline-block;
+  margin : 0px 10px;
+  background-color: white;
+  text-align: left;
+
+  &.red {
+    background-color: indianred;
+  }
+  
+  &.green {
+    background-color: limegreen;
+  }
+
+  &.blue {
+    background-color: lightskyblue;
+  }
+
+}
+
+
+.abort {
+  z-index: 1100;
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 70px;
+  .indicator {
+    background-color: indianred;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    display: inline-block;
+    margin-right: 12px;
+  }
+}
+

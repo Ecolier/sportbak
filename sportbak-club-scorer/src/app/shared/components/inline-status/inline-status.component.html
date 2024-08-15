@@ -1,0 +1,8 @@
+<div *ngIf="(showHealthyStatus === true && (statusService.online | async) === true) || (showHealthyStatus === false && (statusService.online | async) === false) || (showHealthyStatus === true && (statusService.online | async) === false)" class="status">
+  <div class="indicator" [class.active]="statusService.online | async"></div>
+  Connexion au réseau
+</div>
+<div *ngIf="(showHealthyStatus === true && (statusService.videoServiceConnection | async) === 'open') || (showHealthyStatus === false && (statusService.videoServiceConnection | async) === 'close') || (showHealthyStatus === true && (statusService.videoServiceConnection | async) === 'close')" class="status">
+  <div class="indicator" [class.active]="(statusService.videoServiceConnection | async) === 'open'"></div>
+  Connexion au service vidéo
+</div>

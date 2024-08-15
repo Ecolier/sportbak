@@ -1,0 +1,52 @@
+<div>
+  <div class="title-ctn">
+    <span class="light-text title">{{getTranslation('teams')}}</span>
+    <info-label [infoText]="getTranslation('info_teams')"></info-label>
+    <button sbk-btn *ngIf="!isAddingTeam && !isCompCreated && teams.length > 0" (click)="toggleIsAddingTeam()" class="round medium outline add-btn">{{getTranslation('add_team')}}</button>
+  </div>
+  <div [ngClass]="teams.length == 0 ? 'adding-team-ctn' : 'adding-team-ctn has-team'">
+    <button sbk-btn *ngIf="!isAddingTeam && !isCompCreated && teams.length == 0" (click)="toggleIsAddingTeam()" class="round medium outline">{{getTranslation('add_team')}}</button>
+    <div *ngFor="let team of teams; index as teamIndex" class="team-section">
+      <div class="team-ctn">
+        <div class="team-ctn-info">
+          <img class="team-shirt" [src]="team.getShirt()" [default]="unknownShirt"/>
+          <span  class="team-name light-text">{{ team.name }}</span>
+        </div>
+        <div class="team-ctn-action">
+          <button sbk-btn *ngIf="team.player.length > 0" class="round small" (click)="setTeamToEdit(teamIndex)">{{getTranslation('edit')}}</button>
+          <button sbk-btn *ngIf="team.player.length == 0" class="round small" (click)="setTeamToEdit(teamIndex)">{{getTranslation('add_players')}}</button>
+          <button class="action-btn delete team-btn small" *ngIf="!isCompCreated" (click)="setTeamToDelete(teamIndex)"><i class="las la-minus-circle"></i></button>
+        </div>
+      </div>
+      <div class="team-players">
+        <div *ngFor="let player of team.player" class="player-img">
+          <avatar [picture]="player.user.picture" size="35"></avatar>
+          <span class="player-tooltip">{{ player ? player.user.nickname : ''}}</span>
+        </div>
+      </div>
+    </div>
+    <spinning-loader *ngIf="isAddingRandomPlayer" [hasCtn]="true"></spinning-loader>
+  </div>
+  <div  class="is-adding" *ngIf="isAddingTeam">
+    <input id="teamName" [ngClass]="AllTeamHaveDifferentNames == true ? 'team-input' : 'team-input error'" placeholder="{{getTranslation('adding_team_placeholder')}}" [(ngModel)]="newTeamName" (ngModelChange)="setNewTeamName($event)"/> <br/>
+    <div class="btns-ctn">
+      <button sbk-btn class="round medium" [disabled]="newTeamName.length < 1" (click)="onAddNewTeam()">{{ getTranslation('validate')}}</button>
+      <button sbk-btn class="round medium outline" (click)="toggleIsAddingTeam()">{{ getTranslation('finish')}}</button>
+    </div>
+  </div>
+</div>
+
+<manager-modal [isDisplaying]="isValidationModalDisplayed" [mainText]="getTranslation('valid_team_removal')"
+[button1Text]="getTranslation('validate')" [button2Text]="getTranslation('cancel')"
+[iconSrc]="'warning'"
+(button1Action)="deleteTeam()" (button2Action)="toggleIsValidationModalDisplayed()"
+(close)="toggleIsValidationModalDisplayed()">
+</manager-modal>
+
+<team-editor
+  [isDisplayed]="isUpdatingTeam"
+  [team]="teamToEdit"
+  [canTeamHaveGuest]="canTeamHaveGuest"
+  (onValidate)="toggleIsUpdatingTeam()"
+  (hideTeamEditor)="toggleIsUpdatingTeam()"
+></team-editor>

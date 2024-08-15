@@ -1,0 +1,89 @@
+<div class="game-row-support">
+    <game-date [game]="game" (click)="redirectToCalendar()"></game-date>
+    <div *ngIf="game.status == 'stop'" class="game-stats-processing">
+        {{ getTranslation('fetching_data')}}
+    </div>
+    <div *ngIf="game.status == 'error'" class="game-error">
+        {{ getTranslation('unavailable_stats')}}
+    </div>
+    <div *ngIf="!game.devicesFutbakIsUsed" class="game-without-devcie">
+        {{ getTranslation('no_device')}}
+    </div>
+
+    <div *ngIf="debugMode" class="super-admin-infos">
+        <div *ngIf="game.playground" class="game-playground">
+            {{ game.playground.title }}
+        </div>
+        <div class="game-status game-status-{{game.status}}">
+            {{ game.status }}
+        </div>
+        <div class="game-infos">
+            {{ infos }}
+        </div>
+        <div class="game-id">
+            {{ game._id }}
+        </div>
+    </div>
+    <div *ngIf="showPlaygroundName && playgroundName" class="playground-name">
+        {{ playgroundName }}
+    </div>
+    <div class="game-row"
+        [class.clickable]="isFromManager" (click)="game.status == 'complete' ? onGamesheet() :onGameClick()" (clickOutside)="onClickedOutside($event)">
+        <div class="main-game-row">
+            <div class="team-name-ctn">
+                <img class="team-shirt" [src]="urlTeamShirt1">
+                <span class="team-name">{{ game.teams[0].title }}</span>
+            </div>
+            <div *ngIf="game.status != 'complete' && sportConstants[game.sport].hasGoals" class="score-ctn">
+                <div *ngIf="isGameSelected" [class]="'score '+size">
+                    <input [(ngModel)]="scoreTeam1"
+                    (ngModelChange)="updateScoreTeam1($event)" type="number" min="0" placeholder="0">
+                </div>
+                <img  [class]="'versus-icon '+ size" src="./assets/img/icons/team-versus.png"/>
+                <div *ngIf="isGameSelected" [class]="'score '+size">
+                    <input [(ngModel)]="scoreTeam2"
+                    (ngModelChange)="updateScoreTeam2($event)" type="number" min="0" placeholder="0">
+                </div>
+            </div>
+            <div *ngIf="game.status != 'complete' && sportConstants[game.sport].hasSets" class="score-ctn">
+                <div *ngIf="isGameSelected" [class]="'set-score '+size">
+                    <input [(ngModel)]="set1Team1"
+                    (ngModelChange)="updateScoreTeam1($event)" type="number" min="0" max="7" placeholder="0">
+                    <input [(ngModel)]="set2Team1"
+                    (ngModelChange)="updateScoreTeam1($event)" type="number" min="0" max="7" placeholder="0">
+                    <input [(ngModel)]="set3Team1"
+                    (ngModelChange)="updateScoreTeam1($event)" type="number" min="0" max="7" placeholder="0">
+                </div>
+                <div class="versus-ctn">
+                    <img  [class]="'versus-icon '+size" src="./assets/img/icons/team-versus.png"/>
+                </div>
+                <div *ngIf="isGameSelected" class="set-score">
+                    <input [(ngModel)]="set1Team2"
+                    (ngModelChange)="updateScoreTeam2($event)" type="number" min="0" max="7" placeholder="0">
+                    <input [(ngModel)]="set2Team2"
+                    (ngModelChange)="updateScoreTeam2($event)" type="number" min="0" max="7" placeholder="0">
+                    <input [(ngModel)]="set3Team2"
+                    (ngModelChange)="updateScoreTeam2($event)" type="number" min="0" max="7" placeholder="0">
+                </div>
+            </div>
+            <div *ngIf="game.status == 'complete' || game.status == 'error'" class="score">
+                <span class="team-goals" [class.winner]="game.teams[0].goals > game.teams[1].goals">{{ game.teams[0].goals }}</span>
+                <span class="goals-separator">-</span>
+                <span class="team-goals" [class.winner]="game.teams[0].goals < game.teams[1].goals">{{ game.teams[1].goals }}</span>
+            </div>
+            <div class="team-name-ctn reversed">
+                <span class="team-name">{{ game.teams[1].title }}</span>
+                <img class="team-shirt" [src]="urlTeamShirt2">
+            </div>
+        </div>
+        <div *ngIf="isGameSelected" class="actions-game-row">
+            <button sbk-btn [ngClass]=" (scoreTeam1 >= 0 && scoreTeam2 >= 0 && sportConstants[game.sport].hasGoals) || (set1Team1 !== set1Team2 && set2Team1 !== set2Team2 && set3Team1 !== set3Team2) ? 'round' : 'round disabled'" (click)="updateGame()">valider</button>
+            <button sbk-btn class="round outline" (click)="onGamesheet()">feuille de match</button>
+        </div>
+    </div>
+    <manager-modal [isDisplaying]="isShowingStartedModal"
+                   [mainText]="getTranslation('start_alert')" (close)="cancelStartedModal()"
+                   [button1Text]="getTranslation('validate')" (button1Action)="validateStartedModal()"
+                   [button2Text]="getTranslation('cancel')" (button2Action)="cancelStartedModal()">
+    </manager-modal>
+</div>

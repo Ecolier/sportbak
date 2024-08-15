@@ -1,0 +1,36 @@
+<manager-modal [isDisplaying]="true" [mainText]="sport && sportConstants[sport].hasGoals ? getTranslation('score_selector_goals') : getTranslation('score_selector_sets')" [styles]="'medium'"
+[button1Text]="getTranslation('validate')" [button2Text]="getTranslation('cancel')"
+[iconSrc]="'warning'"
+(button1Action)="validate()" (button2Action)="cancel()"
+(close)="cancel()">
+  <ng-container *ngIf="sport && sportConstants[sport].hasGoals">
+    <div class="score-ctn">
+      <div class="team-ctn">
+        <span class="team-name">{{ team1.title }}</span>
+        <input class="goal-input" type="number" min="0" [(ngModel)]="team1GoalsInput"
+          (ngModelChange)="updateTeam1GoalsInput($event)" (focus)="toggleFocusInput1()" (focusout)="toggleFocusInput1()">
+      </div>
+      <div class="vs-ctn">
+        <p>vs</p>
+      </div>
+      <div class="team-ctn">
+        <span class="team-name">{{ team2.title }}</span>
+        <input class="goal-input" type="number" min="0" [(ngModel)]="team2GoalsInput"
+          (ngModelChange)="updateTeam2GoalsInput($event)" (focus)="toggleFocusInput2()" (focusout)="toggleFocusInput2()">
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="team1Sets && sport && sportConstants[sport].hasSets">
+    <div class="set-ctn">
+      <div class="team-set">
+        <span>{{ team1.title }}</span>
+        <span>{{ team2.title }}</span>
+      </div>
+      <div class="set-games"  *ngFor="let set of team1Sets; index as setIndex">
+          <input class="score" [(ngModel)]="team1Sets[setIndex]"  type="number" min="0" />
+          <span class="hyphen">&#8208;</span>
+          <input class="score" [(ngModel)]="team2Sets[setIndex]"  type="number" min="0" />
+      </div>
+  </div>
+  </ng-container>
+</manager-modal>

@@ -1,0 +1,17 @@
+<div class="manager-content">
+    <div *ngIf="previousNotificationsLoaded" class="create-notif-ctn">
+      <button sbk-btn class="round outline small create-notif-btn" 
+               (click)="newAnnoucement()">{{ getTranslation('create_notification') }}</button>
+      
+    </div>
+
+    <div *ngIf="!hasNotifications" class="no-notif-ctn">
+      <span class="no-notif-text">{{ getTranslation('no_notifications') }}</span>
+    </div>
+
+    <spinning-loader *ngIf="!previousNotificationsLoaded" class="notif-loader"></spinning-loader>
+    <manager-announcement-widget *ngFor="let item of previousNotifications" [notification]="item">
+    </manager-announcement-widget>
+</div>
+<manager-alert *ngIf="hasSubmitted" [successMsg]="getTranslation('notification_success')"
+[failureMsg]="failureMsg" [hasFailed]="hasFailedSending"></manager-alert>

@@ -1,0 +1,12 @@
+<sbk-dialog-header [title]="getTranslation('sessionSettings')"></sbk-dialog-header>
+<div class="preselect-settings" *ngIf="settings?.length">
+  <label for="presets">{{getTranslation('my_configurations')}}</label>
+  <select   name="presets" class="settings-btn" [(ngModel)]="selectedPreset" (ngModelChange)="selectPreset($event)" >
+    <option *ngFor="let preset of settings" value="{{ preset.name }}" [selected]="preset.name == selectedPreset"> {{ preset.name }}
+    </option>
+  </select>
+</div>
+<ng-container [formGroup]="settingsForm">
+  <session-form formControlName="session"></session-form>
+  <button sbk-btn (click)="submitSettings.emit(valuesToComputedSessionSettings())" class="submit-button">{{ getTranslation('startSession') }}</button>
+</ng-container>

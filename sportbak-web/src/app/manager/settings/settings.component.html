@@ -1,0 +1,25 @@
+<ng-template #loading>
+  <div class="loading-overlay">
+    <spinning-loader [isMedium]="true"></spinning-loader>
+  </div>
+</ng-template>
+
+
+<ng-container *ngIf="settingLoadedStep >= 2; else loading">
+<div class="manager-content">
+  <sbk-tab-bar [index]="selectedSettingsTabIndex">
+    <sbk-tab [title]="complex.name" (select)="navigateToSettings(complex._id)">
+      <sbk-section-dropdown title="Video" expanded="true">
+        <mgr-session-settings-tab [target]="complex" [allSettings]="allSettings" [presets]="presetsForTarget(complexSettings,allSettings)" (reloadData)="initSettings()"></mgr-session-settings-tab>
+      </sbk-section-dropdown>
+    </sbk-tab>
+    <sbk-tab *ngFor="let field of fields" [title]="field.name" (select)="navigateToSettings(field._id)">
+      <sbk-section-dropdown title="Video" expanded="true">
+        <mgr-session-settings-tab [target]="field" [allSettings]="allSettings" [presets]="presetsForTarget(field,allSettings)" (reloadData)="initSettings()">
+        </mgr-session-settings-tab>
+      </sbk-section-dropdown>
+    </sbk-tab>
+  </sbk-tab-bar>
+
+</div>
+</ng-container>

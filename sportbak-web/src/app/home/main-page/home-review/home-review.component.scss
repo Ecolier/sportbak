@@ -1,0 +1,147 @@
+@import  "src/app/home/const/variables";;
+.home-review{
+  padding-top: 40px;
+  padding-bottom: 50px;
+  background-color: $dark-black;
+  .home-review-h1{
+    display: flex;
+    justify-content: flex-start;
+    h1{
+      font-family: $brushwell;
+      color: $white;
+      font-size: $h1-size;
+      text-align: right;
+      padding-top: 40px;
+      max-width: 900px;
+      padding-left: 50px;
+      @media screen and (max-width: $medium-screen) {
+        font-size: 60px;
+        padding-bottom: 20px;
+      }
+      @media screen and (max-width:$small-screen) {
+        padding-left: 20px;
+        font-size: 40px;
+      }
+    }
+  }
+  .home-review-ctn{
+    background-color: $dark-grey;
+    width: 85%;
+    border-radius: 25px;
+    margin: auto;
+    padding-left: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    @media screen and (max-width:$small-screen) {
+      padding-left: 0px;
+    }
+    .slick-carousel_title {
+      font-size: 20px;
+      font-family: "ProximaNova-BlackIt";
+      text-transform: uppercase;
+      color: $white;
+    }
+    
+    ::ng-deep ngx-slick-carousel {
+      .slick-list {
+        .slide {
+          width: 319px;
+          height: 280px;
+          outline: none;
+          margin: 20px;
+          background-color: $white;
+          border-radius: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          @media screen and (max-width:$small-screen) {
+            width: 319px;
+            height: 280px;
+            outline: none;
+            margin: 20px;
+            background-color: $white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .com-player-article {
+            text-align: left;
+            position: relative;
+            margin: 0px;
+            display: flex;
+            width: 250px;
+            min-height: 230px;
+            padding-right: 20px;
+            padding-left: 20px;
+            .logo-article-ctn{
+              background-color: $dark-black;
+              border-radius: 100%;
+              margin-right: 20px;
+              height: 72px;
+              @media screen and (max-width:$small-screen) {
+                height: 50px;
+              }
+              .logo-article {
+                position: relative;
+                width: 72px;
+                height: 72px;
+                @media screen and (max-width:$small-screen) {
+                  width: 50px;
+                  height: 50px;
+                }
+
+            }
+            }
+            h2{
+              padding-top: 10px;
+              color: $orange;
+              margin: 0px;
+              text-transform: uppercase;
+              font-family: $main-font;
+            }
+            p {
+              margin-bottom: 0px;
+              margin-top: 75px;
+              transform: translate(0, -50%);
+              font-size: 13px;
+              line-height: 16px;
+              color: $dark-black;
+  
+              span {
+                display: block;
+                font-size: 11px;
+                line-height: 14px;
+                margin-top: 10px;
+                color: #b3abab;
+                font-style: italic;
+              }
+            }
+          }
+          &.slick-active {
+            width: 665px;
+            transition: width 2s;
+            transition-delay: 1s;
+            @media screen and (max-width:$small-screen) {
+              width: 319px;
+              transition: none;
+            }
+            .com-player-article {
+              width: 665px;
+              transition: width 2s;
+              transition-delay: 1s;
+              @media screen and (max-width:$small-screen) {
+                width: 319px;
+                transition: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+ 

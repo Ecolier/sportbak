@@ -1,0 +1,50 @@
+@import  "src/app/home/const/variables";;
+
+.home-phone-device-competitions{
+  background-color: $dark-black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: $secondary-font;
+  color: $white;
+  padding-left: 20px;
+  padding-right: 20px;
+  h1{
+    font-family: $brushwell;
+    text-align: center;
+    padding-bottom: 10%;
+  }
+  .main-ctn{
+    p,a{
+      text-align: center;
+    }
+    a{
+      display: inline-block;
+      width: 100%;
+      text-decoration: none;
+      button{
+        background-color: $orange;
+        color: $white;
+        border-radius: 100px;
+        border: none;
+        padding: 5px;
+        margin-bottom: 20px;
+        margin-top: 10px;
+      }
+    }
+    ul{
+      font-size: 18px;
+      li{
+        line-height: 30px;
+        list-style: none;
+        &::before{
+          content: "\00BB";
+          padding-right: 5px;
+        }
+      }
+    }
+  }
+  .video-ctn{
+    margin-top: 30px;
+  }
+}

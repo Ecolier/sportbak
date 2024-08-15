@@ -1,0 +1,29 @@
+<div class="manager-content">
+  <div class="contact-ctn">
+    <div class="contact-content">
+      <h2 class="title">{{ getTranslation('contact_title')}}</h2>
+      <p class="sub-title">{{ getTranslation('contact_text')}}</p>
+
+      <label class="light-text text-uppercase">{{ getTranslation('subject_label')}}</label><br />
+      <manager-input autofocus class="full-input" type="text" [value]="subject" (onChange)="setSubject($event)">
+      </manager-input><br />
+      <label class="light-text text-uppercase">{{ getTranslation('message_label')}}</label><br />
+      <manager-textarea class="message-input full-input" [value]="message" (onChange)="setMessage($event)">
+      </manager-textarea><br />
+      <div class="send-btn-ctn">
+        <button sbk-btn *ngIf="!isLoading" class="round medium" [disabled]="!(subject.length > 0 && message.length > 0)"
+          (click)="submitMessage()">{{ getTranslation('send') }}</button>
+      </div>
+      <div class="direct-contact-ctn">
+        <a class="contact-email" href="mailto:contact@sportbak.com">contact@sportbak.com</a> <br />
+        <a class="contact-email" href="tel:+33627870194">{{ getTranslation('phone_number')}}</a>
+      </div>
+      <div *ngIf="isLoading" class="loader-ctn">
+        <img src="./assets/img/loader.png" class="loader" />
+      </div>
+    </div>
+  </div>
+</div>
+<manager-alert *ngIf="hasSubmitted" [successMsg]="getTranslation('contact_success')"
+  [failureMsg]="getTranslation('contact_failure')" [hasFailed]="hasFailedSending" [nbOfFails]="failureCounts">
+</manager-alert>

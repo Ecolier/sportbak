@@ -1,0 +1,7 @@
+<home-header></home-header>
+<home-phone-device-history *ngIf="isMobile"></home-phone-device-history>
+<application-services [isMobile]="isMobile"></application-services>
+<home-map></home-map>
+<home-social *ngIf="!isMobile"></home-social>
+<home-contact-us></home-contact-us>
+<home-footer></home-footer>

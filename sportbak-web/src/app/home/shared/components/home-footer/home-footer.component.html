@@ -1,0 +1,36 @@
+<section class="home-footer">
+  <div class="home-footer-ctn">
+    <div class="home-footer-sportbak">
+      <a (click)="onClick()">
+        <img id="logo-sportbak" src="./assets/img/home-page/header/nouveau-logo-sportbak-1.png" alt="logo sportbak">
+        <h1>sportbak</h1>
+      </a>
+    </div>
+    <div>
+      <h2>{{ getTranslation('footer_pages')}}</h2>
+      <a href="#home-header">{{ getTranslation('nav_home')}}</a>
+      <!-- <a href="">{{ getTranslation('nav_about')}}</a> -->
+      <a href="#application-section">{{ getTranslation('nav_services')}}</a>
+      <a href="#home-community-find">{{ getTranslation('nav_where_play')}}</a>
+      <a routerLink="/complex">{{ getTranslation('nav_competition')}}</a>
+    </div>
+    <div>
+      <h2>{{ getTranslation('footer_mentions')}}</h2>
+      <a href="{{privacy}}" target="_blank">{{ getTranslation('footer_confidentiality')}}</a>
+      <a href="{{userTerms}}" target="_blank">{{ getTranslation('footer_terms')}}</a>
+    </div>
+    <div class="find-us">
+      <h2>{{ getTranslation('contact_us_find')}}</h2>
+      <address>60, avenue André Roussin, 13016 Marseille</address>
+      <iframe width="100%" height="200" style="border:0" loading="lazy" allowfullscreen
+        src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJUz2_vIbryRIROA24WErnHic&key=AIzaSyDWMaNT6zpyg3O12Hl4trV5xg2FLYlWFI4"></iframe>
+    </div>
+  </div>
+  <div class="home-footer-social">
+    <social-panel></social-panel>
+  </div>
+  <div class="line"></div>
+  <div class="mentions">
+    <p>2021 - SportBak<br>{{ getTranslation('footer_rights')}}</p>
+  </div>
+</section>

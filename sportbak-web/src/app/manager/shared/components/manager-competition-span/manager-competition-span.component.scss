@@ -1,0 +1,97 @@
+@import "src/app/shared/const/variables";
+$pending:#f0932b;
+$finsihed: #3498db;
+$created: #6ab04c;
+
+manager-competition-span {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .competition-span-ctn {
+    display: flex;
+    justify-content: space-between;
+    background-color: $dark-grey;
+    width: 80%;
+    margin: 8px 0;
+    transition-duration: 0.3s;
+    cursor: pointer;
+    border-radius: 15px;
+    overflow: hidden;
+    font-family: $secondary-font;
+
+    @media(max-width:$break-md) {
+      width: 95%;
+      margin: 7px 0px;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0px 10px 10px black;
+      transition-duration: 0.3s;
+    }
+
+    .competition-img{
+      background-color: $created;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 20px;
+      &.pending {
+        background-color: $pending;
+      }
+  
+      &.finished {
+        background-color: $finsihed;
+      }
+      .comp-icon {
+        height: 50px;
+        align-self: center;
+        margin: 0px 3px;
+        @media (max-width:$break-sm) {
+          height: 40px;
+        }
+       }
+    }
+    .competition-details {
+      display: flex;
+      flex-direction: column;
+      width: 70%;
+      margin: 10px 0px;
+      flex: 1;
+
+      @media (max-width:$break-sm) {
+        width: 60%;
+      }
+
+      .secondary-detail {
+        color: $white;
+        font-style: italic;
+        font-size: 15px;
+        padding: 2px 0px;
+        @media (max-width: $break-xs) {
+          font-size: 3vw;
+        }
+      }
+    }
+
+    .comp-name {
+      width: 100%;
+      font-size: 18px;
+      overflow: hidden;
+      padding-bottom: 4px;
+    }
+
+    .action-btn {
+      font-size: 17px;
+      padding: 0px $spacing-xl;
+      background-color: $light-black;
+      outline: none;
+
+      @media (max-width: $break-sm) {
+        padding: 0px 23px;
+        font-size: 3vw;
+      }
+    }
+  }
+}

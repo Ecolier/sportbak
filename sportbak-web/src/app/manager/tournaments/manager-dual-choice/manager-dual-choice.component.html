@@ -1,0 +1,4 @@
+<div [class]="'manager-dual-choice-ctn ' + class">
+  <button  [class.selected]="isButton1Selected" (click)="onButtonClick()">{{ button1Text }}</button>
+  <button [class.selected]="!isButton1Selected" (click)="onButtonClick()">{{ button2Text }}</button>
+</div>

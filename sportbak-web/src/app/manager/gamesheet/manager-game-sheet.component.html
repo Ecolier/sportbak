@@ -1,0 +1,47 @@
+<div class="gs-ctn">
+  <gs-previous-action (onValidatePrevious)="leaveGameSheet()"></gs-previous-action>
+  <div class="gs-content">
+      <ng-container *ngIf="game && sportConstants[game.sport].hasGoals">
+      <gs-teams  [game]="game" [complex]="complex" (updateGoals)="updateGoals()" (saveGameInLocalStorage)="saveGameInLocalStorage()"></gs-teams>
+      <gs-score-editor [team1Goals]="game && game.teams[0] && game.teams[0].goals > 0 ? game.teams[0].goals : null" [team2Goals]="game && game.teams[1] && game.teams[1].goals > 0 ? game.teams[1].goals : null"
+        [game]="game" [isTimerPaused]="isTimerPaused" [minutes]="timerMinutes" [seconds]="timerSeconds"
+        (updateGoals)="updateGoals()" (updateTeamScore)="updateTeamScore($event)" 
+        (saveGameInLocalStorage)="saveGameInLocalStorage()">
+      </gs-score-editor>
+      <gs-fouls [game]="game" (saveGameInLocalStorage)="saveGameInLocalStorage()"></gs-fouls>
+      <gs-game-actions [game]="game" [isShowingUpdateAlert]="isShowingUpdateAlert" [isShowingErrorAlert]="isShowingErrorAlert" [isTimerPaused]="isTimerPaused"
+        (startTimer)="startTimer()" (toggleTimerPause)="toggleTimerPause()" (updateGame)="updateGame()" (updateAlert)="showUpdateAlert()"
+        (endGame)="startValidation()"></gs-game-actions>
+      <div *ngIf="game && (!game.isGameFinished() && game.startedAt)" class="futbuzz-ctn">
+        <gs-futbuzz *ngIf="game && (!game.isGameFinished() && game.startedAt)" class="gs-futbuzz" [game]="game"></gs-futbuzz>
+        <info-label [infoText]="getTranslation('futbuzz_info')" [isFromLeft]="true" [isSpread]="true" [isFutBuzz]="true" [mobileDisplayTime]="4000"></info-label>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="game && sportConstants[game.sport].hasSets">
+    <gs-teams [game]="game" [complex]="complex" (saveGameInLocalStorage)="saveGameInLocalStorage()"></gs-teams>
+    <gs-score-editor 
+      [game]="game" [sets]="game && game.teams[0] ? game.teams[0].sets : 0" (updateTeamScore)="updateTeamScore($event)" (saveGameInLocalStorage)="saveGameInLocalStorage()">
+    </gs-score-editor>
+    <gs-game-actions [game]="game" [sets]="game && game.teams[0] ? game.teams[0].sets : 0" [isShowingUpdateAlert]="isShowingUpdateAlert" [isShowingErrorAlert]="isShowingErrorAlert" (updateGame)="updateGame()" (endGame)="startValidation()"></gs-game-actions>
+  </ng-container>
+      <time-selector *ngIf="validationStep == TIME_VALIDATION" 
+        [hasSet]="sportConstants[game.sport].hasSets"
+        (onValidateTime)="setStartTime($event)"
+        (onCancelTime)="resetValidation()"
+      ></time-selector>
+      <field-selector *ngIf="validationStep == FIELD_VALIDATION" 
+        [complex]="complex"
+        [sport]="game.sport"
+        (onValidateField)="setField($event)"
+        (onCancelField)="resetValidation()"
+      >
+      </field-selector>
+      <score-selector *ngIf="validationStep == SCORE_VALIDATION"
+        [team1]="game.teams[0]"
+        [team2]="game.teams[1]"
+        [sport]="game.sport"
+        (onValidateScore)="setGoals($event)"
+        (onCancelScore)="resetValidation()">
+      </score-selector>
+    </div>
+  </div>

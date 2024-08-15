@@ -1,0 +1,38 @@
+@import "src/app/shared/const/variables";
+
+month-selector {
+  .month-selector-ctn {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 15px;
+    .month-selector-section {
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+
+      &.date {
+
+      }
+
+      &.btn {}
+
+      .text {
+        font-family: $secondary-font;
+        color: $white;
+        font-size: 20px;
+        padding: 0 3px;
+        text-transform: uppercase;
+
+        &.year {
+          color: $orange;
+        }
+      }
+    }
+
+    img {
+      height: 13px;
+      padding: 0 8px;
+    }
+  }
+}

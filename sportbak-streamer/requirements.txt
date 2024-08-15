@@ -1,0 +1,8 @@
+fastapi==0.61.2
+uvicorn==0.12.2
+websockets==8.1
+pytest==6.1.2
+pygobject==3.40.0
+pytest==6.1.2
+requests==2.25.1
+Pillow==8.3.0

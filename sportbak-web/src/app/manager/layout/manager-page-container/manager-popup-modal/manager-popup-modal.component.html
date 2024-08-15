@@ -1,0 +1,12 @@
+<div class="exterior" (click)="close($event)">
+  <div class="modal" *ngIf="data" (click)="$event.stopPropagation()">
+    <img class="close" src="assets/img/icons/close.png" alt="close" (click)="close($event)">
+    <booking-card *ngIf="data.booking" [booking]="data.booking"></booking-card>
+    <div class="goto-booking" *ngIf="data.booking && ['accepted', 'request', 'waiting'].includes(data.booking.status)"
+         (click)="gotoBooking($event)">{{getTranslation('goto_booking')}}</div>
+    <div *ngIf="data.user" class="new_supporter">
+      <div class="title">{{getTranslation('new_supporter')}}</div>
+      <user-card [user]="data.user"></user-card>
+    </div>
+  </div>
+</div>

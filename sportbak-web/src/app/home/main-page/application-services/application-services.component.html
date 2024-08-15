@@ -1,0 +1,51 @@
+<section id="application-services">
+    <div *ngIf="youtubeSrc" class="video-section">
+            <iframe  loading="lazy" id="youtube-video" width="100%" height="692" [src]="youtubeSrc | safe" title="YouTube video player"  frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+        <!-- <ng-container *ngIf="lang == 'en'">
+            <iframe id="youtube-video" width="100%" height="692" src="https://www.youtube.com/embed/aRVWgcl6e6Y" title="YouTube video player"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+        </ng-container> -->
+    </div>
+    <div id="application-section">
+        <h1>{{ getTranslation('service_first_title')}}</h1>
+        <div *ngIf="!isMobile" class="application-details">
+            <div data-aos="fade-right" data-aos-delay="300" class="application-details-aside">
+                <ng-container *ngFor="let card of cards | slice:0:3">
+                    <div class="card-application" [class.active]="cardKey == card.key" (click)="clickOnCard(card.key)">
+                        <h2>{{card.title}}</h2>
+                        <p>{{card.content}}</p>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="application-details-middle-side">
+                <video [muted]="'muted'" autoplay muted loop controls [src]="videoSrc" type="video/mp4" poster="./assets/img/home-page/application-services/mobile-poster.jpg"></video>
+                <div class="see-all-ctn">
+                    <a class="see-all" href="{{seeAllSrc}}" target="_blank">{{ getTranslation('service_see_all')}}</a>
+                </div>
+            </div>
+            <div data-aos="fade-left" data-aos-delay="300" class="application-details-aside">
+                <ng-container *ngFor="let card of cards | slice:3:6">
+                    <div class="card-application" [class.active]="cardKey == card.key" (click)="clickOnCard(card.key)">
+                        <h2>{{card.title}}</h2>
+                        <p>{{card.content}}</p>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div *ngIf="isMobile" class="mobile-application-details">
+            <div class="slick-carousel-area">
+                <ngx-slick-carousel *ngIf="slides" class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+                  <div ngxSlickItem *ngFor="let card of slides" class="slide">
+                    <div class="card-application">
+                        <video [muted]="'muted'" preload="none" muted="muted"  inViewport [inViewportOptions]="{ threshold: [0, 0.65], partial: true }" (inViewportAction)="onIntersection($event)" controls  loop src="./assets/video/{{card.key}}-{{lang}}.mp4" type="video/mp4"></video>
+                        <h2>{{card.title}}</h2>
+                        <p>{{card.content}}</p>
+                        <div class="see-all-ctn">
+                            <a class="see-all" href="{{seeAllSrc}}" target="_blank">{{ getTranslation('service_see_all')}}</a>
+                        </div>
+                    </div>
+                  </div>
+                </ngx-slick-carousel>
+              </div>
+        </div>
+    </div>
+</section>

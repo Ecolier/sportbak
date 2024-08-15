@@ -1,0 +1,122 @@
+@import "src/app/shared/const/variables";
+
+calendar-upcoming-booking {
+  .upcoming-booking {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+    position: relative;
+    cursor: pointer;
+
+    .booking-infos-ctn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      font-size: 14px;
+
+      .booking-infos {
+        display: flex;
+        width: 60%;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      .booking-info {
+        color: $white;
+        font-family: $secondary-font;
+      }
+
+      .btns {
+        display: flex;
+        justify-content: space-around;
+        width: 30%;
+        @media (max-width:$break-sm) {
+          width: 40%;
+        }
+
+        img {
+          height: 20px;
+          transition-duration: 0.2s;
+          border-radius: 100px;
+
+          &:hover {
+            transition-duration: 0.2s;
+            box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.75);
+          }
+          @media (max-width: $break-sm) {
+            height: 30px;
+          }
+        }
+      }
+    }
+
+    .booking-contact {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: absolute;
+      top: 20px;
+      left: 0px;
+      z-index: -10;
+      width: 100%;
+      background-color: $dark-black;
+      opacity: 0;
+      transition-duration: 0.3s;
+
+      &.visible {
+        z-index: 10;
+        padding: 10px;
+        opacity: 1;
+        box-shadow: 0 4px 2px -2px black;
+        transition-duration: 0.3s;
+      }
+
+      .booker-info {
+        width: 100%;
+        color: $white;
+        font-size: 13px;
+        text-align: center;
+      }
+    }
+
+    .refusal-confirmation {
+      .text {
+        color: $white;
+        font-family: $secondary-font;
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      .refusal-btns {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+
+        .refusal-btn {
+          width: 45%;
+          font-family: $secondary-font;
+          color: $white;
+          background-color: $green;
+          border-radius: 5px;
+          border: none;
+          transition-duration: 0.3s;
+          text-transform: uppercase;
+          &:hover {
+            transform: translateY(-3px);
+            transition-duration: 0.3s;
+            box-shadow: 0 4px 2px -2px black;
+          }
+
+          &.cancel {
+            background-color: $red;
+          }
+        }
+      }
+    }
+  }
+}

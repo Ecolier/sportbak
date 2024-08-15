@@ -1,0 +1,67 @@
+<ng-container *ngIf="!isMobile && complex">
+  <menu-section [text]="getTranslation('bookings')" (click)="loadCompetitions()">
+    <ng-container *ngIf="hasLoadedCompetitions">
+      <calendar-upcoming-booking *ngFor="let booking of upcomingBookings" [dateModal]="date" [complex]="complex"
+                                 [booking]="booking"
+                                 (removeFromUpcomingBookings)="removeFromUpcomingBookings($event)"
+                                 (updateUpcomingBookings)="setUpcomingBookings($event)">
+      </calendar-upcoming-booking>
+      <div *ngIf="upcomingBookings.length === 0" class="no-upcoming-bookings"> {{getTranslation('no_upcoming_bookings')}}</div>
+    </ng-container>
+    <div *ngIf="!hasLoadedCompetitions" class="loader-ctn">
+      <spinning-loader></spinning-loader>
+    </div>
+  </menu-section>
+  <menu-section [text]="getTranslation('leagues')" (click)="loadCompetitions()">
+    <ng-container *ngIf="hasLoadedCompetitions">
+      <calendar-league *ngFor="let league of leagues" [league]="league" (setGame)="updateGame($event)">
+      </calendar-league>
+    </ng-container>
+    <div *ngIf="!hasLoadedCompetitions" class="loader-ctn">
+      <spinning-loader></spinning-loader>
+    </div>
+  </menu-section>
+  <menu-section [text]="getTranslation('tournaments')" (click)="loadCompetitions()">
+    <ng-container *ngIf="hasLoadedCompetitions">
+      <calendar-tournament *ngFor="let tournament of tournaments" [tournament]="tournament"
+                           (setGame)="updateGame($event)"></calendar-tournament>
+    </ng-container>
+    <div *ngIf="!hasLoadedCompetitions" class="loader-ctn">
+      <spinning-loader></spinning-loader>
+    </div>
+  </menu-section>
+</ng-container>
+<ng-container *ngIf="isMobile && complex">
+  <div *ngIf="mobileUI.isMenuDisplayed" class="arrow-ctn" (click)="hideMobileMenu()">
+    <img [class.rotated]="mobileUI.isMenuDisplayed"
+         src="./assets/img/icons/arrow-down-white.png" alt="toggle menu"/>
+  </div>
+  <div *ngIf="!mobileUI.isMenuDisplayed" class="m-menu-btn-ctn">
+    <button (click)="selectMenuItem(mobileUI.BOOKINGS)" class="mobile-calendar-menu-button">{{ getTranslation('bookings')}}</button>
+    <button (click)="selectMenuItem(mobileUI.LEAGUES)" class="mobile-calendar-menu-button">{{ getTranslation('leagues')}}</button>
+    <button (click)="selectMenuItem(mobileUI.TOURNAMENTS)" class="mobile-calendar-menu-button">{{ getTranslation('tournaments')}}</button>
+  </div>
+  <ng-container *ngIf="mobileUI.isMenuDisplayed && mobileUI.selectedMenuItem == mobileUI.BOOKINGS">
+    <calendar-upcoming-booking *ngFor="let booking of upcomingBookings"
+                               [dateModal]="date"
+                               [complex]="complex" [booking]="booking"
+                               (removeFromUpcomingBookings)="removeFromUpcomingBookings($event)"
+                               (updateUpcomingBookings)="setUpcomingBookings($event)"
+                               (click)="closeMobileMonth()">
+    </calendar-upcoming-booking>
+    <div *ngIf="upcomingBookings.length === 0" class="no-upcoming-bookings"> {{getTranslation('no_upcoming_bookings')}}</div>
+  </ng-container>
+  <ng-container *ngIf="mobileUI.isMenuDisplayed && mobileUI.selectedMenuItem == mobileUI.LEAGUES">
+    <div *ngIf="!hasLoadedCompetitions" class="loader-ctn">
+      <spinning-loader></spinning-loader>
+    </div>
+    <calendar-league *ngFor="let league of leagues" [league]="league" (setGame)="updateGame($event)"></calendar-league>
+  </ng-container>
+  <ng-container *ngIf="mobileUI.isMenuDisplayed && mobileUI.selectedMenuItem == mobileUI.TOURNAMENTS">
+    <div *ngIf="!hasLoadedCompetitions" class="loader-ctn">
+      <spinning-loader></spinning-loader>
+    </div>
+    <calendar-tournament *ngFor="let tournament of tournaments" [tournament]="tournament"
+                         (setGame)="updateGame($event)"></calendar-tournament>
+  </ng-container>
+</ng-container>

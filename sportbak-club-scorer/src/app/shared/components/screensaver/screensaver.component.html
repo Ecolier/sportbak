@@ -1,0 +1,17 @@
+<div class="support">
+
+    <div #anim class="support-anim">
+        <div *ngIf="manualStartSessionEnabled; else noManuelStartSession" class="gamepad-combination">
+          <div class="row">Commencer une nouvelle session</div>
+          <div class="row small">Maintenir appuyer les deux boutons verts</div>
+          <div class="row">
+            <div class="gamepad-btn green"></div>
+            <div>+</div>
+            <div class="gamepad-btn green"></div>
+          </div>
+        </div>
+        <ng-template #noManuelStartSession>
+          <img src='/assets/sbk-light.png'>
+        </ng-template>
+      </div>
+</div>

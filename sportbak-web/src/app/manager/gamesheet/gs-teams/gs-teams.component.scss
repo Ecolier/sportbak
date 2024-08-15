@@ -1,0 +1,284 @@
+@import "src/app/shared/const/variables";
+
+gs-teams {
+    .gs-teams-ctn {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      @media (max-width: $break-md) {
+        margin-top: 4px;
+      }
+
+      @media (max-width: $break-sm) {
+        margin-top: 4px;
+      }
+
+      @media (max-height:$very-small-height) {
+        margin-top: 0px;
+          transform: translateY(-4px);
+    }
+  }
+
+  .teams-info {
+    color: $white;
+    font-family: $secondary-font;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    text-align: center;
+  }
+
+  .teams-ctn {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 5px;
+    padding-top: 10px;
+    @media (max-height:$very-small-height) {
+      height: 30px;
+    }
+    .team-name-ctn {
+      width: 45%;
+      font-family: $main-font;
+      font-size: 35px;
+      display: flex;
+      align-items: center;
+      border-top-left-radius: 7px;
+      border-bottom-left-radius: 7px;
+      color: $orange;
+      border-left: 2px solid;
+      border-top: 2px solid;
+      border-bottom: 2px solid;
+      @media (max-width: $break-sm) {
+        font-size: 18px;
+      }
+
+      @media (max-height: $break-md) {
+        font-size: 25px;
+      }
+
+      @media (max-height: $very-small-height) {
+        font-size: 18px;
+      }
+
+      &.reversed {
+        border-top-right-radius: 7px;
+        border-bottom-right-radius: 7px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        justify-content: flex-end;
+        border-right: 2px solid;
+        border-left: none;
+      }
+      &.start{
+        border: none;
+        background-color: $dark-black;
+        color: $white;
+      }
+      .team-name {
+        margin-left: 20px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        width: 100%;
+        text-align: center;
+        @media (max-height: $very-small-height) {
+          margin-left: 4px;
+        }
+
+        &.reversed {
+          margin-right: 20px;
+          @media (max-height: $very-small-height) {
+            margin-right: 4px;
+          }
+        }
+      }
+    }
+
+    .vs-ctn {
+      background-color: $light-black;
+      width: 10%;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &.start{
+        background-color: $light-black;
+      }
+      .vs {
+        text-transform: uppercase;
+        color: $white;
+        text-align: center;
+        font-size: 25px;
+      }
+    }
+  }
+
+  .team-names-ctn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: $orange;
+    align-items: center;
+
+    .team-title {
+      width: 50%;
+      font-family: $main-font;
+      color: $white;
+      text-align: center;
+      font-size: 20px;
+      margin: 0px;
+      padding: 10px 0px;
+    }
+  }
+
+  .players-ctn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 80vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    @media(max-width: $break-md) {
+      height: 60vh;
+    }
+  }
+
+  .team-players-ctn {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    .player-details {
+      display: flex;
+      width: 80%;
+      flex-direction: column;
+      font-family: $secondary-font;
+      font-size: 15px;
+      color: #ecf0f1;
+      word-break: break-all;
+
+      .player-nickname {
+        font-family: $main-font;
+        font-size: 25px;
+
+        @media (max-width: $break-sm) {
+          font-size: 19px;
+        }
+      }
+
+      .player-name {
+        @media (max-width: $break-sm) {
+          display: none;
+        }
+      }
+      .player-contact {
+        font-style: italic;
+        color: $extra-light-grey;
+        @media (max-width: $break-sm) {
+          display: none;
+        }
+      }
+    }
+
+    .add-player-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $medium-grey;
+      border: none;
+      margin: 10px;
+      border-radius: 5px;
+      padding: 5px 0px;
+
+      img {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+      }
+
+      span {
+        font-family: $main-font;
+        font-size: 16px;
+        color: $white;
+      }
+    }
+
+    .remove-player {
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  .player-row {
+    color: $white;
+    display: flex;
+    padding: 10px 5px;
+    align-items: center;
+    .player-img {
+      height: 40px;
+      width: 40px;
+      border-radius: 100px;
+      margin-right: 10px;
+      object-fit: cover;
+    }
+    .player-name {
+      font-family: $main-font;
+      font-size: 22px;
+      margin: 0px;
+      width: 80%;
+      overflow: hidden;
+    }
+  }
+
+  .player-selector-modal {
+    .modal-ctn {
+      z-index: $z-index-modal;
+    }
+  }
+
+  .sub-team-info {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 10px;
+
+    avatar {
+      margin: 5px;
+    }
+
+    .add-btn {
+      width: 30px;
+      height: 30px;
+    }
+
+    .team-ctn {
+      display: flex;
+      width: 40%;
+      flex-wrap: wrap;
+      align-items: center;
+
+      &.right {
+        justify-content: flex-end;
+      }
+    }
+  }
+  .game-status{
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 70%);
+    color: $white;
+    font-family: $main-font;
+    p{
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+    @media (max-width: $break-sm) {
+      transform: translate(-50%, 50%);
+    }
+  }
+}

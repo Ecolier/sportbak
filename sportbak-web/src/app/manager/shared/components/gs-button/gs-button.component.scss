@@ -1,0 +1,68 @@
+@import "src/app/shared/const/variables";
+
+gs-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .gs-button {
+    width: 100%;
+    margin: 5px;
+    padding: 5px 0px;
+    color: #ecf0f1;
+    font-size: 30px;
+    font-family: $main-font;
+    border-radius: 7px;
+    border: none;
+    transition-duration: 0.2s;
+    outline: none;
+    @media (max-height: $very-small-height) {
+      font-size: 20px;
+    }
+    &.is-clicked {
+      transition-duration: 0.2s;
+      transform: scaleX(0.95) translateY(4px);
+    }
+
+    &.green {
+      background-color: $green;
+      &.small {
+      &.is-clicked {
+        background-color: $dark-green;
+      }
+      @media (max-height: $very-small-height) {
+        border:none;
+      }
+     }
+    }
+
+    &.red {
+      background-color: $red;
+      &.is-clicked {
+        background-color: $dark-red;
+      }
+      @media (max-height: $very-small-height) {
+        border:none;
+      }
+    }
+
+    &.orange {
+      background-color: $orange;
+      &.is-clicked {
+        background-color: $dark-orange;
+      }
+      @media (max-height: $very-small-height) {
+        border:none;
+      }
+    }
+
+    &.grey {
+      background-color: $dark-grey;
+      &.is-clicked {
+        background-color: $light-black;
+      }
+      @media (max-height: $very-small-height) {
+        border:none;
+      }
+    }
+  }
+}

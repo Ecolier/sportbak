@@ -1,0 +1,38 @@
+@import "src/app/shared/const/variables";
+
+day-picker {
+
+  .day-picker {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    background-color: $calendar-month-grey;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 40px;
+    .arrow-ctn {
+      border-radius: 100px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      img {
+        height: 10px;
+        padding:0px 10px;
+      }
+    }
+    .day-text {
+      font-family: $secondary-font;
+      color: $white;
+      border: 1px solid $dark-black;
+      border-top: none;
+      border-bottom: none;
+      width: 130px;
+      text-align: center;
+      text-transform: uppercase;
+      @media (max-width:$break-sm) {
+        font-size: 12px;
+        width: 110px;
+      }
+    }
+  }
+}
